@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<title>Miu-Bot học tiếng Việt · Bài 10</title>
+<style>:root{--teal:#2f9e8a;--teal-d:#237a6a;--mint:#d9f5ec;--sun:#ffd23f;--ink:#1f2d3d;--card:#ffffff;--ok:#2fbf71;--soft:#ffe3bf;--blue:#3b82f6;--fs:1}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{font-family:-apple-system,"SF Pro Rounded","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);
+  background:linear-gradient(180deg,#d6f0ff 0%,#eaf8ef 55%,#f7fbe9 100%);background-attachment:fixed;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+#app{max-width:1100px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:10px 14px calc(18px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;gap:10px;padding:6px 2px}
+header .title{flex:1;font-weight:800;font-size:20px;text-align:center;color:var(--teal-d)}
+.hbtn{min-width:52px;height:52px;border-radius:26px;border:0;background:#fff;box-shadow:0 3px 0 #bfe3d8;font-size:24px;padding:0 14px;color:var(--ink)}
+.stars{font-weight:800;font-size:20px;display:flex;align-items:center;gap:4px;background:#fff7d6;border-radius:26px;height:52px;padding:0 16px;box-shadow:0 3px 0 #f0d77a}
+.progress{display:flex;gap:6px;margin:2px 4px 6px}.progress i{flex:1;height:8px;border-radius:6px;background:#ffffff99}.progress i.on{background:var(--teal)}
+.botrow{display:flex;align-items:flex-end;gap:10px;margin:2px 0 8px}
+.bot{width:112px;height:134px;flex:none;position:relative;animation:bob 3.2s ease-in-out infinite}
+.bot svg{width:100%;height:100%;overflow:visible}
+.bot.talk .mouth{animation:talk .28s ease-in-out infinite;transform-origin:100px 112px;transform-box:view-box}
+.bot .eyes{animation:blink 4.5s infinite;transform-origin:100px 82px;transform-box:view-box}
+.bot.cheer{animation:hop .6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-5px)}}
+@keyframes hop{50%{transform:translateY(-14px)}}
+@keyframes talk{50%{transform:scaleY(.55)}}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.bubble{position:relative;background:#fff;border-radius:22px;padding:14px 18px;font-size:calc(22px*var(--fs));line-height:1.5;flex:1;box-shadow:0 3px 0 #cfe6ee;min-height:64px}
+.bubble:before{content:"";position:absolute;left:-12px;bottom:22px;border:10px solid transparent;border-right-color:#fff;border-left:0}
+.bubble .replay{float:right;margin-left:8px;border:0;background:var(--mint);border-radius:18px;height:40px;min-width:40px;font-size:20px}
+main{flex:1}
+.card{background:var(--card);border-radius:26px;padding:18px 20px;box-shadow:0 4px 0 #cfe6ee;margin-bottom:12px}
+.card h2{margin:0 0 6px;font-size:26px;color:var(--teal-d)}
+.sub{margin:0 0 12px;font-size:20px;color:#52606d}
+.btn{border:0;border-radius:24px;min-height:64px;padding:0 26px;font-size:22px;font-weight:800;background:var(--teal);color:#fff;box-shadow:0 5px 0 var(--teal-d);display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--teal-d)}
+.btn.alt{background:#fff;color:var(--teal-d);box-shadow:0 5px 0 #bfe3d8}
+.btn.sun{background:var(--sun);color:#5a4300;box-shadow:0 5px 0 #d9ab00}
+.btn.blue{background:var(--blue);box-shadow:0 5px 0 #2563c9}
+.btn[disabled]{opacity:.45}
+.btn.pulse{animation:pulse 1.4s infinite}
+@keyframes pulse{50%{transform:scale(1.05)}}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center;margin:12px 0 4px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.pick{border:3px solid #d5e5ea;background:#fff;border-radius:22px;padding:14px;font-size:21px;font-weight:700;text-align:center;min-height:112px;color:var(--ink)}
+.pick .em{font-size:44px;display:block;margin-bottom:4px}
+.pick.ok{border-color:var(--ok);background:#e4f8ec}.pick.soft{border-color:#f3b76b;background:var(--soft)}
+/* path */
+.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:10px 0}
+.node{background:#fff;border-radius:22px;padding:12px;text-align:center;border:3px solid transparent;box-shadow:0 4px 0 #cfe6ee;font-size:19px;font-weight:700;color:var(--ink)}
+.node .n{font-size:34px;display:block}.node small{display:block;color:#6b7b8c;font-weight:600;font-size:15px}
+.node.done{background:#e4f8ec}.node.cur{border-color:var(--sun);animation:pulse 1.6s infinite}
+/* reading */
+.scene{font-size:40px;text-align:center;letter-spacing:6px;margin-bottom:6px}
+.read{font-size:calc(30px*var(--fs));line-height:2.05;letter-spacing:.012em;word-spacing:.08em}
+.read .sent{border-radius:12px;padding:2px 4px;transition:background .2s}
+.read .sent.d{display:block;margin-top:4px}
+.read .sent.on{background:#fff0a8;box-shadow:0 0 0 3px #fff0a8}
+.read .ck{margin-right:.22em}
+.gl{border-bottom:3px dotted #f08c00;cursor:pointer}
+.ckrow{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:10px 0 6px}
+.pill{font-size:calc(32px*var(--fs));padding:10px 20px;border-radius:24px;background:#eef6ff;border:3px solid #cfe1f7;color:var(--ink);line-height:1.5}
+.pill.say{background:#fff0a8;border-color:#f3cf3a}
+.pill.you{background:#dbeafe;border-color:var(--blue);animation:pulse 1s infinite}
+.pill small{display:block;font-size:15px;color:var(--blue);font-weight:800}
+.dots{display:flex;gap:8px;justify-content:center;margin:2px 0 8px}.dots i{width:14px;height:14px;border-radius:50%;background:#cfe1f7}.dots i.on{background:var(--teal)}.dots i.cur{outline:3px solid var(--sun)}
+/* tone */
+.opts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:12px 0}
+.opt{min-width:160px;border:3px solid #d5e5ea;background:#fff;border-radius:24px;padding:14px 18px;font-size:38px;font-weight:800;text-align:center;color:var(--ink)}
+.opt .em{display:block;font-size:48px}.opt small{display:block;font-size:16px;font-weight:600;color:#52606d}
+.opt.ok{border-color:var(--ok);background:#e4f8ec}.opt.soft{border-color:#f3b76b;background:var(--soft)}
+.legend{font-size:17px;color:#52606d;text-align:center}
+/* games */
+.leaves{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:10px 0}
+.leaf{border:0;font-size:28px;font-weight:800;padding:14px 26px;border-radius:30px 6px 30px 6px;background:#9be08a;color:#1d4d12;box-shadow:0 4px 0 #6dbb5c}
+.leaf:nth-child(3n){background:#ffcf6b;box-shadow:0 4px 0 #e0a33a;color:#5a3b00}.leaf:nth-child(3n+1){background:#b7e36f;box-shadow:0 4px 0 #8bbd3f}
+.leaf.sel{transform:translateY(-8px) scale(1.12);outline:4px solid var(--blue)}
+.leaf.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.baskets{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.basket{border:4px dashed #9cc7d6;border-radius:26px;background:#f4fbff;min-height:150px;padding:10px;text-align:center;font-size:24px;font-weight:800;color:var(--ink)}
+.basket .in{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.basket .in span{background:#fff;border-radius:16px;padding:4px 12px;font-size:22px;border:2px solid #cfe1f7}
+.basket small{display:block;font-size:16px;font-weight:600;color:#52606d}
+.q{font-size:calc(26px*var(--fs));line-height:1.5;font-weight:700;margin:4px 0 12px}
+.ans{display:block;width:100%;text-align:left;border:3px solid #d5e5ea;background:#fff;border-radius:22px;padding:16px 18px;margin:10px 0;font-size:calc(23px*var(--fs));line-height:1.45;color:var(--ink)}
+.ans.ok{border-color:var(--ok);background:#e4f8ec}.ans.soft{border-color:#f3b76b;background:var(--soft)}
+.hint{background:#fff7d6;border-radius:20px;padding:12px 16px;font-size:21px;margin-top:8px}
+.order{display:grid;gap:12px}
+.ocard{position:relative;border:3px solid #d5e5ea;background:#fff;border-radius:22px;padding:16px 60px 16px 18px;font-size:calc(23px*var(--fs));line-height:1.45;text-align:left;color:var(--ink)}
+.ocard .no{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--ok);color:#fff;font-weight:800;font-size:22px;display:none;align-items:center;justify-content:center}
+.ocard.ok{border-color:var(--ok);background:#e4f8ec}.ocard.ok .no{display:flex}
+.ocard.shake{animation:shake .4s}
+/* sheet */
+#sheet{position:fixed;left:0;right:0;bottom:0;background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -8px 30px #0003;padding:20px 22px calc(22px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .25s;z-index:20;max-width:900px;margin:0 auto}
+#sheet.show{transform:none}
+#sheet .w{font-size:36px;font-weight:800;color:var(--teal-d)}
+#sheet .e{font-size:44px}
+#sheet p{font-size:24px;line-height:1.5;margin:6px 0}
+#toast{position:fixed;left:50%;top:14px;transform:translate(-50%,-120px);background:#fff;border-radius:24px;padding:12px 22px;font-size:22px;font-weight:800;box-shadow:0 6px 20px #0003;z-index:30;transition:transform .3s}
+#toast.show{transform:translate(-50%,0)}
+.fall{position:fixed;top:-40px;font-size:34px;z-index:15;pointer-events:none;animation:fall 3.2s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.parent h3{margin:16px 0 6px;color:var(--teal-d)}.parent p,.parent li{font-size:18px;line-height:1.55;-webkit-user-select:text;user-select:text}
+.parent table{border-collapse:collapse;width:100%;font-size:17px}.parent td,.parent th{border-bottom:1px solid #e1e8ed;padding:6px 8px;text-align:left}
+.parent input[type=text]{font-size:20px;padding:10px 14px;border-radius:14px;border:2px solid #cfe1f7;-webkit-user-select:text;user-select:text}
+.big{font-size:60px;text-align:center}
+@media (max-width:640px){.bot{width:84px;height:100px}.bubble{font-size:19px}.read{font-size:26px}.pill{font-size:26px}}
+
+input,textarea{-webkit-user-select:text;user-select:text}
+.tin{width:100%;font-size:calc(24px*var(--fs));padding:14px 16px;border-radius:18px;border:3px solid #cfe1f7;background:#fff;color:var(--ink);font-family:inherit}
+.tin:focus{outline:none;border-color:var(--blue)}
+.field{margin:10px 0}.field label{display:block;font-weight:800;font-size:20px;margin-bottom:6px;color:var(--teal-d)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{border:3px solid #d5e5ea;background:#fff;border-radius:22px;padding:8px 16px;font-size:20px;color:var(--ink)}
+.chip.on{border-color:var(--ok);background:#e4f8ec;font-weight:800}
+.tabs{display:flex;gap:10px;margin-bottom:10px}.tabs .btn{flex:1;min-height:56px;font-size:19px}
+.zones{display:grid;gap:12px;margin-top:10px}
+.zone{border:4px dashed;border-radius:24px;padding:12px 16px;text-align:left;font-size:22px;font-weight:800;color:var(--ink);min-height:96px}
+.zone small{display:block;font-weight:600;font-size:17px;color:#445}
+.zone.m{background:#e3f1ff;border-color:#8ec3f5}.zone.t{background:#ffe8e4;border-color:#f3a99b}.zone.k{background:#e3f7ec;border-color:#8fd3a9}
+.zone .in div{background:#fff;border-radius:14px;padding:6px 12px;margin-top:6px;font-size:18px;font-weight:600}
+.scards{display:grid;gap:10px;margin:8px 0}
+.scard{border:3px solid #d5e5ea;background:#fff;border-radius:20px;padding:12px 16px;font-size:calc(21px*var(--fs));text-align:left;line-height:1.4;color:var(--ink)}
+.scard.sel{border-color:var(--blue);background:#eaf2ff;transform:scale(1.02)}.scard.shake{animation:shake .4s}
+.ord{color:#d9480f;font-weight:800}
+.segs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:10px 0}
+.seg{font-size:calc(28px*var(--fs));padding:10px 16px;border-radius:18px;border:3px solid #d5e5ea;background:#fff;color:var(--ink)}
+.seg.ok{border-color:var(--ok);background:#e4f8ec;font-weight:800}.seg.soft{border-color:#f3b76b;background:var(--soft)}
+.trow{display:flex;gap:8px;align-items:center;margin:8px 0}.trow .o{width:112px;flex:none;font-weight:800;color:#d9480f;font-size:19px}
+.trow .mv{flex:none;width:46px;height:46px;border-radius:14px;border:0;background:var(--mint);font-size:20px}
+.ol{border-radius:22px;padding:12px 16px;margin:10px 0;font-size:calc(21px*var(--fs));line-height:1.55}
+.ol h4{margin:0 0 4px;font-size:22px}.ol.m{background:#e3f1ff}.ol.t{background:#ffe8e4}.ol.k{background:#e3f7ec}
+.chk{display:flex;gap:10px;align-items:center;background:#fff;border-radius:18px;padding:10px 14px;margin:8px 0;font-size:21px;border:3px solid #d5e5ea}
+.chk.ok{border-color:var(--ok);background:#e4f8ec}.chk .b{margin-left:auto}
+.starbtn{flex:none;border:0;background:#fff7d6;border-radius:14px;height:46px;min-width:46px;font-size:22px}.starbtn.on{background:var(--sun)}
+</style></head><body>
+<div id="app"></div><div id="sheet"></div><div id="toast"></div>
+<script>// ===== NỘI DUNG BÀI 10 - TIẾNG NÓI CỦA CỎ CÂY (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.44-45) =====
+const SENTS = {
+ s1:{c:["Những ngày hè","ở nhà ông bà,","Ta-nhi-a","được thoả thích","chạy nhảy trong vườn."]},
+ s2:{c:["Thấy khóm hoa hồng bạch","có vẻ chật chỗ,","cô bé liền bứng","một cây nhỏ nhất","trồng vào chỗ đất trống","dưới cửa sổ."]},
+ s3:{c:["Ngắm nghía một hồi,","cảm thấy chưa hài lòng,","cô đến bên khóm huệ,","chọn một cây","đem trồng cạnh cây hoa hồng."]},
+ s4:{c:["Những đêm hè","thường có mưa rào","làm cho đất dịu mát."]},
+ s5:{c:["Sáng sáng,","mặt trời hiền hoà","ló rạng trên bầu trời","mới được tắm gội."]},
+ s6:{c:["Muôn hoa vui sướng","chào đón ánh dương,","cùng nhau tưng bừng nở rộ."]},
+ s7:{c:["Ô kìa!"]},
+ s8:{c:["Bụi hoa hồng","được chuyển chỗ mới","đẹp làm sao!"]},
+ s9:{c:["Những bông hoa màu trắng dịu,","cánh hoa trong suốt lung linh."]},
+ s10:{c:["Hoa nở nhiều","đến nỗi cả bụi cây","như phủ đầy tuyết trắng."]},
+ s11:{c:["Hàng xóm đi qua","trông thấy bụi hoa hồng","dưới cửa sổ,","đều hỏi:"]},
+ s12:{d:1,c:["– Đây là giống hoa mới","phải không?"]},
+ s13:{d:1,c:["– Không ạ!","Vẫn giống cây đó thôi."]},
+ s14:{c:["Ta-nhi-a chỉ cho mọi người","khóm hồng cũ:","Hoa của chúng nhỏ hơn","và không rực rỡ bằng."]},
+ s15:{c:["Kì lạ thay,","cây hoa huệ dưới cửa sổ","giờ đây cũng đẹp trội hơn hẳn","những cây mà nó sống cạnh trước kia."]},
+ s16:{c:["Những bông huệ trắng muốt,","đẹp như một nàng tiên","trong truyện cổ tích."]},
+ s17:{c:["Ta-nhi-a nghĩ mãi","về nguyên nhân biến đổi của cây."]},
+ s18:{c:["Có lẽ là do","chỗ ở mới của chúng thoáng hơn,","không bị rễ của cây khác","tranh chất màu dưới đất."]},
+ s19:{c:["Đêm ấy,","bên cửa sổ mở rộng,","có tiếng thở nhẹ mơ hồ","xen lẫn tiếng thì thầm:"]},
+ s20:{d:1,c:["– Bạn thân mến!"]},
+ s21:{d:1,c:["– Bụi hoa hồng khẽ nói."]},
+ s22:{d:1,c:["– Hơi thở của bạn","làm tôi dễ chịu quá."]},
+ s23:{d:1,c:["– Cảm ơn bạn."]},
+ s24:{d:1,c:["– Cây hoa huệ cất giọng nhẹ nhàng."]},
+ s25:{d:1,c:["– Không có bạn,","tôi làm sao được tươi tắn thế này."]}
+};
+const PAGES = [
+ {ids:["s1","s2","s3"], scene:"🏡 👧 🌹 🌷"},
+ {ids:["s4","s5","s6","s7","s8"], scene:"🌧️ 🌅 🌹 ✨"},
+ {ids:["s9","s10","s11","s12","s13"], scene:"❄️ 🌹 🧑‍🤝‍🧑 ❓"},
+ {ids:["s14","s15","s16"], scene:"🌹 🌷 🧚‍♀️"},
+ {ids:["s17","s18"], scene:"👧 💭 🌱"},
+ {ids:["s19","s20","s21","s22","s23","s24","s25"], scene:"🌙 🪟 🌹 💬 🌷"}
+];
+const PRACTICE = ["s1","s3","s10","s15","s18"];
+
+// Từ khó: 2 từ đầu theo chú giải của SGK, các từ còn lại do Miu-Bot giải thích đơn giản
+const GLOSS = {
+ "bứng":{e:"🌱➡️🪴",d:"đào cây cùng bầu đất xung quanh rễ để chuyển đi trồng ở nơi khác.",x:"Bà bứng cây cam ra trồng ở góc vườn."},
+ "mơ hồ":{e:"🌫️",d:"không rõ ràng, không xác thực.",x:"Trời có sương mù nên cái cây trông mơ hồ."},
+ "khóm":{e:"🌿🌿🌿",d:"một cụm cây mọc sát nhau.",x:"Một khóm hoa mọc bên hàng rào."},
+ "hồng bạch":{e:"🤍🌹",d:"loại hoa hồng có màu trắng.",x:"Khóm hồng bạch nở hoa trắng tinh."},
+ "chật chỗ":{e:"🧍🧍🧍",d:"không đủ chỗ, các cây mọc sát vào nhau.",x:"Lớp học đông quá nên ngồi rất chật chỗ."},
+ "ngắm nghía":{e:"👀",d:"nhìn kĩ, nhìn lâu vì thấy thích hoặc đang suy nghĩ.",x:"Bé ngắm nghía bông hoa mới nở."},
+ "hài lòng":{e:"😊",d:"thấy vừa ý, thấy vui vì mọi thứ đã tốt.",x:"Mẹ hài lòng vì con dọn phòng gọn gàng."},
+ "huệ":{e:"🤍🌷",d:"một loài hoa màu trắng, thơm.",x:"Hoa huệ trắng thơm dịu nhẹ."},
+ "mưa rào":{e:"🌦️",d:"mưa to nhưng chỉ kéo dài một lúc rồi tạnh.",x:"Cơn mưa rào làm sân ướt nhẹp."},
+ "ló rạng":{e:"🌅",d:"mặt trời bắt đầu hiện ra vào buổi sáng.",x:"Mặt trời ló rạng sau rặng núi."},
+ "tắm gội":{e:"🚿",d:"rửa sạch. Ở đây, cơn mưa đã rửa sạch bầu trời như tắm cho nó.",x:"Cây cối được mưa tắm gội xanh mướt."},
+ "tưng bừng":{e:"🎉",d:"vui vẻ, náo nhiệt, rộn ràng.",x:"Sân trường tưng bừng ngày khai giảng."},
+ "nở rộ":{e:"🌸🌸🌸",d:"nở nhiều, nở cùng một lúc.",x:"Mùa xuân, hoa đào nở rộ khắp vườn."},
+ "lung linh":{e:"✨",d:"lấp lánh, sáng đẹp.",x:"Giọt sương lung linh trong nắng."},
+ "rực rỡ":{e:"🌈",d:"màu sắc tươi sáng, nổi bật, rất đẹp.",x:"Cầu vồng rực rỡ sau cơn mưa."},
+ "trội":{e:"🏆",d:"nổi bật hơn, đẹp hơn những cái khác.",x:"Bông hoa đỏ nổi trội giữa vườn."},
+ "thoáng":{e:"🌬️",d:"rộng rãi, có nhiều không khí, không bị chật.",x:"Căn phòng thoáng mát vì có nhiều cửa sổ."},
+ "thì thầm":{e:"🤫",d:"nói rất nhỏ, chỉ đủ để người bên cạnh nghe.",x:"Hai bạn thì thầm với nhau trong giờ đọc sách."},
+ "khẽ":{e:"🪶",d:"nhẹ nhàng, rất nhỏ, không gây tiếng ồn.",x:"Em khẽ đóng cửa để em bé ngủ."},
+ "tươi tắn":{e:"😄🌼",d:"tươi, khoẻ, trông rất đẹp và đầy sức sống.",x:"Sau cơn mưa, cây cối trông thật tươi tắn."}
+};
+
+// Trò chơi nghe phân biệt dấu thanh (các từ lấy từ bài đọc hoặc gần với bài đọc)
+const TONES = [
+ {opts:[{w:"trồng",e:"🌱",t:"dấu huyền",m:"trồng cây"},{w:"trống",e:"🥁",t:"dấu sắc",m:"cái trống"}]},
+ {opts:[{w:"tươi",e:"🥬",t:"không dấu",m:"rau tươi"},{w:"tưới",e:"🚿",t:"dấu sắc",m:"tưới cây"}]},
+ {opts:[{w:"thở",e:"😮‍💨",t:"dấu hỏi",m:"thở ra, hít vào"},{w:"thơ",e:"📜",t:"không dấu",m:"bài thơ"},{w:"thợ",e:"👷",t:"dấu nặng",m:"thợ xây"}]},
+ {opts:[{w:"sáng",e:"☀️",t:"dấu sắc",m:"buổi sáng"},{w:"sang",e:"🌉",t:"không dấu",m:"sang đường"}]},
+ {opts:[{w:"bạn",e:"🧑‍🤝‍🧑",t:"dấu nặng",m:"bạn bè"},{w:"bàn",e:"🪑",t:"dấu huyền",m:"cái bàn"}]}
+];
+
+// Hái lá: danh từ / động từ (bài tập tr.45)
+const LEAVES = [
+ {w:"vườn",k:"n"},{w:"đi",k:"v"},{w:"cây",k:"n"},{w:"trồng",k:"v"},{w:"đất",k:"n"},
+ {w:"chọn",k:"v"},{w:"hỏi",k:"v"},{w:"hoa",k:"n"},{w:"bạn",k:"n"},{w:"ngắm",k:"v"}
+];
+
+// Câu hỏi hiểu bài (theo câu 1-4 của SGK); evidence = câu trong bài để đọc lại khi cần gợi ý
+const QUIZ = [
+ {q:"Chi tiết nào cho thấy Ta-nhi-a cảm thấy thoải mái trong những ngày hè ở nhà ông bà?",
+  o:["Cô bé được thoả thích chạy nhảy trong vườn.","Cô bé phải ngồi học suốt cả ngày.","Cô bé không được ra khỏi nhà."],a:0,ev:"s1",
+  why:"Đúng rồi: “được thoả thích chạy nhảy trong vườn”."},
+ {q:"Vì sao Ta-nhi-a bứng một cây hồng nhỏ nhất đem trồng chỗ khác?",
+  o:["Vì cây hồng bị héo.","Vì khóm hoa hồng có vẻ chật chỗ.","Vì ông bà bảo cô bé làm vậy."],a:1,ev:"s2",
+  why:"Khóm hồng có vẻ chật chỗ nên cô bé bứng một cây nhỏ nhất đi trồng dưới cửa sổ."},
+ {q:"Vì sao Ta-nhi-a chọn một cây huệ đem trồng cạnh cây hoa hồng?",
+  o:["Vì cô bé ngắm nghía một hồi mà chưa hài lòng.","Vì cây huệ đang bị sâu ăn.","Vì hàng xóm nhờ cô bé trồng."],a:0,ev:"s3",
+  why:"Cô bé ngắm nghía một hồi, chưa hài lòng nên chọn thêm một cây huệ trồng cạnh cây hồng."},
+ {q:"Ta-nhi-a chọn mấy cây huệ để đem trồng cạnh cây hoa hồng?",
+  o:["Một cây.","Cả khóm huệ.","Hai cây."],a:0,ev:"s3",
+  why:"Cô bé chỉ chọn một cây huệ trong khóm để trồng cạnh cây hoa hồng."},
+ {q:"Nhờ việc làm của Ta-nhi-a, cây hồng và cây huệ nở hoa đẹp như thế nào?",
+  o:["Hoa nở ít và nhỏ hơn trước.","Hồng nở nhiều như phủ tuyết trắng, huệ trắng muốt đẹp như nàng tiên.","Hoa bị héo vì thiếu nước."],a:1,ev:"s10",
+  why:"Hoa hồng nở nhiều như phủ đầy tuyết trắng, hoa huệ trắng muốt đẹp như một nàng tiên."},
+ {q:"Ta-nhi-a đoán nguyên nhân nào làm cây hồng và cây huệ thay đổi?",
+  o:["Vì cây được tưới nhiều nước hơn.","Vì chỗ ở mới thoáng hơn, không bị rễ cây khác tranh chất màu.","Vì trời mưa nhiều hơn."],a:1,ev:"s18",
+  why:"Ta-nhi-a đoán: chỗ ở mới thoáng hơn, không bị rễ của cây khác tranh chất màu dưới đất."}
+];
+
+// Xếp các sự việc theo thứ tự câu chuyện
+const STORY_ORDER = [
+ "Ta-nhi-a bứng cây hồng nhỏ nhất và trồng thêm một cây huệ cạnh đó.",
+ "Sau những đêm mưa rào, hoa hồng và hoa huệ nở rộ, rất đẹp.",
+ "Hàng xóm hỏi có phải giống hoa mới không, Ta-nhi-a chỉ khóm hồng cũ.",
+ "Ta-nhi-a nghĩ mãi và đoán là do chỗ ở mới thoáng hơn."
+];
+
+// ===== Miu-Bot: mèo máy nhân vật gốc (bạc hà + mặt kem + ăng-ten ngôi sao) =====
+function miuSVG(mood){
+  const cheer = mood==='cheer';
+  const eyes = cheer
+   ? `<path d="M66 84 Q78 70 90 84" fill="none" stroke="#243b53" stroke-width="5" stroke-linecap="round"/>
+      <path d="M110 84 Q122 70 134 84" fill="none" stroke="#243b53" stroke-width="5" stroke-linecap="round"/>`
+   : (()=>{
+      const big = mood==='wow' ? 8 : 6.5;
+      const dx = mood==='think' ? 3 : 0, dy = mood==='think' ? -5 : 0;
+      const eye=(cx)=>`<ellipse cx="${cx}" cy="82" rx="13" ry="15" fill="#fff" stroke="#243b53" stroke-width="3"/>
+        <circle cx="${cx+dx}" cy="${82+dy}" r="${big}" fill="#243b53"/>
+        <circle cx="${cx+dx+2.5}" cy="${79+dy}" r="2.4" fill="#fff"/>`;
+      return `<g class="eyes">${eye(78)}${eye(122)}</g>`;
+    })();
+  let mouth;
+  if(mood==='wow') mouth = `<ellipse cx="100" cy="117" rx="9" ry="11" fill="#e85d75" stroke="#243b53" stroke-width="3"/>`;
+  else if(mood==='think') mouth = `<path d="M90 116 Q100 111 110 116" fill="none" stroke="#243b53" stroke-width="4" stroke-linecap="round"/>`;
+  else mouth = `<path d="M82 108 Q100 134 118 108 Z" fill="#e85d75" stroke="#243b53" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M92 119 Q100 126 108 119 Q100 114 92 119Z" fill="#ff9aa8"/>`;
+  const brows = mood==='think' ? `<path d="M66 62 Q78 56 90 62" fill="none" stroke="#243b53" stroke-width="4" stroke-linecap="round"/>
+       <path d="M110 58 Q122 52 134 58" fill="none" stroke="#243b53" stroke-width="4" stroke-linecap="round"/>` : '';
+  const arms = cheer
+   ? `<path d="M62 168 Q40 150 38 120" fill="none" stroke="#86dcc8" stroke-width="16" stroke-linecap="round"/>
+      <path d="M138 168 Q160 150 162 120" fill="none" stroke="#86dcc8" stroke-width="16" stroke-linecap="round"/>
+      <circle cx="38" cy="116" r="12" fill="#fff9ee" stroke="#3b9c88" stroke-width="3"/>
+      <circle cx="162" cy="116" r="12" fill="#fff9ee" stroke="#3b9c88" stroke-width="3"/>`
+   : `<path d="M62 168 Q48 178 50 192" fill="none" stroke="#86dcc8" stroke-width="16" stroke-linecap="round"/>
+      <path d="M138 168 Q152 178 150 192" fill="none" stroke="#86dcc8" stroke-width="16" stroke-linecap="round"/>
+      <circle cx="50" cy="194" r="12" fill="#fff9ee" stroke="#3b9c88" stroke-width="3"/>
+      <circle cx="150" cy="194" r="12" fill="#fff9ee" stroke="#3b9c88" stroke-width="3"/>`;
+  return `<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Miu-Bot">
+  <ellipse cx="100" cy="230" rx="56" ry="8" fill="#000" opacity=".12"/>
+  <g class="star-wrap"><line x1="100" y1="30" x2="100" y2="14" stroke="#3b9c88" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="100,-4 105,8 118,8 108,16 112,29 100,21 88,29 92,16 82,8 95,8" fill="#ffd23f" stroke="#e0a800" stroke-width="2" transform="translate(0,4)"/></g>
+  <polygon points="42,58 54,14 90,38" fill="#86dcc8" stroke="#3b9c88" stroke-width="3" stroke-linejoin="round"/>
+  <polygon points="52,50 58,28 76,40" fill="#ffc2cf"/>
+  <polygon points="158,58 146,14 110,38" fill="#86dcc8" stroke="#3b9c88" stroke-width="3" stroke-linejoin="round"/>
+  <polygon points="148,50 142,28 124,40" fill="#ffc2cf"/>
+  <ellipse cx="100" cy="190" rx="46" ry="42" fill="#86dcc8" stroke="#3b9c88" stroke-width="3"/>
+  <ellipse cx="100" cy="198" rx="30" ry="27" fill="#fff9ee" stroke="#3b9c88" stroke-width="2"/>
+  <path d="M100 212 Q88 200 100 184 Q112 200 100 212Z" fill="#5cc27a" stroke="#2f9e5a" stroke-width="2"/>
+  <line x1="100" y1="212" x2="100" y2="190" stroke="#2f9e5a" stroke-width="2"/>
+  ${arms}
+  <ellipse cx="78" cy="228" rx="17" ry="9" fill="#fff9ee" stroke="#3b9c88" stroke-width="3"/>
+  <ellipse cx="122" cy="228" rx="17" ry="9" fill="#fff9ee" stroke="#3b9c88" stroke-width="3"/>
+  <ellipse cx="100" cy="86" rx="66" ry="58" fill="#86dcc8" stroke="#3b9c88" stroke-width="3"/>
+  <ellipse cx="100" cy="98" rx="52" ry="43" fill="#fff9ee"/>
+  <path d="M82 144 Q100 158 118 144 Q100 150 82 144Z" fill="#ffd23f" stroke="#e0a800" stroke-width="2"/>
+  <circle cx="62" cy="104" r="9" fill="#ff9aa8" opacity=".55"/><circle cx="138" cy="104" r="9" fill="#ff9aa8" opacity=".55"/>
+  ${brows}${eyes}
+  <ellipse cx="100" cy="99" rx="6" ry="4.5" fill="#ffb347" stroke="#243b53" stroke-width="2"/>
+  <g class="mouth">${mouth}</g>
+  <circle cx="68" cy="116" r="1.6" fill="#243b53" opacity=".5"/><circle cx="73" cy="120" r="1.6" fill="#243b53" opacity=".5"/>
+  <circle cx="132" cy="116" r="1.6" fill="#243b53" opacity=".5"/><circle cx="127" cy="120" r="1.6" fill="#243b53" opacity=".5"/>
+</svg>`;
+}
+
+'use strict';
+// ===== Trạng thái & lưu trữ =====
+const KEY='miu_bot_bai10_v1';
+let mem=null;
+function defaults(){return {name:'',stars:0,done:{},misses:{},quizMiss:{},retries:0,sessions:0,minutes:0,fs:1,rate:0.9,lessonStars:0,sess:1,ol:null,ttsMode:0};}
+function load(){let o=null;try{const r=localStorage.getItem(KEY);if(r)o=JSON.parse(r);}catch(e){} if(!o)o=mem; return Object.assign(defaults(),o||{});}
+let S=load();
+function save(){mem=S;try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+document.documentElement.style.setProperty('--fs',S.fs);
+let t0=null, timeShown=false;
+
+// ===== Tiện ích =====
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const nm=()=>S.name||'bạn';
+function syll(t){return t.split(/[\s-]+/).filter(Boolean).length;}
+
+// ===== Giọng nói (giọng máy của thiết bị) =====
+const TTS={voice:null,token:0,n:0,vi:[],started:false,err:'',warned:false,has:('speechSynthesis' in window)};
+function loadVoices(){if(!TTS.has)return;const vs=speechSynthesis.getVoices();TTS.n=vs.length;TTS.vi=vs.filter(v=>v.lang&&/^vi/i.test(v.lang));TTS.voice=TTS.vi[0]||null;}
+if(TTS.has){loadVoices();try{speechSynthesis.onvoiceschanged=loadVoices;}catch(e){}let n=0;const iv=setInterval(()=>{loadVoices();if(TTS.n>0||++n>20)clearInterval(iv);},400);}
+function clean(t){return t.replace(/[–—]/g,' ').replace(/(\p{L})-(?=\p{L})/gu,'$1 ').replace(/\s+/g,' ').trim();}
+function speakOnce(text,rate,pitch,modeOv){
+  return new Promise(res=>{
+    if(!TTS.has)return res();
+    let done=false,tm;const fin=()=>{if(!done){done=true;clearTimeout(tm);res();}};
+    try{
+      const mode=modeOv!=null?modeOv:(S.ttsMode||0);
+      const u=new SpeechSynthesisUtterance(clean(text));u.lang=mode===2?'vi':'vi-VN';if(mode===0&&TTS.voice)u.voice=TTS.voice;
+      u.rate=rate||S.rate;u.pitch=pitch||1.05;
+      u.onstart=()=>{TTS.started=true;};u.onend=()=>{TTS.ended=true;fin();};
+      u.onerror=ev=>{TTS.err=(ev&&ev.error)||'error';if(!TTS.warned&&/language|synthesis|not-allowed/.test(TTS.err)){TTS.warned=true;try{toast('Máy chưa phát được tiếng. Bấm 🔊 Thử âm thanh ở trang chính nhé');}catch(e){}}fin();};
+      (TTS.keep=TTS.keep||[]).push(u);if(TTS.keep.length>6)TTS.keep.shift();
+      tm=setTimeout(fin,4000+text.length*220/(rate||1));
+      try{speechSynthesis.resume();}catch(e){}
+      speechSynthesis.speak(u);
+    }catch(e){fin();}
+  });
+}
+function stopSpeech(){TTS.token++;try{TTS.has&&speechSynthesis.cancel();}catch(e){} setTalk(false);}
+async function speakSeq(items,o={}){
+  const tk=++TTS.token;try{TTS.has&&speechSynthesis.cancel();}catch(e){}
+  await sleep(90);
+  for(let i=0;i<items.length;i++){
+    if(tk!==TTS.token)return false;
+    const it=typeof items[i]==='string'?{t:items[i]}:items[i];
+    if(o.onItem)o.onItem(i,it);
+    await speakOnce(it.t,it.rate||o.rate,o.pitch);
+    if(tk!==TTS.token)return false;
+    const gap=it.after!=null?it.after:(o.gap!=null?o.gap:300);
+    if(o.onAfter)o.onAfter(i,it,gap);
+    await sleep(gap);
+  }
+  return tk===TTS.token;
+}
+
+// ===== Miu-Bot =====
+let moodNow='';
+function setMood(m){if(m===moodNow)return;moodNow=m;const b=$('#bot');if(!b)return;b.innerHTML=miuSVG(m);b.classList.toggle('cheer',m==='cheer');}
+function setTalk(on){const b=$('#bot');if(b)b.classList.toggle('talk',on);}
+function botRow(){return `<div class="botrow"><div class="bot" id="bot"></div><div class="bubble" id="bubble"></div></div>`;}
+async function say(text,mood='happy',o={}){
+  const bub=$('#bubble');moodNow='';setMood(mood);
+  if(bub){bub.innerHTML=`<button class="replay" aria-label="Nghe lại">🔊</button>${esc(text)}`;$('.replay',bub).onclick=()=>say(text,mood,{keep:1});}
+  if(o.mute)return;
+  setTalk(true);
+  const ok=await speakSeq([{t:text}],{rate:o.rate||S.rate});
+  if(ok){setTalk(false);}
+}
+function sayShort(text,mood){say(text,mood||'happy');}
+
+// ===== Âm thanh & thưởng =====
+let AC=null;
+function ding(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=880;g.gain.setValueAtTime(.18,AC.currentTime);g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+.5);o.connect(g);g.connect(AC.destination);o.start();o.frequency.setValueAtTime(1175,AC.currentTime+.12);o.stop(AC.currentTime+.5);}catch(e){}}
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1800);}
+function addStar(n=1,why){S.stars+=n;S.lessonStars+=n;save();updStars();ding();toast('⭐ +'+n+(why?' '+why:''));}
+function updStars(){const e=$('#starN');if(e)e.textContent=S.stars;}
+function confetti(){const em=['🌸','🌷','🌿','⭐','🍀','✨'];for(let i=0;i<26;i++){const s=document.createElement('span');s.className='fall';s.textContent=pick(em);s.style.left=Math.random()*100+'vw';s.style.animationDelay=Math.random()*1.4+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),5200);}}
+function praise(){return pick(['Giỏi quá!','Đúng rồi!','Tuyệt vời!','Hay lắm!','Cố gắng tốt lắm!']);}
+function retryMsg(){return pick(['Không sao, mình thử lại nhé!','Gần đúng rồi, thử lần nữa nào!','Mình cùng nghĩ lại nhé!']);}
+
+// ===== Khung màn hình =====
+const STEPS1=[
+ {id:'welcome',n:'1',e:'👋',t:'Chào Miu-Bot',s:'1 phút',f:()=>stepWelcome()},
+ {id:'listen',n:'2',e:'🎧',t:'Nghe truyện',s:'3 phút',f:()=>stepListen(0)},
+ {id:'practice',n:'3',e:'🗣️',t:'Đọc cùng Miu-Bot',s:'4 phút',f:()=>stepPractice(0)},
+ {id:'tone',n:'4',e:'👂',t:'Nghe dấu',s:'2 phút',f:()=>stepTone(0)},
+ {id:'play',n:'5',e:'🍃',t:'Chơi hiểu bài',s:'3 phút',f:()=>stepLeaves()},
+ {id:'retell',n:'6',e:'📖',t:'Kể lại & nhận quà',s:'2 phút',f:()=>stepSequence()}
+];
+let STEPS=STEPS1;
+let startStars=null;
+let curStep=-1;
+function shell(title,stepIdx){
+  curStep=stepIdx;
+  const prog=stepIdx>=0?`<div class="progress">${STEPS.map((s,i)=>`<i class="${i<=stepIdx?'on':''}"></i>`).join('')}</div>`:'';
+  $('#app').innerHTML=`<header><button class="hbtn" id="homeBtn" aria-label="Trang chính">🏠</button><div class="title">${title}</div>
+    <div class="stars">⭐ <span id="starN">${S.stars}</span></div><button class="hbtn" id="parBtn" aria-label="Dành cho bố mẹ">👨‍👩‍👧</button></header>
+    ${prog}${botRow()}<main id="main"></main>`;
+  $('#homeBtn').onclick=()=>{stopSpeech();closeSheet();home();};
+  let tm;const pb=$('#parBtn');
+  const start=()=>{tm=setTimeout(()=>{stopSpeech();parentPanel();},1400);},end=()=>clearTimeout(tm);
+  pb.addEventListener('pointerdown',start);['pointerup','pointerleave','pointercancel'].forEach(e=>pb.addEventListener(e,end));
+  pb.onclick=()=>toast('Nhấn giữ 2 giây để mở trang bố mẹ');
+  moodNow='';setMood('happy');
+  window.scrollTo(0,0);
+}
+const main=h=>{$('#main').innerHTML=h;};
+function stepDone(id,star){S.done[id]=true;save();timeCheck();}
+function timeCheck(){
+  if(!t0||timeShown)return;
+  if(Date.now()-t0>15*60*1000){timeShown=true;setTimeout(()=>toast('🌿 Đã 15 phút rồi! Mình nghỉ một chút nhé'),1500);}
+}
+function nextStep(){const i=STEPS.findIndex(s=>!S.done[s.id]);return i<0?0:i;}
+
+
+// ===== Kiểm tra âm thanh =====
+function showSheet(html){const sh=$('#sheet');sh.innerHTML=html;sh.classList.add('show');window.__sheetAt=Date.now();}
+function soundTest(mode){
+  if(typeof mode!=='number')mode=0;
+  loadVoices();
+  showSheet(`<div class="e">🔊</div><div class="w">Miu-Bot đang nói…</div><p>Bạn có nghe thấy giọng nói không? <small>(cách thử ${mode+1}/3)</small></p>
+    <div class="row"><button class="btn" id="yes">✅ Có, nghe thấy</button><button class="btn alt" id="no">❌ Không nghe</button><button class="btn alt" id="rep">🔁 Nói lại</button></div>`);
+  const talk=()=>{TTS.started=false;TTS.ended=false;TTS.err='';try{if(TTS.has&&(speechSynthesis.speaking||speechSynthesis.pending))speechSynthesis.cancel();}catch(e){}speakOnce('Xin chào, mình là Miu-Bot. Bạn nghe thấy mình không?',0.9,1.05,mode);};
+  talk();
+  $('#rep').onclick=talk;
+  $('#yes').onclick=()=>{S.ttsMode=mode;save();showSheet(`<div class="e">✅</div><div class="w">Tuyệt vời!</div><p>Mình đã nhớ cách phát tiếng cho máy của bạn. Giờ bạn bắt đầu học thôi!</p><div class="row"><button class="btn" id="gClose">Đóng</button></div>`);$('#gClose').onclick=closeSheet;};
+  $('#no').onclick=()=>{try{speechSynthesis.cancel();}catch(e){}if(mode<2){soundTest(mode+1);return;}soundFail();};
+}
+function soundFail(){
+  const ua=navigator.userAgent||'';
+  const wv=/; wv\)|Claude|FBAN|FBAV|Instagram|Zalo/i.test(ua);
+  const br=/SamsungBrowser/i.test(ua)?'Samsung Internet':/Chrome\//.test(ua)?'Chrome':'trình duyệt khác';
+  const tips=[];
+  if(!TTS.has)tips.push('Trình duyệt này không hỗ trợ giọng đọc. Hãy thử mở bằng <b>Chrome</b> hoặc <b>Samsung Internet</b>.');
+  if(wv)tips.push('Có vẻ trang đang mở trong một ứng dụng. Hãy mở bằng <b>Chrome</b>.');
+  if(TTS.has&&!TTS.vi.length)tips.push('Trình duyệt chưa thấy <b>giọng tiếng Việt</b>. Vào Cài đặt → Quản lý chung → Văn bản thành giọng nói: chọn bộ máy <b>Google</b>, tải <b>Tiếng Việt</b>, rồi <b>đóng hẳn Chrome</b> và mở lại.');
+  if(TTS.err)tips.push('Mã lỗi: <code>'+esc(TTS.err)+'</code>');
+  tips.push('Trong Chrome: chạm biểu tượng ⓘ hoặc ổ khoá cạnh thanh địa chỉ → <b>Cài đặt trang web</b> → <b>Âm thanh</b> phải là “Cho phép”.');
+  tips.push('Thử mở app bằng <b>Samsung Internet</b>, và kiểm tra <b>âm lượng phương tiện</b>.');
+  showSheet(`<div class="e">⚠️</div><div class="w">Chưa nghe được tiếng</div>
+    ${tips.map(t=>`<p style="font-size:20px">• ${t}</p>`).join('')}
+    <p style="font-size:16px;color:#52606d">Thông tin: ${br} · hỗ trợ giọng đọc: ${TTS.has?'có':'không'} · số giọng: ${TTS.n} · tiếng Việt: ${TTS.vi.length?esc(TTS.vi.map(v=>v.name+' ('+v.lang+')').join(', ')):'không có'} · bắt đầu phát: ${TTS.started?'có':'không'} · lỗi: ${TTS.err||'không'}</p>
+    <div class="row"><button class="btn blue" id="again">🔁 Thử lại từ đầu</button><button class="btn alt" id="gClose">Đóng</button></div>`);
+  $('#again').onclick=()=>soundTest(0);$('#gClose').onclick=closeSheet;
+}
+
+// ===== Trang chính =====
+function home(){
+  STEPS=S.sess===2?STEPS2:STEPS1;
+  shell(S.sess===2?'Buổi 2 · Viết dàn ý':'Bài 10 · Tiếng nói của cỏ cây',-1);
+  const ni=nextStep();const allDone=STEPS.every(s=>S.done[s.id]);
+  main(`<div class="row" style="margin-top:0"><button class="btn ${S.sess===2?'alt':''}" data-s="1">📖 Buổi 1 · Đọc hiểu</button><button class="btn ${S.sess===2?'':'alt'}" data-s="2">✍️ Buổi 2 · Viết dàn ý</button></div>
+    <div class="card"><h2>Hành trình hôm nay</h2><p class="sub">Mỗi bước vài phút thôi. Chạm vào bước nào cũng được!</p>
+    <div class="path">${STEPS.map((s,i)=>`<button class="node ${S.done[s.id]?'done':''} ${i===ni&&!allDone?'cur':''}" data-i="${i}"><span class="n">${S.done[s.id]?'✅':s.e}</span>${s.n}. ${s.t}<small>${s.s}</small></button>`).join('')}</div>
+    <div class="row"><button class="btn sun pulse" id="go">${allDone?'🔁 Học lại':(STEPS.some(s=>S.done[s.id])?'▶ Tiếp tục':'▶ Bắt đầu')}</button></div></div>
+    <div class="row"><button class="btn alt" id="snd" style="min-height:52px;font-size:18px">🔊 Thử âm thanh</button></div>`);
+  say(S.sess===2?`Chào ${nm()}! Hôm nay mình làm nhà văn nhí nhé! Mình cùng lập dàn ý để kể lại một trải nghiệm của bạn.`:(S.name?`Chào ${S.name}! Mình là Miu-Bot. Hôm nay mình cùng đọc bài Tiếng nói của cỏ cây nhé!`:'Chào bạn! Mình là Miu-Bot, mèo máy đến từ tương lai. Mình sẽ cùng bạn học bài đọc thật vui!'),'happy',{mute:true});
+  const go=i=>{if(!t0){t0=Date.now();startStars=S.stars;}STEPS[i].f();};
+  $$('[data-s]').forEach(b=>b.onclick=()=>{S.sess=+b.dataset.s;save();home();});
+  $$('.node').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+  $('#snd').onclick=()=>soundTest(0);
+  $('#go').onclick=()=>{if(allDone){STEPS.forEach(s=>delete S.done[s.id]);save();}go(allDone?0:ni);};
+}
+
+// ===== Bước 1: chào + khởi động =====
+function stepWelcome(){
+  shell('1 · Chào Miu-Bot',0);
+  if(!S.name){
+    main(`<div class="card"><h2>Bạn tên là gì?</h2><p class="sub">Để Miu-Bot gọi tên bạn nhé!</p>
+      <div class="row"><input type="text" id="nameIn" placeholder="Tên của bạn" maxlength="20" style="font-size:28px;padding:14px 18px;border-radius:18px;border:3px solid #cfe1f7;min-width:240px"><button class="btn" id="nameOk">Xong ✔</button></div></div>`);
+    say('Chào bạn! Mình là Miu-Bot. Bạn tên là gì nhỉ?');
+    const ok=()=>{const v=$('#nameIn').value.trim();if(!v){toast('Gõ tên của bạn nhé');return;}S.name=v;save();stepWelcome();};
+    $('#nameOk').onclick=ok;$('#nameIn').addEventListener('keydown',e=>{if(e.key==='Enter')ok();});return;
+  }
+  const cards=[{e:'☀️',t:'Trồng ở chỗ có đủ ánh sáng',g:1},{e:'💧',t:'Tưới nước vừa đủ vào sáng sớm hoặc chiều mát',g:1},{e:'🌿',t:'Làm cỏ vườn thường xuyên',g:1},{e:'🪱',t:'Xới nhẹ đất quanh gốc cho tơi xốp',g:1},{e:'🐛',t:'Bắt sâu, tỉa lá úa',g:1},{e:'🌑',t:'Nhốt cây trong phòng tối mãi',g:0},{e:'🥵',t:'Tưới thật nhiều nước giữa trưa nắng gắt',g:0}];
+  main(`<div class="card"><h2>Cây cần gì để khỏe mạnh?</h2><p class="sub">Chạm vào những việc giúp cây khỏe mạnh. Tìm được 3 việc là qua bài nhé!</p>
+    <div class="grid3">${shuffle(cards).map(c=>`<button class="pick" data-g="${c.g}"><span class="em">${c.e}</span>${c.t}</button>`).join('')}</div>
+    <div class="row" id="nx"></div></div>`);
+  say(`Chào ${nm()}! Hôm nay mình đọc bài Tiếng nói của cỏ cây. Trước hết, bạn đoán xem cây cần gì để khỏe mạnh nhé!`);
+  let found=0;
+  $$('.pick').forEach(b=>b.onclick=()=>{
+    if(b.classList.contains('ok')||b.classList.contains('soft'))return;
+    if(b.dataset.g==='1'){b.classList.add('ok');found++;say(praise(),'cheer');if(found===3){addStar(1);stepDone('welcome');$('#nx').innerHTML=`<button class="btn sun pulse" id="n2">Sang nghe truyện ➡️</button>`;$('#n2').onclick=()=>STEPS[1].f();setTimeout(()=>say('Bạn biết nhiều về cây quá! Mình đi nghe truyện nhé!','happy'),1300);}}
+    else{b.classList.add('soft');say('Ồ, cây không thích vậy đâu! Thử việc khác nhé.','think');}
+  });
+}
+
+// ===== Câu chữ có từ khó =====
+const GL_KEYS=Object.keys(GLOSS).sort((a,b)=>b.length-a.length);
+const GL_RE=new RegExp('('+GL_KEYS.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gi');
+function withGloss(text){return esc(text).replace(GL_RE,m=>`<span class="gl" data-k="${m.toLowerCase()}">${m}</span>`);}
+function bindGloss(root){$$('.gl',root).forEach(g=>g.addEventListener('click',e=>{e.stopPropagation();openGloss(g.dataset.k);}));}
+function openGloss(k){
+  const d=GLOSS[k];if(!d)return;stopSpeech();
+  const sh=$('#sheet');sh.innerHTML=`<div class="e">${d.e}</div><div class="w">${esc(k)}</div><p>${esc(d.d)}</p><p>💡 <i>${esc(d.x)}</i></p>
+    <div class="row"><button class="btn blue" id="gHear">🔊 Nghe</button><button class="btn alt" id="gClose">Đóng</button></div>`;
+  sh.classList.add('show');window.__sheetAt=Date.now();
+  const play=()=>{setTalk(true);speakSeq([{t:k,rate:.75,after:500},{t:d.d,rate:.85,after:400},{t:d.x,rate:.85}]).then(()=>setTalk(false));};
+  $('#gHear').onclick=play;$('#gClose').onclick=closeSheet;play();
+}
+function closeSheet(){const s=$('#sheet');if(s)s.classList.remove('show');}
+
+// ===== Bước 2: nghe truyện =====
+let slowListen=true;
+function stepListen(pi){
+  shell('2 · Nghe truyện',1);
+  const pg=PAGES[pi];
+  const html=pg.ids.map(id=>{const s=SENTS[id];return `<span class="sent ${s.d?'d':''}" data-id="${id}">${s.c.map(c=>`<span class="ck">${withGloss(c)}</span>`).join('')}</span> `;}).join('');
+  main(`<div class="card"><div class="scene">${pg.scene}</div><div class="read" id="rd">${html}</div>
+    <p class="legend">Chạm vào chữ có gạch cam 🟠 để biết nghĩa nhé · Trang ${pi+1}/${PAGES.length}</p></div>
+    <div class="row"><button class="btn alt" id="prev" ${pi===0?'disabled':''}>⬅️ Trước</button>
+    <button class="btn" id="play">▶ Nghe Miu-Bot đọc</button>
+    <button class="btn alt" id="spd">${slowListen?'🐢 Chậm':'🐇 Vừa'}</button>
+    <button class="btn ${pi===PAGES.length-1?'sun':'alt'}" id="next">${pi===PAGES.length-1?'Xong, đọc cùng nhé ➡️':'Sau ➡️'}</button></div>`);
+  bindGloss($('#rd'));
+  say(pi===0?`${nm()} ơi, bấm nút Nghe để Miu-Bot đọc truyện nhé. Bạn nhìn chữ sáng lên theo giọng đọc!`:'Mình nghe tiếp nhé!','happy',{mute:pi!==0});
+  const play=$('#play');let playing=false;
+  async function run(){
+    if(playing){stopSpeech();playing=false;play.textContent='▶ Nghe Miu-Bot đọc';$$('.sent').forEach(x=>x.classList.remove('on'));return;}
+    playing=true;play.textContent='⏸ Dừng';setMood('happy');setTalk(true);
+    const ok=await speakSeq(pg.ids.map(id=>({t:SENTS[id].c.join(' ')})),{rate:slowListen?0.78:0.95,gap:500,
+      onItem:i=>{$$('.sent').forEach(x=>x.classList.remove('on'));const el=$(`.sent[data-id="${pg.ids[i]}"]`);if(el){el.classList.add('on');el.scrollIntoView({block:'nearest',behavior:'smooth'});}}});
+    setTalk(false);
+    if(ok){playing=false;play.textContent='🔁 Nghe lại';$$('.sent').forEach(x=>x.classList.remove('on'));$('#next').classList.add('pulse');}
+  }
+  play.onclick=run;
+  $('#spd').onclick=()=>{slowListen=!slowListen;$('#spd').textContent=slowListen?'🐢 Chậm':'🐇 Vừa';};
+  $('#prev').onclick=()=>{stopSpeech();stepListen(pi-1);};
+  $('#next').onclick=()=>{stopSpeech();if(pi<PAGES.length-1)stepListen(pi+1);else{addStar(1,'nghe xong truyện');stepDone('listen');stepPractice(0);}};
+}
+
+// ===== Bước 3: đọc cùng Miu-Bot theo cụm =====
+function stepPractice(i){
+  shell('3 · Đọc cùng Miu-Bot',2);
+  const id=PRACTICE[i],s=SENTS[id];
+  main(`<div class="dots">${PRACTICE.map((_,k)=>`<i class="${k<i?'on':''} ${k===i?'cur':''}"></i>`).join('')}</div>
+    <div class="card"><div class="ckrow" id="cks">${s.c.map((c,k)=>`<button class="pill" data-k="${k}">${withGloss(c)}</button>`).join('')}</div>
+    <p class="legend">Chạm vào một cụm để nghe riêng cụm đó · Câu ${i+1}/${PRACTICE.length}</p></div>
+    <div class="row"><button class="btn blue" id="b1">👂 1. Nghe Miu-Bot</button><button class="btn blue" id="b2">🗣️ 2. Đọc theo từng cụm</button><button class="btn" id="b3">🌟 3. Mình đọc cả câu</button></div>
+    <div class="row" id="fin"></div>`);
+  bindGloss($('#cks'));
+  const pills=$$('.pill');const clear=()=>pills.forEach(p=>{p.classList.remove('say','you');const sm=$('small',p);if(sm)sm.remove();});
+  const sayMsg=(i===0)?`${nm()} ơi, mình đọc từng cụm nhé. Mỗi cụm là một hơi đọc. Bấm số 1 để nghe mình đọc trước!`:'Câu mới nè! Mình đọc từng cụm nhé.';
+  say(sayMsg);
+  $('#b1').onclick=async()=>{clear();setMood('happy');setTalk(true);
+    await speakSeq(s.c.map(c=>({t:c,after:650})),{rate:.8,onItem:k=>{clear();pills[k].classList.add('say');}});clear();setTalk(false);};
+  $('#b2').onclick=async()=>{clear();setMood('cheer');
+    const ok=await speakSeq(s.c.map(c=>({t:c,after:1100+syll(c)*650})),{rate:.8,
+      onItem:k=>{clear();pills[k].classList.add('say');setTalk(true);},
+      onAfter:k=>{setTalk(false);pills[k].classList.remove('say');pills[k].classList.add('you');pills[k].insertAdjacentHTML('beforeend','<small>Đến lượt bạn</small>');}});
+    clear();setTalk(false);if(ok)say(`Giỏi lắm ${nm()}! Giờ bạn thử đọc cả câu nhé!`,'cheer');};
+  pills.forEach(p=>p.onclick=async e=>{if(e.target.classList.contains('gl'))return;clear();p.classList.add('say');setTalk(true);await speakSeq([{t:s.c[+p.dataset.k]}],{rate:.8});setTalk(false);p.classList.remove('say');});
+  $('#b3').onclick=()=>{stopSpeech();clear();setMood('think');setTalk(false);
+    $('#bubble').innerHTML=`Bạn đọc cả câu to lên nhé, mình lắng nghe! 👂`;
+    $('#fin').innerHTML=`<button class="btn sun" id="done">✔ Mình đọc xong rồi!</button><button class="btn alt" id="again">🔁 Đọc lại</button><button class="btn alt" id="hear">🔊 Nghe mẫu</button>`;
+    $('#done').onclick=()=>{addStar(1,'đã cố gắng đọc');if(i<PRACTICE.length-1){say(praise()+' Mình sang câu tiếp nhé!','cheer',{mute:false});setTimeout(()=>stepPractice(i+1),1500);}else{stepDone('practice');say('Tuyệt vời! Bạn đã đọc xong rồi!','cheer');setTimeout(()=>stepTone(0),1800);}};
+    $('#again').onclick=()=>{S.retries++;save();toast('Mình đọc lại nhé!');};
+    $('#hear').onclick=async()=>{setTalk(true);await speakSeq([{t:s.c.join(' ')}],{rate:.85});setTalk(false);};
+  };
+}
+
+// ===== Bước 4: nghe phân biệt dấu =====
+const TONE_LEGEND='không dấu ➖ · sắc ↗ · huyền ↘ · hỏi ⤵ · ngã 〰️ · nặng ⬇';
+function stepTone(i){
+  shell('4 · Nghe dấu',3);
+  const it=TONES[i];const target=pick(it.opts);
+  main(`<div class="dots">${TONES.map((_,k)=>`<i class="${k<i?'on':''} ${k===i?'cur':''}"></i>`).join('')}</div>
+    <div class="card"><h2>Miu-Bot đọc từ nào?</h2><p class="sub">Nghe thật kĩ rồi chạm vào từ đúng nhé.</p>
+    <div class="row"><button class="btn blue" id="hear">🔊 Nghe từ</button></div>
+    <div class="opts">${shuffle(it.opts).map(o=>`<button class="opt" data-w="${o.w}"><span class="em">${o.e}</span>${o.w}<small id="t_${o.w}"></small></button>`).join('')}</div>
+    <p class="legend">Dấu thanh: ${TONE_LEGEND}</p></div>`);
+  const play=async()=>{setTalk(true);await speakSeq([{t:target.w,rate:.7,after:700},{t:target.w,rate:.7}]);setTalk(false);};
+  say(i===0?'Cùng chơi trò nghe dấu nhé! Mình đọc một từ, bạn chọn từ đúng.':'Từ tiếp theo nè!','happy',{mute:i!==0});
+  $('#hear').onclick=play;setTimeout(play,i===0?3800:300);
+  let tried=0,solved=false;
+  $$('.opt').forEach(b=>b.onclick=async()=>{
+    if(solved)return;
+    if(b.dataset.w===target.w){
+      solved=true;b.classList.add('ok');
+      it.opts.forEach(o=>{$('#t_'+o.w).textContent=o.t+' · '+o.m;});
+      addStar(1);setMood('cheer');setTalk(true);
+      await speakSeq([{t:praise(),after:200},...it.opts.map(o=>({t:o.w,rate:.7,after:500}))],{});setTalk(false);
+      if(i<TONES.length-1){setTimeout(()=>stepTone(i+1),400);}else{stepDone('tone');say('Tai của bạn thính quá! Mình sang trò chơi nhé!','cheer');setTimeout(()=>stepLeaves(),1800);}
+    }else{
+      tried++;b.classList.add('soft');S.misses[target.w]=(S.misses[target.w]||0)+1;save();
+      say(retryMsg()+' Nghe lại nhé.','think');
+      await sleep(900);play();setTimeout(()=>b.classList.remove('soft'),1500);
+    }
+  });
+}
+
+// ===== Bước 5a: hái lá (danh từ / động từ) =====
+function stepLeaves(){
+  shell('5 · Hái lá',4);
+  main(`<div class="card"><h2>Hái lá, xếp vào giỏ</h2><p class="sub">Chạm một chiếc lá, rồi chạm giỏ đúng.</p>
+    <div class="leaves" id="lv">${shuffle(LEAVES).map(l=>`<button class="leaf" data-w="${l.w}" data-k="${l.k}">${l.w}</button>`).join('')}</div>
+    <div class="baskets"><button class="basket" data-k="n">🧺 Danh từ<small>chỉ người, vật, cây cối… (ai? cái gì? con gì?)</small><div class="in" id="in_n"></div></button>
+    <button class="basket" data-k="v">🧺 Động từ<small>chỉ việc làm, hoạt động (làm gì?)</small><div class="in" id="in_v"></div></button></div></div>`);
+  say('Mình cùng hái lá nhé! Danh từ chỉ người, vật, cây cối. Động từ chỉ việc làm. Ví dụ: cái bàn là danh từ, chạy là động từ.');
+  let sel=null,left=LEAVES.length,miss=0;
+  $$('.leaf').forEach(l=>l.onclick=()=>{$$('.leaf').forEach(x=>x.classList.remove('sel'));sel=l;l.classList.add('sel');speakSeq([{t:l.dataset.w,rate:.8}]);});
+  $$('.basket').forEach(b=>b.onclick=()=>{
+    if(!sel){toast('Chạm một chiếc lá trước nhé');return;}
+    if(sel.dataset.k===b.dataset.k){
+      $('#in_'+b.dataset.k).insertAdjacentHTML('beforeend',`<span>${sel.dataset.w}</span>`);sel.remove();sel=null;left--;ding();
+      if(left===0){addStar(2,'hái hết lá');stepDone('play_leaves');say(`Giỏi quá ${nm()}! Bạn phân biệt danh từ và động từ rất tốt!`,'cheer');confetti();
+        $('#main').insertAdjacentHTML('beforeend',`<div class="row"><button class="btn sun pulse" id="nx">Sang câu hỏi ➡️</button></div>`);$('#nx').onclick=()=>stepQuiz(0);}
+    }else{
+      miss++;sel.classList.add('shake');const w=sel.dataset.w,k=sel.dataset.k;setTimeout(()=>sel&&sel.classList.remove('shake'),450);
+      say(k==='v'?`Thử hỏi: “${w}” có phải là một việc làm không? Nếu là việc làm thì bỏ vào giỏ động từ.`:`Thử hỏi: “${w}” có phải là tên của người, vật hay cây cối không? Nếu phải thì bỏ vào giỏ danh từ.`,'think');
+    }
+  });
+}
+
+// ===== Bước 5b: câu hỏi hiểu bài =====
+function stepQuiz(i){
+  shell('5 · Câu hỏi hiểu bài',4);
+  const q=QUIZ[i];let wrong=0,solved=false;
+  main(`<div class="dots">${QUIZ.map((_,k)=>`<i class="${k<i?'on':''} ${k===i?'cur':''}"></i>`).join('')}</div>
+    <div class="card"><div class="q">${esc(q.q)}</div><div id="ans">${q.o.map((o,k)=>`<button class="ans" data-k="${k}">${esc(o)}</button>`).join('')}</div><div id="hintbox"></div></div>`);
+  say(i===0?'Giờ mình trả lời vài câu hỏi nhé. Bạn nghe câu hỏi rồi chọn đáp án.':'Câu tiếp theo nè!','happy',{mute:true});
+  speakSeq([{t:q.q,after:300},...q.o.map((o,k)=>({t:'Đáp án '+'một hai ba'.split(' ')[k]+': '+o,after:200}))],{rate:.85});
+  const fin=()=>{if(i<QUIZ.length-1){setTimeout(()=>stepQuiz(i+1),1500);}else{stepDone('play');say('Bạn đã trả lời hết rồi! Giỏi lắm!','cheer');confetti();setTimeout(()=>stepSequence(),2200);}};
+  $$('.ans').forEach(b=>b.onclick=()=>{
+    if(solved)return;
+    if(+b.dataset.k===q.a){solved=true;b.classList.add('ok');addStar(wrong===0?2:1);say(praise()+' '+q.why,'cheer');fin();}
+    else{wrong++;b.classList.add('soft');S.quizMiss[i]=(S.quizMiss[i]||0)+1;save();
+      if(wrong>=2){solved=true;$$('.ans')[q.a].classList.add('ok');say('Mình cùng xem đáp án nhé. '+q.why,'happy');addStar(1,'đã cố gắng');fin();}
+      else{const ev=SENTS[q.ev].c.join(' ');$('#hintbox').innerHTML=`<div class="hint">💡 Gợi ý: mình đọc lại trong bài nhé:<br><b>“${esc(ev)}”</b></div>`;say(retryMsg(),'think',{mute:true});speakSeq([{t:'Mình đọc lại trong bài nhé.',after:200},{t:ev}],{rate:.85});}}
+  });
+}
+
+// ===== Bước 6: xếp truyện, kể lại, nhận quà =====
+function stepSequence(){
+  shell('6 · Xếp truyện',5);
+  const cards=shuffle(STORY_ORDER.map((t,k)=>({t,k})));let next=0;
+  main(`<div class="card"><h2>Xếp lại câu chuyện</h2><p class="sub">Chạm các thẻ theo thứ tự: chuyện gì xảy ra trước, rồi sau.</p>
+    <div class="order">${cards.map(c=>`<button class="ocard" data-k="${c.k}">${esc(c.t)}<span class="no"></span></button>`).join('')}</div></div>`);
+  say('Bạn nhớ chuyện gì xảy ra đầu tiên? Chạm vào thẻ đó trước nhé!');
+  $$('.ocard').forEach(b=>b.onclick=()=>{
+    if(b.classList.contains('ok'))return;
+    if(+b.dataset.k===next){b.classList.add('ok');$('.no',b).textContent=next+1;next++;ding();
+      if(next===4){addStar(2,'xếp đúng truyện');say('Đúng cả rồi! Bây giờ bạn kể lại câu chuyện cho mình nghe nhé!','cheer');setTimeout(stepRetell,2800);}}
+    else{b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),450);say('Gần rồi! Thử nghĩ xem chuyện gì xảy ra trước nhé.','think');}
+  });
+}
+function stepRetell(){
+  shell('6 · Kể lại',5);
+  main(`<div class="card"><h2>Bạn kể cho Miu-Bot nghe nhé</h2>
+    <p class="q">Theo em, Ta-nhi-a đã có thêm những trải nghiệm gì trong mùa hè?</p>
+    <p class="sub">Bạn kể bằng lời của mình (kể cho Miu-Bot hoặc bố mẹ nghe). Có thể bắt đầu bằng: “Ta-nhi-a biết thêm…”, “Ta-nhi-a đã thử…”.</p>
+    <div class="row"><button class="btn sun" id="told">✔ Mình kể xong rồi!</button></div></div>`);
+  say('Câu cuối cùng này không có đáp án đúng hay sai. Bạn cứ kể điều bạn nghĩ nhé!','happy');
+  $('#told').onclick=()=>{addStar(2,'đã kể lại');S.done.retell=true;save();reward();};
+}
+function reward(){
+  shell('Hoàn thành!',-1);
+  const total=S.stars-(startStars==null?S.stars:startStars);
+  main(`<div class="card" style="text-align:center"><div class="big">🏅</div><h2>Huy hiệu “Bạn của cỏ cây”</h2>
+    <p class="sub">${esc(nm())} đã hoàn thành bài 10 và nhận được ${total} ⭐ hôm nay!</p>
+    <p class="sub">Quà từ túi thần kỳ của Miu-Bot: 🌱 hạt giống kì diệu</p>
+    <div class="row"><button class="btn" id="hm">🏠 Về trang chính</button></div></div>`);
+  setMood('cheer');confetti();ding();
+  say(`Hôm nay ${nm()} đã đọc rất chăm chỉ. Miu-Bot rất tự hào về bạn! Hẹn gặp lại nhé!`,'cheer');
+  $('#hm').onclick=()=>{stopSpeech();home();};
+}
+
+// ===== Trang dành cho bố mẹ =====
+function parentPanel(){
+  shell('Dành cho bố mẹ',-1);
+  const miss=Object.entries(S.misses).sort((a,b)=>b[1]-a[1]);
+  const qm=Object.entries(S.quizMiss);
+  const mins=t0?Math.round((Date.now()-t0)/60000):0;
+  const voice=!TTS.has?'Thiết bị không hỗ trợ giọng đọc.':(TTS.voice?'Đang dùng giọng: '+esc(TTS.voice.name):'⚠ Chưa tìm thấy giọng tiếng Việt. Trên iPad: Cài đặt → Trợ năng → Nội dung được đọc → Giọng nói → Tiếng Việt, tải một giọng về, rồi mở lại trang.');
+  main(`<div class="card parent">
+    <h3>Tiến độ</h3><p>⭐ Tổng số sao: <b>${S.stars}</b> · Bài này: <b>${S.lessonStars}</b> · Thời gian phiên này: <b>${mins} phút</b> · Số lần bấm “đọc lại”: <b>${S.retries}</b></p>
+    <p>Các bước đã xong: ${[...STEPS1,...STEPS2].filter(s=>S.done[s.id]).map(s=>s.t).join(', ')||'chưa có'}</p>${parentExtra()}
+    <h3>Cần luyện thêm (dấu thanh)</h3>${miss.length?`<table>${miss.map(([w,n])=>`<tr><td><b>${esc(w)}</b></td><td>chọn nhầm ${n} lần</td></tr>`).join('')}</table>`:'<p>Chưa có từ nào bị nhầm.</p>'}
+    <h3>Câu hỏi hiểu bài con từng trả lời sai</h3>${qm.length?`<ul>${qm.map(([i,n])=>`<li>Câu ${+i+1}: ${esc(QUIZ[i].q)} (${n} lần)</li>`).join('')}</ul>`:'<p>Chưa có.</p>'}
+    <h3>Cách đồng hành khi con đọc (bước 3)</h3>
+    <ul><li>Ngồi cạnh, nghe con đọc cả câu. Chỉ ghi nhớ 1 lỗi mỗi lần (dấu thanh <i>hoặc</i> ngắt cụm), đừng sửa liên tục.</li>
+    <li>Khen quá trình: “Bố/mẹ thấy con đã cố gắng đọc cả cụm dài.”</li>
+    <li>Nếu con đọc sai dấu: đọc lại đúng một lần, rồi mời con đọc lại cụm đó. Không bắt đọc lại nhiều lần.</li>
+    <li>Nếu con ngại: cho con chọn “nghe thêm một lần” hoặc đọc cùng bố/mẹ.</li></ul>
+    <h3>Đáp án (đối chiếu văn bản bài đọc và file hướng dẫn giải)</h3>
+    <ul><li><b>Khởi động:</b> trồng chỗ đủ ánh sáng; tưới vừa đủ vào sáng sớm hoặc chiều mát (tránh trưa nắng gắt, tưới quá nhiều làm úng rễ); làm cỏ; xới đất cho tơi xốp; bón phân; bắt sâu, tỉa lá úa.</li>
+    <li><b>Câu 1:</b> Ta-nhi-a được thoả thích chạy nhảy (dạo chơi) trong vườn nhà ông bà.</li>
+    <li><b>Câu 2:</b> Việc đã làm: bứng một cây hồng nhỏ nhất trồng vào chỗ đất trống dưới cửa sổ → lí do: khóm hồng có vẻ chật chỗ. Rồi chọn <u>một</u> cây huệ trồng cạnh cây hồng → lí do: ngắm nghía một hồi vẫn chưa hài lòng.<br><i>⚠ Lưu ý: file hướng dẫn ghi câu 2 là “bứng cây huệ… vì đứng riêng lẻ buồn bã”. Ý này không có trong văn bản bài đọc, và chính file đó ở phần “Bài tập tương tự” lại ghi lí do là “chật chỗ”. App theo văn bản bài đọc. Nếu cô giáo chấm theo đáp án khác, bố mẹ cho con biết nhé.</i></li>
+    <li><b>Câu 3:</b> Hoa hồng nở nhiều, màu trắng dịu, cánh trong suốt lung linh như phủ đầy tuyết trắng (hoa to hơn, rực rỡ hơn khóm hồng cũ); hoa huệ trắng muốt, đẹp trội hơn hẳn, đẹp như một nàng tiên trong truyện cổ tích.</li>
+    <li><b>Câu 4:</b> Chỗ ở mới thoáng hơn, không bị rễ của cây khác tranh chất màu dưới đất.</li>
+    <li><b>Câu 5 (mở):</b> được gần gũi thiên nhiên; biết cách chăm sóc, trồng cây; cảm nhận niềm vui khi cây nở hoa đẹp; hiểu ý nghĩa của tình bạn và sự sẻ chia qua cuộc trò chuyện của hai loài hoa.</li>
+    <li><b>Luyện từ và câu 1:</b> danh từ: vườn, cây, đất, hoa, bạn · động từ: đi, trồng, chọn, hỏi, ngắm.</li></ul>
+    <h3>Lỗi thường gặp (theo file hướng dẫn)</h3>
+    <ul><li>Nhầm lí do Ta-nhi-a chuyển cây (chọn “cây bị héo”…) vì đọc lướt → đọc kĩ chữ “chật chỗ”.</li>
+    <li>Nghĩ cô bé bứng cả khóm huệ → chỉ “chọn một cây”.</li>
+    <li>Câu 3 chỉ kể hoa huệ mà quên hoa hồng (hoặc ngược lại) → hỏi về cả hai cây.</li>
+    <li>Câu 4 trả lời bằng bài học (“tình bạn…”) thay vì điều Ta-nhi-a suy đoán.</li>
+    <li>Xếp nhầm động từ (trồng, ngắm) vào danh từ → kiểm tra: “cái gì, con gì, ai?” là danh từ; “làm gì?” là động từ.</li></ul>
+    <h3>Cài đặt</h3><p>${voice}</p>
+    <p>Tốc độ đọc của Miu-Bot: <input type="range" id="rate" min="0.6" max="1.1" step="0.05" value="${S.rate}"> <span id="rv">${S.rate}</span></p>
+    <p>Cỡ chữ: <button class="btn alt" id="fm" style="min-height:48px">A−</button> <button class="btn alt" id="fp" style="min-height:48px">A+</button> <button class="btn blue" id="tv" style="min-height:48px">🔊 Thử giọng</button></p>
+    <p>Tên của con: <input type="text" id="nm" value="${esc(S.name)}" maxlength="20"> <button class="btn alt" id="sn" style="min-height:48px">Lưu</button></p>
+    <div class="row"><button class="btn alt" id="rs" style="background:#fff0f0;color:#a33">Xoá tiến độ & bắt đầu lại</button><button class="btn" id="bk">Quay lại</button></div></div>`);
+  say('Trang dành cho bố mẹ.','happy',{mute:true});
+  $('#rate').oninput=e=>{S.rate=+e.target.value;$('#rv').textContent=S.rate;save();};
+  $('#fm').onclick=()=>{S.fs=Math.max(.8,+(S.fs-.1).toFixed(1));document.documentElement.style.setProperty('--fs',S.fs);save();};
+  $('#fp').onclick=()=>{S.fs=Math.min(1.5,+(S.fs+.1).toFixed(1));document.documentElement.style.setProperty('--fs',S.fs);save();};
+  $('#tv').onclick=()=>speakSeq([{t:'Chào bạn, mình là Miu-Bot. Hôm nay mình cùng đọc bài Tiếng nói của cỏ cây nhé!'}]);
+  $('#sn').onclick=()=>{S.name=$('#nm').value.trim();save();toast('Đã lưu tên');};
+  $('#rs').onclick=()=>{if($('#rs').dataset.c){const n=S.name,f=S.fs,r=S.rate;S=defaults();S.name=n;S.fs=f;S.rate=r;save();home();}else{$('#rs').dataset.c=1;$('#rs').textContent='Chạm lần nữa để chắc chắn';}};
+  $('#bk').onclick=()=>home();
+}
+
+// ===== Khởi động =====
+$('#sheet').addEventListener('click',e=>e.stopPropagation());
+document.addEventListener('click',e=>{if(Date.now()-(window.__sheetAt||0)<500)return;const s=$('#sheet');if(s&&s.classList.contains('show')&&!s.contains(e.target)&&!e.target.classList.contains('gl'))closeSheet();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSpeech();});
+
+// ===== BUỔI 2: VIẾT - LẬP DÀN Ý CHO BÀI VĂN THUẬT LẠI MỘT SỰ VIỆC (SGK tr.46-47) =====
+const ORD4=['Đầu tiên','Tiếp theo','Sau đó','Cuối cùng'];
+const ordFor=n=>n<=1?['Đầu tiên']:n===2?['Đầu tiên','Cuối cùng']:n===3?['Đầu tiên','Tiếp theo','Cuối cùng']:ORD4;
+function OL(){if(!S.ol||!S.ol.tasks)S.ol={act:'',name:'',tasks:['','','',''],mode:1,time:'',place:'',reason:'',detail:['','','',''],star:-1,why:'',result:'',feels:[],feelText:''};return S.ol;}
+function setPath(o,p,v){const k=p.split('.');let r=o;for(let i=0;i<k.length-1;i++)r=r[k[i]];r[k[k.length-1]]=v;}
+function bindInputs(root,onChange){$$('[data-k]',root).forEach(el=>{
+  const get=()=>{let r=OL();for(const k of el.dataset.k.split('.'))r=r[k];return r;};
+  el.value=get()||'';
+  el.addEventListener('input',()=>{setPath(OL(),el.dataset.k,el.value);save();if(onChange)onChange();});});}
+const filledTasks=()=>OL().tasks.map((t,i)=>({t:t.trim(),i})).filter(x=>x.t);
+
+const STEPS2=[
+ {id:'w1',n:'1',e:'🎭',t:'Đóng vai cây hoa',s:'3 phút',f:()=>stepRole()},
+ {id:'w2',n:'2',e:'🗺️',t:'Bản đồ kho báu',s:'3 phút',f:()=>stepMap()},
+ {id:'w3',n:'3',e:'🧺',t:'Chọn hoạt động, xếp việc',s:'3 phút',f:()=>stepPrep()},
+ {id:'w4',n:'4',e:'📝',t:'Lập dàn ý của mình',s:'4 phút',f:()=>stepOutline(0)},
+ {id:'w5',n:'5',e:'✅',t:'Kiểm tra dàn ý',s:'2 phút',f:()=>stepCheck()}
+];
+
+// ---------- Bước 1: đóng vai cây hoa (Luyện từ và câu 2, tr.46) ----------
+const ROLES={
+ hong:{e:'🌹',n:'cây hoa hồng',acts:[{seg:['khoe','những bông hoa trắng dịu']},{seg:['nở rộ','thật nhiều hoa']},{seg:['sống','ở chỗ mới thoáng hơn']}]},
+ hue:{e:'🌷',n:'cây hoa huệ',acts:[{seg:['khoe','sắc trắng muốt']},{seg:['toả','hương thơm ngát']},{seg:['sống','ở chỗ mới thoáng hơn']}]}
+};
+const EMO=['rất sung sướng','vô cùng hạnh phúc','thật tự hào','rất hãnh diện'];
+function stepRole(){
+  shell('1 · Đóng vai cây hoa',0);
+  main(`<div class="card"><h2>Bạn là cây hoa nào?</h2><p class="sub">Hôm nay bạn đóng vai một loài hoa trong truyện. Cây hoa đã trở nên đẹp hơn trước rồi đó!</p>
+    <div class="grid3">${Object.entries(ROLES).map(([k,r])=>`<button class="pick" data-r="${k}"><span class="em">${r.e}</span>${r.n}</button>`).join('')}</div></div>`);
+  say(`Chào ${nm()}! Hôm nay mình làm nhà văn nhí. Trước hết, bạn đóng vai một cây hoa trong truyện nhé. Bạn chọn cây nào?`);
+  $$('[data-r]').forEach(b=>b.onclick=()=>roleBuild(b.dataset.r));
+}
+function roleBuild(rk){
+  const R=ROLES[rk];let emo=-1,act=-1;
+  main(`<div class="card"><h2>${R.e} Đặt câu nêu cảm xúc của ${R.n}</h2>
+    <p class="sub">Chọn một cảm xúc và một việc để ghép thành câu.</p>
+    <div class="field"><label>1. Cây cảm thấy thế nào?</label><div class="chips" id="ce">${EMO.map((e,i)=>`<button class="chip" data-i="${i}">${e}</button>`).join('')}</div></div>
+    <div class="field"><label>2. Vì cây đang làm gì?</label><div class="chips" id="ca">${R.acts.map((a,i)=>`<button class="chip" data-i="${i}">${a.seg.join(' ')}</button>`).join('')}</div></div>
+    <div class="q" id="pre" style="min-height:70px;background:#fff7d6;border-radius:18px;padding:12px 16px">…</div>
+    <div class="row"><button class="btn blue" id="rd" disabled>🔊 Nghe câu</button><button class="btn sun" id="nx" disabled>Tìm động từ ➡️</button></div></div>`);
+  say('Bạn xưng “tôi” như cây hoa đang tự nói nhé!','happy');
+  const sentence=()=>`Tôi cảm thấy ${EMO[emo]} khi mình ${R.acts[act].seg.join(' ')}.`;
+  const upd=()=>{const ok=emo>=0&&act>=0;$('#pre').textContent=ok?sentence():'…';$('#rd').disabled=!ok;$('#nx').disabled=!ok;};
+  $$('#ce .chip').forEach(b=>b.onclick=()=>{$$('#ce .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');emo=+b.dataset.i;upd();});
+  $$('#ca .chip').forEach(b=>b.onclick=()=>{$$('#ca .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');act=+b.dataset.i;upd();});
+  $('#rd').onclick=()=>{setTalk(true);speakSeq([{t:sentence(),rate:.85}]).then(()=>setTalk(false));};
+  $('#nx').onclick=()=>roleVerbs(R,EMO[emo],R.acts[act]);
+}
+function roleVerbs(R,emo,a){
+  const segs=['Tôi','cảm thấy',emo,'khi','mình',a.seg[0],a.seg[1]+'.'];
+  const need={'cảm thấy':0,[a.seg[0]]:0};let got=0;
+  main(`<div class="card"><h2>Tìm động từ trong câu</h2><p class="sub">Động từ chỉ việc làm hay hoạt động. Chạm vào các động từ trong câu của bạn nhé!</p>
+    <div class="segs">${segs.map((s,i)=>`<button class="seg" data-i="${i}">${esc(s)}</button>`).join('')}</div>
+    <p class="legend">Mẹo: hỏi “làm gì?” hoặc “cảm thấy thế nào?”</p><div class="row" id="nxr"></div></div>`);
+  say('Bây giờ bạn là thám tử tìm động từ! Câu của bạn có hai động từ chính. Bạn tìm thử nhé!','think');
+  $$('.seg').forEach(b=>b.onclick=()=>{
+    if(b.classList.contains('ok'))return;const w=b.textContent.replace('.','');
+    if(w in need){b.classList.add('ok');need[w]=1;got++;ding();
+      if(got===2){addStar(2,'tìm đúng động từ');stepDone('w1');say(`Giỏi quá! “Cảm thấy” và “${a.seg[0]}” là động từ. Bạn xưng tôi nghe rất giống ${R.n}!`,'cheer');$('#nxr').innerHTML=`<button class="btn sun pulse" id="g">Sang bước 2 ➡️</button>`;$('#g').onclick=()=>stepMap();}
+      else say(praise()+' Còn một động từ nữa nhé.','cheer');}
+    else if(w===emo){b.classList.add('ok');say(`“${w}” chỉ cảm xúc. Sách hướng dẫn cũng tính là động từ chỉ trạng thái. Bạn tìm thêm từ chỉ việc làm nhé!`,'happy');}
+    else{b.classList.add('soft');setTimeout(()=>b.classList.remove('soft'),700);say(w==='Tôi'||w==='mình'?`“${w}” là từ chỉ người, không phải việc làm. Thử từ khác nhé!`:`Từ này chưa phải việc làm. Thử hỏi “làm gì?” nhé!`,'think');}
+  });
+}
+
+// ---------- Bước 2: bản đồ kho báu (hiểu dàn ý 3 phần) ----------
+const MAP_CARDS=[
+ {t:'Cuối tuần trước, lớp em đi tham quan làng gốm Bát Tràng.',z:'m'},
+ {t:'Em rất háo hức vì lần đầu được tự tay nặn gốm.',z:'m'},
+ {t:'Đầu tiên, cả lớp đi dạo quanh làng cổ cùng cô giáo.',z:'t'},
+ {t:'Tiếp theo, bác nghệ nhân chỉ cách nhào đất trên bàn xoay.',z:'t'},
+ {t:'Sau đó, em tự nặn một chiếc cốc nhỏ. Đây là việc em thích nhất.',z:'t'},
+ {t:'Em hiểu thêm nghề làm gốm rất vất vả và khéo léo.',z:'k'},
+ {t:'Em rất tự hào và mong được đi thêm nhiều chuyến như vậy.',z:'k'}
+];
+const ZN={m:'Mở bài',t:'Thân bài',k:'Kết bài'};
+const ordHtml=t=>esc(t).replace(/(Đầu tiên|Tiếp theo|Sau đó|Cuối cùng)/g,'<span class="ord">$1</span>');
+function stepMap(){
+  shell('2 · Bản đồ kho báu',1);
+  main(`<div class="card"><h2>Dàn ý là bản đồ kho báu 🗺️</h2><p class="sub">Một bài văn có 3 phần. Miu-Bot viết sẵn các ý về chuyến tham quan làng gốm. Bạn chạm một ý, rồi chạm phần đúng nhé!</p>
+    <div class="scards" id="sc">${shuffle(MAP_CARDS.map((c,i)=>({...c,i}))).map(c=>`<button class="scard" data-i="${c.i}">${ordHtml(c.t)}</button>`).join('')}</div>
+    <div class="zones">
+     <button class="zone m" data-z="m">🚪 Mở bài<small>Giới thiệu hoạt động (làm gì, khi nào, ở đâu, vì sao em muốn tham gia)</small><div class="in" id="in_m"></div></button>
+     <button class="zone t" data-z="t">🛤️ Thân bài<small>Kể lại các việc theo thứ tự: đầu tiên, tiếp theo, sau đó, cuối cùng</small><div class="in" id="in_t"></div></button>
+     <button class="zone k" data-z="k">🏆 Kết bài<small>Nêu kết quả và chia sẻ suy nghĩ, cảm xúc</small><div class="in" id="in_k"></div></button></div></div>`);
+  say('Mở bài là cổng vào, thân bài là con đường, kết bài là kho báu. Chạm một ý rồi chạm phần đúng của nó nhé!');
+  let sel=null,left=MAP_CARDS.length;
+  $$('.scard').forEach(c=>c.onclick=()=>{$$('.scard').forEach(x=>x.classList.remove('sel'));sel=c;c.classList.add('sel');speakSeq([{t:MAP_CARDS[+c.dataset.i].t,rate:.85}]);});
+  $$('.zone').forEach(z=>z.onclick=()=>{
+    if(!sel){toast('Chạm một ý trước nhé');return;}
+    const card=MAP_CARDS[+sel.dataset.i];
+    if(card.z===z.dataset.z){$('#in_'+card.z).insertAdjacentHTML('beforeend',`<div>${ordHtml(card.t)}</div>`);sel.remove();sel=null;left--;ding();
+      if(left===0){addStar(2,'xếp đúng dàn ý');stepDone('w2');say('Giỏi quá! Bạn thấy không, thân bài có các từ đầu tiên, tiếp theo, sau đó để nối các việc. Mình dùng lại ở bước sau nhé!','cheer');confetti();
+        $('#main').insertAdjacentHTML('beforeend',`<div class="row"><button class="btn sun pulse" id="g">Sang bước 3 ➡️</button></div>`);$('#g').onclick=()=>stepPrep();}}
+    else{sel.classList.add('shake');const s0=sel;setTimeout(()=>s0.classList.remove('shake'),450);
+      const h={m:'Ý này nói về hoạt động khi bắt đầu: làm gì, khi nào, vì sao muốn tham gia. Đó là mở bài.',t:'Ý này kể một việc đã làm. Việc làm kể theo thứ tự thì ở thân bài.',k:'Ý này nói kết quả hoặc cảm xúc sau cùng. Đó là kết bài.'};
+      say('Gần rồi! '+h[card.z],'think');}
+  });
+}
+
+// ---------- Bước 3: chọn hoạt động, liệt kê và xếp việc ----------
+const ACTS=[
+ {e:'🏺',t:'tham quan làng nghề',ex:['Cả lớp đi dạo quanh làng','Nghe nghệ nhân giới thiệu','Tự tay làm thử sản phẩm','Chụp ảnh lưu niệm']},
+ {e:'✂️',t:'làm đồ thủ công',ex:['Chuẩn bị giấy, kéo, hồ dán','Cắt và gấp theo mẫu','Dán và trang trí','Khoe sản phẩm với cả nhà']},
+ {e:'🌱',t:'trồng cây cùng gia đình',ex:['Chuẩn bị chậu, đất, hạt giống','Gieo hạt xuống đất','Tưới nước cho cây','Chờ cây nảy mầm']},
+ {e:'🍳',t:'làm bánh cùng mẹ',ex:['Rửa tay, chuẩn bị nguyên liệu','Nhào bột, trộn nguyên liệu','Cho bánh vào lò','Cả nhà cùng thưởng thức']},
+ {e:'⚽',t:'tham gia câu lạc bộ',ex:['Khởi động cùng các bạn','Học một kĩ năng mới','Chơi trò chơi nhóm','Nghe thầy cô nhận xét']},
+ {e:'✏️',t:'',ex:[]}
+];
+function stepPrep(){
+  shell('3 · Chọn hoạt động, xếp việc',2);
+  const o=OL();
+  main(`<div class="card"><h2>1. Em chọn hoạt động nào?</h2><p class="sub">Chọn một hoạt động trải nghiệm em đã tham gia thật nhé!</p>
+    <div class="grid3">${ACTS.map((a,i)=>`<button class="pick ${o.act===String(i)?'ok':''}" data-a="${i}"><span class="em">${a.e}</span>${a.t?a.t:'Hoạt động khác (em tự viết)'}</button>`).join('')}</div></div>
+    <div id="part2"></div>`);
+  say(`Giờ mình chọn một hoạt động ${nm()} đã làm thật. Chọn hoạt động mà bạn nhớ nhất nhé!`);
+  const render2=()=>{
+    const a=ACTS[+o.act];
+    $('#part2').innerHTML=`<div class="card"><h2>2. Em đã làm những việc gì?</h2>
+      <div class="field"><label>Tên hoạt động của em</label><input class="tin" data-k="name" placeholder="Ví dụ: tham quan làng gốm Bát Tràng"></div>
+      <p class="sub">Liệt kê các việc em đã làm. Ghi ngắn thôi, 3 hoặc 4 việc. Dùng nút ⬆️⬇️ để xếp theo thứ tự xảy ra.</p>
+      <div id="rows"></div>
+      ${a.ex.length?`<p class="legend">Gợi ý (sửa cho đúng với em nhé):</p><div class="chips" id="sg">${a.ex.map(x=>`<button class="chip">${esc(x)}</button>`).join('')}</div>`:''}
+      <p class="legend">💡 Muốn đọc cho máy gõ thay: bấm 🎤 trên bàn phím iPad. Bố mẹ cũng có thể gõ giúp.</p>
+      <div class="row"><button class="btn sun" id="nx" disabled>Sang lập dàn ý ➡️</button></div></div>`;
+    bindInputs($('#part2'),chk);
+    const rows=()=>{$('#rows').innerHTML=o.tasks.map((t,i)=>`<div class="trow"><span class="o">${ORD4[i]}</span><input class="tin" data-k="tasks.${i}" placeholder="Việc ${i+1}"><button class="mv" data-m="${i},-1">⬆️</button><button class="mv" data-m="${i},1">⬇️</button></div>`).join('');
+      bindInputs($('#rows'),chk);
+      $$('.mv').forEach(b=>b.onclick=()=>{const [i,d]=b.dataset.m.split(',').map(Number),j=i+d;if(j<0||j>3)return;[o.tasks[i],o.tasks[j]]=[o.tasks[j],o.tasks[i]];save();rows();chk();});};
+    rows();
+    $$('#sg .chip').forEach(c=>c.onclick=()=>{const k=o.tasks.findIndex(t=>!t.trim());if(k<0){toast('Đã đủ 4 việc rồi');return;}o.tasks[k]=c.textContent;save();rows();chk();c.classList.add('on');});
+    function chk(){const ok=o.name.trim()&&filledTasks().length>=3;$('#nx').disabled=!ok;}
+    chk();
+    $('#nx').onclick=()=>{addStar(1,'đã chọn việc');stepDone('w3');stepOutline(0);};
+    say('Bạn ghi các việc ngắn thôi nhé. Việc nào xảy ra trước thì để ở trên!','happy');
+  };
+  $$('[data-a]').forEach(b=>b.onclick=()=>{const i=b.dataset.a;if(o.act!==i){o.act=i;if(ACTS[+i].t&&!o.name.trim())o.name=ACTS[+i].t;save();}$$('[data-a]').forEach(x=>x.classList.remove('ok'));b.classList.add('ok');render2();$('#part2').scrollIntoView({behavior:'smooth',block:'start'});});
+  if(o.act!=='')render2();
+}
+
+// ---------- Bước 4: lập dàn ý Mở - Thân - Kết ----------
+const OL_STEPS=['Mở bài','Thân bài','Kết bài'];
+function olHeader(part){return `<div class="dots">${OL_STEPS.map((_,k)=>`<i class="${k<part?'on':''} ${k===part?'cur':''}"></i>`).join('')}</div>`;}
+function stepOutline(part){
+  shell('4 · Lập dàn ý: '+OL_STEPS[part],3);
+  const o=OL();
+  if(part===0){
+    main(olHeader(0)+`<div class="card"><h2>🚪 Mở bài: giới thiệu hoạt động</h2>
+      <div class="tabs"><button class="btn ${o.mode===1?'':'alt'}" data-md="1">Cách 1: nói rõ hoạt động</button><button class="btn ${o.mode===2?'':'alt'}" data-md="2">Cách 2: nói lí do muốn tham gia</button></div>
+      <div id="fm"></div><div class="row"><button class="btn sun" id="nx" disabled>Sang thân bài ➡️</button></div></div>`);
+    say('Mở bài là cổng vào. Bạn chọn một cách giới thiệu nhé. Cách một nói thời gian và địa điểm. Cách hai nói vì sao bạn muốn tham gia.');
+    const draw=()=>{
+      $$('[data-md]').forEach(b=>b.classList.toggle('alt',+b.dataset.md!==o.mode));
+      $('#fm').innerHTML=o.mode===1?`<div class="field"><label>Tên hoạt động</label><input class="tin" data-k="name"></div>
+        <div class="field"><label>Khi nào?</label><input class="tin" data-k="time" placeholder="Ví dụ: cuối tuần trước"><div class="chips" id="tc">${['Cuối tuần trước','Mùa hè vừa rồi','Một buổi sáng Chủ nhật','Hôm nghỉ lễ'].map(x=>`<button class="chip">${x}</button>`).join('')}</div></div>
+        <div class="field"><label>Ở đâu? Cùng ai?</label><input class="tin" data-k="place" placeholder="Ví dụ: ở làng gốm Bát Tràng, cùng cả lớp"></div>`
+       :`<div class="field"><label>Tên hoạt động</label><input class="tin" data-k="name"></div>
+        <div class="field"><label>Vì sao em muốn tham gia?</label><input class="tin" data-k="reason" placeholder="Ví dụ: vì em rất thích tự tay làm đồ vật"><div class="chips" id="rc">${['Vì em rất thích','Vì em muốn biết thêm','Vì em muốn thử sức'].map(x=>`<button class="chip">${x}</button>`).join('')}</div></div>`;
+      bindInputs($('#fm'),chk);
+      $$('#tc .chip').forEach(c=>c.onclick=()=>{o.time=c.textContent;save();draw();});
+      $$('#rc .chip').forEach(c=>c.onclick=()=>{o.reason=(c.textContent+' ').trimStart();save();draw();$('[data-k=reason]').focus();});
+      chk();};
+    function chk(){const ok=o.name.trim()&&(o.mode===1?(o.time.trim()||o.place.trim()):o.reason.trim());$('#nx').disabled=!ok;}
+    $$('[data-md]').forEach(b=>b.onclick=()=>{o.mode=+b.dataset.md;save();draw();});
+    draw();$('#nx').onclick=()=>{addStar(1,'xong mở bài');stepOutline(1);};
+  }
+  if(part===1){
+    const ft=filledTasks(),ords=ordFor(ft.length);
+    main(olHeader(1)+`<div class="card"><h2>🛤️ Thân bài: kể các việc theo thứ tự</h2>
+      <p class="sub">Với mỗi việc, ghi thêm chi tiết: ở đâu, bao lâu, cùng ai. Chạm ⭐ ở việc em thấy ấn tượng nhất.</p>
+      ${ft.map((x,k)=>`<div class="field"><label><span class="ord">${ords[k]}</span>, ${esc(x.t)}</label><div class="trow"><input class="tin" data-k="detail.${x.i}" placeholder="Ở đâu? Bao lâu? Cùng ai?"><button class="starbtn ${o.star===x.i?'on':''}" data-st="${x.i}" aria-label="Ấn tượng nhất">⭐</button></div></div>`).join('')}
+      <div class="field" id="whyf" style="display:${o.star>=0?'block':'none'}"><label>Vì sao việc đó ấn tượng nhất?</label><input class="tin" data-k="why" placeholder="Ví dụ: vì em tự làm được một chiếc cốc"></div>
+      <div class="row"><button class="btn alt" id="bk">⬅️ Mở bài</button><button class="btn sun" id="nx">Sang kết bài ➡️</button></div></div>`);
+    say('Thân bài là con đường. Bạn thêm chi tiết cho từng việc. Nhớ chạm ngôi sao ở việc bạn thích nhất nhé!');
+    bindInputs($('.card'));
+    $$('.starbtn').forEach(b=>b.onclick=()=>{o.star=+b.dataset.st;save();$$('.starbtn').forEach(x=>x.classList.toggle('on',x===b));$('#whyf').style.display='block';});
+    $('#bk').onclick=()=>stepOutline(0);
+    $('#nx').onclick=()=>{addStar(1,'xong thân bài');stepOutline(2);};
+  }
+  if(part===2){
+    main(olHeader(2)+`<div class="card"><h2>🏆 Kết bài: kết quả và cảm xúc</h2>
+      <div class="field"><label>Kết quả của hoạt động (em được gì, hiểu thêm gì?)</label><input class="tin" data-k="result" placeholder="Ví dụ: em hiểu thêm nghề làm gốm rất vất vả"><div class="chips" id="rc">${['Em hiểu thêm về','Em làm được','Em có thêm một món quà:'].map(x=>`<button class="chip">${x}</button>`).join('')}</div></div>
+      <div class="field"><label>Em cảm thấy thế nào? (chọn nhiều cũng được)</label><div class="chips" id="fc">${['😄 thích thú','🏅 tự hào','🤩 háo hức','🥰 yêu thích','🙏 biết ơn'].map(x=>`<button class="chip ${o.feels.includes(x.slice(3))?'on':''}" data-f="${x.slice(3)}">${x}</button>`).join('')}</div>
+        <input class="tin" data-k="feelText" placeholder="Em muốn nói thêm (không bắt buộc)"></div>
+      <div class="row"><button class="btn alt" id="bk">⬅️ Thân bài</button><button class="btn sun" id="nx" disabled>Xong dàn ý ➡️</button></div></div>`);
+    say('Kết bài là kho báu! Bạn nói điều bạn được và cảm xúc của bạn nhé.');
+    const chk=()=>{$('#nx').disabled=!(o.result.trim()&&(o.feels.length||o.feelText.trim()));};
+    bindInputs($('.card'),chk);
+    $$('#fc .chip').forEach(c=>c.onclick=()=>{const f=c.dataset.f,i=o.feels.indexOf(f);if(i>=0)o.feels.splice(i,1);else o.feels.push(f);c.classList.toggle('on');save();chk();});
+    $$('#rc .chip').forEach(c=>c.onclick=()=>{o.result=c.textContent+' ';save();$('[data-k=result]').value=o.result;$('[data-k=result]').focus();chk();});
+    $('#bk').onclick=()=>stepOutline(1);chk();
+    $('#nx').onclick=()=>{addStar(1,'xong kết bài');stepDone('w4');stepCheck();};
+  }
+}
+
+// ---------- Bước 5: kiểm tra dàn ý theo 3 tiêu chí (tr.47) ----------
+function outlineParts(){
+  const o=OL(),ft=filledTasks(),ords=ordFor(ft.length);
+  const m=o.mode===1?[`Hoạt động: ${o.name}`,o.time&&`Thời gian: ${o.time}`,o.place&&`Địa điểm, người cùng tham gia: ${o.place}`]:[`Hoạt động: ${o.name}`,o.reason&&`Lí do em muốn tham gia: ${o.reason}`];
+  const t=ft.map((x,k)=>`${ords[k]}: ${x.t}${o.detail[x.i]&&o.detail[x.i].trim()?' ('+o.detail[x.i].trim()+')':''}${o.star===x.i?' ⭐ ấn tượng nhất'+(o.why.trim()?' vì '+o.why.trim().replace(/^vì\s+/i,''):''):''}`);
+  const k=[o.result.trim()&&`Kết quả: ${o.result.trim()}`,(o.feels.length||o.feelText.trim())&&`Cảm xúc: ${[...o.feels,o.feelText.trim()].filter(Boolean).join(', ')}`];
+  return {m:m.filter(Boolean),t,k:k.filter(Boolean)};
+}
+const outlineText=()=>{const p=outlineParts();return `DÀN Ý: ${OL().name}\nMở bài\n- ${p.m.join('\n- ')}\nThân bài\n- ${p.t.join('\n- ')}\nKết bài\n- ${p.k.join('\n- ')}`;};
+function stepCheck(){
+  shell('5 · Kiểm tra dàn ý',4);
+  const o=OL(),p=outlineParts();
+  const crit=[{ok:filledTasks().length>=3,t:'Các việc được xếp theo thứ tự hợp lí',fix:'Thêm việc',go:()=>stepPrep()},
+              {ok:!!o.result.trim(),t:'Nêu rõ kết quả của hoạt động',fix:'Thêm kết quả',go:()=>stepOutline(2)},
+              {ok:!!(o.feels.length||o.feelText.trim()),t:'Thể hiện suy nghĩ, cảm xúc của em',fix:'Thêm cảm xúc',go:()=>stepOutline(2)}];
+  const all=crit.every(c=>c.ok);
+  const box=(c,h,l)=>`<div class="ol ${c}"><h4>${h}</h4>${l.map(x=>`<div>• ${ordHtml(x)}</div>`).join('')}</div>`;
+  main(`<div class="card"><h2>Dàn ý của ${esc(nm())}</h2>${box('m','🚪 Mở bài',p.m)}${box('t','🛤️ Thân bài',p.t)}${box('k','🏆 Kết bài',p.k)}
+    <div class="row"><button class="btn blue" id="rd">🔊 Miu-Bot đọc dàn ý</button><button class="btn alt" id="cp">📋 Sao chép</button></div></div>
+    <div class="card"><h2>Kiểm tra 3 điều</h2>${crit.map((c,i)=>`<div class="chk ${c.ok?'ok':''}"><span>${c.ok?'✅':'⬜'}</span>${c.t}${c.ok?'':`<button class="btn alt b" data-c="${i}" style="min-height:48px;font-size:18px">${c.fix}</button>`}</div>`).join('')}
+    <div class="row"><button class="btn sun ${all?'pulse':''}" id="fin" ${all?'':'disabled'}>🎉 Hoàn thành!</button></div></div>`);
+  say(all?'Dàn ý của bạn đủ cả ba điều rồi! Bạn đọc lại thử nhé, hoặc nhờ Miu-Bot đọc cho nghe.':'Mình kiểm tra dàn ý nhé. Còn thiếu một điều, bạn bổ sung giúp mình nhé!','happy');
+  $$('[data-c]').forEach(b=>b.onclick=()=>crit[+b.dataset.c].go());
+  $('#rd').onclick=()=>{setTalk(true);const L=[`Dàn ý: ${o.name}`,'Mở bài',...p.m,'Thân bài',...p.t,'Kết bài',...p.k];speakSeq(L.map(t=>({t:t.replace('⭐',''),after:350})),{rate:.85}).then(()=>setTalk(false));};
+  $('#cp').onclick=async()=>{try{await navigator.clipboard.writeText(outlineText());toast('Đã sao chép dàn ý');}catch(e){const el=document.createElement('textarea');el.className='tin';el.rows=10;el.value=outlineText();$('#cp').parentNode.after(el);el.select();toast('Chọn rồi sao chép nhé');}};
+  $('#fin').onclick=()=>{addStar(3,'hoàn thành dàn ý');stepDone('w5');reward2();};
+}
+function reward2(){
+  shell('Hoàn thành!',-1);
+  const total=S.stars-(startStars==null?S.stars:startStars);
+  main(`<div class="card" style="text-align:center"><div class="big">✍️</div><h2>Huy hiệu “Nhà văn nhí”</h2>
+    <p class="sub">${esc(nm())} đã lập xong dàn ý và nhận ${total} ⭐ hôm nay!</p>
+    <p class="sub">Việc tiếp theo: bạn dùng dàn ý này để kể lại cho bố mẹ nghe (bài Nói và nghe). Nhớ kể bằng giọng vui và có cảm xúc nhé!</p>
+    <div class="row"><button class="btn alt" id="rv">📝 Xem lại dàn ý</button><button class="btn" id="hm">🏠 Về trang chính</button></div></div>`);
+  confetti();ding();setMood('cheer');
+  say(`Tuyệt vời ${nm()}! Hôm nay bạn đã là một nhà văn nhí thật sự. Miu-Bot rất tự hào về bạn!`,'cheer');
+  $('#rv').onclick=()=>{stopSpeech();stepCheck();};$('#hm').onclick=()=>{stopSpeech();home();};
+}
+
+// ---------- Trang bố mẹ: thông tin Buổi 2 ----------
+function parentExtra(){
+  const has=S.ol&&S.ol.tasks&&(S.ol.name||filledTasks().length);
+  return `<h3>Buổi 2 · Viết dàn ý</h3>${has?`<div style="white-space:pre-wrap;background:#f6fbff;border-radius:14px;padding:10px 14px;font-size:17px">${esc(outlineText())}</div><p><button class="btn alt" id="clrol" style="min-height:44px;font-size:17px">Xoá dàn ý để con làm lại</button></p>`:'<p>Con chưa lập dàn ý.</p>'}
+  <ul><li>Để con tự nghĩ ý của mình. Bố mẹ chỉ gợi bằng câu hỏi: “Lúc đó ở đâu? Con làm gì trước? Con thấy thế nào?”. Chỉ gõ giúp khi con mệt.</li>
+  <li>Bài “đóng vai cây hoa”: file hướng dẫn tính cả từ chỉ cảm xúc (cảm thấy, hạnh phúc, tự hào, sung sướng) là động từ chỉ trạng thái. App chấp nhận “cảm thấy” và động từ việc làm là đáp án chính. Câu mẫu của file: “Tôi cảm thấy vô cùng hạnh phúc và tự hào khi những cánh hoa của mình rực rỡ…”; “Tôi sung sướng ngắm nhìn những bông hoa trắng muốt, toả hương thơm ngát của mình.”</li>
+  <li>Dàn ý mẫu trong bước 2 (làng gốm Bát Tràng) do Miu-Bot soạn theo yêu cầu trang 46, không lấy nguyên văn từ sách.</li></ul>`;
+}
+document.addEventListener('click',e=>{if(e.target&&e.target.id==='clrol'){S.ol=null;S.done.w3=S.done.w4=S.done.w5=false;save();toast('Đã xoá dàn ý');parentPanel();}});
+
+home();
+
+</script></body></html>
