@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
-<title>Miu-Bot học tiếng Việt · Bài 10</title>
+<title>Miu-Bot học tiếng Việt</title>
 <style>:root{--teal:#2f9e8a;--teal-d:#237a6a;--mint:#d9f5ec;--sun:#ffd23f;--ink:#1f2d3d;--card:#ffffff;--ok:#2fbf71;--soft:#ffe3bf;--blue:#3b82f6;--fs:1}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%}
@@ -132,9 +132,63 @@ input,textarea{-webkit-user-select:text;user-select:text}
 .chk{display:flex;gap:10px;align-items:center;background:#fff;border-radius:18px;padding:10px 14px;margin:8px 0;font-size:21px;border:3px solid #d5e5ea}
 .chk.ok{border-color:var(--ok);background:#e4f8ec}.chk .b{margin-left:auto}
 .starbtn{flex:none;border:0;background:#fff7d6;border-radius:14px;height:46px;min-width:46px;font-size:22px}.starbtn.on{background:var(--sun)}
+
+/* ===== nhiều bài học ===== */
+.lpick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
+.lbtn{border:3px solid #d5e5ea;background:#fff;border-radius:18px;padding:8px 4px;text-align:center;color:var(--ink);font-size:15px;line-height:1.25;display:flex;flex-direction:column;gap:2px}
+.lbtn b{font-size:20px}.lbtn small{color:#6b7b8c;font-weight:600}
+.lbtn.on{border-color:var(--sun);background:#fff7d6;box-shadow:0 3px 0 #e8c25a}
+.baskets.b3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:640px){.baskets.b3{grid-template-columns:1fr}.lbtn{font-size:13px}.lbtn b{font-size:17px}}
+.leaves .leaf{font-size:calc(24px*var(--fs))}
+.opt.wide{display:block;width:100%;font-size:22px;text-align:left;margin:8px 0}
+.chk.tg{width:100%;text-align:left;font-family:inherit;cursor:pointer}
+textarea.tin{resize:vertical;min-height:80px;line-height:1.4}
+.stars5{display:flex;gap:8px}
+.leaf{white-space:normal;text-align:center}
+.pick small{display:block;font-size:15px;font-weight:500;color:#52606d;margin-top:4px}
+.pick b{font-size:19px}
+
+.lbar{display:flex;gap:8px;align-items:stretch;margin-bottom:8px}
+.hbtn2{border:3px solid #d5e5ea;background:#fff;border-radius:18px;width:54px;font-size:22px;color:var(--ink)}
+.hbtn2:disabled{opacity:.35}
+.tocbtn{flex:1;border:3px solid var(--sun);background:#fff7d6;border-radius:18px;padding:8px 12px;text-align:left;display:flex;flex-direction:column;gap:1px;color:var(--ink);box-shadow:0 3px 0 #e8c25a}
+.tocbtn span{font-size:14px;font-weight:700;color:#8a6a00}.tocbtn b{font-size:19px;line-height:1.25}.tocbtn small{color:#6b7b8c;font-weight:600}
+.theme{margin:14px 0}.theme h3{margin:0 0 8px;font-size:20px}
+.wk{display:flex;gap:8px;align-items:stretch;margin-bottom:8px}
+.wn{flex:0 0 58px;background:#e8f1ff;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:14px;color:#2c5aa0;padding:4px}
+.lts{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.lt{border:3px solid #d5e5ea;background:#fff;border-radius:16px;padding:8px 10px;text-align:left;color:var(--ink);display:flex;flex-direction:column;gap:2px;font-size:15px;line-height:1.25}
+.lt b{font-size:17px}.lt small{color:#6b7b8c;font-weight:600}
+.lt.on{border-color:var(--sun);background:#fff7d6;box-shadow:0 3px 0 #e8c25a}
+.lt.full{border-color:#8fd19e}
+.lt.off{opacity:.5;background:#f3f5f7;border-style:dashed}
+.rv{flex:1;border:3px dashed #d5e5ea;border-radius:16px;padding:10px;color:#6b7b8c;display:flex;align-items:center}
+@media(max-width:560px){.lts{grid-template-columns:1fr}}
 </style></head><body>
 <div id="app"></div><div id="sheet"></div><div id="toast"></div>
-<script>// ===== NỘI DUNG BÀI 10 - TIẾNG NÓI CỦA CỎ CÂY (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.44-45) =====
+<script>// ===== MỤC LỤC SÁCH: Tiếng Việt 4 (Kết nối tri thức) - tập một =====
+// Thêm bài mới: tạo file contentNN.js (xem content21.js) rồi thêm vào build.py. Mục lục tự nhận bài có dữ liệu.
+const LESSON_DEFS=[];
+const CATALOG=[
+ {name:'MỖI NGƯỜI MỘT VẺ',e:'🌈',weeks:[
+  {w:1,l:[[1,'Điều kì diệu'],[2,'Thi nhạc']]},{w:2,l:[[3,'Anh em sinh đôi'],[4,'Công chúa và người dẫn chuyện']]},
+  {w:3,l:[[5,'Thần lằn xanh và tắc kè'],[6,'Nghệ sĩ trống']]},{w:4,l:[[7,'Những bức chân dung'],[8,'Đò ngang']]}]},
+ {name:'TRẢI NGHIỆM VÀ KHÁM PHÁ',e:'🧭',weeks:[
+  {w:5,l:[[9,'Bầu trời trong quả trứng'],[10,'Tiếng nói của cỏ cây']]},{w:6,l:[[11,'Tập làm văn'],[12,'Nhà phát minh 6 tuổi']]},
+  {w:7,l:[[13,'Con vẹt xanh'],[14,'Chân trời cuối phố']]},{w:8,l:[[15,'Gặt chữ trên non'],[16,'Trước ngày xa quê']]},
+  {w:9,r:'Ôn tập và Đánh giá giữa học kì I'}]},
+ {name:'NIỀM VUI SÁNG TẠO',e:'🎨',weeks:[
+  {w:10,l:[[17,'Vẽ màu'],[18,'Đồng cỏ nở hoa']]},{w:11,l:[[19,'Thanh âm của núi'],[20,'Bầu trời mùa thu']]},
+  {w:12,l:[[21,'Làm thỏ con bằng giấy'],[22,'Bức tường có nhiều phép lạ']]},{w:13,l:[[23,'Bét-tô-ven và bản xô-nát Ánh trăng'],[24,'Người tìm đường lên các vì sao']]}]},
+ {name:'CHẮP CÁNH ƯỚC MƠ',e:'🚀',weeks:[
+  {w:14,l:[[25,'Bay cùng ước mơ'],[26,'Con trai người làm vườn']]},{w:15,l:[[27,'Nếu em có một khu vườn'],[28,'Bốn mùa mơ ước']]},
+  {w:16,l:[[29,'Ở Vương quốc Tương Lai'],[30,'Cánh chim nhỏ']]},{w:17,l:[[31,'Nếu chúng mình có phép lạ'],[32,'Anh Ba']]},
+  {w:18,r:'Ôn tập và Đánh giá cuối học kì I'}]}
+];
+
+const B10=(()=>{
+// ===== NỘI DUNG BÀI 10 - TIẾNG NÓI CỦA CỎ CÂY (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.44-45) =====
 const SENTS = {
  s1:{c:["Những ngày hè","ở nhà ông bà,","Ta-nhi-a","được thoả thích","chạy nhảy trong vườn."]},
  s2:{c:["Thấy khóm hoa hồng bạch","có vẻ chật chỗ,","cô bé liền bứng","một cây nhỏ nhất","trồng vào chỗ đất trống","dưới cửa sổ."]},
@@ -205,12 +259,6 @@ const TONES = [
  {opts:[{w:"bạn",e:"🧑‍🤝‍🧑",t:"dấu nặng",m:"bạn bè"},{w:"bàn",e:"🪑",t:"dấu huyền",m:"cái bàn"}]}
 ];
 
-// Hái lá: danh từ / động từ (bài tập tr.45)
-const LEAVES = [
- {w:"vườn",k:"n"},{w:"đi",k:"v"},{w:"cây",k:"n"},{w:"trồng",k:"v"},{w:"đất",k:"n"},
- {w:"chọn",k:"v"},{w:"hỏi",k:"v"},{w:"hoa",k:"n"},{w:"bạn",k:"n"},{w:"ngắm",k:"v"}
-];
-
 // Câu hỏi hiểu bài (theo câu 1-4 của SGK); evidence = câu trong bài để đọc lại khi cần gợi ý
 const QUIZ = [
  {q:"Chi tiết nào cho thấy Ta-nhi-a cảm thấy thoải mái trong những ngày hè ở nhà ông bà?",
@@ -240,6 +288,1041 @@ const STORY_ORDER = [
  "Hàng xóm hỏi có phải giống hoa mới không, Ta-nhi-a chỉ khóm hồng cũ.",
  "Ta-nhi-a nghĩ mãi và đoán là do chỗ ở mới thoáng hơn."
 ];
+
+return {SENTS,PAGES,PRACTICE,GLOSS,TONES,QUIZ,STORY_ORDER};
+})();
+
+// ===== BÀI 18 - ĐỒNG CỎ NỞ HOA (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.81-84) =====
+const B18=(()=>{
+const SENTS={
+ s1:{c:["Bống là một cô bé","có tài hội hoạ."]},
+ s2:{c:["Người phát hiện ra điều này","trước nhất","là bác Lan,","chị gái của bố Bống."]},
+ s3:{c:["Thực ra,","lúc đầu","bác Lan chỉ thấy hơi là lạ,","vì con bé mới học tiểu học","mà sao nó lại mê vẽ thế."]},
+ s4:{c:["Nó vẽ","như người ta thở,","như người ta nhìn,","như người ta nghe."]},
+ s5:{c:["Nó vẽ các nàng tiên,","các cô công chúa,","các chàng công tử."]},
+ s6:{c:["Cái Bống rất hay vẽ,","nhưng đáng chú ý hơn","là nó vẽ rất giống."]},
+ s7:{c:["Con mèo Kết","ra con mèo Kết."]},
+ s8:{c:["Con chó Lu","ra con chó Lu."]},
+ s9:{c:["Cây cau","ra cây cau."]},
+ s10:{c:["Bố Lít nó","ra bố Lít."]},
+ s11:{c:["Mẹ Phít nó cũng","chẳng lẫn được với ai,","cái mặt tròn như đồng xu","với hai con mắt lá răm."]},
+ s12:{c:["Bác Lan đưa tranh của Bống","cho ông hoạ sĩ Phan xem","để hỏi ý kiến."]},
+ s13:{c:["Ông hoạ sĩ xem","cả xấp tranh","vẽ con chó, con mèo,","cây cau,","chân dung bố và mẹ Bống","thì tặc tặc lưỡi trầm trồ:"]},
+ s14:{d:1,c:["– Chà chà!","Vẽ như đồng cỏ","đến kì nở hoa!","Vẽ được lắm,","được lắm!"]},
+ s15:{c:["Đoạn, ông nói:"]},
+ s16:{d:1,c:["– Còn những bức nào nữa,","cho ông xem với nào!"]},
+ s17:{c:["Bống đưa cho ông","cả tập tranh","giấu trong cặp."]},
+ s18:{c:["Ông trố mắt,","chỉ từng bức:"]},
+ s19:{d:1,c:["– Sao dưới bụng","con gà mái mẹ","lại có một hàng chấm chấm?"]},
+ s20:{d:1,c:["– Đó là tí của nó ạ.","Không có tí,","gà con bú mẹ","sao được ạ."]},
+ s21:{d:1,c:["– Thế con chuột nhắt","đứng cạnh cái vòng tròn","có hai chóp nhọn","là cái gì?"]},
+ s22:{d:1,c:["– Là lưng con mèo.","Ý cháu là…","hỡi tên chuột kia,","mi hãy giờ hồn,","mèo chưa quay đầu lại đâu!"]}
+};
+const PAGES=[
+ {ids:["s1","s2","s3","s4","s5"],scene:"👧 🎨 🧚‍♀️ 👸"},
+ {ids:["s6","s7","s8","s9","s10","s11"],scene:"🐱 🐶 🌴 👨 👩"},
+ {ids:["s12","s13","s14","s15","s16","s17","s18"],scene:"👩 🖼️ 👨‍🎨 😲"},
+ {ids:["s19","s20","s21","s22"],scene:"🐔 🐣 🐭 🐱"}
+];
+const PRACTICE=["s3","s4","s6","s13","s22"];
+const GLOSS={
+ "hội hoạ":{e:"🎨",d:"nghề vẽ tranh. Có tài hội hoạ là vẽ tranh rất giỏi.",x:"Bạn Lan có tài hội hoạ nên vẽ rất đẹp."},
+ "mê vẽ":{e:"😍🖌️",d:"rất thích vẽ, vẽ say sưa không chán.",x:"Em bé mê vẽ nên suốt ngày cầm bút màu."},
+ "là lạ":{e:"🤔",d:"thấy hơi khác thường, lạ lạ.",x:"Hôm nay bạn ấy im lặng, mình thấy là lạ."},
+ "công tử":{e:"🤴",d:"con trai nhà giàu sang trong các câu chuyện ngày xưa.",x:"Chàng công tử cưỡi ngựa trắng."},
+ "mắt lá răm":{e:"👁️",d:"mắt một mí nhưng tròng to, đuôi mắt dài và sắc, trông như đuôi của lá rau răm.",x:"Cô bé có đôi mắt lá răm rất duyên."},
+ "xấp tranh":{e:"🖼️🖼️🖼️",d:"nhiều bức tranh xếp chồng lên nhau một cách ngay ngắn.",x:"Em đem cả xấp tranh đi khoe bạn."},
+ "chân dung":{e:"🧑‍🎨",d:"bức tranh vẽ khuôn mặt của một người.",x:"Hoạ sĩ vẽ chân dung bà ngoại."},
+ "hoạ sĩ":{e:"🧑‍🎨",d:"người chuyên vẽ tranh.",x:"Ông hoạ sĩ ngồi vẽ bên bờ sông."},
+ "trầm trồ":{e:"😲",d:"nói to lên vì thích thú, khâm phục.",x:"Mọi người trầm trồ khen bức tranh đẹp."},
+ "tặc lưỡi":{e:"😮",d:"bật lưỡi thành tiếng “tặc, tặc” khi ngạc nhiên hoặc tiếc.",x:"Bà tặc lưỡi khen cháu vẽ khéo."},
+ "trố mắt":{e:"👀",d:"mở to mắt vì rất ngạc nhiên.",x:"Cả lớp trố mắt nhìn ảo thuật gia."},
+ "chuột nhắt":{e:"🐭",d:"loài chuột nhỏ.",x:"Chú chuột nhắt chạy vụt qua góc nhà."},
+ "tí của nó":{e:"🐔🍼",d:"chỗ mẹ cho con bú sữa (cách nói của trẻ con). Cô bé nghĩ gà mẹ cũng có “tí” cho gà con bú.",x:"Mèo mẹ có tí cho mèo con bú."},
+ "giờ hồn":{e:"⚠️",d:"có ý nói phải coi chừng, mang tính đe doạ.",x:"“Mi hãy giờ hồn!” là lời doạ nạt."}
+};
+const TONES=[
+ {opts:[{w:"vẽ",e:"🎨",t:"dấu ngã",m:"vẽ tranh"},{w:"vé",e:"🎫",t:"dấu sắc",m:"tấm vé"},{w:"ve",e:"🦗",t:"không dấu",m:"con ve sầu"}]},
+ {opts:[{w:"mèo",e:"🐱",t:"dấu huyền",m:"con mèo"},{w:"méo",e:"🙃",t:"dấu sắc",m:"cái vòng bị méo"}]},
+ {opts:[{w:"chó",e:"🐶",t:"dấu sắc",m:"con chó"},{w:"cho",e:"🎁",t:"không dấu",m:"cho quà"}]},
+ {opts:[{w:"tranh",e:"🖼️",t:"không dấu",m:"bức tranh"},{w:"tránh",e:"🏃",t:"dấu sắc",m:"tránh xa"}]},
+ {opts:[{w:"nở",e:"🌸",t:"dấu hỏi",m:"hoa nở"},{w:"nợ",e:"💸",t:"dấu nặng",m:"nợ tiền"},{w:"nơ",e:"🎀",t:"không dấu",m:"cái nơ"}]}
+];
+const QUIZ=[
+ {q:"Ở đoạn mở đầu, Bống được giới thiệu là cô bé như thế nào?",
+  o:["Là cô bé có tài hội hoạ, mới học tiểu học mà rất mê vẽ.","Là cô bé rất giỏi môn toán.","Là cô bé chỉ thích chơi ngoài sân."],a:0,ev:"s3",
+  why:"Bống có tài hội hoạ. Cô bé mới học tiểu học mà đã mê vẽ như người ta thở, như người ta nhìn, như người ta nghe."},
+ {q:"Điều đáng chú ý trong những bức tranh Bống vẽ là gì?",
+  o:["Bống vẽ rất giống: mèo Kết ra mèo Kết, bố Lít ra bố Lít.","Bống chỉ vẽ toàn hoa lá.","Bống vẽ rất nhanh nhưng không giống ai."],a:0,ev:"s6",
+  why:"Bài đọc nói: đáng chú ý hơn là Bống vẽ rất giống."},
+ {q:"Ông hoạ sĩ Phan nói: “Vẽ như đồng cỏ đến kì nở hoa!”. Câu đó có ý gì?",
+  o:["Khen tranh của Bống rất sinh động, tự nhiên.","Chê tranh của Bống còn lộn xộn.","Hỏi Bống có thích đồng cỏ không."],a:0,ev:"s14",
+  why:"Đó là lời khen: tranh sinh động, tươi đẹp như đồng cỏ nở đầy hoa. Em hiểu là khen Bống có năng khiếu vẽ cũng được."},
+ {q:"Chi tiết nào cho thấy Bống có trí tưởng tượng rất phong phú?",
+  o:["Bống vẽ hàng chấm chấm dưới bụng gà mẹ làm “tí” cho gà con bú.","Bống vẽ con chó giống hệt chó Lu.","Bống vẽ cây cau trước nhà."],a:0,ev:"s20",
+  why:"Gà mẹ có “tí” cho gà con bú là điều Bống tự tưởng tượng ra. Chuột nhắt đứng doạ lưng con mèo cũng vậy."},
+ {q:"Cái vòng tròn có hai chóp nhọn, gần con chuột nhắt trong tranh của Bống, là gì?",
+  o:["Là lưng con mèo.","Là cái mũ của con chuột.","Là đầu con chó Lu."],a:0,ev:"s22",
+  why:"Bống nói: “Là lưng con mèo”. Con chuột đang doạ con mèo khi mèo chưa quay đầu lại."},
+ {q:"Từ nào có nghĩa là “làm ra tác phẩm văn học, nghệ thuật”?",
+  o:["sáng tác","sáng chế","sáng tạo"],a:0,hint:"Nhà thơ làm ra bài thơ, nhạc sĩ làm ra bài hát. Họ làm gì?",
+  why:"Sáng tác là làm ra tác phẩm văn học, nghệ thuật. Ví dụ: nhà thơ sáng tác bài thơ."}
+];
+const STORY_ORDER=[
+ "Bác Lan phát hiện Bống có tài hội hoạ và rất mê vẽ.",
+ "Bống vẽ rất giống: mèo Kết ra mèo Kết, bố Lít ra bố Lít.",
+ "Bác Lan đưa tranh cho ông hoạ sĩ Phan xem và ông khen rất nhiều.",
+ "Bống đưa cả tập tranh giấu trong cặp, ông trố mắt vì gà mẹ có “tí”, chuột doạ mèo."
+];
+const SORT={
+ head:"Sáng tác, sáng tạo, sáng chế",title:"Xếp từ vào đúng giỏ",sub:"Chạm một từ, rồi chạm giỏ đúng. Mỗi giỏ là một từ trong bài: sáng tác, sáng tạo, sáng chế.",
+ say:"Mình chơi trò xếp từ nhé! Sáng tác là làm ra bài thơ, bài hát, bức tranh. Sáng chế là làm ra máy móc, đồ vật mới. Sáng tạo là nghĩ ra ý tưởng, cách làm mới.",
+ win:"Giỏi quá! Bạn phân biệt sáng tác, sáng tạo và sáng chế rất tốt!",star:2,nextLabel:"Sang câu hỏi ➡️",
+ baskets:[
+  {k:"tac",t:"✍️ Sáng tác",s:"làm ra tác phẩm văn học, nghệ thuật",h:"Thử hỏi: “{w}” có phải là một tác phẩm văn học hay nghệ thuật (thơ, bài hát, tranh…) không? Nếu phải thì bỏ vào giỏ sáng tác."},
+  {k:"tao",t:"💡 Sáng tạo",s:"tạo ra giá trị mới về vật chất hoặc tinh thần (ý tưởng, cách làm hay)",h:"Thử hỏi: “{w}” có phải là một ý tưởng hay một cách làm mới không? Nếu phải thì bỏ vào giỏ sáng tạo."},
+  {k:"che",t:"🔧 Sáng chế",s:"nghĩ và chế tạo ra cái trước đó chưa từng có",h:"Thử hỏi: “{w}” có phải là một đồ vật, máy móc được chế tạo ra không? Nếu phải thì bỏ vào giỏ sáng chế."}],
+ items:[{w:"bài thơ",k:"tac"},{w:"bài hát",k:"tac"},{w:"bức tranh",k:"tac"},{w:"truyện ngắn",k:"tac"},
+        {w:"máy bay",k:"che"},{w:"bóng đèn điện",k:"che"},{w:"xe ô tô",k:"che"},
+        {w:"ý tưởng mới",k:"tao"},{w:"cách học hay",k:"tao"},{w:"cách vẽ độc đáo",k:"tao"}]
+};
+const WELCOME={
+ title:"Lúc rảnh em thích làm gì?",sub:"Chạm vào việc em thích làm nhất khi có thời gian rảnh.",
+ say:"{n} ơi, hôm nay mình đọc bài Đồng cỏ nở hoa, nói về một bạn nhỏ rất mê vẽ. Còn bạn, lúc rảnh rỗi bạn thích làm gì nhất?",
+ cards:[{e:"🎨",t:"vẽ tranh",g:1},{e:"🎵",t:"nghe nhạc",g:1},{e:"⚽",t:"chơi thể thao",g:1},{e:"🧩",t:"làm đồ chơi",g:1},{e:"📚",t:"đọc truyện",g:1},{e:"🪁",t:"chơi ngoài trời",g:1}],
+ need:1,okOne:"Hay quá! Bạn thích {t}. Vì sao bạn thích vậy nhỉ? Bạn nói cho Miu-Bot hoặc bố mẹ nghe nhé!",
+ wrong:"",done:"Bạn có nhiều sở thích thú vị quá! Mình đi nghe truyện nhé!",heads:"Lúc rảnh em thích làm gì?"
+};
+const RETELL={q:"Em có ấn tượng với nhân vật nào trong các bức vẽ của Bống? Vì sao?",
+ sub:"Bạn kể bằng lời của mình (kể cho Miu-Bot hoặc bố mẹ nghe). Có thể bắt đầu: “Em ấn tượng với… vì…”.",
+ say:"Câu này không có đáp án đúng hay sai. Bạn cứ nói điều bạn nghĩ nhé!"};
+const BADGE={e:"🎨",name:"Họa sĩ nhí",gift:"🖍️ hộp bút màu thần kỳ",text:"hoàn thành bài 18"};
+return {SENTS,PAGES,PRACTICE,GLOSS,TONES,QUIZ,STORY_ORDER,SORT,WELCOME,RETELL,BADGE};
+})();
+
+// ===== BÀI 19 - THANH ÂM CỦA NÚI (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.85-88) =====
+const B19=(()=>{
+const SENTS={
+ s1:{c:["Ai đã một lần lên Tây Bắc,","được nghe tiếng khèn của người Mông,","sẽ thấy nhớ, thấy thương,","thấy vấn vương trong lòng…"]},
+ s2:{c:["Âm thanh cây khèn của người Mông","có thể làm đắm say","cả những du khách khó tính nhất."]},
+ s3:{c:["Khèn của người Mông","được chế tác bằng gỗ","cùng sáu ống trúc","lớn, nhỏ, dài, ngắn khác nhau."]},
+ s4:{c:["Sáu ống trúc","tượng trưng cho","tình anh em tụ hợp."]},
+ s5:{c:["Chúng được xếp khéo léo,","song song","trên thân khèn."]},
+ s6:{c:["Nhìn và tưởng tượng thêm một chút","thấy chúng","như dòng nước đang trôi."]},
+ s7:{c:["Dòng nước đó","chở thứ âm thanh huyền diệu,","chảy mãi từ nguồn lịch sử","cho đến tận bến bờ hiện tại."]},
+ s8:{c:["Tiếng khèn gắn bó với người Mông","mỗi khi lên nương,","xuống chợ."]},
+ s9:{c:["Tiếng khèn hoà với tiếng cười","reo vang náo nức","khắp làng bản","mỗi độ xuân về."]},
+ s10:{c:["Tiếng khèn trở thành báu vật","của người Mông xưa","truyền lại","cho các thế hệ sau."]},
+ s11:{c:["Đến Tây Bắc,","bạn sẽ gặp","những nghệ nhân người Mông","thổi khèn","nơi đỉnh núi mênh mang lộng gió."]},
+ s12:{c:["Hình bóng họ","in trên nền trời xanh hết","như một tuyệt tác","của thiên nhiên."]},
+ s13:{c:["Núi vút ngàn cao,","rừng bao la rộng","cũng chẳng thể làm chìm khuất","tiếng khèn đầy khát khao,","dạt dào sức sống."]}
+};
+const PAGES=[
+ {ids:["s1","s2"],scene:"🏔️ 🎶 🧑‍🤝‍🧑"},
+ {ids:["s3","s4","s5","s6","s7"],scene:"🎋 🌲 💧 🎶"},
+ {ids:["s8","s9","s10"],scene:"🌾 🛒 🎉 💎"},
+ {ids:["s11","s12","s13"],scene:"⛰️ 🎶 🌤️"}
+];
+const PRACTICE=["s3","s6","s7","s10","s13"];
+const GLOSS={
+ "Tây Bắc":{e:"🏔️",d:"vùng núi phía tây ở miền Bắc nước ta.",x:"Sa Pa và Điện Biên đều ở Tây Bắc."},
+ "vấn vương":{e:"💭",d:"(như vương vấn) thường cứ phải nghĩ đến, nhớ đến, không dứt ra được.",x:"Em vấn vương mãi bản nhạc hay ấy."},
+ "huyền diệu":{e:"✨",d:"rất kì lạ, không thể hiểu hết được.",x:"Tiếng đàn huyền diệu làm ai cũng say mê."},
+ "khèn":{e:"🎶",d:"nhạc cụ của người Mông, có nhiều ống trúc, người ta thổi bằng hơi.",x:"Chàng trai thổi khèn trên đỉnh núi."},
+ "du khách":{e:"🧳",d:"người đi chơi, tham quan nơi xa.",x:"Du khách đến Sa Pa chụp ảnh ruộng bậc thang."},
+ "khó tính":{e:"🤨",d:"khó hài lòng, hay chê.",x:"Ông hàng xóm khó tính ít khi khen ai."},
+ "đắm say":{e:"😍",d:"thích đến mức say mê, quên cả mọi thứ xung quanh.",x:"Cả lớp đắm say nghe cô kể chuyện."},
+ "chế tác":{e:"🛠️",d:"làm ra một vật bằng sự khéo léo, công phu.",x:"Người thợ chế tác chiếc đàn rất tinh xảo."},
+ "tượng trưng":{e:"🔶",d:"dùng một vật để nói về một điều khác. Ví dụ: chim bồ câu tượng trưng cho hoà bình.",x:"Màu đỏ của lá cờ tượng trưng cho máu đào."},
+ "tụ hợp":{e:"🤝",d:"tụ lại, họp lại bên nhau.",x:"Cả nhà tụ hợp đông đủ ngày Tết."},
+ "song song":{e:"▮▮▮",d:"nằm cạnh nhau, cùng một hướng, không cắt nhau.",x:"Hai đường ray chạy song song."},
+ "lên nương":{e:"⛰️🌾",d:"đi làm ở nương, là đất trồng trọt trên đồi núi.",x:"Sáng sớm mẹ lên nương hái chè."},
+ "náo nức":{e:"🎉",d:"vui vẻ, háo hức, rộn ràng.",x:"Học sinh náo nức đón ngày khai trường."},
+ "báu vật":{e:"💎",d:"vật rất quý giá.",x:"Chiếc khèn là báu vật của gia đình."},
+ "thế hệ":{e:"👴👨👦",d:"những người sinh ra và lớn lên cùng một thời. Ông bà, bố mẹ, con cháu là các thế hệ.",x:"Truyền thống được giữ gìn qua nhiều thế hệ."},
+ "nghệ nhân":{e:"🧑‍🎤",d:"người rất giỏi một nghề hay một môn nghệ thuật.",x:"Nghệ nhân dạy trẻ em thổi khèn."},
+ "mênh mang":{e:"🌌",d:"rộng lớn, nhìn mãi không thấy hết.",x:"Biển trời mênh mang."},
+ "lộng gió":{e:"🍃",d:"có nhiều gió thổi mát, thoáng đãng.",x:"Đỉnh đồi lộng gió, ngồi rất mát."},
+ "tuyệt tác":{e:"🏆",d:"tác phẩm hay, đẹp đến mức tuyệt vời.",x:"Bức tranh ấy là một tuyệt tác."},
+ "khát khao":{e:"🌟",d:"rất mong muốn, mong mãi.",x:"Em khát khao được đi biển một lần."},
+ "dạt dào":{e:"🌊",d:"tràn đầy, có rất nhiều, như sóng cuộn lên.",x:"Bài hát dạt dào tình yêu quê hương."},
+ "chìm khuất":{e:"🫥",d:"bị che đi, bị át đi, không còn nghe thấy hay nhìn thấy.",x:"Tiếng ve chìm khuất trong tiếng mưa."}
+};
+const TONES=[
+ {opts:[{w:"khèn",e:"🎶",t:"dấu huyền",m:"cây khèn"},{w:"khen",e:"👍",t:"không dấu",m:"khen ngợi"}]},
+ {opts:[{w:"sáu",e:"6️⃣",t:"dấu sắc",m:"sáu ống trúc"},{w:"sâu",e:"🐛",t:"không dấu",m:"con sâu"}]},
+ {opts:[{w:"ống",e:"🎋",t:"dấu sắc",m:"ống trúc"},{w:"ông",e:"👴",t:"không dấu",m:"ông nội"}]},
+ {opts:[{w:"chợ",e:"🛒",t:"dấu nặng",m:"đi chợ"},{w:"chờ",e:"⏳",t:"dấu huyền",m:"chờ đợi"},{w:"chở",e:"🚚",t:"dấu hỏi",m:"chở hàng"}]},
+ {opts:[{w:"nhớ",e:"💭",t:"dấu sắc",m:"nhớ nhà"},{w:"nhờ",e:"🙏",t:"dấu huyền",m:"nhờ giúp"},{w:"nhỡ",e:"🚌",t:"dấu ngã",m:"nhỡ xe"}]}
+];
+const QUIZ=[
+ {q:"Đến Tây Bắc, nghe tiếng khèn của người Mông, du khách thường cảm thấy thế nào?",
+  o:["Thấy nhớ, thấy thương, thấy vấn vương trong lòng, có thể đắm say.","Thấy sợ hãi và muốn chạy trốn.","Thấy buồn ngủ vì tiếng khèn quá nhỏ."],a:0,ev:"s1",
+  why:"Ai nghe tiếng khèn sẽ thấy nhớ, thấy thương, thấy vấn vương. Âm thanh ấy còn làm đắm say cả du khách khó tính nhất."},
+ {q:"Theo bài đọc, khèn của người Mông được làm bằng gì?",
+  o:["Bằng gỗ cùng sáu ống trúc lớn, nhỏ, dài, ngắn khác nhau.","Bằng sắt và nhựa.","Bằng đá và sáu sợi dây đàn."],a:0,ev:"s3",
+  why:"Khèn được chế tác bằng gỗ cùng sáu ống trúc lớn, nhỏ, dài, ngắn khác nhau."},
+ {q:"Sáu ống trúc của cây khèn tượng trưng cho điều gì?",
+  o:["Tình anh em tụ hợp.","Sáu mùa trong một năm.","Sáu ngọn núi ở Tây Bắc."],a:0,ev:"s4",
+  why:"Sáu ống trúc tượng trưng cho tình anh em tụ hợp."},
+ {q:"Khi nhìn và tưởng tượng thêm một chút, sáu ống trúc xếp song song giống như gì?",
+  o:["Như dòng nước đang trôi.","Như một chiếc thang.","Như những ngọn núi."],a:0,ev:"s6",
+  why:"Các ống trúc trông như dòng nước đang trôi, chở âm thanh huyền diệu từ xưa đến nay."},
+ {q:"Vì sao tiếng khèn trở thành báu vật của người Mông?",
+  o:["Vì tiếng khèn gắn bó với cuộc sống của người Mông và được truyền lại cho các thế hệ sau.","Vì khèn được bán với giá rất đắt.","Vì chỉ có vua mới được thổi khèn."],a:0,ev:"s10",
+  why:"Tiếng khèn gắn bó với người Mông khi lên nương, xuống chợ, mùa xuân về. Người xưa còn truyền lại cho các thế hệ sau."},
+ {q:"Đoạn cuối bài muốn nói điều gì về tiếng khèn và người thổi khèn?",
+  o:["Người thổi khèn đẹp như một tuyệt tác của thiên nhiên, và núi rừng bao la cũng không làm chìm khuất tiếng khèn.","Tiếng khèn rất nhỏ nên núi rừng làm chìm khuất.","Người thổi khèn sợ gió trên đỉnh núi."],a:0,ev:"s13",
+  why:"Hình bóng người thổi khèn như một tuyệt tác. Tiếng khèn đầy khát khao, sức sống nên núi rừng rộng lớn cũng không làm chìm khuất được."},
+ {q:"Chủ đề của bài đọc Thanh âm của núi là gì?",
+  o:["Nét đặc sắc của văn hoá các vùng miền trường tồn cùng thời gian.","Các nhạc cụ dân tộc thể hiện sự sáng tạo đáng tự hào của người Việt Nam.","Tiếng khèn của người Mông là nét văn hoá quý báu, cần được lưu giữ, bảo tồn.","Du khách rất thích đến Tây Bắc, mảnh đất có những nét văn hoá đặc sắc."],a:2,ev:"s10",
+  why:"Cả bài nói về tiếng khèn của người Mông, một nét văn hoá quý báu cần được giữ gìn."}
+];
+const STORY_ORDER=[
+ "Ai lên Tây Bắc nghe tiếng khèn của người Mông sẽ thấy nhớ, thấy thương, thấy vấn vương.",
+ "Khèn làm bằng gỗ và sáu ống trúc xếp song song, trông như dòng nước đang trôi.",
+ "Tiếng khèn gắn bó với người Mông và trở thành báu vật truyền lại cho đời sau.",
+ "Người thổi khèn trên đỉnh núi đẹp như tuyệt tác, tiếng khèn không bị núi rừng làm chìm khuất."
+];
+const SORT={
+ head:"Nhân hoá: hai cách",title:"Hai cách nhân hoá",sub:"Chạm một từ, rồi chạm giỏ đúng. Có hai cách nhân hoá: gọi bằng từ chỉ người, hoặc tả bằng việc làm, tính nết của người.",
+ say:"Mình học biện pháp nhân hoá nhé! Nhân hoá là cho con vật, cây cối, thiên nhiên có cách gọi và việc làm như con người. Ví dụ: chị gió hát. Chị là cách gọi, hát là việc làm của người.",
+ win:"Giỏi quá! Bạn phân biệt được hai cách nhân hoá rồi!",star:2,nextLabel:"Sang câu hỏi ➡️",
+ baskets:[
+  {k:"g",t:"🧑 Gọi bằng từ chỉ người",s:"cách xưng hô, gọi tên như người",h:"Thử hỏi: “{w}” có phải là từ dùng để gọi người (như một cách xưng hô) không? Nếu phải thì bỏ vào giỏ gọi bằng từ chỉ người."},
+  {k:"t",t:"🎭 Tả bằng việc làm, tính nết của người",s:"chỉ hoạt động, đặc điểm, tâm trạng của người",h:"Thử hỏi: “{w}” có phải là việc làm, tính nết hay tâm trạng của người không? Nếu phải thì bỏ vào giỏ tả bằng việc làm, tính nết."}],
+ items:[{w:"thím",k:"g"},{w:"chú",k:"g"},{w:"anh",k:"g"},{w:"bác",k:"g"},{w:"nàng",k:"g"},
+        {w:"nhanh nhảu",k:"t"},{w:"lắm điều",k:"t"},{w:"đỏm dáng",k:"t"},{w:"trầm ngâm",k:"t"},{w:"mách tin",k:"t"}]
+};
+const WELCOME={
+ title:"Nhạc cụ dân tộc nào?",sub:"Chạm vào những nhạc cụ dân tộc của Việt Nam. Tìm được 3 nhạc cụ là qua bài nhé!",
+ say:"{n} ơi, hôm nay mình đọc bài Thanh âm của núi, nói về tiếng khèn của người Mông ở Tây Bắc. Trước hết, bạn tìm giúp mình những nhạc cụ dân tộc nhé!",
+ cards:[{e:"🎶",t:"khèn của người Mông",g:1},{e:"🎼",t:"đàn bầu",g:1},{e:"🥁",t:"đàn t'rưng",g:1},{e:"🪨",t:"đàn đá",g:1},{e:"🎹",t:"đàn pi-a-nô",g:0},{e:"🎷",t:"kèn xắc-xô-phôn",g:0},{e:"🎸",t:"ghi-ta điện",g:0}],
+ need:3,okOne:"",wrong:"Nhạc cụ này không phải của dân tộc Việt Nam đâu. Thử cái khác nhé!",
+ done:"Bạn biết nhiều nhạc cụ dân tộc quá! Mình đi nghe truyện nhé!",heads:"Nhạc cụ dân tộc"
+};
+const RETELL={q:"Đóng vai một người Mông, em hãy giới thiệu về chiếc khèn.",
+ sub:"Em xưng “tôi” hoặc “chúng tôi”. Nói: khèn làm bằng gì, hình dáng khiến em nghĩ đến gì, vì sao khèn là báu vật. Có thể bắt đầu: “Chào các bạn, tôi là người Mông. Chiếc khèn của chúng tôi…”.",
+ say:"Bạn đóng vai một người Mông nhé. Nhớ xưng tôi và chúng tôi nha! Không có đáp án đúng sai, bạn cứ nói điều bạn nhớ."};
+const BADGE={e:"🎶",name:"Bạn của núi rừng",gift:"🪈 chiếc khèn nhỏ xinh",text:"hoàn thành bài 19"};
+return {SENTS,PAGES,PRACTICE,GLOSS,TONES,QUIZ,STORY_ORDER,SORT,WELCOME,RETELL,BADGE};
+})();
+
+// ===== BÀI 20 - BẦU TRỜI MÙA THU (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.89-92) =====
+const B20=(()=>{
+const SENTS={
+ s1:{c:["Giờ học hôm nay,","thầy giáo cùng cả lớp","đi ra cánh đồng."]},
+ s2:{c:["Buổi sáng mùa thu mát mẻ."]},
+ s3:{c:["Thầy nói:"]},
+ s4:{d:1,c:["– Các em hãy nhìn lên bầu trời."]},
+ s5:{d:1,c:["Mùa hè,","nó rất nóng","với những tia nắng mặt trời chói chang."]},
+ s6:{d:1,c:["Còn bây giờ,","bầu trời thế nào?"]},
+ s7:{d:1,c:["Các em hãy suy nghĩ","và chọn những từ ngữ thích hợp","để nói về bầu trời."]},
+ s8:{c:["Các cô cậu học trò","nhìn lên trời","và suy nghĩ."]},
+ s9:{c:["Sau vài phút,","một em nói:"]},
+ s10:{d:1,c:["– Bầu trời xanh","như mặt nước","mệt mỏi trong ao."]},
+ s11:{d:1,c:["– Vì sao mặt nước","lại mệt mỏi?","– Thầy hỏi."]},
+ s12:{d:1,c:["– Thưa thầy,","mùa hè,","nước dạo chơi","cùng những làn sóng.","Mùa thu,","nó mệt","nên đứng yên","với màu xanh nhạt."]},
+ s13:{c:["Các bạn khác","tiếp tục nói:"]},
+ s14:{d:1,c:["– Bầu trời được rửa mặt","sau cơn mưa."]},
+ s15:{d:1,c:["– Bầu trời xanh biếc."]},
+ s16:{c:["Thấy cô bé Va-li-a","vẻ mặt đăm chiêu,","thầy giáo hỏi:"]},
+ s17:{d:1,c:["– Còn Va-li-a,","vì sao em","im lặng thế?"]},
+ s18:{d:1,c:["– Em muốn nói","bằng những từ ngữ","của mình."]},
+ s19:{d:1,c:["– Em đã tìm được chưa?"]},
+ s20:{d:1,c:["– Bầu trời dịu dàng.","– Va-li-a khẽ nói","và mỉm cười."]},
+ s21:{c:["Sau đó,","mỗi em đều muốn nói về bầu trời","bằng những từ ngữ","của riêng mình:"]},
+ s22:{d:1,c:["– Bầu trời buồn bã.","Những đám mây xám","đang từ phương bắc","trôi tới."]},
+ s23:{d:1,c:["– Bầu trời trầm ngâm.","Nó nhớ đến tiếng hót","của bầy chim sơn ca."]},
+ s24:{d:1,c:["– Bầu trời ghé sát mặt đất.","Mùa hè,","nó cao hơn","và có những con chim én bay liệng.","Còn bây giờ,","chẳng có chim én nữa,","vì thế bầu trời cúi xuống lắng nghe","để tìm xem chim én","đang ở trong bụi cây","hay ở nơi nào."]},
+ s25:{c:["Cứ thế,","các cô cậu hào hứng","suy nghĩ và tưởng tượng","để nói về bầu trời","theo cách của riêng mình."]}
+};
+const PAGES=[
+ {ids:["s1","s2","s3","s4","s5","s6","s7"],scene:"🌾 👨‍🏫 🧒 ☁️"},
+ {ids:["s8","s9","s10","s11","s12"],scene:"🌤️ 💧 🪷 🤔"},
+ {ids:["s13","s14","s15","s16","s17","s18","s19","s20"],scene:"🌧️ 🌈 👧 😊"},
+ {ids:["s21","s22","s23","s24","s25"],scene:"☁️ 🐦 🌅 💭"}
+];
+const PRACTICE=["s5","s10","s14","s23","s24"];
+const GLOSS={
+ "trầm ngâm":{e:"🤔",d:"có dáng vẻ đang suy nghĩ, nghiền ngẫm điều gì.",x:"Ông ngồi trầm ngâm bên cửa sổ."},
+ "chói chang":{e:"☀️",d:"sáng rực và gay gắt, nhìn vào thấy chói mắt.",x:"Nắng trưa hè chói chang."},
+ "mát mẻ":{e:"🍃",d:"mát, dễ chịu.",x:"Buổi sáng mùa thu thật mát mẻ."},
+ "suy nghĩ":{e:"💭",d:"nghĩ kĩ về một điều gì.",x:"Em suy nghĩ rồi mới trả lời."},
+ "thích hợp":{e:"✅",d:"hợp, đúng với điều cần.",x:"Em chọn từ thích hợp để điền vào chỗ trống."},
+ "mệt mỏi":{e:"😓",d:"thấy mệt, không còn sức.",x:"Chạy mãi nên em rất mệt mỏi."},
+ "xanh biếc":{e:"💙",d:"xanh đậm và tươi, trông rất đẹp.",x:"Nước biển xanh biếc."},
+ "đăm chiêu":{e:"🤨",d:"có vẻ mặt đang nghĩ ngợi nhiều, lo nghĩ.",x:"Bé ngồi đăm chiêu nhìn bài toán."},
+ "dịu dàng":{e:"🌸",d:"nhẹ nhàng, hiền, làm người ta thấy dễ chịu.",x:"Mẹ nói chuyện rất dịu dàng."},
+ "khẽ":{e:"🪶",d:"nhẹ nhàng, rất nhỏ, không gây tiếng ồn.",x:"Em khẽ đóng cửa để em bé ngủ."},
+ "mỉm cười":{e:"🙂",d:"cười nhẹ, chỉ hơi cong môi, không thành tiếng.",x:"Cô giáo mỉm cười khen em."},
+ "buồn bã":{e:"😔",d:"buồn, không vui.",x:"Bạn ấy buồn bã vì mất chú mèo."},
+ "phương bắc":{e:"🧭",d:"phía bắc, hướng bắc.",x:"Gió từ phương bắc thổi về."},
+ "chim én":{e:"🐦",d:"loài chim nhỏ, cánh dài, hay bay liệng nhanh, thường báo hiệu mùa xuân.",x:"Đàn chim én bay về khi xuân sang."},
+ "chim sơn ca":{e:"🎤🐦",d:"loài chim hót rất hay.",x:"Chim sơn ca hót vang trên đồng cỏ."},
+ "bay liệng":{e:"🕊️",d:"bay lượn trên cao, nghiêng cánh nhẹ nhàng.",x:"Chim én bay liệng trên bầu trời."},
+ "lắng nghe":{e:"👂",d:"nghe thật chăm chú, thật kĩ.",x:"Em lắng nghe cô giảng bài."},
+ "hào hứng":{e:"🤩",d:"vui, thích thú, muốn làm ngay.",x:"Cả lớp hào hứng chơi trò chơi."}
+};
+const TONES=[
+ {opts:[{w:"thầy",e:"👨‍🏫",t:"dấu huyền",m:"thầy giáo"},{w:"thấy",e:"👀",t:"dấu sắc",m:"nhìn thấy"}]},
+ {opts:[{w:"nắng",e:"☀️",t:"dấu sắc",m:"ánh nắng"},{w:"nặng",e:"🏋️",t:"dấu nặng",m:"cái túi nặng"},{w:"năng",e:"⚡",t:"không dấu",m:"năng lượng"}]},
+ {opts:[{w:"cánh",e:"🌾",t:"dấu sắc",m:"cánh đồng"},{w:"cảnh",e:"🏞️",t:"dấu hỏi",m:"cảnh đẹp"},{w:"cạnh",e:"📐",t:"dấu nặng",m:"bên cạnh"}]},
+ {opts:[{w:"buồn",e:"😢",t:"dấu huyền",m:"buồn bã"},{w:"buôn",e:"🛍️",t:"không dấu",m:"buôn bán"}]},
+ {opts:[{w:"chim",e:"🐦",t:"không dấu",m:"con chim"},{w:"chìm",e:"🌊",t:"dấu huyền",m:"tàu bị chìm"}]}
+];
+const QUIZ=[
+ {q:"Các bạn học sinh được thầy giáo giao cho nhiệm vụ gì?",
+  o:["Nhìn lên bầu trời, suy nghĩ và chọn từ ngữ thích hợp để nói về bầu trời.","Vẽ một bức tranh về cánh đồng.","Đếm xem trên trời có bao nhiêu đám mây."],a:0,ev:"s7",
+  why:"Thầy nhờ các bạn suy nghĩ và chọn những từ ngữ thích hợp để nói về bầu trời."},
+ {q:"Một bạn nói: “Bầu trời xanh như mặt nước mệt mỏi trong ao”. Bạn đã so sánh bầu trời với gì?",
+  o:["Với mặt nước mệt mỏi trong ao.","Với những tia nắng chói chang.","Với bầy chim sơn ca."],a:0,ev:"s10",
+  why:"Bạn so sánh màu xanh của bầu trời với mặt nước trong ao, và nói mặt nước “mệt mỏi” như một người."},
+ {q:"Em có nhận xét gì về cách tả bầu trời của các bạn nhỏ?",
+  o:["Các bạn tả bầu trời như một con người: biết rửa mặt, dịu dàng, buồn bã, trầm ngâm, lắng nghe.","Các bạn chỉ tả màu xanh của bầu trời.","Các bạn chép lại lời của thầy."],a:0,ev:"s23",
+  why:"Các bạn dùng biện pháp nhân hoá, nên bầu trời có tâm trạng và việc làm như một người. Cách tả rất mới lạ và giàu tưởng tượng."},
+ {q:"Vì sao hình ảnh bầu trời trong câu văn của mỗi bạn nhỏ lại rất khác nhau?",
+  o:["Vì mỗi bạn có cảm nhận, trí tưởng tượng và cách nói của riêng mình.","Vì các bạn đứng ở những nơi quá xa nhau.","Vì thầy giáo bảo mỗi bạn phải nói khác nhau."],a:0,ev:"s25",
+  why:"Mỗi bạn quan sát, cảm nhận và tưởng tượng theo cách riêng nên bầu trời trong mỗi câu văn đều khác nhau."},
+ {q:"Câu nào dùng cả hai biện pháp so sánh và nhân hoá?",
+  o:["Bầu trời xanh như mặt nước mệt mỏi trong ao.","Mùa hè, nước dạo chơi cùng những làn sóng.","Bầu trời được rửa mặt sau cơn mưa.","Bầu trời dịu dàng."],a:0,hint:"Tìm câu vừa có từ so sánh “như”, vừa có từ chỉ tâm trạng của người (mệt mỏi).",
+  why:"Có so sánh: “xanh như mặt nước”. Có nhân hoá: mặt nước “mệt mỏi” như người."}
+];
+const STORY_ORDER=[
+ "Thầy giáo cùng cả lớp đi ra cánh đồng vào một buổi sáng mùa thu.",
+ "Thầy giao nhiệm vụ: nhìn bầu trời và chọn từ ngữ thích hợp để nói về nó.",
+ "Các bạn lần lượt nói: bầu trời xanh như mặt nước mệt mỏi, được rửa mặt, dịu dàng…",
+ "Mỗi bạn hào hứng suy nghĩ và tưởng tượng để nói về bầu trời theo cách riêng."
+];
+const SORT={
+ head:"So sánh hay nhân hoá?",title:"So sánh hay nhân hoá?",sub:"Chạm một câu, rồi chạm giỏ đúng. So sánh có từ như, tựa như. Nhân hoá là gán việc làm, tâm trạng của người cho vật.",
+ say:"Mình phân biệt so sánh và nhân hoá nhé! So sánh thường có từ như. Nhân hoá là cho vật có việc làm, tâm trạng như người. Có câu dùng cả hai!",
+ win:"Giỏi quá! Bạn phân biệt so sánh và nhân hoá rất tốt!",star:2,nextLabel:"Sang câu hỏi ➡️",
+ baskets:[
+  {k:"ss",t:"🔍 Chỉ có so sánh",s:"có từ như, tựa như…",h:"Thử hỏi: câu “{w}” có từ so sánh như không? Có vật nào làm việc của người không? Nếu chỉ có so sánh thì bỏ giỏ này."},
+  {k:"nh",t:"🎭 Chỉ có nhân hoá",s:"vật có việc làm, tâm trạng như người",h:"Thử hỏi: trong câu “{w}”, vật có làm việc hay có tâm trạng như người không? Nếu có, và không có từ như, thì bỏ giỏ nhân hoá."},
+  {k:"both",t:"⭐ Có cả hai",s:"vừa so sánh vừa nhân hoá",h:"Thử tìm: câu “{w}” có từ so sánh không? Có từ chỉ việc làm, tâm trạng của người không? Nếu có cả hai thì bỏ giỏ này."}],
+ items:[{w:"Bầu trời xanh như mặt nước mệt mỏi trong ao.",k:"both"},
+        {w:"Chị gió vỗ về từng nhành cây như bàn tay dịu dàng của mẹ.",k:"both"},
+        {w:"Bầu trời được rửa mặt sau cơn mưa.",k:"nh"},
+        {w:"Bầu trời cúi xuống lắng nghe.",k:"nh"},
+        {w:"Mùa hè, nước dạo chơi cùng những làn sóng.",k:"nh"},
+        {w:"Cái mặt tròn như đồng xu.",k:"ss"},
+        {w:"Mặt trời tròn như quả bóng.",k:"ss"},
+        {w:"Những ống trúc như dòng nước đang trôi.",k:"ss"}]
+};
+const WELCOME={
+ title:"Bầu trời đẹp nhất lúc nào?",sub:"Chạm vào lúc em thấy bầu trời đẹp nhất.",
+ say:"{n} ơi, hôm nay mình đọc bài Bầu trời mùa thu. Trước hết, bạn nghĩ xem, bầu trời đẹp nhất vào lúc nào nhỉ?",
+ cards:[{e:"🌅",t:"lúc bình minh",g:1},{e:"☀️",t:"buổi trưa nắng",g:1},{e:"🌇",t:"lúc hoàng hôn",g:1},{e:"🌙",t:"đêm đầy sao",g:1},{e:"🍂",t:"sáng mùa thu",g:1}],
+ need:1,okOne:"Hay quá! Bạn thấy bầu trời đẹp nhất {t}. Vì sao vậy nhỉ? Bạn nói cho Miu-Bot hoặc bố mẹ nghe nhé!",
+ wrong:"",done:"Bạn quan sát bầu trời thật tinh! Mình đi nghe truyện nhé!",heads:"Bầu trời đẹp nhất lúc nào?"
+};
+const RETELL={q:"Trong bài có rất nhiều câu văn tả bầu trời. Em thích câu văn nào? Vì sao?",
+ sub:"Em đọc lại một câu em thích, rồi nói vì sao em thích (hình ảnh đẹp, từ ngữ hay, cách so sánh, nhân hoá…). Có thể bắt đầu: “Em thích câu… vì…”.",
+ say:"Câu này không có đáp án đúng hay sai. Bạn cứ nói câu bạn thích nhất nhé!"};
+const BADGE={e:"🍂",name:"Nhà quan sát bầu trời",gift:"🔭 chiếc kính thiên văn nhỏ",text:"hoàn thành bài 20"};
+return {SENTS,PAGES,PRACTICE,GLOSS,TONES,QUIZ,STORY_ORDER,SORT,WELCOME,RETELL,BADGE};
+})();
+
+// ===== BÀI 21 - LÀM THỎ CON BẰNG GIẤY (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.93-96) =====
+const B21=(()=>{
+const SENTS={
+ s1:{c:["Sắp đến sinh nhật Hoa,","Hà quyết định làm tặng bạn","một con thỏ bằng giấy."]},
+ s2:{c:["Hà đã chuẩn bị dụng cụ, vật liệu","và làm theo cách sau:"]},
+ s3:{c:["Dụng cụ, vật liệu:"]},
+ s4:{c:["Kéo,","bút chì,","bút màu,","hồ dán."]},
+ s5:{c:["Giấy trắng hoặc bìa","(2 tờ)."]},
+ s6:{c:["Giấy màu","(1 tờ)."]},
+ s7:{c:["Cách làm:"]},
+ s8:{c:["Bước 1.","Cắt."]},
+ s9:{c:["Cắt hai hình chữ nhật","từ 2 tờ giấy trắng","để làm đầu thỏ, thân thỏ."]},
+ s10:{c:["Hình thứ nhất:","rộng 10 cm,","dài 25 cm."]},
+ s11:{c:["Hình thứ hai:","rộng 15 cm,","dài 25 cm."]},
+ s12:{c:["Cắt hình tai thỏ từ giấy trắng,","sau đó gấp","theo đường kẻ nét đứt."]},
+ s13:{c:["Cắt đế","từ giấy màu."]},
+ s14:{c:["Bước 2.","Dán."]},
+ s15:{c:["Dùng hồ dán hai mép","của mỗi hình chữ nhật","để tạo đầu thỏ và thân thỏ."]},
+ s16:{c:["Dán tai thỏ, đầu thỏ, thân thỏ","với nhau,","sau đó dán lên đế."]},
+ s17:{c:["Bước 3.","Vẽ."]},
+ s18:{c:["Dùng bút màu","vẽ trang trí tai thỏ."]},
+ s19:{c:["Dùng bút màu vẽ","mắt, râu, mũi, miệng","ở đầu thỏ","và tay ở thân thỏ."]},
+ s20:{c:["Vậy là Hà đã có","một chú thỏ con đáng yêu bằng giấy","để tặng Hoa","trong ngày sinh nhật."]},
+ s21:{c:["Hi vọng Hoa sẽ vui sướng","đón nhận món quà của bạn."]}
+};
+const PAGES=[
+ {ids:["s1","s2","s3","s4","s5","s6","s7"],scene:"🎂 👧 ✂️ 🖍️"},
+ {ids:["s8","s9","s10","s11","s12","s13"],scene:"📄 ✂️ 📏 🐰"},
+ {ids:["s14","s15","s16","s17","s18","s19"],scene:"🧴 🐰 🖍️ ✏️"},
+ {ids:["s20","s21"],scene:"🐰 🎁 🎉"}
+];
+const PRACTICE=["s1","s9","s12","s16","s20"];
+const GLOSS={
+ "dụng cụ":{e:"✂️🖍️",d:"đồ dùng để làm việc, như kéo, bút, hồ dán.",x:"Kéo và bút chì là dụng cụ làm thủ công."},
+ "vật liệu":{e:"📄",d:"những thứ dùng để làm ra đồ vật, như giấy, bìa, vải.",x:"Giấy màu là vật liệu để làm thỏ."},
+ "bìa":{e:"📕",d:"giấy dày và cứng hơn giấy thường.",x:"Em dùng bìa để làm hộp quà."},
+ "hồ dán":{e:"🧴",d:"chất dính dùng để dán giấy.",x:"Em bôi hồ dán vào mép giấy."},
+ "hình chữ nhật":{e:"▭",d:"hình có bốn góc vuông, hai cạnh dài và hai cạnh ngắn.",x:"Tờ giấy này có hình chữ nhật."},
+ "đường kẻ nét đứt":{e:"✂️┄┄",d:"đường kẻ gồm nhiều đoạn ngắn rời nhau. Trong bài này, nét đứt chỉ chỗ gấp.",x:"Em gấp tai thỏ theo đường kẻ nét đứt."},
+ "đế":{e:"🟥",d:"bộ phận gắn liền với phần dưới của vật, giữ cho vật đứng vững.",x:"Chú thỏ đứng vững nhờ có đế."},
+ "mép":{e:"〰️",d:"phần ngoài cùng, sát cạnh của tờ giấy.",x:"Bôi hồ dán vào mép giấy."},
+ "trang trí":{e:"🎨",d:"làm cho đẹp hơn bằng màu sắc, hình vẽ.",x:"Em trang trí tai thỏ bằng bút màu."},
+ "râu":{e:"🐱",d:"những sợi lông cứng, dài mọc ở hai bên mép của thỏ, mèo…",x:"Em vẽ ba sợi râu cho chú thỏ."},
+ "sinh nhật":{e:"🎂",d:"ngày kỉ niệm mỗi năm, vào đúng ngày em được sinh ra.",x:"Sinh nhật Hoa, bạn bè tặng quà."}
+};
+const TONES=[
+ {opts:[{w:"thỏ",e:"🐰",t:"dấu hỏi",m:"con thỏ"},{w:"thơ",e:"📖",t:"không dấu",m:"bài thơ"},{w:"thợ",e:"👷",t:"dấu nặng",m:"thợ xây"}]},
+ {opts:[{w:"kéo",e:"✂️",t:"dấu sắc",m:"cái kéo"},{w:"keo",e:"🧴",t:"không dấu",m:"keo dán"}]},
+ {opts:[{w:"đế",e:"🟥",t:"dấu sắc",m:"cái đế"},{w:"để",e:"📥",t:"dấu hỏi",m:"để lên bàn"}]},
+ {opts:[{w:"giấy",e:"📄",t:"dấu sắc",m:"tờ giấy"},{w:"giày",e:"👟",t:"dấu huyền",m:"đôi giày"}]},
+ {opts:[{w:"tai",e:"👂",t:"không dấu",m:"tai thỏ"},{w:"tài",e:"🌟",t:"dấu huyền",m:"tài giỏi"}]},
+ {opts:[{w:"dán",e:"🧴",t:"dấu sắc",m:"dán giấy"},{w:"dạn",e:"💪",t:"dấu nặng",m:"dạn dĩ"},{w:"dàn",e:"🎻",t:"dấu huyền",m:"dàn nhạc"}]}
+];
+const QUIZ=[
+ {q:"Để làm thỏ con bằng giấy, em KHÔNG cần chuẩn bị đồ vật nào dưới đây?",
+  o:["Kim chỉ","Hồ dán","Kéo"],a:0,ev:"s4",
+  why:"Bài đọc chỉ cần: kéo, bút chì, bút màu, hồ dán, giấy trắng hoặc bìa, giấy màu. Không có kim chỉ, cũng không có băng dính."},
+ {q:"Làm thỏ con bằng giấy cần thực hiện mấy bước?",
+  o:["Ba bước: Cắt, Dán, Vẽ.","Hai bước: Cắt và Dán.","Bốn bước: Cắt, Dán, Vẽ, Tô màu."],a:0,ev:"s8",
+  why:"Có ba bước: Bước 1 Cắt, Bước 2 Dán, Bước 3 Vẽ."},
+ {q:"Hình chữ nhật làm đầu thỏ và hình chữ nhật làm thân thỏ khác nhau thế nào?",
+  o:["Cả hai cùng dài 25 cm; đầu thỏ rộng 10 cm, thân thỏ rộng 15 cm.","Cả hai cùng rộng 10 cm; đầu thỏ dài 25 cm, thân thỏ dài 15 cm.","Đầu thỏ rộng 15 cm, thân thỏ rộng 10 cm."],a:0,ev:"s10",
+  why:"Đầu thỏ nhỏ hơn nên rộng 10 cm. Thân thỏ lớn hơn nên rộng 15 cm. Cả hai đều dài 25 cm."},
+ {q:"Hình tai thỏ cắt xong thì phải làm gì với đường kẻ nét đứt?",
+  o:["Gấp theo đường kẻ nét đứt.","Cắt rời theo đường kẻ nét đứt.","Xoá đường kẻ nét đứt đi."],a:0,ev:"s12",
+  why:"Bài đọc nói: sau đó gấp theo đường kẻ nét đứt. Nét đứt chỉ chỗ gấp, không phải chỗ cắt."},
+ {q:"Nhờ bộ phận nào mà chú thỏ giấy đứng vững?",
+  o:["Cái đế làm bằng giấy màu.","Đôi tai thỏ dài.","Những sợi râu."],a:0,ev:"s16",
+  why:"Đế là bộ phận gắn liền với phần dưới của vật, giữ cho vật đứng vững. Thỏ được dán lên đế."},
+ {q:"Hà làm chú thỏ giấy để làm gì?",
+  o:["Để tặng Hoa trong ngày sinh nhật.","Để tự chơi một mình.","Để bán ở chợ."],a:0,ev:"s1",
+  why:"Sắp đến sinh nhật Hoa, Hà quyết định làm tặng bạn một con thỏ bằng giấy."},
+ {q:"Từ nào là tính từ (chỉ đặc điểm)?",
+  o:["đáng yêu","cắt","kéo"],a:0,hint:"Tính từ trả lời câu hỏi: như thế nào? Chú thỏ như thế nào?",
+  why:"“Đáng yêu” cho biết chú thỏ như thế nào, nên là tính từ. “Cắt” là động từ, “kéo” là danh từ."}
+];
+const STORY_ORDER=[
+ "Hà chuẩn bị giấy, kéo, hồ dán, bút để làm thỏ tặng Hoa.",
+ "Bước 1: Hà cắt đầu thỏ, thân thỏ, tai thỏ và cái đế.",
+ "Bước 2: Hà dán các phần lại với nhau rồi dán lên đế.",
+ "Bước 3: Hà vẽ mắt, râu, mũi, miệng. Chú thỏ xong, Hà đem tặng Hoa."
+];
+const SORT={
+ head:"Cắt, Dán, Vẽ",title:"Xếp việc vào đúng bước",sub:"Chạm một việc, rồi chạm bước đúng: Cắt, Dán hay Vẽ.",
+ say:"Mình chơi trò xếp việc nhé! Bước một là Cắt. Bước hai là Dán. Bước ba là Vẽ. Bạn xếp từng việc vào đúng bước nhé!",
+ win:"Giỏi quá! Bạn nhớ đúng cả ba bước làm thỏ giấy!",star:2,nextLabel:"Sang câu hỏi ➡️",
+ baskets:[
+  {k:"cat",t:"✂️ Bước 1: Cắt",s:"cắt các bộ phận từ giấy",h:"Thử hỏi: việc “{w}” có dùng kéo để cắt không? Nếu có thì bỏ vào bước Cắt."},
+  {k:"dan",t:"🧴 Bước 2: Dán",s:"dùng hồ dán ghép các bộ phận",h:"Thử hỏi: việc “{w}” có dùng hồ dán không? Nếu có thì bỏ vào bước Dán."},
+  {k:"ve",t:"🖍️ Bước 3: Vẽ",s:"dùng bút màu vẽ trang trí",h:"Thử hỏi: việc “{w}” có dùng bút màu để vẽ không? Nếu có thì bỏ vào bước Vẽ."}],
+ items:[{w:"cắt hai hình chữ nhật",k:"cat"},{w:"cắt đế từ giấy màu",k:"cat"},{w:"cắt hình tai thỏ",k:"cat"},
+        {w:"bôi hồ dán hai mép giấy",k:"dan"},{w:"dán tai thỏ vào đầu thỏ",k:"dan"},{w:"dán thỏ lên đế",k:"dan"},
+        {w:"vẽ mắt, mũi, miệng",k:"ve"},{w:"vẽ râu cho thỏ",k:"ve"},{w:"trang trí tai thỏ",k:"ve"}]
+};
+const WELCOME={
+ title:"Em biết làm đồ chơi nào?",sub:"Chạm vào đồ chơi em biết làm hoặc em muốn làm.",
+ say:"{n} ơi, hôm nay mình đọc bài Làm thỏ con bằng giấy. Bạn có biết làm đồ chơi nào không? Chạm vào đồ chơi bạn thích nhé!",
+ cards:[{e:"✈️",t:"máy bay giấy",g:1},{e:"⛵",t:"thuyền giấy",g:1},{e:"🌀",t:"chong chóng",g:1},{e:"🐸",t:"ếch nhảy bằng giấy",g:1},{e:"🪁",t:"con diều",g:1},{e:"🐰",t:"thỏ giấy",g:1}],
+ need:1,okOne:"Hay quá! Bạn thích {t}. Bạn làm nó như thế nào nhỉ? Bạn kể cho Miu-Bot hoặc bố mẹ nghe nhé!",
+ wrong:"",done:"Bạn biết nhiều đồ chơi quá! Mình đi nghe truyện nhé!",heads:"Em biết làm đồ chơi nào?"
+};
+const RETELL={q:"Em hãy kể 1 hoặc 2 bước làm thỏ con bằng giấy.",
+ sub:"Bạn nói bằng lời của mình. Có thể bắt đầu: “Đầu tiên em… Tiếp theo em… Cuối cùng em…”.",
+ say:"Bạn nhớ các từ chỉ thứ tự nhé: đầu tiên, tiếp theo, sau đó, cuối cùng. Bạn cứ kể điều bạn nhớ!"};
+const BADGE={e:"🐰",name:"Bàn tay khéo léo",gift:"✂️ chiếc kéo vàng",text:"hoàn thành bài 21"};
+return {SENTS,PAGES,PRACTICE,GLOSS,TONES,QUIZ,STORY_ORDER,SORT,WELCOME,RETELL,BADGE};
+})();
+
+const W21=[
+ {id:"a1",e:"🔎",t:"Tìm từ chỉ đặc điểm",s:"4 phút",type:"quiz",intro:"Mình tìm từ chỉ đặc điểm nhé. Đặc điểm là sự vật trông như thế nào, mùi vị ra sao. Bạn nghe câu hỏi rồi chọn đáp án.",
+  list:[
+   {q:"Từ nào chỉ vị của quả táo?",o:["ngọt","ăn","quả táo"],a:0,hint:"Vị là cảm giác ở lưỡi khi ăn. Táo có vị như thế nào?",why:"“Ngọt” chỉ vị của quả táo. Đây là từ chỉ đặc điểm (tính từ)."},
+   {q:"Từ nào chỉ mùi hương của hoa hồng?",o:["thơm ngát","nở","cánh hoa"],a:0,hint:"Hoa hồng có mùi như thế nào?",why:"“Thơm ngát” chỉ mùi hương của hoa hồng."},
+   {q:"Từ nào chỉ kích thước của một chú voi?",o:["to lớn","chạy","cái vòi"],a:0,hint:"Chú voi lớn hay nhỏ?",why:"“To lớn” chỉ kích thước của chú voi."},
+   {q:"Từ nào chỉ màu của mặt trời?",o:["đỏ rực","mọc","ánh sáng"],a:0,hint:"Mặt trời có màu gì?",why:"“Đỏ rực” chỉ màu của mặt trời. Từ “mọc” là hoạt động, còn “ánh sáng” là sự vật."},
+   {q:"Từ nào chỉ hình dáng của cầu vồng?",o:["cong cong","mưa","sau cơn mưa"],a:0,hint:"Cầu vồng thẳng hay cong?",why:"“Cong cong” chỉ hình dáng của cầu vồng."},
+   {q:"Từ nào chỉ âm thanh trong giờ ra chơi?",o:["ồn ào","chạy nhảy","tiếng trống"],a:0,hint:"Giờ ra chơi có tiếng nói như thế nào?",why:"“Ồn ào” chỉ âm thanh trong giờ ra chơi. Em có thể thêm: náo nhiệt, rộn rã."}
+  ]},
+ {id:"a2",e:"🧺",t:"Xếp tính từ vào nhóm",s:"3 phút",type:"sort",cfg:{
+  head:"Tính từ của sự vật và hoạt động",title:"Xếp tính từ vào đúng giỏ",sub:"Các từ lấy từ đoạn văn “Ánh nắng lướt đi…”. Chạm một từ, rồi chạm giỏ đúng.",
+  say:"Có hai loại tính từ. Một loại chỉ đặc điểm của sự vật, như màu sắc, hình dáng. Một loại chỉ đặc điểm của hoạt động, như nhanh hay chậm, nhẹ hay mạnh.",
+  win:"Giỏi quá! Bạn phân biệt tính từ của sự vật và của hoạt động rất tốt!",star:2,nextLabel:"Tiếp ➡️",
+  baskets:[
+   {k:"sv",t:"🌾 Đặc điểm của sự vật",s:"màu sắc, hình dáng, kích thước…",h:"Thử hỏi: “{w}” có tả sự vật (cánh đồng, mái ngói, giọt sương…) trông như thế nào không? Nếu có thì bỏ vào giỏ sự vật."},
+   {k:"hd",t:"🏃 Đặc điểm của hoạt động",s:"nhanh hay chậm, nhẹ hay mạnh…",h:"Thử hỏi: “{w}” có tả việc làm diễn ra như thế nào (lướt đi, đậu xuống…) không? Nếu có thì bỏ vào giỏ hoạt động."}],
+  items:[{w:"vàng ruộm",k:"sv"},{w:"đỏ rực",k:"sv"},{w:"xanh mướt",k:"sv"},{w:"nhỏ xíu",k:"sv"},{w:"tròn xoe",k:"sv"},
+         {w:"thoăn thoắt",k:"hd"},{w:"nhè nhẹ",k:"hd"},{w:"chậm rãi",k:"hd"},{w:"kín đáo",k:"hd"},{w:"nhanh",k:"hd"}]}},
+ {id:"a3",e:"✏️",t:"Đặt câu có tính từ",s:"5 phút",type:"form",key:"a3",h:"✏️ Đặt câu có dùng tính từ",
+  sub:"Đặt 1 câu cho mỗi việc dưới đây. Trong câu dùng 1 hoặc 2 tính từ. Em làm ít nhất 2 câu nhé!",
+  say:"Bạn đặt câu có tính từ nhé. Ví dụ: Bát phở mẹ nấu rất nóng hổi và thơm ngon. Bạn viết câu của riêng bạn nhé.",
+  tip:"💡 Muốn đọc cho máy gõ thay: bấm 🎤 trên bàn phím iPad. Bố mẹ cũng có thể gõ giúp.",
+  fields:[{k:"a",l:"Bữa sáng của em",ph:"Ví dụ: Bát phở mẹ nấu rất nóng hổi và thơm ngon.",rows:2},
+          {k:"b",l:"Bộ quần áo em thích",ph:"Ví dụ: Chiếc áo của em có màu xanh tươi tắn.",rows:2},
+          {k:"c",l:"Một hoạt động trong giờ học",ph:"Ví dụ: Cả lớp thảo luận nhóm rất sôi nổi.",rows:2}],
+  need:2,minw:4,star:2,why:"đặt câu có tính từ",sum:"Câu có tính từ",
+  build:g=>["Bữa sáng: "+g("a"),"Quần áo: "+g("b"),"Giờ học: "+g("c")].filter(x=>!/: $/.test(x)).join("\n")},
+ {id:"a4",e:"📖",t:"Tìm hiểu bài hướng dẫn",s:"4 phút",type:"quiz",intro:"Mình đọc bài hướng dẫn Cách làm một chú nghé ọ bằng lá nhé. Nghé là con trâu con. Bạn trả lời câu hỏi nhé.",
+  list:[
+   {q:"Bài viết “Cách làm một chú nghé ọ bằng lá” hướng dẫn làm việc gì?",o:["Làm một chú nghé ọ (trâu con) bằng lá cây.","Làm một chú thỏ bằng giấy.","Trồng một cây mít."],a:0,why:"Bài hướng dẫn cách làm một chú nghé ọ đồ chơi bằng lá, ví dụ lá mít."},
+   {q:"Phần chuẩn bị yêu cầu phải có những gì?",o:["Một chiếc lá to bằng bàn tay, hai sợi dây cước nhỏ, kéo (hoặc dùng tay).","Một tờ giấy trắng và bút màu.","Một chiếc que gỗ và đinh ghim."],a:0,why:"Phần chuẩn bị nêu những vật liệu và dụng cụ cần có: lá to, hai sợi dây cước nhỏ, kéo hoặc dùng tay để tước lá."},
+   {q:"Phần hướng dẫn thực hiện gồm mấy bước?",o:["Hai bước.","Ba bước.","Một bước."],a:0,why:"Có hai bước. Bước 1: cắt hai đường chéo theo gân lá để tạo hai chiếc sừng. Bước 2: cuộn lá thành bụng nghé, buộc dây, luồn dây qua bụng để kéo."},
+   {q:"Một bài viết hướng dẫn thực hiện một công việc thường gồm những phần nào?",o:["Phần chuẩn bị và phần hướng dẫn thực hiện.","Chỉ có phần cảm nghĩ.","Chỉ có phần chuẩn bị."],a:0,why:"Ghi nhớ: Phần chuẩn bị nêu dụng cụ, vật liệu cần có. Phần hướng dẫn thực hiện nêu các bước làm."}
+  ]},
+ {id:"a5",e:"🔢",t:"Xếp các bước làm nghé ọ",s:"2 phút",type:"order",h:"Xếp các bước làm chú nghé ọ",sub:"Chạm các thẻ theo thứ tự các bước làm.",say:"Bạn nhớ bước làm đầu tiên là gì? Chạm vào thẻ đó trước nhé!",win:"Đúng rồi! Các bước phải đi theo thứ tự trước sau thì người đọc mới làm theo được!",
+  cards:["Chuẩn bị lá to, hai sợi dây cước nhỏ và kéo.","Bước 1: Cắt hai đường chéo theo gân lá để tạo hai chiếc sừng.","Bước 2: Cuộn lá thành bụng nghé, buộc một sợi dây quanh cuộn lá.","Dùng sợi dây còn lại buộc vào cuống lá, luồn qua bụng nghé để kéo."]}
+];
+function parentB21(){return `<h3>Đáp án bài 21 · Làm thỏ con bằng giấy (theo văn bản SGK)</h3>
+ <ul><li><b>Câu 1:</b> cần bút chì, hồ dán, kéo, bút màu, giấy trắng (hoặc bìa) 2 tờ và giấy màu 1 tờ. Không cần băng dính, kim chỉ.<br><i>⚠ File hướng dẫn chỉ ghi “giấy màu (hoặc giấy trắng)”. Theo bài đọc cần cả giấy trắng hoặc bìa (2 tờ) làm đầu, thân, tai thỏ <u>và</u> giấy màu (1 tờ) làm đế.</i></li>
+ <li><b>Câu 2:</b> 3 bước. Bước 1 Cắt: hai hình chữ nhật (đầu thỏ rộng 10 cm, thân thỏ rộng 15 cm, cùng dài 25 cm), hình tai thỏ (gấp theo nét đứt), đế bằng giấy màu. Bước 2 Dán: dán hai mép mỗi hình chữ nhật để tạo đầu và thân; dán tai, đầu, thân với nhau rồi dán lên đế. Bước 3 Vẽ: trang trí tai thỏ; vẽ mắt, râu, mũi, miệng ở đầu thỏ và tay ở thân thỏ.</li>
+ <li><b>Câu 3:</b> con chọn 1–2 bước và nói bằng từ chỉ thứ tự: đầu tiên, tiếp theo, sau đó, cuối cùng.</li>
+ <li><b>Câu 4:</b> chú thỏ giấy là món quà sinh nhật Hà tự tay làm tặng Hoa; có đầu, thân, đôi tai dài, mắt, râu, mũi, miệng vẽ bằng bút màu; đứng vững nhờ đế giấy màu.</li>
+ <li><b>Luyện từ và câu 1:</b> vị táo: ngọt, chua ngọt…; mùi hoa hồng: thơm, thơm ngát…; voi: to, to lớn…; mặt trời: đỏ, đỏ rực…; cầu vồng: cong, cong cong…; giờ ra chơi: ồn ào, náo nhiệt, rộn rã…</li>
+ <li><b>Câu 2:</b> tính từ của sự vật: vàng ruộm, thơm nồng, nâu sẫm, đỏ rực, xanh mướt, um tùm, nhỏ xíu, tròn xoe, bé nhỏ. Tính từ của hoạt động: nhanh, thoăn thoắt, kín đáo, nhè nhẹ, chậm rãi.<br><i>⚠ File hướng dẫn xếp thêm “cao” vào nhóm sự vật (từ trong cụm “mặt trời đã lên cao”). App để từ này ra ngoài vì dễ gây nhầm; nếu cô giáo hỏi, con có thể nói đó là đặc điểm của vị trí.</i></li>
+ <li><b>Câu 3:</b> mẫu: “Bát phở bò mẹ nấu rất nóng hổi và thơm ngon.”; “Bộ váy mẹ mới mua có màu hồng tươi tắn và rất mềm mại.”; “Các bạn thảo luận nhóm rất sôi nổi.”</li>
+ <li><b>Câu 4 (trò chơi Đoán đồ vật):</b> bố mẹ và con chơi cùng: bỏ vài đồ vật vào túi; một người mô tả bằng tính từ (không nói tên), người kia đoán. Ví dụ: “Màu đỏ, thân dài, ruột bằng chì” → cái bút chì.</li>
+ <li><b>Viết · Tìm hiểu cách viết hướng dẫn:</b> bài “Cách làm một chú nghé ọ bằng lá” (nghé là trâu con). a) hướng dẫn làm nghé ọ bằng lá mít; b) chuẩn bị: lá to bằng bàn tay, hai sợi dây cước nhỏ, kéo hoặc dùng tay; c) 2 bước. Ghi nhớ: bài hướng dẫn thường có 2 phần: chuẩn bị và hướng dẫn thực hiện.</li>
+ <li><b>Vận dụng:</b> tìm một bài hướng dẫn làm đồ chơi đơn giản (chong chóng, thuyền giấy, máy bay giấy…) và làm cùng con.</li></ul>
+ <h3>Lỗi thường gặp</h3>
+ <ul><li>Nhầm nét đứt là đường cắt: nét liền để cắt, nét đứt để gấp.</li><li>Nhầm kích thước đầu thỏ và thân thỏ (10 cm và 15 cm).</li>
+ <li>Nhầm tính từ với danh từ hoặc động từ: hỏi “như thế nào?” để tìm tính từ.</li><li>Khi trình bày các bước quên dùng từ chỉ thứ tự.</li></ul>`;}
+LESSON_DEFS.push({id:'b21',num:21,short:'Thỏ giấy',title:'Làm thỏ con bằng giấy',parent:parentB21,data:B21,
+ sessions:[{name:'✍️ Buổi 2 · Tính từ & hướng dẫn',W:W21,hello:()=>`Chào ${nm()}! Hôm nay mình học về tính từ và cách đọc một bài hướng dẫn làm đồ chơi nhé!`,
+  badge:{e:'🧰',name:'Thợ thủ công nhí',text:'đã hoàn thành phần luyện tập bài 21',gift:'Quà từ túi thần kỳ của Miu-Bot: 🧶 cuộn dây cước. Bạn thử làm một đồ chơi cùng bố mẹ nhé!'}}]});
+
+// ===== BÀI 22 - BỨC TƯỜNG CÓ NHIỀU PHÉP LẠ (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.97-100) =====
+const B22=(()=>{
+const SENTS={
+ s1:{c:["Quy chống tay,","tì má,","nhìn lên bức tường trước mặt."]},
+ s2:{c:["Màu vôi xanh mát","hiện ra","như tấm màn ảnh rộng."]},
+ s3:{c:["Quy đọc nhẩm","đề bài tập làm văn:"]},
+ s4:{d:1,c:["“Em hãy tả lại quang cảnh","một trận mưa rào.”"]},
+ s5:{c:["Quy thở dài:"]},
+ s6:{d:1,c:["“Trời thì nắng","mà bài văn lại yêu cầu tả mưa.”"]},
+ s7:{c:["Quy nghĩ đến bố.","Bố Quy là một người viết văn."]},
+ s8:{c:["Bố tài thật,","cứ ngồi vào bàn","là bố viết được ngay."]},
+ s9:{c:["Cũng có khi,","bố tì cằm lên tay,","nhìn thẳng vào bức tường trước mặt."]},
+ s10:{c:["Nhìn một lúc,","lúc nữa…","rồi bố cầm bút,","viết lia lịa,","quên cả ăn cơm."]},
+ s11:{c:["Bức tường này có phép lạ gì đây?","Nhưng sao Quy nhìn mãi","mà bức tường chưa bảo Quy","cách làm bài?"]},
+ s12:{c:["Bố vào.","Đúng lúc quá!"]},
+ s13:{c:["Quy chạy lại:"]},
+ s14:{d:1,c:["– Bố ạ,","con nhìn mãi bức tường","như bố nhìn","mà chẳng thấy trận mưa rào đâu cả."]},
+ s15:{c:["Bố hiểu ngay,","tủm tỉm:"]},
+ s16:{d:1,c:["– Bố thấy những trận mưa rào","hồi năm ngoái, năm kia.","Con chạy ra nghịch mưa,","ướt hết."]},
+ s17:{c:["Quy nhoẻn miệng cười:"]},
+ s18:{d:1,c:["– Vâng."]},
+ s19:{d:1,c:["– Bố còn gặp lại trận mưa bão","khi bố còn bé tí.","Bà nội đi cấy về,","sấm chớp liên hồi."]},
+ s20:{c:["Quy chớp mắt:"]},
+ s21:{d:1,c:["– Bố có thấy cái thuyền giấy","con thả ở rãnh nước không ạ?"]},
+ s22:{d:1,c:["– Có chứ!"]},
+ s23:{d:1,c:["– Cả chiếc ô tô chạy trong mưa?","Hôm ấy,","trời đang nắng thì mưa…"]},
+ s24:{c:["Bố lại tủm tỉm:"]},
+ s25:{d:1,c:["– Thế mà con bảo","chẳng thấy gì."]},
+ s26:{c:["Quy ngơ ngác:"]},
+ s27:{d:1,c:["– Thật đấy ạ."]},
+ s28:{d:1,c:["– Bây giờ con ngồi vào bàn.","Mắt nhìn bức tường,","nhưng con hãy nghĩ đến","những trận mưa mà con biết!"]},
+ s29:{c:["Quy ngồi vào bàn,","nhìn lên bức tường","và thấy chiếc thuyền giấy","trôi bồng bềnh giữa sân,","những vai áo ướt sũng nước mưa","của người đi cày,","những hạt mưa đan nhau","rơi xuống rào rào,…"]},
+ s30:{c:["Quy cầm bút,","cắm cúi viết,","quên cả ngẩng lên","nhìn bức tường","có nhiều phép lạ."]}
+};
+const PAGES=[
+ {ids:["s1","s2","s3","s4","s5","s6"],scene:"👦 🧱 ☀️ 📝"},
+ {ids:["s7","s8","s9","s10","s11"],scene:"👨 ✍️ 🧱 🤔"},
+ {ids:["s12","s13","s14","s15","s16","s17","s18"],scene:"👨 👦 🌧️ 😊"},
+ {ids:["s19","s20","s21","s22","s23","s24","s25","s26","s27"],scene:"⛈️ ⛵ 🚗 😲"},
+ {ids:["s28","s29","s30"],scene:"📝 ⛵ 🌧️ ✏️"}
+];
+const PRACTICE=["s2","s6","s11","s19","s29"];
+const GLOSS={
+ "tì má":{e:"🤔",d:"chống má lên tay hoặc lên vật gì đó, thường khi đang suy nghĩ.",x:"Em tì má nhìn ra cửa sổ."},
+ "màn ảnh":{e:"🎞️",d:"tấm vải trắng lớn dùng để chiếu phim lên.",x:"Cả lớp ngồi xem phim trên màn ảnh rộng."},
+ "đọc nhẩm":{e:"🤫",d:"đọc thầm trong miệng, không thành tiếng to.",x:"Em đọc nhẩm bài thơ cho khỏi quên."},
+ "quang cảnh":{e:"🏞️",d:"cảnh vật trông thấy ở một nơi nào đó.",x:"Quang cảnh sân trường ngày khai giảng rất đẹp."},
+ "tủm tỉm":{e:"😊",d:"cười chúm môi, không thành tiếng, vẻ vui và hiểu ý.",x:"Bố tủm tỉm cười khi nghe con kể chuyện."},
+ "nhoẻn miệng":{e:"😄",d:"cười để lộ hàm răng, vẻ vui vẻ.",x:"Em bé nhoẻn miệng cười khi thấy mẹ."},
+ "lia lịa":{e:"💨",d:"liên tục, rất nhanh, không ngừng.",x:"Bạn ấy viết lia lịa cho kịp bài."},
+ "bồng bềnh":{e:"⛵",d:"nhẹ nhàng nổi trên mặt nước và lên xuống theo sóng.",x:"Chiếc thuyền giấy trôi bồng bềnh trên mặt nước."},
+ "ngơ ngác":{e:"😳",d:"có vẻ ngạc nhiên, không hiểu gì.",x:"Em bé ngơ ngác nhìn quanh."},
+ "cắm cúi":{e:"📝",d:"chăm chú, cúi đầu làm việc, không để ý xung quanh.",x:"Em cắm cúi viết bài."},
+ "sấm chớp":{e:"⚡",d:"tia sáng loé lên và tiếng nổ lớn trên trời khi có giông.",x:"Đêm qua có sấm chớp."},
+ "mưa rào":{e:"🌦️",d:"mưa to, đến nhanh và tạnh nhanh.",x:"Trời đang nắng thì có cơn mưa rào."},
+ "đi cấy":{e:"🌾",d:"cắm cây lúa non xuống ruộng nước.",x:"Bà đi cấy về khi trời sập tối."},
+ "ướt sũng":{e:"💦",d:"ướt đẫm nước.",x:"Áo em ướt sũng vì nghịch mưa."}
+};
+const TONES=[
+ {opts:[{w:"tường",e:"🧱",t:"dấu huyền",m:"bức tường"},{w:"tưởng",e:"💭",t:"dấu hỏi",m:"tưởng tượng"},{w:"tướng",e:"🎖️",t:"dấu sắc",m:"vị tướng"}]},
+ {opts:[{w:"tả",e:"📝",t:"dấu hỏi",m:"tả cảnh"},{w:"ta",e:"🙋",t:"không dấu",m:"chúng ta"},{w:"tá",e:"🔢",t:"dấu sắc",m:"một tá bút"}]},
+ {opts:[{w:"bố",e:"👨",t:"dấu sắc",m:"bố mẹ"},{w:"bỏ",e:"🗑️",t:"dấu hỏi",m:"bỏ rác"},{w:"bộ",e:"👔",t:"dấu nặng",m:"bộ quần áo"}]},
+ {opts:[{w:"nắng",e:"☀️",t:"dấu sắc",m:"trời nắng"},{w:"nặng",e:"🏋️",t:"dấu nặng",m:"túi nặng"}]},
+ {opts:[{w:"thở",e:"😮‍💨",t:"dấu hỏi",m:"thở dài"},{w:"thơ",e:"📖",t:"không dấu",m:"bài thơ"},{w:"thợ",e:"👷",t:"dấu nặng",m:"thợ xây"}]},
+ {opts:[{w:"bài",e:"📝",t:"dấu huyền",m:"bài văn"},{w:"bãi",e:"🏖️",t:"dấu ngã",m:"bãi biển"}]}
+];
+const QUIZ=[
+ {q:"Chi tiết nào tả không gian nơi Quy đang ngồi học?",
+  o:["Bức tường trước mặt có màu vôi xanh mát, hiện ra như tấm màn ảnh rộng.","Bức tường đỏ rực như lửa.","Bức tường trắng như tuyết."],a:0,ev:"s2",
+  why:"Quy nhìn lên bức tường trước mặt. Màu vôi xanh mát hiện ra như tấm màn ảnh rộng."},
+ {q:"Hành động nào của Quy cho biết Quy đang gặp khó khăn với bài làm văn?",
+  o:["Quy chống tay, tì má nhìn bức tường và thở dài.","Quy chạy ra sân nghịch mưa.","Quy cầm bút viết lia lịa."],a:0,ev:"s1",
+  why:"Quy chống tay, tì má, thở dài. Suy nghĩ của Quy: “Trời thì nắng mà bài văn lại yêu cầu tả mưa.” Hành động viết lia lịa là của bố."},
+ {q:"Điều gì khiến Quy nghĩ bức tường vôi xanh có phép lạ?",
+  o:["Quy thấy bố nhìn bức tường một lúc rồi viết lia lịa, quên cả ăn cơm.","Quy thấy bức tường tự sáng lên.","Bố nói với Quy bức tường là cánh cửa thần kì."],a:0,ev:"s10",
+  why:"Bố là người viết văn tài. Có khi bố nhìn thẳng vào bức tường một lúc rồi viết lia lịa. Vì thế Quy tự hỏi: “Bức tường này có phép lạ gì đây?”"},
+ {q:"Vì sao bố kể cho Quy nghe về những trận mưa? Tìm câu trả lời đúng.",
+  o:["Vì bố muốn gợi cho Quy nhớ lại những trận mưa mà Quy đã gặp.","Vì bố muốn Quy tả những trận mưa mà bố đã từng gặp.","Vì những trận mưa gắn với kỉ niệm tuổi thơ của bố.","Vì bố muốn Quy nhớ về bà nội."],a:0,ev:"s28",
+  why:"Bố nói: “Mắt nhìn bức tường, nhưng con hãy nghĩ đến những trận mưa mà con biết!”. Bố muốn gợi cho Quy nhớ lại trận mưa của chính Quy."},
+ {q:"Theo em, vì sao Quy làm được bài văn mà không cần nhìn bức tường nữa?",
+  o:["Vì Quy đã nhớ lại những trận mưa mình từng gặp và thấy rõ chúng trong đầu.","Vì bố đã viết giúp Quy.","Vì trời đã đổ mưa thật."],a:0,ev:"s29",
+  why:"Khi nghĩ đến những trận mưa mình biết, Quy thấy thuyền giấy, vai áo ướt, hạt mưa đan nhau. Có kí ức rồi, em không cần nhìn tường nữa."},
+ {q:"Bố nhớ lại trận mưa nào khi bố còn bé?",
+  o:["Trận mưa bão, bà nội đi cấy về, sấm chớp liên hồi.","Trận mưa rào hồi năm ngoái.","Trận mưa khi bố thả thuyền giấy."],a:0,ev:"s19",
+  why:"Bố gặp lại trận mưa bão khi còn bé tí: bà nội đi cấy về, sấm chớp liên hồi."},
+ {q:"Từ nào tả tiếng mưa rơi?",
+  o:["rào rào","bồng bềnh","tủm tỉm"],a:0,hint:"Hạt mưa rơi xuống nghe như thế nào?",
+  why:"“Rào rào” tả tiếng mưa rơi. “Bồng bềnh” tả thuyền nổi trên nước. “Tủm tỉm” tả cách cười."}
+];
+const STORY_ORDER=[
+ "Quy khó khăn vì bài văn tả mưa mà trời đang nắng.",
+ "Quy thấy bố nhìn bức tường rồi viết lia lịa nên nghĩ tường có phép lạ.",
+ "Bố nhắc những trận mưa Quy từng gặp: thuyền giấy, ô tô chạy trong mưa.",
+ "Quy nhớ lại, thấy thuyền giấy, hạt mưa và cắm cúi viết bài."
+];
+const SORT={
+ head:"Trước mắt hay trong trí nhớ",title:"Quy thấy ở đâu?",sub:"Chạm một chi tiết, rồi chạm giỏ đúng: Quy nhìn thấy trước mắt, hay Quy nhớ lại trong đầu.",
+ say:"Trong bài, có những thứ Quy thấy ngay trước mắt, và có những thứ Quy chỉ nhớ lại trong đầu. Bạn xếp giúp Quy nhé!",
+ win:"Giỏi quá! Bạn hiểu vì sao bức tường có nhiều phép lạ rồi: phép lạ ở trong trí nhớ và trí tưởng tượng!",star:2,nextLabel:"Sang câu hỏi ➡️",
+ baskets:[
+  {k:"now",t:"👀 Trước mắt Quy",s:"Quy đang thấy thật",h:"Thử hỏi: lúc đó Quy có đang nhìn thấy “{w}” thật sự không? Nếu có thì bỏ vào giỏ trước mắt."},
+  {k:"mem",t:"💭 Trong trí nhớ Quy",s:"Quy nhớ lại và tưởng tượng",h:"Thử hỏi: “{w}” có phải là điều Quy nhớ lại về trận mưa không? Nếu phải thì bỏ vào giỏ trí nhớ."}],
+ items:[{w:"bức tường vôi xanh mát",k:"now"},{w:"trời nắng",k:"now"},{w:"đề bài tả mưa",k:"now"},{w:"bố đang ngồi viết",k:"now"},
+        {w:"chiếc thuyền giấy trôi bồng bềnh",k:"mem"},{w:"những hạt mưa rơi rào rào",k:"mem"},{w:"vai áo ướt sũng của người đi cày",k:"mem"},{w:"chiếc ô tô chạy trong mưa",k:"mem"}]
+};
+const WELCOME={
+ title:"Em mong điều tưởng tượng nào có thật?",sub:"Chạm vào điều tưởng tượng em thích nhất.",
+ say:"{n} ơi, hôm nay mình đọc bài Bức tường có nhiều phép lạ. Bạn thử nghĩ xem: điều tưởng tượng nào bạn mong là có thật nhỉ?",
+ cards:[{e:"🪽",t:"đôi cánh thần kì để bay",g:1},{e:"🚪",t:"cánh cửa thần kì",g:1},{e:"✏️",t:"bút chì vẽ gì có nấy",g:1},{e:"🧸",t:"đồ chơi biết nói",g:1},{e:"🚀",t:"du lịch đến các vì sao",g:1},{e:"🐉",t:"bạn rồng biết nói",g:1}],
+ need:1,okOne:"Hay quá! Bạn mong có {t}. Vì sao bạn mong như vậy nhỉ? Bạn nói cho Miu-Bot hoặc bố mẹ nghe nhé!",
+ wrong:"",done:"Trí tưởng tượng của bạn thật phong phú! Mình đi nghe truyện nhé!",heads:"Điều tưởng tượng em mong có thật"
+};
+const RETELL={q:"Theo em, “phép lạ” của bức tường thật ra là gì?",
+ sub:"Bạn nói bằng lời của mình. Có thể bắt đầu: “Theo em, phép lạ là…”. Hoặc kể một trận mưa em nhớ.",
+ say:"Câu này không có đáp án đúng hay sai. Bạn cứ nói điều bạn nghĩ nhé!"};
+const BADGE={e:"🧱",name:"Nhà văn nhí",gift:"🌧️ chiếc ô thần kì",text:"hoàn thành bài 22"};
+return {SENTS,PAGES,PRACTICE,GLOSS,TONES,QUIZ,STORY_ORDER,SORT,WELCOME,RETELL,BADGE};
+})();
+
+const W22=[
+ {id:"b1",e:"🔎",t:"Tìm tính từ trong bài",s:"4 phút",type:"form",key:"b1",h:"🔎 Tìm 3 đến 5 tính từ trong bài",
+  sub:"Tính từ chỉ đặc điểm của sự vật hoặc hoạt động. Em đọc lại bài rồi ghi các tính từ em tìm được, cách nhau bằng dấu phẩy. Chạm gợi ý nếu cần.",
+  say:"Bạn tìm tính từ trong bài Bức tường có nhiều phép lạ nhé. Tính từ cho biết sự vật hay việc làm như thế nào. Ví dụ: màu vôi xanh mát.",
+  fields:[{k:"a",l:"Các tính từ em tìm được",ph:"Ví dụ: xanh mát, ướt sũng, bồng bềnh…",rows:2,req:1,min:3}],
+  chips:[{to:"a",label:"Gợi ý (có trong bài):",list:["xanh mát","ướt sũng","bồng bềnh","rào rào","lia lịa","tủm tỉm"]}],
+  star:2,why:"tìm tính từ",sum:"Tính từ tìm trong bài",build:g=>g("a")},
+ {id:"b2",e:"🌧️",t:"Viết 2–3 câu tả cơn mưa",s:"5 phút",type:"form",key:"b2",h:"🌧️ Em tả một cơn mưa",
+  sub:"Viết 2 đến 3 câu tả một cơn mưa em đã gặp. Trong câu có tính từ tả tiếng mưa.",
+  say:"Bạn nhớ lại một cơn mưa bạn từng gặp nhé. Tiếng mưa như thế nào? Bạn viết 2 hoặc 3 câu nhé!",
+  tip:"💡 Muốn đọc cho máy gõ thay: bấm 🎤 trên bàn phím iPad. Bố mẹ cũng có thể gõ giúp.",
+  fields:[{k:"a",l:"Câu tả cơn mưa của em",ph:"Ví dụ: Hạt mưa rơi rào rào trên mái nhà. Sân trường ướt sũng.",rows:4,req:1,min:8}],
+  chips:[{to:"a",label:"Tính từ tả tiếng mưa:",list:["rào rào","tí tách","xối xả","lộp độp","ào ào","lất phất"]},{to:"a",label:"Cách mở đầu:",list:["Hôm ấy, trời","Bỗng nhiên,","Cơn mưa"]}],
+  star:3,why:"tả cơn mưa",sum:"Tả cơn mưa",build:g=>g("a")},
+ {id:"b3",e:"🗒️",t:"Lập dàn ý hướng dẫn",s:"5 phút",type:"form",key:"b3",h:"🗒️ Lập dàn ý: hướng dẫn làm một đồ chơi",
+  sub:"Đề bài: Viết hướng dẫn các bước làm một đồ chơi mà em yêu thích. Em ghi ý trước nhé.",
+  say:"Bạn chọn một đồ chơi bạn biết làm, ví dụ máy bay giấy, thuyền giấy, chong chóng. Rồi mình ghi dụng cụ, vật liệu và các bước làm.",
+  fields:[{k:"toy",l:"1. Em chọn đồ chơi nào?",ph:"Ví dụ: máy bay giấy",rows:1,req:1,min:2},
+          {k:"tools",l:"2. Dụng cụ cần chuẩn bị",ph:"Ví dụ: kéo, bút chì, thước kẻ",rows:1,req:1,min:2},
+          {k:"mat",l:"3. Vật liệu cần chuẩn bị",ph:"Ví dụ: một tờ giấy hình chữ nhật",rows:1,req:1,min:3},
+          {k:"s1",l:"Bước 1",ph:"Bắt đầu bằng một từ chỉ việc làm: Gấp, Cắt, Vẽ…",rows:2,req:1,min:4},
+          {k:"s2",l:"Bước 2",ph:"Ví dụ: Gấp hai góc…",rows:2,req:1,min:4},
+          {k:"s3",l:"Bước 3",ph:"Ví dụ: Gấp đôi tờ giấy…",rows:2,req:1,min:4}],
+  chips:[{to:"s1",label:"Gợi ý động từ chỉ thao tác:",list:["Cắt","Gấp","Dán","Vẽ","Cuộn","Buộc","Luồn","Xé"]}],
+  star:3,why:"lập dàn ý",sum:"Dàn ý hướng dẫn làm đồ chơi",
+  build:g=>`Đồ chơi: ${g("toy")}\nDụng cụ: ${g("tools")}\nVật liệu: ${g("mat")}\nBước 1: ${g("s1")}\nBước 2: ${g("s2")}\nBước 3: ${g("s3")}`},
+ {id:"b4",e:"📝",t:"Viết bài hướng dẫn",s:"5 phút",type:"form",key:"b4",h:"📝 Ghép thành bài hướng dẫn",
+  sub:"Em viết thêm lời mở đầu và lời kết. Các phần còn lại Miu-Bot lấy từ dàn ý của em.",
+  say:"Bạn viết một câu mở đầu và một câu kết cho bài hướng dẫn nhé. Phần dụng cụ, vật liệu và các bước mình đã có từ dàn ý rồi!",
+  fields:[{k:"intro",l:"Lời mở đầu",ph:"Ví dụ: Tớ hướng dẫn các bạn cách làm một chiếc máy bay giấy nhé!",rows:2,req:1,min:4},
+          {k:"end",l:"Lời kết",ph:"Ví dụ: Thế là chiếc máy bay giấy đã sẵn sàng bay rồi. Các bạn làm thử xem nào!",rows:2,req:1,min:4}],
+  star:3,why:"viết bài hướng dẫn",sum:"Bài hướng dẫn làm đồ chơi",
+  build:(g,x)=>`CÁCH LÀM ${(x("b3","toy")||'…').toUpperCase()}\n${g("intro")}\n\n1. Chuẩn bị\n- Dụng cụ: ${x("b3","tools")}\n- Vật liệu: ${x("b3","mat")}\n\n2. Hướng dẫn thực hiện\n- Bước 1: ${x("b3","s1")}\n- Bước 2: ${x("b3","s2")}\n- Bước 3: ${x("b3","s3")}\n\n${g("end")}`},
+ {id:"b5",e:"✅",t:"Đọc soát và chỉnh sửa",s:"3 phút",type:"check",h:"✅ Em đọc soát bài hướng dẫn",show:"b4",
+  sub:"Đọc lại bài của em và chạm vào mỗi điều em đã làm được. Điều nào chưa có thì em sửa thêm nhé!",
+  say:"Bạn đọc lại bài hướng dẫn của mình. Mình kiểm tra từng điều nhé. Điều nào chưa có thì bạn sửa lại.",
+  items:["Bài có hai phần: chuẩn bị và hướng dẫn thực hiện.","Các bước được đánh số và xếp theo thứ tự trước sau.","Mỗi bước có từ chỉ việc làm cụ thể (cắt, gấp, dán…).","Câu văn ngắn gọn, rõ ràng, dễ làm theo.","Đầu câu viết hoa, cuối câu có dấu chấm."],
+  win:"Bài hướng dẫn của em rất rõ ràng! Em đọc cho người thân nghe và cùng làm thử nhé!",star:2}
+];
+const TELL22=[
+ {e:"💡",t:"Ê-đi-xơn là một nhà bác học vĩ đại người Mỹ. Khi ông phát minh ra đèn điện, người từ khắp nơi nườm nượp kéo đến xem. Trong số đó có một bà cụ phải đi bộ gần ba giờ đồng hồ mới tới nơi."},
+ {e:"🪑",t:"Bà cụ ngồi nghỉ chân trên chiếc ghế băng bên đường. Ê-đi-xơn tình cờ đi ngang qua, dừng lại trò chuyện cùng bà. Bà cụ thật thà nói: giá mà ông Ê-đi-xơn làm được một chiếc xe không cần ngựa kéo, lại chạy thật êm, thì bà đã đỡ khổ."},
+ {e:"🔧",t:"Lời tâm sự của bà cụ gợi cho Ê-đi-xơn một ý tưởng. Ông hứa sẽ làm một chiếc xe như thế. Trở về phòng thí nghiệm, ông cùng các cộng sự miệt mài chế tạo chiếc xe chạy bằng điện."},
+ {e:"🚗",t:"Không lâu sau, chiếc xe điện đầu tiên hoàn thành. Ê-đi-xơn giữ đúng lời hứa, mời bà cụ ngày nọ là người đầu tiên ngồi lên xe đi dạo. Bà cụ vô cùng vui sướng."}
+];
+const S22=[
+ {id:"c1",e:"🎧",t:"Nghe Miu-Bot kể",s:"3 phút",type:"tell",h:"Nghe chuyện Nhà phát minh và bà cụ",sub:"Miu-Bot kể lại câu chuyện theo 4 tranh trong sách. Bạn vừa nghe vừa nhìn tranh trong sách nhé.",pages:TELL22},
+ {id:"c2",e:"🔢",t:"Xếp sự việc chính",s:"2 phút",type:"order",h:"Xếp các sự việc chính",sub:"Chạm các thẻ theo thứ tự câu chuyện.",say:"Bạn nhớ chuyện gì xảy ra đầu tiên? Chạm vào thẻ đó trước nhé!",win:"Đúng rồi! Bạn nhớ rất rõ các sự việc chính!",
+  cards:["Ê-đi-xơn phát minh ra đèn điện, bà cụ đi bộ gần ba giờ đến xem.","Bà cụ ngồi nghỉ ở ghế băng, nói mong có chiếc xe không cần ngựa kéo.","Ê-đi-xơn cùng cộng sự miệt mài chế tạo xe chạy bằng điện.","Ê-đi-xơn mời bà cụ ngồi lên chiếc xe điện đầu tiên để giữ lời hứa."]},
+ {id:"c3",e:"🎤",t:"Kể lại câu chuyện",s:"5 phút",type:"form",key:"c3",h:"🎤 Kể lại câu chuyện theo 4 tranh",
+  sub:"Em ghi vài câu cho mỗi tranh, bằng lời của em. Sau đó em kể thành lời cho bố mẹ nghe. Không cần học thuộc từng chữ.",
+  say:"Bạn nhìn từng tranh và ghi vài từ khoá hoặc một câu cho mỗi tranh. Sau đó bạn kể cho bố mẹ nghe. Giọng bà cụ chậm rãi, giọng Ê-đi-xơn niềm nở nhé!",
+  fields:[{k:"p1",l:"Tranh 1: Đèn điện và bà cụ",ph:"Ví dụ: Ê-đi-xơn phát minh ra đèn điện, mọi người đến xem…",rows:2,req:1,min:5},
+          {k:"p2",l:"Tranh 2: Trên ghế băng",ph:"Ví dụ: Bà cụ ngồi nghỉ và nói…",rows:2,req:1,min:5},
+          {k:"p3",l:"Tranh 3: Trong phòng thí nghiệm",ph:"Ví dụ: Ê-đi-xơn miệt mài…",rows:2,req:1,min:5},
+          {k:"p4",l:"Tranh 4: Chiếc xe điện",ph:"Ví dụ: Ê-đi-xơn mời bà cụ…",rows:2,req:1,min:5}],
+  star:3,why:"ghi ý kể chuyện",sum:"Ý kể chuyện Nhà phát minh và bà cụ",build:g=>`1. ${g("p1")}\n2. ${g("p2")}\n3. ${g("p3")}\n4. ${g("p4")}`},
+ {id:"c4",e:"💬",t:"Điều em ấn tượng",s:"3 phút",type:"form",key:"c4",h:"💬 Điều em ấn tượng nhất về Ê-đi-xơn",
+  sub:"Em nói điều em ấn tượng nhất và giải thích vì sao.",
+  say:"Bạn ấn tượng nhất với điều gì ở nhà phát minh Ê-đi-xơn? Và vì sao nhỉ? Bạn cứ nói điều bạn nghĩ nhé!",
+  fields:[{k:"a",l:"Điều em ấn tượng nhất",ph:"Ví dụ: Em ấn tượng nhất với…",rows:2,req:1,min:4},{k:"b",l:"Vì sao?",ph:"Ví dụ: Vì ông…",rows:2,req:1,min:4}],
+  chips:[{to:"a",label:"Gợi ý:",list:["ông biết lắng nghe","ông giữ đúng lời hứa","ông luôn sáng tạo","ông gần gũi với bà cụ"]}],
+  star:2,why:"nêu cảm nghĩ",sum:"Điều ấn tượng về Ê-đi-xơn",build:g=>`${g("a")}\nVì sao? ${g("b")}`}
+];
+function parentB22(){return `<h3>Đáp án bài 22 · Bức tường có nhiều phép lạ (theo văn bản SGK)</h3>
+ <ul><li><b>Khởi động (mở):</b> một điều tưởng tượng em mong có thật, kèm lí do (đôi cánh thần kì, cánh cửa thần kì, bút chì vẽ gì có nấy…).</li>
+ <li><b>Câu 1:</b> không gian nơi Quy ngồi học: bức tường trước mặt, màu vôi xanh mát, hiện ra như tấm màn ảnh rộng.<br><i>⚠ File hướng dẫn viết “bàn học kê sát bức tường quét vôi xanh mát rượi”. Cụm “kê sát”, “mát rượi” không có trong bài đọc.</i></li>
+ <li><b>Câu 2:</b> hành động: chống tay, tì má nhìn bức tường, thở dài. Suy nghĩ: “Trời thì nắng mà bài văn lại yêu cầu tả mưa.”<br><i>⚠ File hướng dẫn ghi “cắn bút, vò đầu bứt tai”. Chi tiết này không có trong bài đọc.</i></li>
+ <li><b>Câu 3:</b> Quy thấy bố cứ nhìn bức tường một lúc rồi viết lia lịa, quên cả ăn cơm, nên nghĩ bức tường có phép lạ.<br><i>⚠ File hướng dẫn trả lời bằng những hình ảnh Quy thấy sau khi bố gợi ý (thuyền giấy, vai áo ướt, hạt mưa). Đó là nội dung cho câu 5, không phải lí do khiến Quy nghĩ tường có phép lạ.</i></li>
+ <li><b>Câu 4:</b> đáp án C: Vì bố muốn gợi cho Quy nhớ lại những trận mưa mà Quy đã gặp. (Sách có 4 lựa chọn A–D; file hướng dẫn chỉ ghi 3.)</li>
+ <li><b>Câu 5 (mở):</b> Quy làm được bài vì bố đã giúp em nhớ lại những trận mưa mình từng gặp; những hình ảnh thuyền giấy, vai áo ướt, hạt mưa hiện lên rõ trong đầu em.</li>
+ <li><b>Luyện từ và câu 1:</b> tìm 3–5 tính từ có trong bài, ví dụ: xanh mát, ướt sũng, bồng bềnh, rào rào, lia lịa, tủm tỉm.<br><i>⚠ File hướng dẫn nêu “vàng xuộm, xanh biếc, ngọt lành, say sưa, rực rỡ”. Các từ này không có trong bài Bức tường có nhiều phép lạ, nên app dùng từ có trong bài.</i></li>
+ <li><b>Câu 2:</b> viết 2–3 câu tả một cơn mưa có tính từ tả tiếng mưa (rào rào, tí tách, xối xả, lộp độp…). Mẫu: “Trời bỗng tối sầm lại rồi đổ một cơn mưa rào rào, xối xả. Những hạt mưa đập liên hồi vào mái tôn.”</li>
+ <li><b>Viết · Hướng dẫn làm một đồ chơi:</b> bài có 2 phần: Chuẩn bị (dụng cụ, vật liệu) và Hướng dẫn thực hiện (các bước theo trình tự, mỗi bước có từ chỉ việc làm cụ thể). Mẫu của file hướng dẫn: chong chóng giấy 4 cánh (kẻ 2 đường chéo, cắt dừng cách tâm 1–2 cm, đục lỗ, gấp góc vào tâm, xâu ghim qua que).</li>
+ <li><b>Nói và nghe · Kể chuyện Nhà phát minh và bà cụ:</b> 4 tranh: (1) Ê-đi-xơn phát minh đèn điện, bà cụ đi bộ gần 3 giờ đến xem; (2) bà cụ nghỉ ở ghế băng, nói mong có xe không cần ngựa kéo, chạy êm; (3) Ê-đi-xơn cùng cộng sự chế tạo xe điện; (4) mời bà cụ ngồi chiếc xe điện đầu tiên. Điều ấn tượng (mở): ông biết lắng nghe, sáng tạo, giữ lời hứa.</li></ul>
+ <h3>Lỗi thường gặp (theo file hướng dẫn)</h3>
+ <ul><li>Trả lời chỉ một ý khi câu hỏi có hai ý (hành động <u>và</u> suy nghĩ).</li><li>Hiểu bức tường thật sự có phép thuật: “phép lạ” là trí nhớ và trí tưởng tượng.</li>
+ <li>Viết bài hướng dẫn quên phần dụng cụ, vật liệu hoặc không đánh số các bước.</li><li>Kể chuyện học thuộc lòng, giọng đều đều, bỏ quên lời ao ước của bà cụ.</li></ul>`;}
+LESSON_DEFS.push({id:'b22',num:22,short:'Bức tường',title:'Bức tường có nhiều phép lạ',parent:parentB22,data:B22,
+ sessions:[
+  {name:'✍️ Buổi 2 · Viết hướng dẫn',W:W22,hello:()=>`Chào ${nm()}! Hôm nay mình viết bài hướng dẫn làm một đồ chơi nhé!`,
+   badge:{e:'🛠️',name:'Người viết hướng dẫn',text:'đã viết xong bài hướng dẫn',gift:'Quà từ túi thần kỳ của Miu-Bot: 📐 chiếc thước thần. Bạn đọc bài hướng dẫn cho người thân và cùng làm đồ chơi nhé!'}},
+  {name:'🎤 Buổi 3 · Nói và nghe',W:S22,hello:()=>`Chào ${nm()}! Hôm nay mình nghe và kể lại câu chuyện Nhà phát minh và bà cụ nhé!`,
+   badge:{e:'💡',name:'Người kể chuyện',text:'đã kể xong câu chuyện',gift:'Quà từ túi thần kỳ của Miu-Bot: 💡 bóng đèn nhỏ. Bạn kể cho người thân nghe câu chuyện nhé!'}}]});
+
+// ===== BÀI 23 - BÉT-TÔ-VEN VÀ BẢN XÔ-NÁT ÁNH TRĂNG (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.101-104) =====
+const B23=(()=>{
+const SENTS={
+ s1:{c:["Bét-tô-ven là nhà soạn nhạc cổ điển","vĩ đại trên thế giới."]},
+ s2:{c:["Ông đã sáng tác nhiều bản nhạc nổi tiếng,","trong số đó có bản xô-nát Ánh trăng."]},
+ s3:{c:["Tương truyền,","vào một đêm trăng sáng,","Bét-tô-ven đến cây cầu","bắc qua dòng sông Đa-nuýp xinh đẹp","trong thành Viên."]},
+ s4:{c:["Đứng trên cầu,","ông say sưa ngắm dòng sông","lấp lánh ánh trăng","trong một không gian tĩnh lặng."]},
+ s5:{c:["Bỗng Bét-tô-ven nghe thấy","tiếng dương cầm","văng vẳng ở phía xa."]},
+ s6:{c:["Tiếng đàn đã đưa bước chân Bét-tô-ven","đến một ngôi nhà","trong khu lao động."]},
+ s7:{c:["Đến đó,","ông bắt gặp một người cha","đang chăm chú ngồi nghe","cô con gái mù của mình chơi đàn."]},
+ s8:{c:["Thấy Bét-tô-ven,","người cha đau khổ chia sẻ rằng","con gái ông có một ước mơ duy nhất","là được ngắm nhìn ánh trăng","trên dòng Đa-nuýp."]},
+ s9:{c:["Nhưng ông rất buồn","vì chẳng bao giờ ông có thể","giúp con thực hiện được ước mơ của mình."]},
+ s10:{c:["Xúc động trước tình cảm","của người cha dành cho con gái","và tiếng dương cầm da diết","của người thiếu nữ mù,","Bét-tô-ven đến bên cây đàn,","ngồi xuống và bắt đầu chơi."]},
+ s11:{c:["Những nốt nhạc ngẫu hứng vang lên,","tràn đầy cảm xúc yêu thương","của nhà soạn nhạc thiên tài,","lúc êm ái,","nhẹ nhàng như ánh trăng,","lúc lại mạnh mẽ","như sóng sông Đa-nuýp."]},
+ s12:{c:["Trong tâm trí của hai cha con,","dường như không còn cuộc sống khổ đau","vì tật bệnh,","chỉ còn một thế giới","huyền ảo, lung linh,","tràn ngập ánh trăng."]},
+ s13:{c:["Cô gái mù có cảm giác","mình đang được ngắm nhìn,","đùa giỡn với ánh trăng","trên dòng sông Đa-nuýp."]},
+ s14:{c:["Bản xô-nát Ánh trăng","ra đời từ đó."]}
+};
+const PAGES=[
+ {ids:["s1","s2","s3","s4"],scene:"🎹 🌙 🌉 🌊"},
+ {ids:["s5","s6","s7","s8","s9"],scene:"🎶 🏠 👨‍👧 💭"},
+ {ids:["s10","s11","s12","s13","s14"],scene:"🎼 🌙 🌊 ✨"}
+];
+const PRACTICE=["s3","s8","s10","s11","s12"];
+const GLOSS={
+ "xô-nát":{e:"🎼",d:"bản nhạc gồm ba hoặc bốn chương khác nhau về nhịp điệu nhưng nối tiếp nhau.",x:"Bản xô-nát Ánh trăng rất nổi tiếng."},
+ "sông đa-nuýp":{e:"🌊",d:"sông dài thứ hai ở châu Âu, chảy qua nhiều nước Trung Âu và Đông Âu, trong đó có nước Áo.",x:"Cây cầu bắc qua sông Đa-nuýp."},
+ "viên":{e:"🏙️",d:"thủ đô của nước Áo.",x:"Viên là thành phố của âm nhạc."},
+ "đàn dương cầm":{e:"🎹",d:"tên gọi khác của đàn pi-a-nô.",x:"Cô gái chơi đàn dương cầm."},
+ "dương cầm":{e:"🎹",d:"tên gọi khác của đàn pi-a-nô.",x:"Tiếng dương cầm vang lên."},
+ "nhà soạn nhạc":{e:"✍️🎵",d:"người sáng tác các bản nhạc.",x:"Bét-tô-ven là nhà soạn nhạc nổi tiếng."},
+ "cổ điển":{e:"🏛️",d:"có từ xa xưa, được nhiều người công nhận là mẫu mực, hay và đẹp.",x:"Em thích nghe nhạc cổ điển."},
+ "tương truyền":{e:"📜",d:"người ta truyền miệng với nhau từ xưa, không chắc chắn lắm.",x:"Tương truyền, nơi này có một con rồng."},
+ "văng vẳng":{e:"🔉",d:"nghe thấy từ xa đưa lại, nhỏ và không rõ lắm.",x:"Tiếng hát văng vẳng từ xa."},
+ "khu lao động":{e:"🏘️",d:"nơi người lao động nghèo sinh sống.",x:"Ngôi nhà nhỏ trong khu lao động."},
+ "da diết":{e:"💖",d:"(tiếng đàn, nỗi nhớ) sâu sắc, không dứt, làm xúc động lòng người.",x:"Tiếng đàn da diết làm mọi người xúc động."},
+ "ngẫu hứng":{e:"✨",d:"nảy ra ngay lúc đó, không chuẩn bị trước.",x:"Ông chơi một bản nhạc ngẫu hứng."},
+ "thiên tài":{e:"🌟",d:"người có tài năng đặc biệt từ khi sinh ra.",x:"Bét-tô-ven là nhà soạn nhạc thiên tài."},
+ "huyền ảo":{e:"🌌",d:"đẹp một cách kì lạ, mơ hồ như trong giấc mơ.",x:"Ánh trăng huyền ảo trên mặt sông."},
+ "lung linh":{e:"✨",d:"ánh sáng lay động, long lanh, rất đẹp.",x:"Ánh trăng lung linh trên mặt nước."},
+ "tật bệnh":{e:"🩺",d:"bệnh hoặc khuyết tật của cơ thể.",x:"Cô bé vượt qua tật bệnh để học đàn."},
+ "say sưa":{e:"😍",d:"rất thích, mải mê đến mức quên mọi thứ xung quanh.",x:"Ông say sưa ngắm dòng sông."},
+ "lấp lánh":{e:"💎",d:"ánh sáng nhỏ, loé lên rồi tắt, liên tiếp.",x:"Mặt sông lấp lánh ánh trăng."},
+ "tĩnh lặng":{e:"🤫",d:"yên lặng, không có tiếng động.",x:"Đêm khuya thật tĩnh lặng."}
+};
+const TONES=[
+ {opts:[{w:"trăng",e:"🌙",t:"dấu ă, không dấu thanh",m:"ánh trăng"},{w:"trắng",e:"⬜",t:"dấu sắc",m:"màu trắng"}]},
+ {opts:[{w:"sông",e:"🌊",t:"không dấu",m:"dòng sông"},{w:"sống",e:"🏠",t:"dấu sắc",m:"sinh sống"}]},
+ {opts:[{w:"cầu",e:"🌉",t:"dấu huyền",m:"cây cầu"},{w:"câu",e:"🎣",t:"không dấu",m:"câu cá"},{w:"cậu",e:"👦",t:"dấu nặng",m:"cậu bé"}]},
+ {opts:[{w:"mù",e:"🕶️",t:"dấu huyền",m:"cô gái mù"},{w:"mũ",e:"🧢",t:"dấu ngã",m:"cái mũ"},{w:"mụ",e:"👵",t:"dấu nặng",m:"mụ phù thủy"}]},
+ {opts:[{w:"nhạc",e:"🎵",t:"dấu nặng",m:"bản nhạc"},{w:"nhác",e:"😴",t:"dấu sắc",m:"lười nhác"}]},
+ {opts:[{w:"đàn",e:"🎹",t:"dấu huyền",m:"cây đàn"},{w:"đạn",e:"🔫",t:"dấu nặng",m:"viên đạn"}]}
+];
+const QUIZ=[
+ {q:"Đoạn mở đầu giới thiệu những gì về Bét-tô-ven?",
+  o:["Ông là nhà soạn nhạc cổ điển vĩ đại trên thế giới, đã sáng tác nhiều bản nhạc nổi tiếng.","Ông là một người thợ sửa đàn ở thành Viên.","Ông là một ca sĩ nổi tiếng."],a:0,ev:"s1",
+  why:"Đoạn mở đầu nói Bét-tô-ven là nhà soạn nhạc cổ điển vĩ đại trên thế giới, đã sáng tác nhiều bản nhạc nổi tiếng, trong đó có bản xô-nát Ánh trăng."},
+ {q:"Bét-tô-ven gặp cha con cô gái mù trong hoàn cảnh nào?",
+  o:["Vào đêm trăng sáng, ông nghe tiếng dương cầm rồi đến ngôi nhà trong khu lao động, thấy người cha ngồi nghe con gái mù chơi đàn.","Ông đến nhà họ để dạy đàn.","Ông gặp họ khi đi nghe hoà nhạc."],a:0,ev:"s7",
+  why:"Đêm trăng sáng, ông đang ở trên cầu thì nghe tiếng đàn. Tiếng đàn dẫn ông đến một ngôi nhà trong khu lao động."},
+ {q:"Cô gái mù có ước mơ gì?",
+  o:["Được ngắm nhìn ánh trăng trên dòng sông Đa-nuýp.","Được chơi đàn cho nhiều người nghe.","Được gặp nhà soạn nhạc nổi tiếng."],a:0,ev:"s8",
+  why:"Bài đọc nói ước mơ duy nhất của cô là được ngắm nhìn ánh trăng trên dòng Đa-nuýp."},
+ {q:"Bét-tô-ven đã làm gì để giúp cô gái thực hiện ước mơ?",
+  o:["Ông đến bên cây đàn, ngồi xuống và chơi một bản nhạc ngẫu hứng đầy cảm xúc.","Ông dẫn cô gái ra cầu ngắm trăng.","Ông tặng cô gái một cây đàn mới."],a:0,ev:"s10",
+  why:"Ông xúc động, đến bên cây đàn và bắt đầu chơi. Âm nhạc giúp cô gái “nhìn” thấy ánh trăng."},
+ {q:"Câu văn nào miêu tả vẻ đẹp của bản nhạc?",
+  o:["Những nốt nhạc ngẫu hứng vang lên… lúc êm ái, nhẹ nhàng như ánh trăng, lúc lại mạnh mẽ như sóng sông Đa-nuýp.","Bét-tô-ven đến cây cầu bắc qua dòng sông Đa-nuýp xinh đẹp.","Người cha đau khổ chia sẻ về ước mơ của con gái."],a:0,ev:"s11",
+  why:"Bản nhạc êm ái, nhẹ nhàng như ánh trăng và mạnh mẽ như sóng sông. Còn một câu nữa: thế giới huyền ảo, lung linh, tràn ngập ánh trăng."},
+ {q:"Vì sao bản nhạc Bét-tô-ven dành tặng cô gái mù có tên là Ánh trăng?",
+  o:["Vì bản nhạc ra đời trong đêm trăng, giúp cô gái mù cảm nhận được ánh trăng trên sông.","Vì Bét-tô-ven rất thích ngắm trăng.","Vì cô gái mù tên là Ánh Trăng."],a:0,ev:"s13",
+  why:"Giai điệu giúp cô gái mù có cảm giác được ngắm nhìn và đùa giỡn với ánh trăng. Vì vậy bản nhạc mang tên Ánh trăng."},
+ {q:"Từ nào là tính từ tả tiếng nhạc?",
+  o:["da diết","dương cầm","nhà soạn nhạc"],a:0,hint:"Tính từ cho biết tiếng nhạc như thế nào.",
+  why:"“Da diết” tả tiếng nhạc nên là tính từ. “Dương cầm” và “nhà soạn nhạc” là danh từ."}
+];
+const STORY_ORDER=[
+ "Một đêm trăng sáng, Bét-tô-ven đứng trên cầu bắc qua sông Đa-nuýp.",
+ "Nghe tiếng dương cầm, ông đến ngôi nhà trong khu lao động.",
+ "Người cha kể: con gái mù chỉ mơ được ngắm ánh trăng trên sông Đa-nuýp.",
+ "Bét-tô-ven chơi đàn, cô gái mù như được ngắm ánh trăng. Bản xô-nát Ánh trăng ra đời."
+];
+const SORT={
+ head:"Tính từ tả nhạc và sông",title:"Tính từ này tả gì?",sub:"Chạm một tính từ, rồi chạm giỏ đúng: tả tiếng nhạc hay tả dòng sông. Các từ lấy từ bài đọc.",
+ say:"Trong bài có nhiều tính từ. Có từ tả tiếng nhạc, có từ tả dòng sông. Bạn xếp vào đúng giỏ nhé!",
+ win:"Giỏi quá! Bạn tìm đúng tính từ tả tiếng nhạc và tả dòng sông!",star:2,nextLabel:"Sang câu hỏi ➡️",
+ baskets:[
+  {k:"nhac",t:"🎵 Tả tiếng nhạc",s:"tiếng nhạc, tiếng đàn như thế nào",h:"Thử hỏi: “{w}” có tả tiếng nhạc, tiếng đàn như thế nào không? Nếu có thì bỏ vào giỏ tiếng nhạc."},
+  {k:"song",t:"🌊 Tả dòng sông",s:"dòng sông trông như thế nào",h:"Thử hỏi: “{w}” có tả dòng sông, mặt nước trông như thế nào không? Nếu có thì bỏ vào giỏ dòng sông."}],
+ items:[{w:"da diết",k:"nhac"},{w:"êm ái",k:"nhac"},{w:"nhẹ nhàng",k:"nhac"},{w:"mạnh mẽ",k:"nhac"},{w:"ngẫu hứng",k:"nhac"},
+        {w:"xinh đẹp",k:"song"},{w:"lấp lánh",k:"song"}]
+};
+const WELCOME={
+ title:"Em thích nghe nhạc khi nào?",sub:"Chạm vào lúc em thích nghe nhạc nhất.",
+ say:"{n} ơi, hôm nay mình đọc bài Bét-tô-ven và bản xô-nát Ánh trăng. Còn bạn, bạn thích nghe nhạc vào lúc nào nhỉ?",
+ cards:[{e:"🛏️",t:"trước khi đi ngủ",g:1},{e:"🚗",t:"khi đi xe",g:1},{e:"🧹",t:"khi làm việc nhà",g:1},{e:"🎨",t:"khi vẽ tranh",g:1},{e:"🌙",t:"khi ngắm trăng",g:1},{e:"🎉",t:"khi vui chơi",g:1}],
+ need:1,okOne:"Hay quá! Bạn thích nghe nhạc {t}. Bạn thích bài hát nào nhất? Bạn kể cho Miu-Bot hoặc bố mẹ nghe nhé!",
+ wrong:"",done:"Âm nhạc thật vui! Mình đi nghe truyện nhé!",heads:"Em thích nghe nhạc khi nào?"
+};
+const RETELL={q:"Em có cảm nghĩ gì về việc làm của Bét-tô-ven? Theo em, ông là người như thế nào?",
+ sub:"Bạn nói bằng lời của mình. Có thể bắt đầu: “Em thấy Bét-tô-ven là người… vì ông…”.",
+ say:"Câu này không có đáp án đúng hay sai. Bạn cứ nói điều bạn nghĩ nhé!"};
+const BADGE={e:"🎹",name:"Bạn của âm nhạc",gift:"🌙 cây đàn ánh trăng",text:"hoàn thành bài 23"};
+return {SENTS,PAGES,PRACTICE,GLOSS,TONES,QUIZ,STORY_ORDER,SORT,WELCOME,RETELL,BADGE};
+})();
+
+const W23=[
+ {id:"d1",e:"🧩",t:"Thành ngữ so sánh",s:"4 phút",type:"quiz",intro:"Mình điền tính từ vào thành ngữ nhé. Thành ngữ là cách nói quen thuộc của người Việt. Bạn nghe và chọn từ đúng.",
+  list:[
+   {q:"… như bụt. Điền tính từ nào?",o:["hiền","đen","xấu"],a:0,hint:"Ông Bụt trong truyện cổ tích luôn tốt bụng.",why:"Hiền như bụt: rất hiền lành."},
+   {q:"… như than. Điền tính từ nào?",o:["đen","trắng","đỏ"],a:0,hint:"Than có màu gì?",why:"Đen như than: rất đen."},
+   {q:"… như gấc. Điền tính từ nào?",o:["đỏ","xanh","hiền"],a:0,hint:"Quả gấc chín có màu gì?",why:"Đỏ như gấc: rất đỏ."},
+   {q:"… như ma. Điền tính từ nào?",o:["xấu","đẹp","hiền"],a:0,hint:"Con ma thường được tưởng tượng là…",why:"Xấu như ma: rất xấu."},
+   {q:"… như tuyết. Điền tính từ nào?",o:["trắng","đen","đỏ"],a:0,hint:"Tuyết có màu gì?",why:"Trắng như tuyết: rất trắng."},
+   {q:"… như tiên. Điền tính từ nào?",o:["đẹp","xấu","đen"],a:0,hint:"Cô tiên trong truyện cổ tích thế nào?",why:"Đẹp như tiên: rất đẹp."}
+  ]},
+ {id:"d2",e:"💚",t:"Các màu xanh",s:"3 phút",type:"quiz",intro:"Cùng một màu xanh nhưng mỗi từ lại có sắc thái khác nhau. Bạn thử chọn nhé!",
+  list:[
+   {q:"Trong đoạn thơ “Em về làng xóm” của Định Hải, tính từ “xanh” dùng để tả những gì?",o:["Tre và lúa.","Ngói mới.","Mặt trời."],a:0,why:"Tre xanh, lúa xanh: “xanh” tả màu của tre và lúa."},
+   {q:"“Xanh mát” trong đoạn thơ ấy tả đặc điểm của sự vật nào?",o:["Dòng sông máng.","Mái ngói.","Cây gạo."],a:0,why:"Dòng sông máng uốn lượn một dòng xanh mát: “xanh mát” gợi cảm giác trong lành, dễ chịu."},
+   {q:"“Xanh ngắt” trong đoạn thơ ấy tả đặc điểm của sự vật nào?",o:["Trời mây mùa thu.","Dòng sông máng.","Lá tre."],a:0,why:"“Xanh ngắt” là màu xanh đậm, trải rộng, như bầu trời mùa thu."}
+  ]},
+ {id:"d3",e:"✏️",t:"Đặt câu với tính từ màu xanh",s:"4 phút",type:"form",key:"d3",h:"✏️ Đặt 2 đến 3 câu có tính từ chỉ màu xanh",
+  sub:"Dùng các tính từ xanh, xanh mát, xanh ngắt để viết 2 hoặc 3 câu miêu tả.",
+  say:"Bạn đặt câu có dùng tính từ chỉ màu xanh nhé. Ví dụ: Bầu trời mùa thu trong vắt và xanh ngắt một màu.",
+  tip:"💡 Muốn đọc cho máy gõ thay: bấm 🎤 trên bàn phím iPad. Bố mẹ cũng có thể gõ giúp.",
+  fields:[{k:"a",l:"Câu của em",ph:"Ví dụ: Dòng sông quê em xanh mát.",rows:4,req:1,min:8}],
+  chips:[{to:"a",label:"Gợi ý:",list:["xanh","xanh mát","xanh ngắt","xanh mơn mởn"]},{to:"a",label:"Cách mở đầu:",list:["Bầu trời mùa thu","Dòng sông quê em","Cánh đồng lúa"]}],
+  star:2,why:"đặt câu",sum:"Câu có tính từ chỉ màu xanh",build:g=>g("a")},
+ {id:"d4",e:"📮",t:"Tìm hiểu cách viết đơn",s:"5 phút",type:"quiz",intro:"Mình đọc lá đơn xin tham gia Câu lạc bộ Sáng tạo của bạn Vũ Nam Hải trong sách nhé. Bạn trả lời câu hỏi nhé.",
+  list:[
+   {q:"Đơn của bạn Nam Hải được viết nhằm mục đích gì?",o:["Xin nhà trường cho em tham gia Câu lạc bộ Sáng tạo.","Xin nghỉ học một buổi.","Xin mượn sách ở thư viện."],a:0,why:"Em viết đơn xin được tham gia Câu lạc bộ Sáng tạo vào chiều thứ Ba và thứ Năm hằng tuần."},
+   {q:"Đơn do ai viết? Đơn được gửi cho ai?",o:["Vũ Nam Hải, học sinh lớp 4C, viết gửi Ban Giám hiệu Trường Tiểu học Trung Hoà.","Cô giáo viết gửi bố mẹ.","Bố mẹ viết gửi cô giáo."],a:0,why:"Người viết đơn là Vũ Nam Hải. Nơi nhận đơn là Ban Giám hiệu Trường Tiểu học Trung Hoà (phần Kính gửi)."},
+   {q:"Người viết đã trình bày những gì trong nội dung đơn?",o:["Giới thiệu bản thân, lí do viết đơn, lời hứa và lời cảm ơn.","Chỉ kể về trường học.","Chỉ chúc sức khoẻ thầy cô."],a:0,why:"Em giới thiệu tên, lớp; nêu lí do vì thấy mình phù hợp với hoạt động của câu lạc bộ; hứa nhiệt tình tham gia, chấp hành nội quy; cuối đơn cảm ơn."},
+   {q:"Phần cuối của lá đơn gồm những gì?",o:["Ý kiến phụ huynh (bên trái); địa điểm, ngày tháng năm, chữ kí và họ tên người viết (bên phải).","Chỉ có chữ kí của thầy cô.","Chỉ có ngày tháng."],a:0,why:"Cuối đơn có hai bên: bên trái ý kiến phụ huynh; bên phải địa điểm, ngày tháng, chữ kí và họ tên người viết đơn."}
+  ]},
+ {id:"d5",e:"🔢",t:"Xếp các mục của lá đơn",s:"3 phút",type:"order",h:"Xếp các mục của lá đơn từ trên xuống",sub:"Chạm các thẻ theo thứ tự từ đầu đơn đến cuối đơn.",say:"Lá đơn có nhiều mục. Mục nào nằm trên cùng? Chạm vào thẻ đó trước nhé!",win:"Giỏi quá! Bạn nhớ đúng cách trình bày một lá đơn!",
+  cards:["Quốc hiệu và tiêu ngữ.","Tên đơn (viết hoa, ở giữa).","Kính gửi: nơi nhận đơn.","Giới thiệu bản thân, nêu lí do và nguyện vọng.","Lời hứa và lời cảm ơn.","Địa điểm, ngày tháng, chữ kí và họ tên người viết."]}
+];
+function parentB23(){return `<h3>Đáp án bài 23 · Bét-tô-ven và bản xô-nát Ánh trăng (theo văn bản SGK)</h3>
+ <ul><li><b>Khởi động (mở):</b> kể tên bài hát thiếu nhi em thích và tác giả. Gợi ý của file hướng dẫn: Cho con (Phạm Trọng Cầu), Em yêu trường em (Hoàng Vân), Cánh én tuổi thơ (Phạm Tuyên), Đi học (Bùi Đình Thảo).</li>
+ <li><b>Câu 1:</b> Bét-tô-ven là nhà soạn nhạc cổ điển vĩ đại trên thế giới, đã sáng tác nhiều bản nhạc nổi tiếng, trong đó có bản xô-nát Ánh trăng.<br><i>⚠ File hướng dẫn ghi “người Đức, sống ở Viên nước Áo”. Bài đọc không nói Bét-tô-ven là người nước nào; Viên chỉ là nơi có cây cầu bắc qua sông Đa-nuýp. Theo phần Từ ngữ, Viên là thủ đô của nước Áo.</i></li>
+ <li><b>Câu 2:</b> gặp vào một đêm trăng sáng: ông nghe tiếng dương cầm văng vẳng, tiếng đàn đưa ông đến ngôi nhà trong khu lao động, thấy người cha chăm chú nghe con gái mù chơi đàn. Ước mơ duy nhất của cô gái: được ngắm nhìn ánh trăng trên dòng Đa-nuýp.<br><i>⚠ File hướng dẫn viết “ngôi nhà nhỏ nghèo nàn”. Bài đọc viết “ngôi nhà trong khu lao động”.</i></li>
+ <li><b>Câu 3:</b> ông đến bên cây đàn, ngồi xuống và chơi một bản nhạc ngẫu hứng tràn đầy cảm xúc yêu thương.</li>
+ <li><b>Câu 4:</b> các câu miêu tả: “Những nốt nhạc ngẫu hứng vang lên, … lúc êm ái, nhẹ nhàng như ánh trăng, lúc lại mạnh mẽ như sóng sông Đa-nuýp.” · “Trong tâm trí của hai cha con, … chỉ còn một thế giới huyền ảo, lung linh, tràn ngập ánh trăng.” · “Cô gái mù có cảm giác mình đang được ngắm nhìn, đùa giỡn với ánh trăng trên dòng sông Đa-nuýp.”</li>
+ <li><b>Câu 5:</b> bản nhạc ra đời trong đêm trăng bên sông; giai điệu giúp cô gái mù cảm nhận vẻ đẹp của ánh trăng, nên có tên Ánh trăng.</li>
+ <li><b>Luyện từ và câu 1:</b> tính từ tả tiếng nhạc: da diết, êm ái, nhẹ nhàng, mạnh mẽ, ngẫu hứng. Tính từ tả dòng sông: xinh đẹp, lấp lánh.<br><i>⚠ File hướng dẫn nêu thêm “rộn rã, êm đềm, phẳng lặng”. Các từ này không có trong bài đọc, nên app dùng từ có trong bài.</i></li>
+ <li><b>Câu 2 (thành ngữ):</b> hiền như bụt, đen như than, đỏ như gấc, xấu như ma, trắng như tuyết, đẹp như tiên.</li>
+ <li><b>Câu 3 (đoạn thơ “Em về làng xóm” của Định Hải):</b> xanh tả tre, lúa; xanh mát tả dòng sông máng; xanh ngắt tả trời mây mùa thu. Rồi viết 2–3 câu có dùng các tính từ đó. Mẫu: “Bầu trời mùa thu trong vắt và xanh ngắt một màu.”</li>
+ <li><b>Viết · Tìm hiểu cách viết đơn:</b> mục đích: xin tham gia Câu lạc bộ Sáng tạo; người viết Vũ Nam Hải (lớp 4C); nơi nhận Ban Giám hiệu Trường Tiểu học Trung Hoà. Bố cục: Quốc hiệu, tiêu ngữ → Tên đơn → Kính gửi → Giới thiệu bản thân → Lí do, nguyện vọng → Lời hứa, lời cảm ơn → Địa điểm, ngày tháng, chữ kí, họ tên; bên trái cuối đơn: ý kiến phụ huynh.</li>
+ <li><b>Vận dụng:</b> bố mẹ và con trao đổi tình huống cần viết đơn: xin nghỉ học, xin cấp lại thẻ thư viện, đăng kí ăn bán trú…</li></ul>
+ <h3>Lỗi thường gặp (theo file hướng dẫn)</h3>
+ <ul><li>Trả lời ước mơ của cô gái mù là “được sáng mắt”. Đúng theo bài: được ngắm nhìn ánh trăng trên sông Đa-nuýp.</li>
+ <li>Viết sai tên riêng nước ngoài: viết hoa chữ đầu và dùng dấu gạch nối (Bét-tô-ven, Đa-nuýp).</li>
+ <li>Điền sai thành ngữ (đỏ như tuyết, trắng như than…).</li>
+ <li>Viết đơn quên Quốc hiệu, tiêu ngữ, quên “Kính gửi”, quên lời hứa và lời cảm ơn, đặt sai vị trí chữ kí.</li></ul>`;}
+LESSON_DEFS.push({id:'b23',num:23,short:'Ánh trăng',title:'Bét-tô-ven và bản xô-nát Ánh trăng',parent:parentB23,data:B23,
+ sessions:[{name:'✍️ Buổi 2 · Tính từ & tìm hiểu đơn',W:W23,hello:()=>`Chào ${nm()}! Hôm nay mình luyện tính từ và tìm hiểu cách viết một lá đơn nhé!`,
+  badge:{e:'🌙',name:'Người yêu ánh trăng',text:'đã hoàn thành phần luyện tập bài 23',gift:'Quà từ túi thần kỳ của Miu-Bot: 🎼 nốt nhạc lấp lánh. Hôm nào bạn trao đổi với bố mẹ một tình huống cần viết đơn nhé!'}}]});
+
+// ===== BÀI 24 - NGƯỜI TÌM ĐƯỜNG LÊN CÁC VÌ SAO (SGK Tiếng Việt 4, Kết nối tri thức, tập một, tr.105-107) =====
+const B24=(()=>{
+const SENTS={
+ s1:{c:["Từ nhỏ,","Xi-ôn-cốp-xki đã mơ ước","được bay lên bầu trời."]},
+ s2:{c:["Có lần,","ông dại dột nhảy qua cửa sổ","để bay theo những cánh chim."]},
+ s3:{c:["Kết quả,","ông bị ngã gãy chân."]},
+ s4:{c:["Nhưng rủi ro lại làm nảy ra","trong đầu óc non nớt của ông","lúc bấy giờ","một câu hỏi:"]},
+ s5:{d:1,c:["“Vì sao quả bóng không có cánh","mà vẫn bay được?”"]},
+ s6:{c:["Để tìm hiểu điều bí mật đó,","Xi-ôn-cốp-xki đọc","không biết bao nhiêu là sách."]},
+ s7:{c:["Nghĩ ra điều gì,","ông lại hì hục làm thí nghiệm,","có khi đến hàng trăm lần."]},
+ s8:{c:["Có người bạn hỏi:"]},
+ s9:{d:1,c:["– Cậu làm thế nào","mà mua được nhiều sách","và dụng cụ thí nghiệm","như thế?"]},
+ s10:{c:["Xi-ôn-cốp-xki cười:"]},
+ s11:{d:1,c:["– Có gì đâu,","mình chỉ tiết kiệm thôi."]},
+ s12:{c:["Đúng là quanh năm","ông chỉ ăn bánh mì suông."]},
+ s13:{c:["Qua nhiều lần thí nghiệm,","ông đã tìm ra cách chế tạo","khí cầu bay bằng kim loại."]},
+ s14:{c:["Sa hoàng chưa tin","nên không ủng hộ."]},
+ s15:{c:["Không nản chí,","ông tiếp tục đi sâu","vào lí thuyết bay trong không gian."]},
+ s16:{c:["Được gợi ý từ chiếc pháo thăng thiên,","sau này,","ông đã đề xuất mô hình tên lửa nhiều tầng","trở thành một phương tiện","bay tới các vì sao."]},
+ s17:{c:["Hơn bốn mươi năm khổ công nghiên cứu, tìm tòi,","Xi-ôn-cốp-xki đã thực hiện được","điều ông hằng tâm niệm:"]},
+ s18:{d:1,c:["“Các vì sao không phải để tôn thờ","mà là để chinh phục.”"]}
+};
+const PAGES=[
+ {ids:["s1","s2","s3","s4","s5"],scene:"🧒 🪟 🐦 ⚽"},
+ {ids:["s6","s7","s8","s9","s10","s11"],scene:"📚 🧪 💬 🍞"},
+ {ids:["s12","s13","s14","s15","s16","s17","s18"],scene:"🎈 👑 🚀 ⭐"}
+];
+const PRACTICE=["s2","s4","s9","s16","s17"];
+const GLOSS={
+ "khí cầu":{e:"🎈",d:"dụng cụ hình quả cầu, chứa đầy khí nhẹ, có thể bay lên cao.",x:"Khí cầu bay lên giữa bầu trời."},
+ "sa hoàng":{e:"👑",d:"từ dùng để chỉ các vị vua của nước Nga (từ năm 1547 đến năm 1721).",x:"Sa hoàng là vua nước Nga ngày xưa."},
+ "non nớt":{e:"🌱",d:"còn bé, còn ít hiểu biết, chưa trưởng thành.",x:"Em bé còn non nớt nên cần người lớn giúp đỡ."},
+ "rủi ro":{e:"⚠️",d:"điều không may xảy ra bất ngờ.",x:"Chuyến đi gặp rủi ro vì mưa bão."},
+ "dại dột":{e:"🙈",d:"làm việc thiếu suy nghĩ, có thể gây nguy hiểm.",x:"Nhảy từ trên cao xuống là việc làm dại dột."},
+ "hì hục":{e:"💪",d:"cố gắng, miệt mài làm một việc khó, mất nhiều công sức.",x:"Bạn ấy hì hục sửa chiếc xe đạp."},
+ "thí nghiệm":{e:"🧪",d:"làm thử để quan sát, tìm hiểu điều chưa biết.",x:"Em làm thí nghiệm cho hạt đậu nảy mầm."},
+ "bánh mì suông":{e:"🍞",d:"bánh mì ăn không, không có thức ăn kèm.",x:"Ông chỉ ăn bánh mì suông để tiết kiệm."},
+ "nản chí":{e:"😞",d:"mất ý chí, không muốn cố gắng tiếp khi gặp khó khăn.",x:"Dù thất bại, em không nản chí."},
+ "ủng hộ":{e:"👍",d:"đồng ý và giúp đỡ cho việc làm của người khác.",x:"Bố mẹ ủng hộ em học đàn."},
+ "lí thuyết":{e:"📘",d:"những hiểu biết được rút ra và sắp xếp có hệ thống.",x:"Ông nghiên cứu lí thuyết bay trong không gian."},
+ "pháo thăng thiên":{e:"🎆",d:"loại pháo bay vút lên cao rồi nổ trên không.",x:"Pháo thăng thiên bay vút lên trời."},
+ "tên lửa":{e:"🚀",d:"phương tiện bay vào không gian nhờ sức đẩy của khí phụt ra.",x:"Tên lửa đưa vệ tinh lên quỹ đạo."},
+ "tâm niệm":{e:"💭",d:"điều luôn nghĩ đến, ghi nhớ trong lòng.",x:"Em luôn tâm niệm phải học thật chăm."},
+ "tôn thờ":{e:"🙏",d:"quá tôn kính, coi như thần thánh.",x:"Người xưa tôn thờ các vì sao."},
+ "chinh phục":{e:"🏔️",d:"dùng sức mạnh và ý chí để đạt được điều khó khăn.",x:"Các nhà leo núi chinh phục đỉnh cao."},
+ "vì sao":{e:"⭐",d:"trong câu “các vì sao” là những ngôi sao trên bầu trời.",x:"Ban đêm trời đầy các vì sao."},
+ "khổ công":{e:"😓",d:"bỏ nhiều công sức, chịu nhiều vất vả.",x:"Ông khổ công nghiên cứu nhiều năm."}
+};
+const TONES=[
+ {opts:[{w:"nghĩ",e:"💭",t:"dấu ngã",m:"suy nghĩ"},{w:"nghỉ",e:"🛌",t:"dấu hỏi",m:"nghỉ ngơi"}]},
+ {opts:[{w:"sao",e:"⭐",t:"không dấu",m:"ngôi sao"},{w:"sáo",e:"🐦",t:"dấu sắc",m:"con chim sáo"},{w:"sào",e:"🎋",t:"dấu huyền",m:"cây sào"}]},
+ {opts:[{w:"cánh",e:"🪽",t:"dấu sắc",m:"cánh chim"},{w:"cạnh",e:"📐",t:"dấu nặng",m:"cạnh bàn"},{w:"canh",e:"🍲",t:"không dấu",m:"bát canh"}]},
+ {opts:[{w:"sách",e:"📚",t:"dấu sắc",m:"quyển sách"},{w:"sạch",e:"🧼",t:"dấu nặng",m:"sạch sẽ"}]},
+ {opts:[{w:"lửa",e:"🔥",t:"dấu hỏi",m:"ngọn lửa"},{w:"lúa",e:"🌾",t:"dấu sắc",m:"cây lúa"},{w:"lựa",e:"🤏",t:"dấu nặng",m:"lựa chọn"}]},
+ {opts:[{w:"gãy",e:"🦴",t:"dấu ngã",m:"gãy chân"},{w:"gầy",e:"🧍",t:"dấu huyền",m:"gầy gò"},{w:"gáy",e:"🐓",t:"dấu sắc",m:"gà gáy"}]}
+];
+const QUIZ=[
+ {q:"Chi tiết nào cho thấy từ nhỏ Xi-ôn-cốp-xki đã ham tìm tòi, khám phá?",
+  o:["Ông nhảy qua cửa sổ để bay theo cánh chim, rồi tự hỏi vì sao quả bóng không có cánh mà vẫn bay được.","Ông chỉ thích ăn bánh mì.","Ông chờ người khác dạy cách bay."],a:0,ev:"s2",
+  why:"Từ nhỏ ông mơ được bay. Ngã gãy chân vì dại dột nhảy qua cửa sổ, ông lại nảy ra câu hỏi về quả bóng. Ông muốn tìm hiểu điều bí mật đó."},
+ {q:"Xi-ôn-cốp-xki đã kiên trì thực hiện ước mơ như thế nào?",
+  o:["Đọc rất nhiều sách, làm thí nghiệm hàng trăm lần, ăn bánh mì suông để tiết kiệm và không nản chí.","Bỏ cuộc khi Sa hoàng không ủng hộ.","Chỉ làm thí nghiệm một lần."],a:0,ev:"s12",
+  why:"Ông đọc không biết bao nhiêu sách, làm thí nghiệm có khi hàng trăm lần, quanh năm ăn bánh mì suông để dành tiền mua sách và dụng cụ. Sa hoàng không ủng hộ nhưng ông không nản chí."},
+ {q:"Những nghiên cứu, tìm tòi của Xi-ôn-cốp-xki đem lại kết quả gì?",
+  o:["Ông tìm ra cách chế tạo khí cầu bay bằng kim loại và đề xuất mô hình tên lửa nhiều tầng.","Ông chế tạo được chiếc xe điện đầu tiên.","Ông phát minh ra bóng đèn."],a:0,ev:"s16",
+  why:"Ông tìm ra cách chế tạo khí cầu bay bằng kim loại, rồi đề xuất mô hình tên lửa nhiều tầng thành phương tiện bay tới các vì sao."},
+ {q:"Theo em, nhan đề “Người tìm đường lên các vì sao” muốn nói điều gì?",
+  o:["Ca ngợi Xi-ôn-cốp-xki đã nghiên cứu, mở đường để con người có thể bay lên vũ trụ.","Nói về một người đi leo núi.","Nói về một người thích ngắm sao."],a:0,ev:"s18",
+  why:"“Tìm đường lên các vì sao” nghĩa là tìm ra cách để con người bay vào vũ trụ. Nhan đề ca ngợi ý chí và công lao của nhà khoa học."},
+ {q:"Vì sao Xi-ôn-cốp-xki quanh năm chỉ ăn bánh mì suông?",
+  o:["Để tiết kiệm tiền mua sách và dụng cụ thí nghiệm.","Vì ông không thích món khác.","Vì ông không có bếp."],a:0,ev:"s12",
+  why:"Khi bạn hỏi vì sao mua được nhiều sách và dụng cụ, ông trả lời: mình chỉ tiết kiệm thôi."},
+ {q:"Sau khi ngã gãy chân, câu hỏi nào nảy ra trong đầu cậu bé Xi-ôn-cốp-xki?",
+  o:["Vì sao quả bóng không có cánh mà vẫn bay được?","Vì sao chim biết bay?","Vì sao cửa sổ lại cao?"],a:0,ev:"s5",
+  why:"Rủi ro làm nảy ra câu hỏi: “Vì sao quả bóng không có cánh mà vẫn bay được?”."},
+ {q:"Từ nào là tính từ chỉ phẩm chất của nhà khoa học?",
+  o:["kiên trì","thí nghiệm","khí cầu"],a:0,hint:"Phẩm chất là tính cách tốt của một người. Người ấy thế nào?",
+  why:"“Kiên trì” nêu phẩm chất của nhà khoa học. “Thí nghiệm” và “khí cầu” không phải tính từ."}
+];
+const STORY_ORDER=[
+ "Từ nhỏ Xi-ôn-cốp-xki mơ được bay, nhảy cửa sổ bị gãy chân và tự hỏi vì sao quả bóng bay được.",
+ "Ông đọc rất nhiều sách, làm thí nghiệm hàng trăm lần và ăn bánh mì suông để tiết kiệm.",
+ "Ông chế tạo khí cầu bay bằng kim loại; Sa hoàng không ủng hộ nhưng ông không nản chí.",
+ "Hơn bốn mươi năm sau, ông đề xuất tên lửa nhiều tầng bay tới các vì sao."
+];
+const SORT={
+ head:"Phẩm chất nhà khoa học",title:"Từ nào nêu phẩm chất?",sub:"Chạm một từ, rồi chạm giỏ đúng: tính từ chỉ phẩm chất nhà khoa học, hay từ không phải phẩm chất.",
+ say:"Phẩm chất là tính cách tốt của một người, như kiên trì, say mê. Còn thí nghiệm, tên lửa là tên gọi hoặc việc làm, không phải phẩm chất. Bạn xếp nhé!",
+ win:"Giỏi quá! Bạn nhận ra các tính từ nêu phẩm chất của nhà khoa học!",star:2,nextLabel:"Sang câu hỏi ➡️",
+ baskets:[
+  {k:"pc",t:"🌟 Phẩm chất nhà khoa học",s:"tính từ chỉ tính cách, thái độ làm việc",h:"Thử hỏi: “{w}” có cho biết nhà khoa học là người như thế nào không? Nếu có thì bỏ vào giỏ phẩm chất."},
+  {k:"kp",t:"📦 Không phải phẩm chất",s:"đồ vật, việc làm…",h:"Thử hỏi: “{w}” là tên đồ vật hoặc việc làm, không nói ai đó là người thế nào? Nếu đúng thì bỏ vào giỏ này."}],
+ items:[{w:"kiên trì",k:"pc"},{w:"say mê",k:"pc"},{w:"sáng tạo",k:"pc"},{w:"kiên nhẫn",k:"pc"},{w:"tỉ mỉ",k:"pc"},{w:"bền bỉ",k:"pc"},
+        {w:"dụng cụ",k:"kp"},{w:"thí nghiệm",k:"kp"},{w:"nghiên cứu",k:"kp"},{w:"tên lửa",k:"kp"}]
+};
+const WELCOME={
+ title:"Em biết nhà khoa học nào?",sub:"Chạm vào nhà khoa học em đã nghe tên.",
+ say:"{n} ơi, hôm nay mình đọc bài Người tìm đường lên các vì sao, nói về một nhà khoa học. Bạn đã nghe tên nhà khoa học nào chưa?",
+ cards:[{e:"💡",t:"Ê-đi-xơn, người phát minh bóng đèn",g:1},{e:"🍎",t:"Niu-tơn và quả táo rơi",g:1},{e:"🧪",t:"Ma-ri Quy-ri",g:1},{e:"🧠",t:"An-be Anh-xtanh",g:1},{e:"🚀",t:"Xi-ôn-cốp-xki",g:1}],
+ need:1,okOne:"Hay quá! Bạn biết {t}. Bạn biết điều gì về nhà khoa học ấy? Bạn kể cho Miu-Bot hoặc bố mẹ nghe nhé!",
+ wrong:"",done:"Bạn biết nhiều nhà khoa học quá! Mình đi nghe truyện nhé!",heads:"Em biết nhà khoa học nào?"
+};
+const RETELL={q:"Nếu trở thành một nhà khoa học, em muốn sáng chế những gì? Vì sao?",
+ sub:"Bạn nói bằng lời của mình. Có thể bắt đầu: “Em muốn sáng chế… vì…”.",
+ say:"Câu này không có đáp án đúng hay sai. Bạn cứ nói điều bạn mơ ước nhé!"};
+const BADGE={e:"🚀",name:"Nhà thám hiểm vũ trụ",gift:"⭐ ngôi sao may mắn",text:"hoàn thành bài 24"};
+return {SENTS,PAGES,PRACTICE,GLOSS,TONES,QUIZ,STORY_ORDER,SORT,WELCOME,RETELL,BADGE};
+})();
+
+const W24=[
+ {id:"e1",e:"🌟",t:"Tính từ chỉ phẩm chất",s:"4 phút",type:"form",key:"e1",h:"🌟 Tìm tính từ nêu phẩm chất của nhà khoa học",
+  sub:"Mẫu trong sách: miệt mài, thông thái. Em ghi thêm vài tính từ, cách nhau bằng dấu phẩy.",
+  say:"Bạn nghĩ nhà khoa học cần có những phẩm chất nào? Ví dụ: miệt mài, thông thái, kiên trì. Bạn ghi thêm nhé!",
+  fields:[{k:"a",l:"Các tính từ em tìm được",ph:"Ví dụ: miệt mài, thông thái, kiên trì…",rows:2,req:1,min:3}],
+  chips:[{to:"a",label:"Gợi ý:",list:["miệt mài","thông thái","kiên trì","say mê","sáng tạo","tỉ mỉ","bền bỉ","chăm chỉ"]}],
+  star:2,why:"tìm tính từ phẩm chất",sum:"Tính từ nêu phẩm chất nhà khoa học",build:g=>g("a")},
+ {id:"e2",e:"🔬",t:"Giới thiệu nhà khoa học",s:"4 phút",type:"form",key:"e2",h:"🔬 Giới thiệu một nhà khoa học hoặc một phát minh",
+  sub:"Viết 2 hoặc 3 câu giới thiệu một nhà khoa học hoặc phát minh khoa học mà em biết.",
+  say:"Bạn viết 2 hoặc 3 câu giới thiệu nhé. Câu đầu nêu tên, các câu sau nói về phẩm chất và điều ông ấy đã làm cho mọi người.",
+  tip:"💡 Muốn đọc cho máy gõ thay: bấm 🎤 trên bàn phím iPad. Bố mẹ cũng có thể gõ giúp.",
+  fields:[{k:"a",l:"Câu giới thiệu của em",ph:"Ví dụ: Ê-đi-xơn là một nhà phát minh vĩ đại. Nhờ sự kiên trì, ông đã phát minh ra bóng đèn sợi đốt.",rows:4,req:1,min:10}],
+  star:3,why:"giới thiệu nhà khoa học",sum:"Giới thiệu nhà khoa học hoặc phát minh",build:g=>g("a")},
+ {id:"e3",e:"📮",t:"Viết đơn",s:"7 phút",type:"form",key:"e3",h:"📮 Em viết một lá đơn",
+  sub:"Chọn 1 trong 2 đề: xin tham gia câu lạc bộ em yêu thích, hoặc xin nghỉ một buổi học. Em ghi nội dung, Miu-Bot sẽ ghép vào mẫu đơn.",
+  say:"Bạn chọn một đề để viết đơn nhé. Bạn nhớ mẫu đơn của bạn Nam Hải ở bài 23: giới thiệu bản thân, lí do, lời hứa, lời cảm ơn.",
+  tip:"💡 Đề 1: Viết đơn xin tham gia câu lạc bộ em yêu thích. Đề 2: Viết đơn xin nghỉ một buổi học. Con cần ghi tên, ngày tháng thật của mình; bố mẹ giúp con nếu cần.",
+  fields:[{k:"title",l:"Tên đơn",ph:"Ví dụ: Đơn xin tham gia Câu lạc bộ Vẽ",rows:1,req:1,min:4},
+          {k:"to",l:"Kính gửi",ph:"Ví dụ: Ban Giám hiệu Trường Tiểu học …",rows:1,req:1,min:3},
+          {k:"me",l:"Em tên là (họ tên, lớp)",ph:"Ví dụ: Nguyễn Văn A, học sinh lớp 4B",rows:1,req:1,min:3},
+          {k:"why",l:"Lí do viết đơn, điều em xin",ph:"Ví dụ: Em rất thích vẽ nên xin nhà trường cho em tham gia câu lạc bộ…",rows:3,req:1,min:8},
+          {k:"pro",l:"Lời hứa",ph:"Ví dụ: Em xin hứa sẽ nhiệt tình tham gia và chấp hành nội quy.",rows:2,req:1,min:5},
+          {k:"place",l:"Địa điểm, ngày tháng năm",ph:"Ví dụ: Hà Nội, ngày 21 tháng 11 năm 2026",rows:1,req:1,min:3}],
+  chips:[{to:"title",label:"Chọn đề:",list:["Đơn xin tham gia Câu lạc bộ","Đơn xin nghỉ học một buổi"]}],
+  star:3,why:"viết đơn",sum:"Lá đơn của con",
+  build:g=>`CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập – Tự do – Hạnh phúc\n\n${g("title").toUpperCase()}\n\nKính gửi: ${g("to")}\nEm tên là: ${g("me")}\nEm viết đơn này xin trình bày với nhà trường một việc như sau:\n${g("why")}\n${g("pro")}\nEm xin chân thành cảm ơn!\n\n${g("place")}\nÝ kiến phụ huynh                 Người viết đơn`},
+ {id:"e4",e:"✅",t:"Đọc soát lá đơn",s:"3 phút",type:"check",h:"✅ Em đọc soát lá đơn",show:"e3",
+  sub:"Đọc lại lá đơn của em và chạm vào mỗi điều em đã làm được.",
+  say:"Bạn đọc lại lá đơn nhé. Mình kiểm tra từng phần: quốc hiệu, tiêu ngữ, tên đơn, nội dung. Phần nào chưa có thì bạn sửa lại.",
+  items:["Có quốc hiệu và tiêu ngữ ở đầu đơn.","Tên đơn viết hoa, rõ ràng.","Có “Kính gửi” và tên nơi nhận đơn.","Nội dung có: giới thiệu bản thân, lí do, lời hứa, lời cảm ơn.","Có địa điểm, ngày tháng, chữ kí và họ tên; có chỗ cho ý kiến phụ huynh."],
+  win:"Lá đơn của em đúng quy định! Em nhớ chỉ viết đơn khi thật cần và đúng sự thật nhé!",star:2},
+ {id:"e5",e:"📘",t:"Phiếu đọc sách",s:"5 phút",type:"form",key:"e5",h:"📘 Phiếu đọc sách: câu chuyện về nhà khoa học",
+  sub:"Em đọc một câu chuyện về nhà khoa học (Niu-tơn, Anh-xtanh, Quy-ri, Ê-đi-xơn…) rồi ghi phiếu. Chưa đọc thì nhờ bố mẹ tìm một truyện, đọc xong quay lại ghi nhé.",
+  say:"Bạn ghi phiếu đọc sách nhé. Nếu chưa đọc câu chuyện nào, bạn nhờ bố mẹ tìm một truyện về nhà khoa học để đọc.",
+  fields:[{k:"title",l:"Tên câu chuyện",ph:"Ví dụ: Niu-tơn và quả táo rơi",rows:1,req:1,min:2},
+          {k:"author",l:"Tác giả",ph:"Xem trên bìa sách",rows:1},
+          {k:"date",l:"Ngày đọc",ph:"Ví dụ: 21/11/2026",rows:1},
+          {k:"sci",l:"Tên nhà khoa học",ph:"Ví dụ: I-xắc Niu-tơn",rows:1,req:1,min:2},
+          {k:"gift",l:"Phát minh hoặc đóng góp của nhà khoa học",ph:"Ví dụ: tìm ra định luật vạn vật hấp dẫn",rows:2,req:1,min:4}],
+  rate:1,star:3,why:"xong phiếu đọc sách",sum:"Phiếu đọc sách (nhà khoa học)",
+  build:(g,x)=>`Tên câu chuyện: ${g("title")}\nTác giả: ${g("author")}\nNgày đọc: ${g("date")}\nTên nhà khoa học: ${g("sci")}\nPhát minh hoặc đóng góp: ${g("gift")}\nMức độ yêu thích: ${g("stars")||'0'}/5 sao`}
+];
+function parentB24(){return `<h3>Đáp án bài 24 · Người tìm đường lên các vì sao (theo văn bản SGK)</h3>
+ <ul><li><b>Khởi động (mở):</b> kể tên một nhà khoa học và điều em biết (Ê-đi-xơn: bóng đèn điện, máy ghi âm; Niu-tơn: định luật vạn vật hấp dẫn; Xi-ôn-cốp-xki: nền móng ngành du hành vũ trụ).</li>
+ <li><b>Câu 1:</b> từ nhỏ ông mơ ước được bay; dại dột nhảy qua cửa sổ để bay theo những cánh chim, bị ngã gãy chân; rủi ro làm nảy ra câu hỏi “Vì sao quả bóng không có cánh mà vẫn bay được?”; ông đọc không biết bao nhiêu sách và làm thí nghiệm.<br><i>⚠ File hướng dẫn thêm ý “tại sao con người lại không bay được như chim”. Câu hỏi này không có trong bài đọc; chỉ có câu hỏi về quả bóng.</i></li>
+ <li><b>Câu 2:</b> đọc rất nhiều sách; làm thí nghiệm có khi hàng trăm lần; quanh năm chỉ ăn bánh mì suông để dành tiền mua sách và dụng cụ; Sa hoàng không ủng hộ nhưng ông không nản chí, tiếp tục nghiên cứu lí thuyết bay; hơn bốn mươi năm khổ công nghiên cứu.</li>
+ <li><b>Câu 3:</b> tìm ra cách chế tạo khí cầu bay bằng kim loại; đề xuất mô hình tên lửa nhiều tầng thành phương tiện bay tới các vì sao.</li>
+ <li><b>Câu 4:</b> nhan đề ca ngợi Xi-ôn-cốp-xki, người nghiên cứu và mở đường để con người bay lên vũ trụ.<br><i>⚠ File hướng dẫn viết “người đầu tiên trên thế giới”. Bài đọc không nói vậy; con chỉ cần nói ông là người tìm đường, mở đường cho việc bay vào vũ trụ.</i></li>
+ <li><b>Câu 5 (mở):</b> nếu là nhà khoa học, em muốn sáng chế gì và vì sao (ví dụ: máy tái chế rác để Trái Đất sạch hơn).</li>
+ <li><b>Luyện tập 1:</b> tính từ nêu phẩm chất nhà khoa học: miệt mài, thông thái (mẫu), kiên trì, nhẫn nại, bền bỉ, say mê, sáng tạo, tỉ mỉ, cần cù… <b>Câu 2:</b> 2–3 câu giới thiệu nhà khoa học hoặc phát minh.</li>
+ <li><b>Viết · Viết đơn:</b> chọn 1 trong 2 đề: xin tham gia câu lạc bộ em yêu thích, hoặc xin nghỉ một buổi học. Theo mẫu bài 23: quốc hiệu, tiêu ngữ; tên đơn; Kính gửi; giới thiệu bản thân; lí do; lời hứa; lời cảm ơn; địa điểm, ngày tháng; ý kiến phụ huynh; chữ kí, họ tên. Đọc soát: quốc hiệu, tiêu ngữ; tên đơn; nội dung đơn.</li>
+ <li><b>Đọc mở rộng:</b> đọc truyện về nhà khoa học (Niu-tơn, Anh-xtanh, Quy-ri…) và viết phiếu đọc sách (tên câu chuyện, tác giả, ngày đọc, tên nhà khoa học, phát minh hoặc đóng góp, mức độ yêu thích).<br><i>⚠ Phiếu mẫu trong file hướng dẫn ghi tên tác giả là “Truyện kể danh nhân thế giới” và ngày đọc 20/11/2023. Đó chỉ là ví dụ; con tự ghi thông tin sách của mình.</i></li></ul>
+ <h3>Lỗi thường gặp (theo file hướng dẫn)</h3>
+ <ul><li>Viết sai tên riêng nước ngoài: Xi-ôn-cốp-xki, Ê-đi-xơn (có dấu gạch nối giữa các tiếng).</li>
+ <li>Nhầm nguyên nhân gãy chân: do dại dột nhảy qua cửa sổ để bay, không phải do thí nghiệm.</li>
+ <li>Hiểu nhan đề theo nghĩa đen (ông tự lái tàu lên sao).</li>
+ <li>Nhầm tính từ phẩm chất với danh từ, động từ (thí nghiệm, nghiên cứu).</li>
+ <li>Viết đơn thiếu quốc hiệu, “Kính gửi”, lời hứa, lời cảm ơn.</li></ul>`;}
+LESSON_DEFS.push({id:'b24',num:24,short:'Lên các vì sao',title:'Người tìm đường lên các vì sao',parent:parentB24,data:B24,
+ sessions:[{name:'✍️ Buổi 2 · Viết đơn & đọc mở rộng',W:W24,hello:()=>`Chào ${nm()}! Hôm nay mình viết một lá đơn và ghi phiếu đọc sách về nhà khoa học nhé!`,
+  badge:{e:'🔭',name:'Nhà khoa học nhí',text:'đã hoàn thành phần luyện tập bài 24',gift:'Quà từ túi thần kỳ của Miu-Bot: 🔭 chiếc kính thiên văn nhỏ. Bạn đọc phiếu đọc sách cho người thân nghe nhé!'}}]});
 
 // ===== Miu-Bot: mèo máy nhân vật gốc (bạc hà + mặt kem + ăng-ten ngôi sao) =====
 function miuSVG(mood){
@@ -298,14 +1381,147 @@ function miuSVG(mood){
 </svg>`;
 }
 
+// ===== GIỌNG ĐỌC THU SẴN (tuỳ chọn) =====
+// Bài nào có thư mục audio/<mã bài>/<mã câu>.mp3 thì khai báo ở đây. Thiếu file hoặc lỗi thì tự dùng giọng máy.
+const AUDIO_HAVE={b21:1};
+let AUDIO={};const AUD={cur:null,bad:{}};
+function buildAudio(){AUDIO={};if(!L||!AUDIO_HAVE[L.id])return;for(const id of Object.keys(SENTS)){AUDIO[clean(SENTS[id].c.join(' '))]=`audio/${L.id}/${id}.mp3`;}}
+function stopAudio(){const a=AUD.cur;if(a){AUD.cur=null;try{a.onended=a.onerror=null;a.pause();}catch(e){}}}
+function playClip(url,rate){
+  return new Promise(res=>{
+    let done=false,tm;const fin=ok=>{if(!done){done=true;clearTimeout(tm);if(AUD.cur===a)AUD.cur=null;res(ok);}};
+    const a=new Audio(url);AUD.cur=a;
+    try{a.preservesPitch=true;a.webkitPreservesPitch=true;a.playbackRate=Math.max(.75,Math.min(1.05,(rate||.95)/.95));}catch(e){}
+    a.onended=()=>fin(true);a.onerror=()=>{AUD.bad[url]=1;fin(false);};
+    tm=setTimeout(()=>{if(!a.duration||a.currentTime===0){AUD.bad[url]=1;try{a.pause();}catch(e){}fin(false);}},3500);
+    const p=a.play();if(p&&p.catch)p.catch(()=>{AUD.bad[url]=1;fin(false);});
+    a.onplaying=()=>{clearTimeout(tm);tm=setTimeout(()=>{try{a.pause();}catch(e){}fin(true);},((a.duration||30)/a.playbackRate+1.5)*1000);};
+  });
+}
+
+// ===== DANH MỤC CÁC BÀI HỌC (mỗi bài là một "gói" dữ liệu; thêm bài mới chỉ cần thêm gói) =====
+Object.assign(B10,{
+ SORT:{head:'Hái lá',title:'Hái lá, xếp vào giỏ',sub:'Chạm một chiếc lá, rồi chạm giỏ đúng.',
+  say:'Mình cùng hái lá nhé! Danh từ chỉ người, vật, cây cối. Động từ chỉ việc làm. Ví dụ: cái bàn là danh từ, chạy là động từ.',
+  win:'Giỏi quá {n}! Bạn phân biệt danh từ và động từ rất tốt!',star:2,nextLabel:'Sang câu hỏi ➡️',
+  baskets:[{k:'n',t:'🧺 Danh từ',s:'chỉ người, vật, cây cối… (ai? cái gì? con gì?)',h:'Thử hỏi: “{w}” có phải là tên của người, vật hay cây cối không? Nếu phải thì bỏ vào giỏ danh từ.'},
+           {k:'v',t:'🧺 Động từ',s:'chỉ việc làm, hoạt động (làm gì?)',h:'Thử hỏi: “{w}” có phải là một việc làm không? Nếu là việc làm thì bỏ vào giỏ động từ.'}],
+  items:[{w:'vườn',k:'n'},{w:'đi',k:'v'},{w:'cây',k:'n'},{w:'trồng',k:'v'},{w:'đất',k:'n'},{w:'chọn',k:'v'},{w:'hỏi',k:'v'},{w:'hoa',k:'n'},{w:'bạn',k:'n'},{w:'ngắm',k:'v'}]},
+ WELCOME:{title:'Cây cần gì để khỏe mạnh?',sub:'Chạm vào những việc giúp cây khỏe mạnh. Tìm được 3 việc là qua bài nhé!',
+  say:'Chào {n}! Hôm nay mình đọc bài Tiếng nói của cỏ cây. Trước hết, bạn đoán xem cây cần gì để khỏe mạnh nhé!',
+  cards:[{e:'☀️',t:'Trồng ở chỗ có đủ ánh sáng',g:1},{e:'💧',t:'Tưới nước vừa đủ vào sáng sớm hoặc chiều mát',g:1},{e:'🌿',t:'Làm cỏ vườn thường xuyên',g:1},{e:'🪱',t:'Xới nhẹ đất quanh gốc cho tơi xốp',g:1},{e:'🐛',t:'Bắt sâu, tỉa lá úa',g:1},{e:'🌑',t:'Nhốt cây trong phòng tối mãi',g:0},{e:'🥵',t:'Tưới thật nhiều nước giữa trưa nắng gắt',g:0}],
+  need:3,okOne:'',wrong:'Ồ, cây không thích vậy đâu! Thử việc khác nhé.',done:'Bạn biết nhiều về cây quá! Mình đi nghe truyện nhé!'},
+ RETELL:{q:'Theo em, Ta-nhi-a đã có thêm những trải nghiệm gì trong mùa hè?',
+  sub:'Bạn kể bằng lời của mình (kể cho Miu-Bot hoặc bố mẹ nghe). Có thể bắt đầu bằng: “Ta-nhi-a biết thêm…”, “Ta-nhi-a đã thử…”.',
+  say:'Câu cuối cùng này không có đáp án đúng hay sai. Bạn cứ kể điều bạn nghĩ nhé!'},
+ BADGE:{e:'🏅',name:'Bạn của cỏ cây',gift:'🌱 hạt giống kì diệu',text:'hoàn thành bài 10'}
+});
+
+function parentB10(){return `${parentExtra()}
+ <h3>Đáp án bài 10 (đối chiếu văn bản bài đọc và file hướng dẫn giải)</h3>
+ <ul><li><b>Khởi động:</b> trồng chỗ đủ ánh sáng; tưới vừa đủ vào sáng sớm hoặc chiều mát (tránh trưa nắng gắt, tưới quá nhiều làm úng rễ); làm cỏ; xới đất cho tơi xốp; bón phân; bắt sâu, tỉa lá úa.</li>
+ <li><b>Câu 1:</b> Ta-nhi-a được thoả thích chạy nhảy (dạo chơi) trong vườn nhà ông bà.</li>
+ <li><b>Câu 2:</b> Việc đã làm: bứng một cây hồng nhỏ nhất trồng vào chỗ đất trống dưới cửa sổ → lí do: khóm hồng có vẻ chật chỗ. Rồi chọn <u>một</u> cây huệ trồng cạnh cây hồng → lí do: ngắm nghía một hồi vẫn chưa hài lòng.<br><i>⚠ Lưu ý: file hướng dẫn ghi câu 2 là “bứng cây huệ… vì đứng riêng lẻ buồn bã”. Ý này không có trong văn bản bài đọc, và chính file đó ở phần “Bài tập tương tự” lại ghi lí do là “chật chỗ”. App theo văn bản bài đọc. Nếu cô giáo chấm theo đáp án khác, bố mẹ cho con biết nhé.</i></li>
+ <li><b>Câu 3:</b> Hoa hồng nở nhiều, màu trắng dịu, cánh trong suốt lung linh như phủ đầy tuyết trắng; hoa huệ trắng muốt, đẹp trội hơn hẳn, đẹp như một nàng tiên trong truyện cổ tích.</li>
+ <li><b>Câu 4:</b> Chỗ ở mới thoáng hơn, không bị rễ của cây khác tranh chất màu dưới đất.</li>
+ <li><b>Câu 5 (mở):</b> được gần gũi thiên nhiên; biết cách chăm sóc, trồng cây; cảm nhận niềm vui khi cây nở hoa đẹp; hiểu ý nghĩa của tình bạn và sự sẻ chia.</li>
+ <li><b>Luyện từ và câu 1:</b> danh từ: vườn, cây, đất, hoa, bạn · động từ: đi, trồng, chọn, hỏi, ngắm.</li></ul>
+ <h3>Lỗi thường gặp (theo file hướng dẫn)</h3>
+ <ul><li>Nhầm lí do Ta-nhi-a chuyển cây (chọn “cây bị héo”…) vì đọc lướt → đọc kĩ chữ “chật chỗ”.</li>
+ <li>Nghĩ cô bé bứng cả khóm huệ → chỉ “chọn một cây”.</li>
+ <li>Câu 3 chỉ kể hoa huệ mà quên hoa hồng (hoặc ngược lại) → hỏi về cả hai cây.</li>
+ <li>Xếp nhầm động từ (trồng, ngắm) vào danh từ → kiểm tra: “cái gì, con gì, ai?” là danh từ; “làm gì?” là động từ.</li></ul>`;}
+
+function parentB18(){return `<h3>Đáp án bài 18 · Đồng cỏ nở hoa (theo văn bản SGK)</h3>
+ <ul><li><b>Câu 1:</b> Bống là cô bé có tài hội hoạ; bác Lan phát hiện đầu tiên; con bé mới học tiểu học mà mê vẽ như người ta thở, nhìn, nghe; vẽ các nàng tiên, công chúa, công tử.</li>
+ <li><b>Câu 2:</b> Điều đáng chú ý: Bống vẽ <u>rất giống</u> (mèo Kết ra mèo Kết, chó Lu ra chó Lu, bố Lít ra bố Lít, mẹ Phít khó lẫn với ai).<br><i>⚠ File hướng dẫn trả lời câu 2 là “cách nhìn thế giới ngộ nghĩnh, đầy trí tưởng tượng” (gà mẹ có “tí”, chuột doạ mèo). Ý đó thực ra là đáp án câu 4. Nếu lớp chấm theo file hướng dẫn, con có thể nói thêm: “vẽ rất giống và rất ngộ nghĩnh”.</i></li>
+ <li><b>Câu 3:</b> Chọn A (hoặc B). Lời khen: tranh sinh động, tự nhiên, tươi đẹp như cả đồng cỏ nở hoa; Bống có năng khiếu.</li>
+ <li><b>Câu 4:</b> Gà mẹ có hàng chấm chấm làm “tí” cho gà con bú; chuột nhắt đứng doạ sau lưng con mèo (“mi hãy giờ hồn…”).</li>
+ <li><b>Câu 5 (mở):</b> chọn một nhân vật (gà mẹ, chuột nhắt…) và nói vì sao: ngộ nghĩnh, hài hước, đáng yêu…</li>
+ <li><b>Luyện từ và câu 1:</b> sáng tác = làm ra tác phẩm văn học, nghệ thuật; sáng tạo = tạo ra giá trị mới về vật chất hoặc tinh thần; sáng chế = nghĩ và chế tạo ra cái trước đó chưa từng có. <b>Câu 2:</b> sách có câu mẫu “Nhà thơ Phạm Hổ sáng tác nhiều bài thơ hay cho thiếu nhi.”; gợi ý: “Ê-đi-xơn đã sáng chế ra bóng đèn.”, “Bạn Nam có nhiều ý tưởng sáng tạo.”</li>
+ <li><b>Viết · Tìm ý:</b> con chọn truyện và một phương án (bổ sung lời kể/tả hoặc viết tiếp đoạn kết) rồi ghi ý theo ba phần: mở đầu (tên truyện), triển khai (tưởng tượng thêm, có bất ngờ, thú vị; có thể dùng nhân hoá, so sánh), kết thúc (cảm nghĩ hoặc điều tưởng tượng tiếp theo).</li>
+ <li><b>Nói và nghe:</b> giới thiệu một sản phẩm tự làm: tên và dịp làm, hình dáng, màu sắc, chất liệu, cách làm (ngắn), điểm đặc biệt, cảm xúc.</li></ul>
+ <h3>Lỗi thường gặp (theo file hướng dẫn)</h3>
+ <ul><li>Nhầm sáng tác / sáng chế / sáng tạo: sáng tác đi với thơ, truyện, bài hát, tranh; sáng chế đi với máy móc, đồ vật mới; sáng tạo đi với ý tưởng, cách làm mới.</li>
+ <li>Trả lời chung chung “tranh vẽ đẹp” → cần nêu chi tiết trong bài (gà mẹ có “tí”, chuột doạ mèo).</li>
+ <li>Đặt câu thiếu bộ phận chính hoặc quên dấu chấm cuối câu.</li>
+ <li>Bài nói: quên nêu dịp làm sản phẩm, kể các bước quá dài, nói quá nhỏ, chỉ nhìn giấy.</li></ul>`;}
+
+function parentB19(){return `<h3>Đáp án bài 19 · Thanh âm của núi (theo văn bản SGK)</h3>
+ <ul><li><b>Câu 1:</b> Du khách thấy nhớ, thấy thương, thấy vấn vương trong lòng; âm thanh khèn làm đắm say cả du khách khó tính nhất.</li>
+ <li><b>Câu 2 (đóng vai người Mông giới thiệu khèn):</b> vật liệu: gỗ cùng sáu ống trúc lớn, nhỏ, dài, ngắn khác nhau; sáu ống trúc tượng trưng cho tình anh em tụ hợp; xếp song song, nhìn như dòng nước đang trôi, chở âm thanh huyền diệu từ xưa đến nay. Xưng “tôi”, “chúng tôi”.<br><i>⚠ File hướng dẫn ghi thêm “gỗ pơ mu, lá đồng mỏng” và hình dáng “như tổ chim, bàn tay đón gió”. Những chi tiết này không có trong bài đọc của sách. App theo bài đọc (gỗ, sáu ống trúc, dòng nước). Nếu con tự tưởng tượng thêm thì vẫn rất tốt.</i></li>
+ <li><b>Câu 3:</b> Tiếng khèn gắn bó với người Mông khi lên nương, xuống chợ, mỗi độ xuân về; được người Mông xưa truyền lại cho các thế hệ sau.</li>
+ <li><b>Câu 4:</b> Người thổi khèn đẹp như tuyệt tác của thiên nhiên; tiếng khèn đầy khát khao, dạt dào sức sống nên núi rừng rộng lớn cũng không làm chìm khuất được.</li>
+ <li><b>Câu 5:</b> Đáp án C: Tiếng khèn của người Mông là nét văn hoá quý báu, cần được lưu giữ, bảo tồn. (Sách có 4 lựa chọn A, B, C, D; file hướng dẫn chỉ ghi 3.)</li>
+ <li><b>Luyện từ và câu 1 (nhân hoá):</b> câu (c) về chim: chích choè gọi “thím”, tả “nhanh nhảu”; khướu gọi “chú”, tả “lắm điều”; chào mào gọi “anh”, tả “đỏm dáng”; cu gáy gọi “bác”, tả “trầm ngâm”. Hai cách: gọi bằng từ chỉ người; tả bằng việc làm, tính nết của người.<br><i>⚠ File hướng dẫn trả lời phần (a), (b) cho đoạn “nước, bò, bão”, nhưng trong sách (a) là bài thơ chim mừng, cào cào, gió (Quang Khải), (b) là cậu bé nói chuyện với cái cây. Chỉ phần (c) trùng nhau. Bố mẹ đối chiếu theo sách nhé: (a) chim, cào cào, hạt, “chị gió” được nhân hoá; (b) cây được cậu bé trò chuyện như người, “im lặng nhìn em”.</i></li>
+ <li><b>Câu 2 (đoạn thơ nhà em):</b> “nàng gà mái hoa mơ”, “bà chuối mật lưng ong”, “ông ngô bắp râu hồng như tơ”. Tác dụng: cây cối, con vật trở nên gần gũi, thân thương như người trong nhà.</li>
+ <li><b>Câu 3:</b> đặt 2–3 câu nhân hoá. Mẫu: “Những chị mây đang dạo chơi trên bầu trời.”</li></ul>
+ <h3>Lỗi thường gặp (theo file hướng dẫn)</h3>
+ <ul><li>Quên đổi ngôi xưng hô khi đóng vai (phải dùng “tôi”, “chúng tôi”).</li>
+ <li>Nêu chưa đủ lí do tiếng khèn là báu vật (cần nói gắn bó với đời sống và được truyền lại).</li>
+ <li>Chọn chủ đề quá rộng (A, B, D) thay vì đối tượng chính là tiếng khèn của người Mông (C).</li>
+ <li>Nhầm nhân hoá với so sánh khi đặt câu (“mặt trời tròn như quả bóng” là so sánh).</li></ul>`;}
+
+function parentB20(){return `<h3>Đáp án bài 20 · Bầu trời mùa thu (theo văn bản SGK)</h3>
+ <ul><li><b>Câu 1:</b> Nhìn lên bầu trời, suy nghĩ và chọn những từ ngữ thích hợp để nói về bầu trời (theo cảm nhận, từ ngữ riêng của mình).</li>
+ <li><b>Câu 2:</b> Các bạn dùng biện pháp nhân hoá: bầu trời “được rửa mặt”, “dịu dàng”, “buồn bã”, “trầm ngâm”, “nhớ”, “ghé sát mặt đất”, “cúi xuống lắng nghe”. Cách tả mới lạ, giàu tưởng tượng, thể hiện sự quan sát tinh tế, tình yêu thiên nhiên.</li>
+ <li><b>Câu 3 (mở):</b> con chọn một câu trong bài và nói vì sao thích.<br><i>⚠ File hướng dẫn lấy ví dụ “Bầu trời xanh như một tấm lụa khổng lồ mềm mại”. Câu này không có trong bài đọc của sách. Con cần chọn câu có trong bài.</i></li>
+ <li><b>Câu 4:</b> Mỗi bạn có vị trí, cảm nhận, trí tưởng tượng và tình cảm riêng nên hình ảnh bầu trời khác nhau.</li>
+ <li><b>Câu 5 (mở):</b> viết 1–2 câu tả bầu trời theo quan sát của em, nên có từ gợi tả hoặc so sánh, nhân hoá.</li>
+ <li><b>Luyện từ và câu 1:</b> đáp án A: “Bầu trời xanh như mặt nước mệt mỏi trong ao.” (so sánh: “như mặt nước”; nhân hoá: mặt nước “mệt mỏi”). <b>Câu 2:</b> đặt câu nhân hoá về mây, gió, nắng, mưa hoặc bão. Ví dụ: “Chị gió tinh nghịch đuổi bắt những chiếc lá vàng.”</li>
+ <li><b>Viết · Trả bài:</b> đọc nhận xét, tự kiểm tra: đủ mở đầu, triển khai, kết thúc? chi tiết tưởng tượng kết nối với truyện? lỗi dùng từ, đặt câu, chính tả? rồi viết lại một câu cho hay hơn.</li>
+ <li><b>Đọc mở rộng:</b> sách báo về khoa học và công nghệ (Mười vạn câu hỏi vì sao; Tìm hiểu về các phát minh; Một trăm phát minh làm nên lịch sử) và viết Phiếu đọc sách.</li></ul>
+ <h3>Lỗi thường gặp (theo file hướng dẫn)</h3>
+ <ul><li>Chỉ nêu câu mình thích mà quên giải thích vì sao.</li>
+ <li>Viết câu tả bầu trời đơn điệu, thiếu hình ảnh gợi tả.</li>
+ <li>Nhầm câu chỉ có so sánh với câu có cả so sánh và nhân hoá.</li>
+ <li>Khi sửa bài chỉ sửa chính tả mà không làm câu văn hay hơn (thêm từ gợi tả, hình ảnh so sánh).</li></ul>`;}
+
+const LESSONS={
+ b10:Object.assign({id:'b10',num:10,short:'Cỏ cây',title:'Tiếng nói của cỏ cây',parent:parentB10,
+  sessions:[
+   {name:'📖 Buổi 1 · Đọc hiểu',steps:()=>readSteps()},
+   {name:'✍️ Buổi 2 · Viết dàn ý',steps:()=>STEPS2,hello:()=>`Chào ${nm()}! Hôm nay mình làm nhà văn nhí nhé! Mình cùng lập dàn ý để kể lại một trải nghiệm của bạn.`}]},B10),
+ b18:Object.assign({id:'b18',num:18,short:'Đồng cỏ nở hoa',title:'Đồng cỏ nở hoa',parent:parentB18,
+  sessions:[
+   {name:'📖 Buổi 1 · Đọc hiểu',steps:()=>readSteps()},
+   {name:'✍️ Buổi 2 · Viết: tìm ý',steps:()=>STEPS18W,hello:()=>`Chào ${nm()}! Hôm nay mình làm nhà văn nhí. Mình sẽ tìm ý để viết đoạn văn tưởng tượng nhé!`},
+   {name:'🎤 Buổi 3 · Nói và nghe',steps:()=>STEPS18S,hello:()=>`Chào ${nm()}! Hôm nay mình tập giới thiệu một sản phẩm bạn tự làm nhé!`}]},B18),
+ b19:Object.assign({id:'b19',num:19,short:'Thanh âm của núi',title:'Thanh âm của núi',parent:parentB19,
+  sessions:[
+   {name:'📖 Buổi 1 · Đọc hiểu',steps:()=>readSteps()},
+   {name:'✍️ Buổi 2 · Đặt câu & viết đoạn',steps:()=>STEPS19W,hello:()=>`Chào ${nm()}! Hôm nay mình đặt câu nhân hoá và viết đoạn văn tưởng tượng nhé!`}]},B19),
+ b20:Object.assign({id:'b20',num:20,short:'Bầu trời mùa thu',title:'Bầu trời mùa thu',parent:parentB20,
+  sessions:[
+   {name:'📖 Buổi 1 · Đọc hiểu',steps:()=>readSteps()},
+   {name:'✍️ Buổi 2 · Trả bài & đọc sách',steps:()=>STEPS20W,hello:()=>`Chào ${nm()}! Hôm nay mình đặt câu, chỉnh sửa đoạn văn và viết phiếu đọc sách nhé!`}]},B20)
+};
+
 'use strict';
 // ===== Trạng thái & lưu trữ =====
 const KEY='miu_bot_bai10_v1';
 let mem=null;
-function defaults(){return {name:'',stars:0,done:{},misses:{},quizMiss:{},retries:0,sessions:0,minutes:0,fs:1,rate:0.9,lessonStars:0,sess:1,ol:null,ttsMode:0};}
+function defaults(){return {name:'',stars:0,done:{},misses:{},quizMiss:{},retries:0,sessions:0,minutes:0,fs:1,rate:0.9,lessonStars:0,sess:1,ol:null,ttsMode:0,lesson:'b18',dl:{},ls:{},w18:null,sp:null,para:'',free:{},rev:null,book:null};}
 function load(){let o=null;try{const r=localStorage.getItem(KEY);if(r)o=JSON.parse(r);}catch(e){} if(!o)o=mem; return Object.assign(defaults(),o||{});}
 let S=load();
 function save(){mem=S;try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+// ===== Bài học hiện tại =====
+let L=null,SENTS,PAGES,PRACTICE,GLOSS,TONES,QUIZ,STORY_ORDER,GL_KEYS,GL_RE;
+function buildGloss(){
+  const g={};Object.keys(L.GLOSS).forEach(k=>g[k.toLowerCase()]=L.GLOSS[k]);GLOSS=g;
+  GL_KEYS=Object.keys(GLOSS).sort((a,b)=>b.length-a.length);
+  GL_RE=new RegExp('('+GL_KEYS.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gi');
+}
+function setLesson(id){
+  const nl=LESSONS[id]||LESSONS.b18;const changed=!L||L.id!==nl.id;L=nl;S.lesson=L.id;
+  SENTS=L.SENTS;PAGES=L.PAGES;PRACTICE=L.PRACTICE;TONES=L.TONES;QUIZ=L.QUIZ;STORY_ORDER=L.STORY_ORDER;buildGloss();buildAudio();
+  if(changed){S.sess=1;}
+  if(S.sess>L.sessions.length)S.sess=1;
+  save();
+}
+const DN=()=>L.id==='b10'?S.done:(S.dl[L.id]||(S.dl[L.id]={}));
+const qk=i=>(L.id==='b10'?'':L.id+':')+i;
+const lessonStarsOf=()=>L.id==='b10'?S.lessonStars:(S.ls[L.id]||0);
 document.documentElement.style.setProperty('--fs',S.fs);
 let t0=null, timeShown=false;
 
@@ -325,6 +1541,11 @@ function loadVoices(){if(!TTS.has)return;const vs=speechSynthesis.getVoices();TT
 if(TTS.has){loadVoices();try{speechSynthesis.onvoiceschanged=loadVoices;}catch(e){}let n=0;const iv=setInterval(()=>{loadVoices();if(TTS.n>0||++n>20)clearInterval(iv);},400);}
 function clean(t){return t.replace(/[–—]/g,' ').replace(/(\p{L})-(?=\p{L})/gu,'$1 ').replace(/\s+/g,' ').trim();}
 function speakOnce(text,rate,pitch,modeOv){
+  const au=AUDIO[clean(text)];
+  if(au&&!AUD.bad[au])return playClip(au,rate).then(ok=>ok?undefined:speakOnce2(text,rate,pitch,modeOv));
+  return speakOnce2(text,rate,pitch,modeOv);
+}
+function speakOnce2(text,rate,pitch,modeOv){
   return new Promise(res=>{
     if(!TTS.has)return res();
     let done=false,tm;const fin=()=>{if(!done){done=true;clearTimeout(tm);res();}};
@@ -341,9 +1562,9 @@ function speakOnce(text,rate,pitch,modeOv){
     }catch(e){fin();}
   });
 }
-function stopSpeech(){TTS.token++;try{TTS.has&&speechSynthesis.cancel();}catch(e){} setTalk(false);}
+function stopSpeech(){TTS.token++;stopAudio();try{TTS.has&&speechSynthesis.cancel();}catch(e){} setTalk(false);}
 async function speakSeq(items,o={}){
-  const tk=++TTS.token;try{TTS.has&&speechSynthesis.cancel();}catch(e){}
+  const tk=++TTS.token;stopAudio();try{TTS.has&&speechSynthesis.cancel();}catch(e){}
   await sleep(90);
   for(let i=0;i<items.length;i++){
     if(tk!==TTS.token)return false;
@@ -377,22 +1598,22 @@ function sayShort(text,mood){say(text,mood||'happy');}
 let AC=null;
 function ding(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=880;g.gain.setValueAtTime(.18,AC.currentTime);g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+.5);o.connect(g);g.connect(AC.destination);o.start();o.frequency.setValueAtTime(1175,AC.currentTime+.12);o.stop(AC.currentTime+.5);}catch(e){}}
 function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1800);}
-function addStar(n=1,why){S.stars+=n;S.lessonStars+=n;save();updStars();ding();toast('⭐ +'+n+(why?' '+why:''));}
+function addStar(n=1,why){S.stars+=n;if(L.id==='b10')S.lessonStars+=n;else S.ls[L.id]=(S.ls[L.id]||0)+n;save();updStars();ding();toast('⭐ +'+n+(why?' '+why:''));}
 function updStars(){const e=$('#starN');if(e)e.textContent=S.stars;}
 function confetti(){const em=['🌸','🌷','🌿','⭐','🍀','✨'];for(let i=0;i<26;i++){const s=document.createElement('span');s.className='fall';s.textContent=pick(em);s.style.left=Math.random()*100+'vw';s.style.animationDelay=Math.random()*1.4+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),5200);}}
 function praise(){return pick(['Giỏi quá!','Đúng rồi!','Tuyệt vời!','Hay lắm!','Cố gắng tốt lắm!']);}
 function retryMsg(){return pick(['Không sao, mình thử lại nhé!','Gần đúng rồi, thử lần nữa nào!','Mình cùng nghĩ lại nhé!']);}
 
 // ===== Khung màn hình =====
-const STEPS1=[
+function readSteps(){return [
  {id:'welcome',n:'1',e:'👋',t:'Chào Miu-Bot',s:'1 phút',f:()=>stepWelcome()},
  {id:'listen',n:'2',e:'🎧',t:'Nghe truyện',s:'3 phút',f:()=>stepListen(0)},
  {id:'practice',n:'3',e:'🗣️',t:'Đọc cùng Miu-Bot',s:'4 phút',f:()=>stepPractice(0)},
  {id:'tone',n:'4',e:'👂',t:'Nghe dấu',s:'2 phút',f:()=>stepTone(0)},
- {id:'play',n:'5',e:'🍃',t:'Chơi hiểu bài',s:'3 phút',f:()=>stepLeaves()},
+ {id:'play',n:'5',e:'🎮',t:'Chơi hiểu bài',s:'3 phút',f:()=>stepSort()},
  {id:'retell',n:'6',e:'📖',t:'Kể lại & nhận quà',s:'2 phút',f:()=>stepSequence()}
-];
-let STEPS=STEPS1;
+];}
+let STEPS=[];
 let startStars=null;
 let curStep=-1;
 function shell(title,stepIdx){
@@ -410,12 +1631,12 @@ function shell(title,stepIdx){
   window.scrollTo(0,0);
 }
 const main=h=>{$('#main').innerHTML=h;};
-function stepDone(id,star){S.done[id]=true;save();timeCheck();}
+function stepDone(id,star){DN()[id]=true;save();timeCheck();}
 function timeCheck(){
   if(!t0||timeShown)return;
   if(Date.now()-t0>15*60*1000){timeShown=true;setTimeout(()=>toast('🌿 Đã 15 phút rồi! Mình nghỉ một chút nhé'),1500);}
 }
-function nextStep(){const i=STEPS.findIndex(s=>!S.done[s.id]);return i<0?0:i;}
+function nextStep(){const i=STEPS.findIndex(s=>!DN()[s.id]);return i<0?0:i;}
 
 
 // ===== Kiểm tra âm thanh =====
@@ -450,21 +1671,28 @@ function soundFail(){
 }
 
 // ===== Trang chính =====
+const curSess=()=>L.sessions[Math.min(S.sess,L.sessions.length)-1];
+function lessonPicker(){
+  return `<div class="lpick">${Object.values(LESSONS).map(l=>{const d=l.id==='b10'?S.done:(S.dl[l.id]||{});const n=l.sessions.reduce((a,x)=>a+x.steps().filter(s=>d[s.id]).length,0);const t=l.sessions.reduce((a,x)=>a+x.steps().length,0);
+    return `<button class="lbtn ${l.id===L.id?'on':''}" data-l="${l.id}"><b>Bài ${l.num}</b><span>${l.short}</span><small>${n}/${t} bước</small></button>`;}).join('')}</div>`;
+}
 function home(){
-  STEPS=S.sess===2?STEPS2:STEPS1;
-  shell(S.sess===2?'Buổi 2 · Viết dàn ý':'Bài 10 · Tiếng nói của cỏ cây',-1);
-  const ni=nextStep();const allDone=STEPS.every(s=>S.done[s.id]);
-  main(`<div class="row" style="margin-top:0"><button class="btn ${S.sess===2?'alt':''}" data-s="1">📖 Buổi 1 · Đọc hiểu</button><button class="btn ${S.sess===2?'':'alt'}" data-s="2">✍️ Buổi 2 · Viết dàn ý</button></div>
+  if(!L)setLesson(S.lesson);
+  const ss=curSess();STEPS=ss.steps();
+  shell('Bài '+L.num+' · '+L.title,-1);
+  const ni=nextStep();const D=DN();const allDone=STEPS.every(s=>D[s.id]);
+  main(`${lessonBar()}<div class="row" style="margin-top:6px">${L.sessions.map((x,i)=>`<button class="btn ${S.sess===i+1?'':'alt'}" data-s="${i+1}">${x.name}</button>`).join('')}</div>
     <div class="card"><h2>Hành trình hôm nay</h2><p class="sub">Mỗi bước vài phút thôi. Chạm vào bước nào cũng được!</p>
-    <div class="path">${STEPS.map((s,i)=>`<button class="node ${S.done[s.id]?'done':''} ${i===ni&&!allDone?'cur':''}" data-i="${i}"><span class="n">${S.done[s.id]?'✅':s.e}</span>${s.n}. ${s.t}<small>${s.s}</small></button>`).join('')}</div>
-    <div class="row"><button class="btn sun pulse" id="go">${allDone?'🔁 Học lại':(STEPS.some(s=>S.done[s.id])?'▶ Tiếp tục':'▶ Bắt đầu')}</button></div></div>
+    <div class="path">${STEPS.map((s,i)=>`<button class="node ${D[s.id]?'done':''} ${i===ni&&!allDone?'cur':''}" data-i="${i}"><span class="n">${D[s.id]?'✅':s.e}</span>${s.n}. ${s.t}<small>${s.s}</small></button>`).join('')}</div>
+    <div class="row"><button class="btn sun pulse" id="go">${allDone?'🔁 Học lại':(STEPS.some(s=>D[s.id])?'▶ Tiếp tục':'▶ Bắt đầu')}</button></div></div>
     <div class="row"><button class="btn alt" id="snd" style="min-height:52px;font-size:18px">🔊 Thử âm thanh</button></div>`);
-  say(S.sess===2?`Chào ${nm()}! Hôm nay mình làm nhà văn nhí nhé! Mình cùng lập dàn ý để kể lại một trải nghiệm của bạn.`:(S.name?`Chào ${S.name}! Mình là Miu-Bot. Hôm nay mình cùng đọc bài Tiếng nói của cỏ cây nhé!`:'Chào bạn! Mình là Miu-Bot, mèo máy đến từ tương lai. Mình sẽ cùng bạn học bài đọc thật vui!'),'happy',{mute:true});
+  say(typeof ss.hello==='function'?ss.hello():(S.name?`Chào ${S.name}! Mình là Miu-Bot. Hôm nay mình cùng học bài ${L.title} nhé!`:'Chào bạn! Mình là Miu-Bot, mèo máy đến từ tương lai. Mình sẽ cùng bạn học thật vui!'),'happy',{mute:true});
   const go=i=>{if(!t0){t0=Date.now();startStars=S.stars;}STEPS[i].f();};
+  bindLessonBar();
   $$('[data-s]').forEach(b=>b.onclick=()=>{S.sess=+b.dataset.s;save();home();});
   $$('.node').forEach(b=>b.onclick=()=>go(+b.dataset.i));
   $('#snd').onclick=()=>soundTest(0);
-  $('#go').onclick=()=>{if(allDone){STEPS.forEach(s=>delete S.done[s.id]);save();}go(allDone?0:ni);};
+  $('#go').onclick=()=>{if(allDone){STEPS.forEach(s=>delete D[s.id]);save();}go(allDone?0:ni);};
 }
 
 // ===== Bước 1: chào + khởi động =====
@@ -477,22 +1705,22 @@ function stepWelcome(){
     const ok=()=>{const v=$('#nameIn').value.trim();if(!v){toast('Gõ tên của bạn nhé');return;}S.name=v;save();stepWelcome();};
     $('#nameOk').onclick=ok;$('#nameIn').addEventListener('keydown',e=>{if(e.key==='Enter')ok();});return;
   }
-  const cards=[{e:'☀️',t:'Trồng ở chỗ có đủ ánh sáng',g:1},{e:'💧',t:'Tưới nước vừa đủ vào sáng sớm hoặc chiều mát',g:1},{e:'🌿',t:'Làm cỏ vườn thường xuyên',g:1},{e:'🪱',t:'Xới nhẹ đất quanh gốc cho tơi xốp',g:1},{e:'🐛',t:'Bắt sâu, tỉa lá úa',g:1},{e:'🌑',t:'Nhốt cây trong phòng tối mãi',g:0},{e:'🥵',t:'Tưới thật nhiều nước giữa trưa nắng gắt',g:0}];
-  main(`<div class="card"><h2>Cây cần gì để khỏe mạnh?</h2><p class="sub">Chạm vào những việc giúp cây khỏe mạnh. Tìm được 3 việc là qua bài nhé!</p>
-    <div class="grid3">${shuffle(cards).map(c=>`<button class="pick" data-g="${c.g}"><span class="em">${c.e}</span>${c.t}</button>`).join('')}</div>
+  const W=L.WELCOME;
+  main(`<div class="card"><h2>${esc(W.title)}</h2><p class="sub">${esc(W.sub)}</p>
+    <div class="grid3">${shuffle(W.cards).map(c=>`<button class="pick" data-g="${c.g}" data-t="${esc(c.t)}"><span class="em">${c.e}</span>${esc(c.t)}</button>`).join('')}</div>
     <div class="row" id="nx"></div></div>`);
-  say(`Chào ${nm()}! Hôm nay mình đọc bài Tiếng nói của cỏ cây. Trước hết, bạn đoán xem cây cần gì để khỏe mạnh nhé!`);
+  say(W.say.replace('{n}',nm()));
   let found=0;
   $$('.pick').forEach(b=>b.onclick=()=>{
     if(b.classList.contains('ok')||b.classList.contains('soft'))return;
-    if(b.dataset.g==='1'){b.classList.add('ok');found++;say(praise(),'cheer');if(found===3){addStar(1);stepDone('welcome');$('#nx').innerHTML=`<button class="btn sun pulse" id="n2">Sang nghe truyện ➡️</button>`;$('#n2').onclick=()=>STEPS[1].f();setTimeout(()=>say('Bạn biết nhiều về cây quá! Mình đi nghe truyện nhé!','happy'),1300);}}
-    else{b.classList.add('soft');say('Ồ, cây không thích vậy đâu! Thử việc khác nhé.','think');}
+    if(b.dataset.g==='1'){b.classList.add('ok');found++;
+      if(found===W.need){addStar(1);stepDone('welcome');$('#nx').innerHTML=`<button class="btn sun pulse" id="n2">Sang nghe truyện ➡️</button>`;$('#n2').onclick=()=>STEPS[1].f();setTimeout(()=>say(W.done,'happy'),W.okOne?3800:1300);if(W.okOne)say(W.okOne.replace('{t}',b.dataset.t),'cheer');else say(praise(),'cheer');}
+      else say(praise(),'cheer');}
+    else{b.classList.add('soft');say(W.wrong||'Thử việc khác nhé.','think');}
   });
 }
 
 // ===== Câu chữ có từ khó =====
-const GL_KEYS=Object.keys(GLOSS).sort((a,b)=>b.length-a.length);
-const GL_RE=new RegExp('('+GL_KEYS.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gi');
 function withGloss(text){return esc(text).replace(GL_RE,m=>`<span class="gl" data-k="${m.toLowerCase()}">${m}</span>`);}
 function bindGloss(root){$$('.gl',root).forEach(g=>g.addEventListener('click',e=>{e.stopPropagation();openGloss(g.dataset.k);}));}
 function openGloss(k){
@@ -585,7 +1813,7 @@ function stepTone(i){
       it.opts.forEach(o=>{$('#t_'+o.w).textContent=o.t+' · '+o.m;});
       addStar(1);setMood('cheer');setTalk(true);
       await speakSeq([{t:praise(),after:200},...it.opts.map(o=>({t:o.w,rate:.7,after:500}))],{});setTalk(false);
-      if(i<TONES.length-1){setTimeout(()=>stepTone(i+1),400);}else{stepDone('tone');say('Tai của bạn thính quá! Mình sang trò chơi nhé!','cheer');setTimeout(()=>stepLeaves(),1800);}
+      if(i<TONES.length-1){setTimeout(()=>stepTone(i+1),400);}else{stepDone('tone');say('Tai của bạn thính quá! Mình sang trò chơi nhé!','cheer');setTimeout(()=>stepSort(),1800);}
     }else{
       tried++;b.classList.add('soft');S.misses[target.w]=(S.misses[target.w]||0)+1;save();
       say(retryMsg()+' Nghe lại nhé.','think');
@@ -594,76 +1822,81 @@ function stepTone(i){
   });
 }
 
-// ===== Bước 5a: hái lá (danh từ / động từ) =====
-function stepLeaves(){
-  shell('5 · Hái lá',4);
-  main(`<div class="card"><h2>Hái lá, xếp vào giỏ</h2><p class="sub">Chạm một chiếc lá, rồi chạm giỏ đúng.</p>
-    <div class="leaves" id="lv">${shuffle(LEAVES).map(l=>`<button class="leaf" data-w="${l.w}" data-k="${l.k}">${l.w}</button>`).join('')}</div>
-    <div class="baskets"><button class="basket" data-k="n">🧺 Danh từ<small>chỉ người, vật, cây cối… (ai? cái gì? con gì?)</small><div class="in" id="in_n"></div></button>
-    <button class="basket" data-k="v">🧺 Động từ<small>chỉ việc làm, hoạt động (làm gì?)</small><div class="in" id="in_v"></div></button></div></div>`);
-  say('Mình cùng hái lá nhé! Danh từ chỉ người, vật, cây cối. Động từ chỉ việc làm. Ví dụ: cái bàn là danh từ, chạy là động từ.');
-  let sel=null,left=LEAVES.length,miss=0;
+// ===== Bước 5a: trò chơi xếp vào giỏ (mỗi bài một bộ từ/câu) =====
+function stepSort(C,o){
+  C=C||L.SORT;o=Object.assign({idx:4,pre:'5 · ',id:'play_leaves',next:()=>stepQuiz(0)},o||{});
+  shell(o.pre+C.head,o.idx);
+  main(`<div class="card"><h2>${esc(C.title)}</h2><p class="sub">${esc(C.sub)}</p>
+    <div class="leaves" id="lv">${shuffle(C.items).map(l=>`<button class="leaf" data-w="${esc(l.w)}" data-k="${l.k}">${esc(l.w)}</button>`).join('')}</div>
+    <div class="baskets b${C.baskets.length}">${C.baskets.map(b=>`<button class="basket" data-k="${b.k}">${b.t}<small>${esc(b.s)}</small><div class="in" id="in_${b.k}"></div></button>`).join('')}</div></div>`);
+  say(C.say);
+  let sel=null,left=C.items.length;
   $$('.leaf').forEach(l=>l.onclick=()=>{$$('.leaf').forEach(x=>x.classList.remove('sel'));sel=l;l.classList.add('sel');speakSeq([{t:l.dataset.w,rate:.8}]);});
   $$('.basket').forEach(b=>b.onclick=()=>{
-    if(!sel){toast('Chạm một chiếc lá trước nhé');return;}
+    if(!sel){toast('Chạm một thẻ trước nhé');return;}
     if(sel.dataset.k===b.dataset.k){
-      $('#in_'+b.dataset.k).insertAdjacentHTML('beforeend',`<span>${sel.dataset.w}</span>`);sel.remove();sel=null;left--;ding();
-      if(left===0){addStar(2,'hái hết lá');stepDone('play_leaves');say(`Giỏi quá ${nm()}! Bạn phân biệt danh từ và động từ rất tốt!`,'cheer');confetti();
-        $('#main').insertAdjacentHTML('beforeend',`<div class="row"><button class="btn sun pulse" id="nx">Sang câu hỏi ➡️</button></div>`);$('#nx').onclick=()=>stepQuiz(0);}
+      $('#in_'+b.dataset.k).insertAdjacentHTML('beforeend',`<span>${esc(sel.dataset.w)}</span>`);sel.remove();sel=null;left--;ding();
+      if(left===0){addStar(C.star||2,'xếp đúng hết');stepDone(o.id);say(C.win.replace('{n}',nm()),'cheer');confetti();
+        $('#main').insertAdjacentHTML('beforeend',`<div class="row"><button class="btn sun pulse" id="nx">${C.nextLabel}</button></div>`);$('#nx').onclick=o.next;}
     }else{
-      miss++;sel.classList.add('shake');const w=sel.dataset.w,k=sel.dataset.k;setTimeout(()=>sel&&sel.classList.remove('shake'),450);
-      say(k==='v'?`Thử hỏi: “${w}” có phải là một việc làm không? Nếu là việc làm thì bỏ vào giỏ động từ.`:`Thử hỏi: “${w}” có phải là tên của người, vật hay cây cối không? Nếu phải thì bỏ vào giỏ danh từ.`,'think');
+      sel.classList.add('shake');const w=sel.dataset.w,k=sel.dataset.k;const s0=sel;setTimeout(()=>s0.classList.remove('shake'),450);
+      const tb=C.baskets.find(x=>x.k===k);S.misses['•'+w]=(S.misses['•'+w]||0)+1;save();
+      say(tb.h.replace('{w}',w),'think');
     }
   });
 }
 
 // ===== Bước 5b: câu hỏi hiểu bài =====
-function stepQuiz(i){
-  shell('5 · Câu hỏi hiểu bài',4);
-  const q=QUIZ[i];let wrong=0,solved=false;
-  main(`<div class="dots">${QUIZ.map((_,k)=>`<i class="${k<i?'on':''} ${k===i?'cur':''}"></i>`).join('')}</div>
+function stepQuiz(i,Z){
+  Z=Object.assign({list:QUIZ,idx:4,title:'5 · Câu hỏi hiểu bài',id:'play',mk:'',after:()=>stepSequence(),intro:'Giờ mình trả lời vài câu hỏi nhé. Bạn nghe câu hỏi rồi chọn đáp án.'},Z||{});
+  const QL=Z.list;
+  shell(Z.title,Z.idx);
+  const q=QL[i];let wrong=0,solved=false;
+  main(`<div class="dots">${QL.map((_,k)=>`<i class="${k<i?'on':''} ${k===i?'cur':''}"></i>`).join('')}</div>
     <div class="card"><div class="q">${esc(q.q)}</div><div id="ans">${q.o.map((o,k)=>`<button class="ans" data-k="${k}">${esc(o)}</button>`).join('')}</div><div id="hintbox"></div></div>`);
-  say(i===0?'Giờ mình trả lời vài câu hỏi nhé. Bạn nghe câu hỏi rồi chọn đáp án.':'Câu tiếp theo nè!','happy',{mute:true});
-  speakSeq([{t:q.q,after:300},...q.o.map((o,k)=>({t:'Đáp án '+'một hai ba'.split(' ')[k]+': '+o,after:200}))],{rate:.85});
-  const fin=()=>{if(i<QUIZ.length-1){setTimeout(()=>stepQuiz(i+1),1500);}else{stepDone('play');say('Bạn đã trả lời hết rồi! Giỏi lắm!','cheer');confetti();setTimeout(()=>stepSequence(),2200);}};
+  say(i===0?Z.intro:'Câu tiếp theo nè!','happy',{mute:true});
+  speakSeq([{t:q.q,after:300},...q.o.map((o,k)=>({t:'Đáp án '+'một hai ba bốn'.split(' ')[k]+': '+o,after:200}))],{rate:.85});
+  const fin=()=>{if(i<QL.length-1){setTimeout(()=>stepQuiz(i+1,Z),1500);}else{stepDone(Z.id);say('Bạn đã trả lời hết rồi! Giỏi lắm!','cheer');confetti();setTimeout(Z.after,2200);}};
   $$('.ans').forEach(b=>b.onclick=()=>{
     if(solved)return;
     if(+b.dataset.k===q.a){solved=true;b.classList.add('ok');addStar(wrong===0?2:1);say(praise()+' '+q.why,'cheer');fin();}
-    else{wrong++;b.classList.add('soft');S.quizMiss[i]=(S.quizMiss[i]||0)+1;save();
+    else{wrong++;b.classList.add('soft');S.quizMiss[qk(Z.mk+i)]=(S.quizMiss[qk(Z.mk+i)]||0)+1;save();
       if(wrong>=2){solved=true;$$('.ans')[q.a].classList.add('ok');say('Mình cùng xem đáp án nhé. '+q.why,'happy');addStar(1,'đã cố gắng');fin();}
-      else{const ev=SENTS[q.ev].c.join(' ');$('#hintbox').innerHTML=`<div class="hint">💡 Gợi ý: mình đọc lại trong bài nhé:<br><b>“${esc(ev)}”</b></div>`;say(retryMsg(),'think',{mute:true});speakSeq([{t:'Mình đọc lại trong bài nhé.',after:200},{t:ev}],{rate:.85});}}
+      else{if(q.ev){const ev=SENTS[q.ev].c.join(' ');$('#hintbox').innerHTML=`<div class="hint">💡 Gợi ý: mình đọc lại trong bài nhé:<br><b>“${esc(ev)}”</b></div>`;say(retryMsg(),'think',{mute:true});speakSeq([{t:'Mình đọc lại trong bài nhé.',after:200},{t:ev}],{rate:.85});}else{$('#hintbox').innerHTML=`<div class="hint">💡 Gợi ý: ${esc(q.hint||'Đọc lại câu hỏi và các đáp án thật chậm rồi chọn lại nhé.')}</div>`;say(retryMsg(),'think',{mute:true});speakSeq([{t:q.hint||'Đọc lại câu hỏi và các đáp án thật chậm rồi chọn lại nhé.'}],{rate:.85});}}}
   });
 }
 
 // ===== Bước 6: xếp truyện, kể lại, nhận quà =====
-function stepSequence(){
-  shell('6 · Xếp truyện',5);
-  const cards=shuffle(STORY_ORDER.map((t,k)=>({t,k})));let next=0;
-  main(`<div class="card"><h2>Xếp lại câu chuyện</h2><p class="sub">Chạm các thẻ theo thứ tự: chuyện gì xảy ra trước, rồi sau.</p>
+function stepOrderGame(O){
+  O=Object.assign({idx:5,title:'6 · Xếp truyện',h:'Xếp lại câu chuyện',sub:'Chạm các thẻ theo thứ tự: chuyện gì xảy ra trước, rồi sau.',say:'Bạn nhớ chuyện gì xảy ra đầu tiên? Chạm vào thẻ đó trước nhé!',star:2,starWhy:'xếp đúng truyện',win:'Đúng cả rồi! Bây giờ bạn kể lại câu chuyện cho mình nghe nhé!',id:null,after:()=>stepRetell(),retry:'Gần rồi! Thử nghĩ xem chuyện gì xảy ra trước nhé.'},O);
+  shell(O.title,O.idx);
+  const N=O.cards.length;const cards=shuffle(O.cards.map((t,k)=>({t,k})));let next=0;
+  main(`<div class="card"><h2>${esc(O.h)}</h2><p class="sub">${esc(O.sub)}</p>
     <div class="order">${cards.map(c=>`<button class="ocard" data-k="${c.k}">${esc(c.t)}<span class="no"></span></button>`).join('')}</div></div>`);
-  say('Bạn nhớ chuyện gì xảy ra đầu tiên? Chạm vào thẻ đó trước nhé!');
+  say(O.say);
   $$('.ocard').forEach(b=>b.onclick=()=>{
     if(b.classList.contains('ok'))return;
     if(+b.dataset.k===next){b.classList.add('ok');$('.no',b).textContent=next+1;next++;ding();
-      if(next===4){addStar(2,'xếp đúng truyện');say('Đúng cả rồi! Bây giờ bạn kể lại câu chuyện cho mình nghe nhé!','cheer');setTimeout(stepRetell,2800);}}
-    else{b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),450);say('Gần rồi! Thử nghĩ xem chuyện gì xảy ra trước nhé.','think');}
+      if(next===N){addStar(O.star,O.starWhy);if(O.id)stepDone(O.id);say(O.win,'cheer');setTimeout(O.after,2800);}}
+    else{b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),450);say(O.retry,'think');}
   });
 }
+function stepSequence(){stepOrderGame({cards:STORY_ORDER});}
 function stepRetell(){
-  shell('6 · Kể lại',5);
-  main(`<div class="card"><h2>Bạn kể cho Miu-Bot nghe nhé</h2>
-    <p class="q">Theo em, Ta-nhi-a đã có thêm những trải nghiệm gì trong mùa hè?</p>
-    <p class="sub">Bạn kể bằng lời của mình (kể cho Miu-Bot hoặc bố mẹ nghe). Có thể bắt đầu bằng: “Ta-nhi-a biết thêm…”, “Ta-nhi-a đã thử…”.</p>
-    <div class="row"><button class="btn sun" id="told">✔ Mình kể xong rồi!</button></div></div>`);
-  say('Câu cuối cùng này không có đáp án đúng hay sai. Bạn cứ kể điều bạn nghĩ nhé!','happy');
-  $('#told').onclick=()=>{addStar(2,'đã kể lại');S.done.retell=true;save();reward();};
+  shell('6 · Nói về bài',5);const R=L.RETELL;
+  main(`<div class="card"><h2>Bạn nói cho Miu-Bot nghe nhé</h2>
+    <p class="q">${esc(R.q)}</p>
+    <p class="sub">${esc(R.sub)}</p>
+    <div class="row"><button class="btn sun" id="told">✔ Mình nói xong rồi!</button></div></div>`);
+  say(R.say,'happy');
+  $('#told').onclick=()=>{addStar(2,'đã kể lại');DN().retell=true;save();reward();};
 }
 function reward(){
-  shell('Hoàn thành!',-1);
+  shell('Hoàn thành!',-1);const B=L.BADGE;
   const total=S.stars-(startStars==null?S.stars:startStars);
-  main(`<div class="card" style="text-align:center"><div class="big">🏅</div><h2>Huy hiệu “Bạn của cỏ cây”</h2>
-    <p class="sub">${esc(nm())} đã hoàn thành bài 10 và nhận được ${total} ⭐ hôm nay!</p>
-    <p class="sub">Quà từ túi thần kỳ của Miu-Bot: 🌱 hạt giống kì diệu</p>
+  main(`<div class="card" style="text-align:center"><div class="big">${B.e}</div><h2>Huy hiệu “${esc(B.name)}”</h2>
+    <p class="sub">${esc(nm())} đã ${B.text} và nhận được ${total} ⭐ hôm nay!</p>
+    <p class="sub">Quà từ túi thần kỳ của Miu-Bot: ${B.gift}</p>
     <div class="row"><button class="btn" id="hm">🏠 Về trang chính</button></div></div>`);
   setMood('cheer');confetti();ding();
   say(`Hôm nay ${nm()} đã đọc rất chăm chỉ. Miu-Bot rất tự hào về bạn! Hẹn gặp lại nhé!`,'cheer');
@@ -673,34 +1906,25 @@ function reward(){
 // ===== Trang dành cho bố mẹ =====
 function parentPanel(){
   shell('Dành cho bố mẹ',-1);
-  const miss=Object.entries(S.misses).sort((a,b)=>b[1]-a[1]);
-  const qm=Object.entries(S.quizMiss);
+  const allM=Object.entries(S.misses).sort((a,b)=>b[1]-a[1]);
+  const miss=allM.filter(([w])=>w[0]!=='•'),smiss=allM.filter(([w])=>w[0]==='•');
+  const qm=Object.entries(S.quizMiss).filter(([k])=>L.id==='b10'?/^\d+$/.test(k):k.startsWith(L.id+':')).map(([k,n])=>[k.split(':').pop(),n]);
   const mins=t0?Math.round((Date.now()-t0)/60000):0;
   const voice=!TTS.has?'Thiết bị không hỗ trợ giọng đọc.':(TTS.voice?'Đang dùng giọng: '+esc(TTS.voice.name):'⚠ Chưa tìm thấy giọng tiếng Việt. Trên iPad: Cài đặt → Trợ năng → Nội dung được đọc → Giọng nói → Tiếng Việt, tải một giọng về, rồi mở lại trang.');
+  const D=DN();const done=L.sessions.flatMap(x=>x.steps()).filter(x=>D[x.id]).map(x=>x.t);
   main(`<div class="card parent">
-    <h3>Tiến độ</h3><p>⭐ Tổng số sao: <b>${S.stars}</b> · Bài này: <b>${S.lessonStars}</b> · Thời gian phiên này: <b>${mins} phút</b> · Số lần bấm “đọc lại”: <b>${S.retries}</b></p>
-    <p>Các bước đã xong: ${[...STEPS1,...STEPS2].filter(s=>S.done[s.id]).map(s=>s.t).join(', ')||'chưa có'}</p>${parentExtra()}
+    <h3>Bài ${L.num} · ${esc(L.title)}</h3>
+    <p>⭐ Tổng số sao: <b>${S.stars}</b> · Bài này: <b>${lessonStarsOf()}</b> · Thời gian phiên này: <b>${mins} phút</b> · Số lần bấm “đọc lại”: <b>${S.retries}</b></p>
+    <p>Các bước đã xong: ${done.join(', ')||'chưa có'}</p>${writingSummary()}
     <h3>Cần luyện thêm (dấu thanh)</h3>${miss.length?`<table>${miss.map(([w,n])=>`<tr><td><b>${esc(w)}</b></td><td>chọn nhầm ${n} lần</td></tr>`).join('')}</table>`:'<p>Chưa có từ nào bị nhầm.</p>'}
-    <h3>Câu hỏi hiểu bài con từng trả lời sai</h3>${qm.length?`<ul>${qm.map(([i,n])=>`<li>Câu ${+i+1}: ${esc(QUIZ[i].q)} (${n} lần)</li>`).join('')}</ul>`:'<p>Chưa có.</p>'}
+    ${smiss.length?`<h3>Trò chơi xếp giỏ: con hay nhầm</h3><table>${smiss.map(([w,n])=>`<tr><td><b>${esc(w.slice(1))}</b></td><td>${n} lần</td></tr>`).join('')}</table>`:''}
+    <h3>Câu hỏi hiểu bài con từng trả lời sai</h3>${qm.length?`<ul>${qm.map(([i,n])=>`<li>${/^\d+$/.test(i)?'Câu '+(+i+1)+': ':''}${esc(quizMissLabel(i))} (${n} lần)</li>`).join('')}</ul>`:'<p>Chưa có.</p>'}
     <h3>Cách đồng hành khi con đọc (bước 3)</h3>
     <ul><li>Ngồi cạnh, nghe con đọc cả câu. Chỉ ghi nhớ 1 lỗi mỗi lần (dấu thanh <i>hoặc</i> ngắt cụm), đừng sửa liên tục.</li>
     <li>Khen quá trình: “Bố/mẹ thấy con đã cố gắng đọc cả cụm dài.”</li>
     <li>Nếu con đọc sai dấu: đọc lại đúng một lần, rồi mời con đọc lại cụm đó. Không bắt đọc lại nhiều lần.</li>
     <li>Nếu con ngại: cho con chọn “nghe thêm một lần” hoặc đọc cùng bố/mẹ.</li></ul>
-    <h3>Đáp án (đối chiếu văn bản bài đọc và file hướng dẫn giải)</h3>
-    <ul><li><b>Khởi động:</b> trồng chỗ đủ ánh sáng; tưới vừa đủ vào sáng sớm hoặc chiều mát (tránh trưa nắng gắt, tưới quá nhiều làm úng rễ); làm cỏ; xới đất cho tơi xốp; bón phân; bắt sâu, tỉa lá úa.</li>
-    <li><b>Câu 1:</b> Ta-nhi-a được thoả thích chạy nhảy (dạo chơi) trong vườn nhà ông bà.</li>
-    <li><b>Câu 2:</b> Việc đã làm: bứng một cây hồng nhỏ nhất trồng vào chỗ đất trống dưới cửa sổ → lí do: khóm hồng có vẻ chật chỗ. Rồi chọn <u>một</u> cây huệ trồng cạnh cây hồng → lí do: ngắm nghía một hồi vẫn chưa hài lòng.<br><i>⚠ Lưu ý: file hướng dẫn ghi câu 2 là “bứng cây huệ… vì đứng riêng lẻ buồn bã”. Ý này không có trong văn bản bài đọc, và chính file đó ở phần “Bài tập tương tự” lại ghi lí do là “chật chỗ”. App theo văn bản bài đọc. Nếu cô giáo chấm theo đáp án khác, bố mẹ cho con biết nhé.</i></li>
-    <li><b>Câu 3:</b> Hoa hồng nở nhiều, màu trắng dịu, cánh trong suốt lung linh như phủ đầy tuyết trắng (hoa to hơn, rực rỡ hơn khóm hồng cũ); hoa huệ trắng muốt, đẹp trội hơn hẳn, đẹp như một nàng tiên trong truyện cổ tích.</li>
-    <li><b>Câu 4:</b> Chỗ ở mới thoáng hơn, không bị rễ của cây khác tranh chất màu dưới đất.</li>
-    <li><b>Câu 5 (mở):</b> được gần gũi thiên nhiên; biết cách chăm sóc, trồng cây; cảm nhận niềm vui khi cây nở hoa đẹp; hiểu ý nghĩa của tình bạn và sự sẻ chia qua cuộc trò chuyện của hai loài hoa.</li>
-    <li><b>Luyện từ và câu 1:</b> danh từ: vườn, cây, đất, hoa, bạn · động từ: đi, trồng, chọn, hỏi, ngắm.</li></ul>
-    <h3>Lỗi thường gặp (theo file hướng dẫn)</h3>
-    <ul><li>Nhầm lí do Ta-nhi-a chuyển cây (chọn “cây bị héo”…) vì đọc lướt → đọc kĩ chữ “chật chỗ”.</li>
-    <li>Nghĩ cô bé bứng cả khóm huệ → chỉ “chọn một cây”.</li>
-    <li>Câu 3 chỉ kể hoa huệ mà quên hoa hồng (hoặc ngược lại) → hỏi về cả hai cây.</li>
-    <li>Câu 4 trả lời bằng bài học (“tình bạn…”) thay vì điều Ta-nhi-a suy đoán.</li>
-    <li>Xếp nhầm động từ (trồng, ngắm) vào danh từ → kiểm tra: “cái gì, con gì, ai?” là danh từ; “làm gì?” là động từ.</li></ul>
+    ${L.parent()}
     <h3>Cài đặt</h3><p>${voice}</p>
     <p>Tốc độ đọc của Miu-Bot: <input type="range" id="rate" min="0.6" max="1.1" step="0.05" value="${S.rate}"> <span id="rv">${S.rate}</span></p>
     <p>Cỡ chữ: <button class="btn alt" id="fm" style="min-height:48px">A−</button> <button class="btn alt" id="fp" style="min-height:48px">A+</button> <button class="btn blue" id="tv" style="min-height:48px">🔊 Thử giọng</button></p>
@@ -710,9 +1934,9 @@ function parentPanel(){
   $('#rate').oninput=e=>{S.rate=+e.target.value;$('#rv').textContent=S.rate;save();};
   $('#fm').onclick=()=>{S.fs=Math.max(.8,+(S.fs-.1).toFixed(1));document.documentElement.style.setProperty('--fs',S.fs);save();};
   $('#fp').onclick=()=>{S.fs=Math.min(1.5,+(S.fs+.1).toFixed(1));document.documentElement.style.setProperty('--fs',S.fs);save();};
-  $('#tv').onclick=()=>speakSeq([{t:'Chào bạn, mình là Miu-Bot. Hôm nay mình cùng đọc bài Tiếng nói của cỏ cây nhé!'}]);
+  $('#tv').onclick=()=>speakSeq([{t:'Chào bạn, mình là Miu-Bot. Hôm nay mình cùng đọc bài nhé!'}]);
   $('#sn').onclick=()=>{S.name=$('#nm').value.trim();save();toast('Đã lưu tên');};
-  $('#rs').onclick=()=>{if($('#rs').dataset.c){const n=S.name,f=S.fs,r=S.rate;S=defaults();S.name=n;S.fs=f;S.rate=r;save();home();}else{$('#rs').dataset.c=1;$('#rs').textContent='Chạm lần nữa để chắc chắn';}};
+  $('#rs').onclick=()=>{if($('#rs').dataset.c){const n=S.name,f=S.fs,r=S.rate,ls=S.lesson;S=defaults();S.name=n;S.fs=f;S.rate=r;S.lesson=ls;save();home();}else{$('#rs').dataset.c=1;$('#rs').textContent='Chạm lần nữa để chắc chắn';}};
   $('#bk').onclick=()=>home();
 }
 
@@ -726,10 +1950,10 @@ const ORD4=['Đầu tiên','Tiếp theo','Sau đó','Cuối cùng'];
 const ordFor=n=>n<=1?['Đầu tiên']:n===2?['Đầu tiên','Cuối cùng']:n===3?['Đầu tiên','Tiếp theo','Cuối cùng']:ORD4;
 function OL(){if(!S.ol||!S.ol.tasks)S.ol={act:'',name:'',tasks:['','','',''],mode:1,time:'',place:'',reason:'',detail:['','','',''],star:-1,why:'',result:'',feels:[],feelText:''};return S.ol;}
 function setPath(o,p,v){const k=p.split('.');let r=o;for(let i=0;i<k.length-1;i++)r=r[k[i]];r[k[k.length-1]]=v;}
-function bindInputs(root,onChange){$$('[data-k]',root).forEach(el=>{
-  const get=()=>{let r=OL();for(const k of el.dataset.k.split('.'))r=r[k];return r;};
+function bindInputs(root,onChange,base){base=base||OL;$$('[data-k]',root).forEach(el=>{
+  const get=()=>{let r=base();for(const k of el.dataset.k.split('.'))r=r[k];return r;};
   el.value=get()||'';
-  el.addEventListener('input',()=>{setPath(OL(),el.dataset.k,el.value);save();if(onChange)onChange();});});}
+  el.addEventListener('input',()=>{setPath(base(),el.dataset.k,el.value);save();if(onChange)onChange();});});}
 const filledTasks=()=>OL().tasks.map((t,i)=>({t:t.trim(),i})).filter(x=>x.t);
 
 const STEPS2=[
@@ -965,6 +2189,478 @@ function parentExtra(){
 }
 document.addEventListener('click',e=>{if(e.target&&e.target.id==='clrol'){S.ol=null;S.done.w3=S.done.w4=S.done.w5=false;save();toast('Đã xoá dàn ý');parentPanel();}});
 
+// ===== BÀI 18–20: VIẾT, NÓI VÀ NGHE (module dùng chung) =====
+const W18=()=>{if(!S.w18)S.w18={story:'',other:'',plan:'',idea:'',setting:'',twist:'',result:'',feel:'',next:''};return S.w18;};
+const SP=()=>{if(!S.sp)S.sp={prod:'',name:'',occ:'',shape:'',mat:'',steps:'',special:'',feel:'',chk:[]};return S.sp;};
+const REV=()=>{if(!S.rev)S.rev={a:-1,b:-1,c:-1,old:'',nw:'',learn:[],learnText:''};return S.rev;};
+const BOOK=()=>{if(!S.book)S.book={title:'',author:'',date:'',main:'',know:'',useful:'',stars:0};return S.book;};
+const FREE=()=>S.free;
+const nWords=t=>(t||'').trim().split(/\s+/).filter(Boolean).length;
+function getPath(o,p){let r=o;for(const k of p.split('.'))r=r&&r[k];return r;}
+function fld(label,k,ph,rows){return `<div class="field"><label>${label}</label>${rows?`<textarea class="tin" rows="${rows}" data-k="${k}" placeholder="${esc(ph||'')}"></textarea>`:`<input class="tin" data-k="${k}" placeholder="${esc(ph||'')}">`}</div>`;}
+function chipRow(id,arr){return `<div class="chips" id="${id}">${arr.map(x=>`<button class="chip">${esc(x)}</button>`).join('')}</div>`;}
+function chipFill(id,key,base,after){$$('#'+id+' .chip').forEach(c=>c.onclick=()=>{const o=base();const cur=getPath(o,key)||'';const v=(cur&&!/\s$/.test(cur)?cur+' ':cur)+c.textContent+' ';setPath(o,key,v);save();const el=$(`[data-k="${key}"]`);if(el){el.value=v;el.focus();}if(after)after();});}
+const speakText=t=>{setTalk(true);return speakSeq([{t,rate:.85}]).then(()=>setTalk(false));};
+function rewardW(e,badge,text,gift){
+  shell('Hoàn thành!',-1);
+  const total=S.stars-(startStars==null?S.stars:startStars);
+  main(`<div class="card" style="text-align:center"><div class="big">${e}</div><h2>Huy hiệu “${esc(badge)}”</h2>
+    <p class="sub">${esc(nm())} ${text} và nhận ${total} ⭐ hôm nay!</p><p class="sub">${gift}</p>
+    <div class="row"><button class="btn" id="hm">🏠 Về trang chính</button></div></div>`);
+  confetti();ding();setMood('cheer');
+  say(`Tuyệt vời ${nm()}! Hôm nay bạn làm rất chăm chỉ. Miu-Bot rất tự hào về bạn!`,'cheer');
+  $('#hm').onclick=()=>{stopSpeech();home();};
+}
+const nextOf=i=>()=>STEPS[i].f();
+
+// ---------- Đặt câu nhân hoá (bài 19, 20) ----------
+const BUILD=[
+ {e:'☁️',n:'Những chị mây',acts:['đang dạo chơi trên bầu trời','thong thả trôi trên nền trời xanh thẳm','tụ họp rồi thì thầm với nhau']},
+ {e:'🍃',n:'Chị gió',acts:['tinh nghịch đuổi bắt những chiếc lá vàng','cất tiếng hát trong trẻo đón bình minh','vỗ về từng nhành cây']},
+ {e:'☀️',n:'Cô nắng',acts:['thức dậy, vội vàng nhảy nhót trên vòm lá','khẽ chạm vào má em ấm áp','mỉm cười chào đón ngày mới']},
+ {e:'🌧️',n:'Bác mưa rào',acts:['cất tiếng hát rào rào trên mái nhà','ghé thăm, tưới mát cho cây cối','vội vã chạy qua sân trường']},
+ {e:'🌪️',n:'Thần bão',acts:['giận dữ gầm thét','xô đẩy cây cối ngả nghiêng','mệt rồi, lặng lẽ bỏ đi']}
+];
+const BUILD_FREE={
+ b19:{key:'b19',title:'Em đặt câu nhân hoá',prompt:'Đặt thêm 1 hoặc 2 câu có hình ảnh nhân hoá nói về cảnh vật, hiện tượng thiên nhiên theo ý của em.',starters:['Những chú chim','Hàng cây','Mặt trời','Dòng suối'],ph:'Ví dụ: Hàng cây bên đường thì thầm trò chuyện cùng cơn mưa.'},
+ b20:{key:'b20',title:'Em tả bầu trời',prompt:'Viết 1 hoặc 2 câu tả bầu trời theo quan sát và cảm nhận của em. Em nhìn ra cửa sổ hoặc nhớ lại bầu trời hôm nay nhé! Có thể dùng từ như người: dịu dàng, buồn bã, trầm ngâm…',starters:['Bầu trời hôm nay','Những đám mây','Bầu trời buổi sáng'],ph:'Ví dụ: Bầu trời buổi sáng trong vắt như một tấm gương khổng lồ.'}
+};
+function stepBuild(idx,A){
+  A=A||{};const F=BUILD_FREE[L.id];
+  shell('1 · Đặt câu nhân hoá',idx);
+  let si=-1,ai=-1;
+  main(`<div class="card"><h2>🎭 Ghép câu nhân hoá</h2><p class="sub">Chọn một cảnh vật, rồi chọn việc nó làm như một con người.</p>
+    <div class="field"><label>1. Em chọn ai?</label><div class="chips" id="cs">${BUILD.map((b,i)=>`<button class="chip" data-i="${i}">${b.e} ${b.n}</button>`).join('')}</div></div>
+    <div class="field"><label>2. Bạn ấy đang làm gì?</label><div class="chips" id="ca"><span class="legend">Chọn ở trên trước nhé</span></div></div>
+    <div class="q" id="pre" style="min-height:70px;background:#fff7d6;border-radius:18px;padding:12px 16px">…</div>
+    <div class="row"><button class="btn blue" id="rd" disabled>🔊 Nghe câu</button><button class="btn sun" id="nx" disabled>Câu của em nhân hoá thế nào? ➡️</button></div></div>`);
+  say('Nhân hoá là cho cảnh vật có tên gọi và việc làm như con người. Bạn ghép một câu thật vui nhé!');
+  const sentence=()=>`${BUILD[si].n} ${BUILD[si].acts[ai]}.`;
+  const upd=()=>{const ok=si>=0&&ai>=0;$('#pre').textContent=ok?sentence():'…';$('#rd').disabled=!ok;$('#nx').disabled=!ok;};
+  $$('#cs .chip').forEach(b=>b.onclick=()=>{$$('#cs .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');si=+b.dataset.i;ai=-1;
+    $('#ca').innerHTML=BUILD[si].acts.map((a,i)=>`<button class="chip" data-i="${i}">${a}</button>`).join('');
+    $$('#ca .chip').forEach(c=>c.onclick=()=>{$$('#ca .chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');ai=+c.dataset.i;upd();});upd();});
+  $('#rd').onclick=()=>speakText(sentence());
+  $('#nx').onclick=()=>{const sen=sentence(),b=BUILD[si];
+    main(`<div class="card"><h2>Câu của em</h2><div class="q" style="background:#fff7d6;border-radius:18px;padding:12px 16px">${esc(sen)}</div>
+      <p class="sub">Câu này nhân hoá bằng cách nào? Chạm vào các cách đúng (có thể đúng cả hai).</p>
+      <div class="opts" style="display:block">
+       <button class="opt wide" data-r="1">🧑 Gọi “${esc(b.n.split(' ')[0].replace(/^Những$/,'chị'))}” như gọi một người<small>dùng từ chỉ người để gọi cảnh vật</small></button>
+       <button class="opt wide" data-r="1">🎭 Tả bằng việc làm của người<small>“${esc(b.acts[ai])}” là việc người ta làm</small></button>
+       <button class="opt wide" data-r="0">🔍 Dùng từ “như” để so sánh<small>so sánh một vật với một vật khác</small></button></div>
+      <div class="row" id="nr"></div></div>`);
+    say('Bạn thử tìm xem câu của mình mượn từ ngữ nào của con người nhé!','think');
+    let got=0;$$('.opt').forEach(o=>o.onclick=()=>{
+      if(o.classList.contains('ok')||o.classList.contains('soft'))return;
+      if(o.dataset.r==='1'){o.classList.add('ok');got++;ding();
+        if(got===2){addStar(2,'đặt câu nhân hoá');say('Đúng rồi! Câu của bạn vừa gọi như người, vừa có việc làm của người. Đó là nhân hoá!','cheer');$('#nr').innerHTML=`<button class="btn sun pulse" id="g">Viết câu của riêng em ➡️</button>`;$('#g').onclick=free;}
+        else say(praise()+' Còn một cách nữa nhé!','cheer');}
+      else{o.classList.add('soft');say('Câu của mình không có từ “như” đâu, nên đây chưa phải so sánh. Thử cách khác nhé!','think');}
+    });
+  };
+  function free(){
+    main(`<div class="card"><h2>✍️ ${F.title}</h2><p class="sub">${esc(F.prompt)}</p>
+      ${fld('Câu của em','free',F.ph,3)}${chipRow('fs',F.starters)}
+      <p class="legend">💡 Muốn đọc cho máy gõ thay: bấm 🎤 trên bàn phím iPad. Bố mẹ cũng có thể gõ giúp.</p>
+      <div class="row"><button class="btn blue" id="rd2" disabled>🔊 Nghe lại câu</button><button class="btn sun" id="fin" disabled>Xong ✔</button></div></div>`);
+    say('Giờ đến lượt bạn! Bạn viết câu của riêng bạn nhé. Câu nào cũng được, miễn là của bạn.','happy');
+    const base=()=>S.free;const k='x_'+F.key;
+    $('[data-k=free]').dataset.k=k;
+    bindInputs($('.card'),chk,base);chipFill('fs',k,base,chk);
+    function chk(){const t=S.free[k]||'';const ok=nWords(t)>=5;$('#fin').disabled=!ok;$('#rd2').disabled=!ok;}
+    chk();$('#rd2').onclick=()=>speakText(S.free[k]);
+    $('#fin').onclick=()=>{addStar(2,'tự viết câu');stepDone(A.id||STEPS[idx].id);say('Câu của bạn hay lắm!','cheer');setTimeout(nextOf(idx+1),1400);};
+  }
+}
+
+// ---------- Bài 18: đặt câu với sáng tác / sáng tạo / sáng chế ----------
+const WORD18=[
+ {w:'sáng tác',hint:'đi với thơ, truyện, bài hát, bức tranh',ex:'Nhà thơ Phạm Hổ sáng tác nhiều bài thơ hay cho thiếu nhi.'},
+ {w:'sáng tạo',hint:'đi với ý tưởng, cách làm mới',ex:'Trong giờ Mĩ thuật, bạn Nam luôn có nhiều ý tưởng sáng tạo.'},
+ {w:'sáng chế',hint:'đi với máy móc, đồ vật mới',ex:'Ê-đi-xơn đã sáng chế ra bóng đèn sợi đốt.'}];
+function stepWordSentence(){
+  shell('1 · Đặt câu với từ mới',0);let wi=-1;
+  main(`<div class="card"><h2>✏️ Đặt câu với từ trong bài</h2><p class="sub">Chọn một từ, rồi đặt 1 hoặc 2 câu có dùng từ đó. Nhớ viết hoa đầu câu và có dấu chấm cuối câu.</p>
+    <div class="chips" id="wc">${WORD18.map((x,i)=>`<button class="chip" data-i="${i}">${x.w}</button>`).join('')}</div>
+    <div id="wf"></div></div>`);
+  say('Bạn chọn một từ: sáng tác, sáng tạo hoặc sáng chế, rồi đặt câu nhé!');
+  $$('#wc .chip').forEach(c=>c.onclick=()=>{$$('#wc .chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');wi=+c.dataset.i;const X=WORD18[wi];
+    $('#wf').innerHTML=`<p class="legend">Gợi ý: “${X.w}” ${X.hint}.</p>${fld('Câu của em','x_w18_'+X.w,'Viết câu có từ “'+X.w+'”',3)}
+      <div class="row"><button class="btn alt" id="ex">💡 Nghe câu mẫu</button><button class="btn sun" id="fin" disabled>Xong ✔</button></div>`;
+    bindInputs($('#wf'),chk,()=>S.free);
+    function chk(){const t=(S.free['x_w18_'+X.w]||'');$('#fin').disabled=!(nWords(t)>=5&&t.toLowerCase().includes(X.w));}
+    chk();$('#ex').onclick=()=>{toast(X.ex);speakText(X.ex);};
+    $('#fin').onclick=()=>{addStar(2,'đặt câu với từ mới');stepDone('x1');say('Câu của bạn có từ “'+X.w+'” rồi. Giỏi lắm!','cheer');setTimeout(stepPlan,1400);};
+    say('Bạn nhớ nghĩa của từ này chứ? '+X.w+' '+X.hint+'.','happy',{mute:true});
+  });
+}
+
+// ---------- Bài 18: tìm ý cho đoạn văn tưởng tượng ----------
+const STORIES=['Sự tích cây vú sữa','Cô bé bán diêm','Cây khế','Thạch Sanh','Tấm Cám'];
+const PLANS=[
+ {k:'1a',t:'Bổ sung lời kể, tả · Cách 1',d:'Tả cụ thể tâm trạng và hành trình của nhân vật.',ex:'Tả nỗi nhớ mẹ của cậu bé và chuyến đi tìm mẹ vất vả, cuối cùng cậu tìm được mẹ.'},
+ {k:'1b',t:'Bổ sung lời kể, tả · Cách 2',d:'Kể về sự thay đổi của nhân vật khi nhận ra lỗi lầm.',ex:'Cậu bé trở nên chăm chỉ, tự giác, làm theo lời mẹ khuyên bảo.'},
+ {k:'2a',t:'Viết tiếp đoạn kết · Cách 1',d:'Viết một cái kết hạnh phúc, có hậu.',ex:'Mẹ trở về sau nhiều ngày đi tìm con, hai mẹ con gặp nhau trong hạnh phúc.'},
+ {k:'2b',t:'Viết tiếp đoạn kết · Cách 2',d:'Hoá ra mọi chuyện chỉ là một giấc mơ.',ex:'Các việc trong truyện chỉ là do cậu bé ngủ mơ. Em nêu cảm nghĩ khi nhớ lại giấc mơ đáng sợ.'},
+ {k:'x',t:'Phương án khác · theo ý em',d:'Em tự nghĩ ra cách tưởng tượng của mình.',ex:'Ví dụ: thêm một nhân vật mới, thêm một phép màu…'}];
+function stepPlan(){
+  shell('2 · Chọn truyện, chọn cách viết',1);const o=W18();
+  main(`<div class="card"><h2>📚 Em chọn câu chuyện nào?</h2><p class="sub">Chọn một câu chuyện em đã đọc hoặc đã nghe và thích.</p>
+    <div class="chips" id="sc">${STORIES.map(x=>`<button class="chip ${o.story===x?'on':''}" data-s="${esc(x)}">${esc(x)}</button>`).join('')}<button class="chip ${o.story==='*'?'on':''}" data-s="*">✏️ Truyện khác</button></div>
+    <div id="oth"></div></div>
+    <div class="card"><h2>🧭 Em muốn tưởng tượng theo cách nào?</h2>
+    <div class="grid3">${PLANS.map(p=>`<button class="pick ${o.plan===p.k?'ok':''}" data-p="${p.k}"><b>${p.t}</b><br>${esc(p.d)}<br><small>${esc(p.ex)}</small></button>`).join('')}</div>
+    <div class="row"><button class="btn sun" id="nx" disabled>Sang tìm ý ➡️</button></div></div>`);
+  say('Bạn chọn một câu chuyện, rồi chọn cách tưởng tượng nhé. Bạn có thể thêm lời kể, lời tả, hoặc viết tiếp đoạn kết.');
+  const chk=()=>{const okS=o.story&&(o.story!=='*'||o.other.trim());$('#nx').disabled=!(okS&&o.plan);};
+  const showOth=()=>{$('#oth').innerHTML=o.story==='*'?fld('Tên câu chuyện của em','other','Ví dụ: Thánh Gióng'):'';if(o.story==='*')bindInputs($('#oth'),chk,W18);};
+  $$('#sc .chip').forEach(c=>c.onclick=()=>{o.story=c.dataset.s;save();$$('#sc .chip').forEach(x=>x.classList.toggle('on',x===c));showOth();chk();});
+  $$('[data-p]').forEach(b=>b.onclick=()=>{o.plan=b.dataset.p;save();$$('[data-p]').forEach(x=>x.classList.toggle('ok',x===b));chk();});
+  showOth();chk();
+  $('#nx').onclick=()=>{addStar(1,'đã chọn truyện');stepDone('x2');stepIdeas(0);};
+}
+const storyName=()=>{const o=W18();return o.story==='*'?(o.other||'câu chuyện của em'):(o.story||'câu chuyện của em');};
+const IDEA_PARTS=['Mở đầu','Triển khai','Kết thúc'];
+function stepIdeas(part){
+  shell('3 · Tìm ý: '+IDEA_PARTS[part],2);const o=W18();
+  const dots=`<div class="dots">${IDEA_PARTS.map((_,k)=>`<i class="${k<part?'on':''} ${k===part?'cur':''}"></i>`).join('')}</div>`;
+  if(part===0){
+    if(!o.idea&&o.plan){const p=PLANS.find(x=>x.k===o.plan);if(p&&p.k!=='x'){/* không điền sẵn, để con tự nghĩ */}}
+    main(dots+`<div class="card"><h2>🚪 Mở đầu</h2><p class="sub">Giới thiệu tên câu chuyện đã gợi cho em những liên tưởng, tưởng tượng.</p>
+      <p class="q">Câu chuyện: <b>${esc(storyName())}</b></p>
+      ${fld('Em muốn tưởng tượng điều gì?','idea','Ví dụ: Em muốn thay đổi kết thúc buồn bằng một cái kết ấm áp hơn.',3)}${chipRow('ic',['Em muốn tưởng tượng thêm','Em muốn viết tiếp đoạn kết:','Em muốn tả kĩ hơn'])}
+      <div class="row"><button class="btn alt" id="bk">⬅️ Chọn lại</button><button class="btn sun" id="nx" disabled>Sang triển khai ➡️</button></div></div>`);
+    say('Mở đầu là cổng vào. Bạn nói tên câu chuyện và điều bạn muốn tưởng tượng nhé.');
+    const chk=()=>{$('#nx').disabled=nWords(o.idea)<4;};bindInputs($('.card'),chk,W18);chipFill('ic','idea',W18,chk);chk();
+    $('#bk').onclick=stepPlan;$('#nx').onclick=()=>{addStar(1,'xong mở đầu');stepIdeas(1);};
+  }
+  if(part===1){
+    main(dots+`<div class="card"><h2>🛤️ Triển khai</h2><p class="sub">Kể, tả lại những gì em tưởng tượng. Cố gắng tạo sự bất ngờ, thú vị cho người đọc. Có thể dùng nhân hoá, so sánh.</p>
+      ${fld('1. Hoàn cảnh: việc xảy ra ở đâu, lúc nào, nhân vật đang làm gì?','setting','Ví dụ: Cậu bé ôm thân cây vú sữa khóc vì nhớ mẹ.',2)}
+      ${fld('2. Điều bất ngờ, thú vị em tưởng tượng ra là gì?','twist','Ví dụ: Từ xa, một bóng dáng quen thuộc đang bước về cổng nhà.',3)}${chipRow('tc',['Bỗng nhiên','Thì ra','Không ngờ'])}
+      ${fld('3. Sau đó nhân vật làm gì, cảm thấy ra sao?','result','Ví dụ: Cậu bé chạy tới ôm mẹ và xin lỗi mẹ.',2)}
+      <div class="row"><button class="btn alt" id="bk">⬅️ Mở đầu</button><button class="btn sun" id="nx" disabled>Sang kết thúc ➡️</button></div></div>`);
+    say('Triển khai là con đường phiêu lưu. Điều bất ngờ là phần quan trọng nhất. Bạn nghĩ xem câu chuyện sẽ có điều gì thú vị nhé!');
+    const chk=()=>{$('#nx').disabled=!(nWords(o.twist)>=5&&nWords(o.setting)>=3);};bindInputs($('.card'),chk,W18);chipFill('tc','twist',W18,chk);chk();
+    $('#bk').onclick=()=>stepIdeas(0);$('#nx').onclick=()=>{addStar(1,'xong triển khai');stepIdeas(2);};
+  }
+  if(part===2){
+    main(dots+`<div class="card"><h2>🏆 Kết thúc</h2><p class="sub">Nêu cảm nghĩ của em hoặc gợi ra những điều tưởng tượng tiếp theo.</p>
+      ${fld('Em nghĩ gì về câu chuyện này?','feel','Ví dụ: Tình mẹ con là điều quý giá, em muốn luôn yêu thương mẹ.',3)}${chipRow('fc',['Em nghĩ rằng','Em rất yêu thích','Em muốn biết thêm'])}
+      ${fld('Điều tưởng tượng tiếp theo (không bắt buộc)','next','Ví dụ: Không biết cây vú sữa sẽ còn cho quả ngọt bao nhiêu mùa nữa.',2)}
+      <div class="row"><button class="btn alt" id="bk">⬅️ Triển khai</button><button class="btn sun" id="nx" disabled>Xong ✔</button></div></div>`);
+    say('Kết thúc là điều đọng lại trong lòng người đọc. Bạn nói cảm nghĩ của bạn nhé!');
+    const chk=()=>{$('#nx').disabled=nWords(o.feel)<4;};bindInputs($('.card'),chk,W18);chipFill('fc','feel',W18,chk);chk();
+    $('#bk').onclick=()=>stepIdeas(1);$('#nx').onclick=()=>{addStar(1,'xong kết thúc');stepDone('x3');stepIdeaCheck();};
+  }
+}
+function ideaParts(){const o=W18();
+  return {m:[`Câu chuyện: ${storyName()}`,o.idea&&`Điều em tưởng tượng: ${o.idea.trim()}`],
+          t:[o.setting&&`Hoàn cảnh: ${o.setting.trim()}`,o.twist&&`Điều bất ngờ: ${o.twist.trim()}`,o.result&&`Sau đó: ${o.result.trim()}`],
+          k:[o.feel&&`Cảm nghĩ: ${o.feel.trim()}`,o.next&&`Điều tưởng tượng tiếp theo: ${o.next.trim()}`]};}
+function ideaText(){const p=ideaParts();const f=a=>a.filter(Boolean).map(x=>'- '+x).join('\n');return `TÌM Ý ĐOẠN VĂN TƯỞNG TƯỢNG\nMở đầu\n${f(p.m)}\nTriển khai\n${f(p.t)}\nKết thúc\n${f(p.k)}`;}
+function stepIdeaCheck(){
+  shell('4 · Kiểm tra & chỉnh sửa',3);const o=W18(),p=ideaParts();
+  const crit=[{ok:nWords(o.idea)>=4&&nWords(o.setting)>=3,t:'Trình bày rõ những điều đã tưởng tượng',fix:'Bổ sung',go:()=>stepIdeas(0)},
+              {ok:nWords(o.twist)>=5,t:'Nội dung tưởng tượng thể hiện sự sáng tạo (có điều bất ngờ, thú vị)',fix:'Thêm điều bất ngờ',go:()=>stepIdeas(1)},
+              {ok:nWords(o.feel)>=4,t:'Có đủ mở đầu, triển khai, kết thúc',fix:'Thêm kết thúc',go:()=>stepIdeas(2)}];
+  const all=crit.every(c=>c.ok);
+  const box=(c,h,l)=>`<div class="ol ${c}"><h4>${h}</h4>${l.filter(Boolean).map(x=>`<div>• ${esc(x)}</div>`).join('')}</div>`;
+  main(`<div class="card"><h2>Ý của ${esc(nm())}</h2>${box('m','🚪 Mở đầu',p.m)}${box('t','🛤️ Triển khai',p.t)}${box('k','🏆 Kết thúc',p.k)}
+    <div class="row"><button class="btn blue" id="rd">🔊 Miu-Bot đọc ý</button><button class="btn alt" id="cp">📋 Sao chép</button></div></div>
+    <div class="card"><h2>Kiểm tra 3 điều</h2>${crit.map((c,i)=>`<div class="chk ${c.ok?'ok':''}"><span>${c.ok?'✅':'⬜'}</span>${c.t}${c.ok?'':`<button class="btn alt b" data-c="${i}" style="min-height:48px;font-size:18px">${c.fix}</button>`}</div>`).join('')}
+    <div class="row"><button class="btn sun ${all?'pulse':''}" id="fin" ${all?'':'disabled'}>🎉 Hoàn thành!</button></div></div>`);
+  say(all?'Bạn đã có đủ ý để viết đoạn văn rồi! Ở bài sau, bạn sẽ dùng những ý này để viết nhé.':'Còn thiếu một điều, bạn bổ sung giúp mình nhé!','happy');
+  $$('[data-c]').forEach(b=>b.onclick=()=>crit[+b.dataset.c].go());
+  $('#rd').onclick=()=>{setTalk(true);speakSeq([{t:'Mở đầu',after:300},...p.m.filter(Boolean).map(t=>({t,after:300})),{t:'Triển khai',after:300},...p.t.filter(Boolean).map(t=>({t,after:300})),{t:'Kết thúc',after:300},...p.k.filter(Boolean).map(t=>({t,after:300}))],{rate:.85}).then(()=>setTalk(false));};
+  $('#cp').onclick=async()=>{try{await navigator.clipboard.writeText(ideaText());toast('Đã sao chép');}catch(e){const el=document.createElement('textarea');el.className='tin';el.rows=10;el.value=ideaText();$('#cp').parentNode.after(el);el.select();toast('Chọn rồi sao chép nhé');}};
+  $('#fin').onclick=()=>{addStar(3,'hoàn thành tìm ý');stepDone('x4');rewardW('✍️','Nhà văn nhí','đã tìm xong ý cho đoạn văn tưởng tượng','Việc tiếp theo: ở bài 19, bạn sẽ dùng các ý này để viết thành một đoạn văn nhé!');};
+}
+const STEPS18W=[
+ {id:'x1',n:'1',e:'✏️',t:'Đặt câu với từ mới',s:'3 phút',f:()=>stepWordSentence()},
+ {id:'x2',n:'2',e:'📚',t:'Chọn truyện & cách viết',s:'3 phút',f:()=>stepPlan()},
+ {id:'x3',n:'3',e:'💡',t:'Tìm ý 3 phần',s:'5 phút',f:()=>stepIdeas(0)},
+ {id:'x4',n:'4',e:'✅',t:'Kiểm tra ý',s:'2 phút',f:()=>stepIdeaCheck()}
+];
+
+// ---------- Bài 18: Nói và nghe "Chúng em sáng tạo" ----------
+const PRODS=[{e:'✈️',t:'máy bay giấy'},{e:'🪁',t:'con diều'},{e:'⭐',t:'đèn ông sao'},{e:'🖊️',t:'ống bút tái chế'},{e:'💌',t:'thiệp chúc mừng'},{e:'✏️',t:'sản phẩm khác'}];
+function stepSpeakPrep(){
+  shell('1 · Chọn sản phẩm & ghi ý',0);const o=SP();
+  main(`<div class="card"><h2>🧰 Em giới thiệu sản phẩm nào?</h2><p class="sub">Chọn một sản phẩm em tự tay làm ra (hoặc em muốn làm).</p>
+    <div class="grid3">${PRODS.map((p,i)=>`<button class="pick ${o.prod===p.t?'ok':''}" data-p="${i}"><span class="em">${p.e}</span>${p.t}</button>`).join('')}</div></div><div id="p2"></div>`);
+  say(`${nm()} ơi, hôm nay bạn là nhà sáng tạo nhí! Bạn chọn một sản phẩm tự làm để giới thiệu nhé.`);
+  const draw=()=>{
+    $('#p2').innerHTML=`<div class="card"><h2>📝 Ghi nhanh các ý</h2><p class="sub">Ghi ngắn thôi. Có thể nhìn sản phẩm thật hoặc ảnh để ghi.</p>
+      ${fld('Tên sản phẩm','name','Ví dụ: chiếc đèn ông sao')}${fld('Em làm vào dịp nào, hoặc vì sao em làm?','occ','Ví dụ: nhân dịp Tết Trung thu cùng bố')}
+      ${fld('Hình dạng, kích thước, màu sắc','shape','Ví dụ: ngôi sao năm cánh, màu đỏ và vàng')}${fld('Chất liệu','mat','Ví dụ: tre, giấy bóng kính, keo dán')}
+      ${fld('Cách làm (kể ngắn gọn)','steps','Ví dụ: đầu tiên em vót tre, sau đó dán giấy lên khung',2)}${fld('Điểm đặc biệt nhất','special','Ví dụ: khi thắp nến, đèn sáng như vì sao')}${chipRow('sc2',['Điểm đặc biệt nhất là','Em thích nhất chi tiết'])}
+      ${fld('Em cảm thấy thế nào?','feel','Ví dụ: em rất tự hào và vui')}
+      <div class="row"><button class="btn sun" id="nx" disabled>Sang luyện nói ➡️</button></div></div>`;
+    bindInputs($('#p2'),chk,SP);chipFill('sc2','special',SP,chk);chk();
+    $('#nx').onclick=()=>{addStar(1,'chuẩn bị bài nói');stepDone('n1');stepSpeakNow();};
+  };
+  function chk(){const b=$('#nx');if(b)b.disabled=!(o.name.trim()&&o.shape.trim()&&o.mat.trim()&&o.special.trim());}
+  $$('[data-p]').forEach(b=>b.onclick=()=>{const p=PRODS[+b.dataset.p];o.prod=p.t;if(p.t!=='sản phẩm khác'&&!o.name.trim())o.name=p.t;save();$$('[data-p]').forEach(x=>x.classList.toggle('ok',x===b));draw();$('#p2').scrollIntoView({behavior:'smooth',block:'start'});});
+  if(o.prod)draw();
+}
+const dot=t=>{t=(t||'').trim();return t?(/[.!?…]$/.test(t)?t:t+'.'):'';};
+function speechText(){const o=SP();
+  const parts=[`Kính chào thầy cô và các bạn!`,o.name.trim()&&`Hôm nay, mình xin giới thiệu ${o.name.trim()}${o.occ.trim()?', '+o.occ.trim():''}.`,
+    dot(o.shape&&'Sản phẩm có '+o.shape.trim().replace(/^có\s+/i,'')),dot(o.mat&&'Mình làm từ '+o.mat.trim().replace(/^(làm )?từ\s+/i,'')),dot(o.steps),dot(o.special),dot(o.feel),'Cảm ơn thầy cô và các bạn đã lắng nghe!'];
+  return parts.filter(Boolean).join(' ');}
+const SP_CHK=['Mình có chào và giới thiệu tên sản phẩm','Mình nói dịp hoặc lí do làm sản phẩm','Mình tả hình dạng, màu sắc','Mình nói chất liệu và cách làm thật ngắn gọn','Mình nói điểm đặc biệt nhất','Mình nói cảm xúc và cảm ơn người nghe','Mình nói to, rõ ràng, nhìn vào người nghe','Mình dùng tay chỉ vào sản phẩm hoặc ảnh'];
+function stepSpeakNow(){
+  shell('2 · Luyện nói',1);const o=SP();
+  main(`<div class="card"><h2>🎤 Bài nói của em</h2><p class="sub">Miu-Bot ghép các ý em ghi thành bài nói. Em đọc theo, rồi sửa lại cho hợp với lời nói của em. Khi nói, em nhìn vào người nghe, không đọc từng chữ.</p>
+    <div class="q" id="sp" style="background:#fff7d6;border-radius:18px;padding:12px 16px">${esc(speechText())}</div>
+    <div class="row"><button class="btn blue" id="rd">🔊 Miu-Bot đọc mẫu</button><button class="btn alt" id="bk">⬅️ Sửa ý</button></div></div>
+    <div class="card"><h2>Em tự kiểm tra sau khi nói với bố mẹ</h2><p class="sub">Chạm vào những điều em đã làm được.</p>
+    ${SP_CHK.map((t,i)=>`<button class="chk tg ${o.chk.includes(i)?'ok':''}" data-i="${i}"><span>${o.chk.includes(i)?'✅':'⬜'}</span>${t}</button>`).join('')}
+    <div class="row"><button class="btn sun" id="fin" disabled>🎉 Em đã nói xong!</button></div></div>`);
+  say('Bạn đọc bài nói to lên nhé, nói với bố mẹ hoặc với đồ chơi cũng được. Xong rồi bạn tự kiểm tra nhé!');
+  $('#rd').onclick=()=>speakText(speechText());$('#bk').onclick=stepSpeakPrep;
+  const upd=()=>{$('#fin').disabled=o.chk.length<5;};upd();
+  $$('.tg').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,k=o.chk.indexOf(i);if(k>=0)o.chk.splice(k,1);else{o.chk.push(i);ding();}save();b.classList.toggle('ok');$('span',b).textContent=b.classList.contains('ok')?'✅':'⬜';upd();});
+  $('#fin').onclick=()=>{addStar(3,'đã nói giới thiệu');stepDone('n2');rewardW('🎤','Nhà sáng tạo nhí','đã luyện giới thiệu sản phẩm','Việc tiếp theo: bạn mang sản phẩm thật về khoe với bố mẹ, ông bà và nói điều bạn thích nhất nhé!');};
+}
+const STEPS18S=[
+ {id:'n1',n:'1',e:'🧰',t:'Chọn sản phẩm & ghi ý',s:'5 phút',f:()=>stepSpeakPrep()},
+ {id:'n2',n:'2',e:'🎤',t:'Luyện nói & tự kiểm tra',s:'7 phút',f:()=>stepSpeakNow()}
+];
+
+// ---------- Bài 19: viết đoạn văn tưởng tượng ----------
+const PARA_CHK=['Nội dung đoạn văn kết nối với câu chuyện đã đọc hoặc đã nghe','Những điều tưởng tượng tạo được sự bất ngờ, thú vị cho người đọc','Cách mở đầu hoặc kết thúc mới mẻ, hấp dẫn','Không mắc lỗi dùng từ, đặt câu, chính tả'];
+function stepPara(){
+  shell('2 · Viết đoạn văn tưởng tượng',1);const o=W18();const p=ideaParts();
+  const has=o.twist||o.idea;
+  main(`<div class="card"><h2>📝 Viết đoạn văn tưởng tượng</h2><p class="sub"><b>Đề bài:</b> Viết đoạn văn tưởng tượng dựa vào một câu chuyện đã đọc hoặc đã nghe.</p>
+    ${has?`<div class="ol m"><h4>💡 Ý em đã tìm (câu chuyện: ${esc(storyName())})</h4>${[...p.m,...p.t,...p.k].filter(Boolean).map(x=>`<div>• ${esc(x)}</div>`).join('')}</div>`:`<p class="legend">Em chưa tìm ý ở bài 18 (Buổi 2). Không sao, em vẫn có thể viết một đoạn văn tưởng tượng về câu chuyện em thích.</p>`}
+    <p class="legend">Một đoạn văn gồm: <b>mở đầu</b> (nêu tên câu chuyện) → <b>triển khai</b> (kể điều em tưởng tượng, có bất ngờ) → <b>kết thúc</b> (cảm nghĩ hoặc điều tiếp theo).</p>
+    ${fld('Đoạn văn của em','para','Em viết thành đoạn văn từ 4 đến 6 câu nhé…',8)}
+    <p class="legend" id="wc">0 từ</p>
+    <p class="legend">💡 Muốn đọc cho máy gõ thay: bấm 🎤 trên bàn phím iPad. Bố mẹ cũng có thể gõ giúp.</p>
+    <div class="row"><button class="btn blue" id="rd" disabled>🔊 Nghe đoạn văn của em</button><button class="btn sun" id="nx" disabled>Sang đọc soát ➡️</button></div></div>`);
+  say(has?'Bạn nhìn các ý đã tìm ở trên rồi viết thành đoạn văn nhé. Viết xong bạn bấm nghe để thử xem câu nào chưa hay!':'Bạn chọn một câu chuyện thích rồi viết đoạn văn tưởng tượng nhé!');
+  const base=()=>S;
+  bindInputs($('.card'),chk,base);
+  function chk(){const n=nWords(S.para);$('#wc').textContent=n+' từ'+(n<25?' · cần ít nhất 25 từ':'');$('#nx').disabled=n<25;$('#rd').disabled=n<5;}
+  chk();$('#rd').onclick=()=>speakText(S.para);
+  $('#nx').onclick=()=>{addStar(2,'viết đoạn văn');stepDone('y2');stepProof();};
+}
+function stepProof(){
+  shell('3 · Đọc soát & sửa lỗi',2);const R=REV();if(!R.pchk)R.pchk=[];
+  main(`<div class="card"><h2>🔍 Đọc soát đoạn văn</h2><p class="sub">Miu-Bot đọc đoạn văn của em. Em nghe và nhìn xem có chỗ nào chưa hay không. Em có thể sửa ngay.</p>
+    ${fld('Đoạn văn của em','para','',8)}
+    <div class="row"><button class="btn blue" id="rd">🔊 Miu-Bot đọc cho em nghe</button></div></div>
+    <div class="card"><h2>Em kiểm tra 4 điều</h2>${PARA_CHK.map((t,i)=>`<button class="chk tg ${R.pchk.includes(i)?'ok':''}" data-i="${i}"><span>${R.pchk.includes(i)?'✅':'⬜'}</span>${t}</button>`).join('')}
+    <p class="legend">Nghe thấy chỗ nào vấp hoặc thiếu chữ thì sửa lại. Nếu chưa chắc, em chưa chạm ô đó nhé.</p>
+    <div class="row"><button class="btn alt" id="bk">⬅️ Viết lại</button><button class="btn sun" id="fin" disabled>🎉 Em sửa xong rồi!</button></div></div>`);
+  say('Bạn nghe lại đoạn văn nhé. Nghe bằng tai sẽ giúp bạn tìm ra chỗ chưa hay đó!');
+  bindInputs($('.card'),null,()=>S);
+  $('#rd').onclick=()=>speakText(S.para);$('#bk').onclick=stepPara;
+  const upd=()=>{$('#fin').disabled=R.pchk.length<3;};upd();
+  $$('.tg').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,k=R.pchk.indexOf(i);if(k>=0)R.pchk.splice(k,1);else{R.pchk.push(i);ding();}save();b.classList.toggle('ok');$('span',b).textContent=b.classList.contains('ok')?'✅':'⬜';upd();});
+  $('#fin').onclick=()=>{addStar(3,'đọc soát xong');stepDone('y3');rewardW('📝','Nhà văn tưởng tượng','đã viết xong đoạn văn tưởng tượng','Việc tiếp theo: em đọc đoạn văn cho người thân nghe và nói điều em tưởng tượng thích nhất nhé!');};
+}
+const STEPS19W=[
+ {id:'y1',n:'1',e:'🌤️',t:'Đặt câu nhân hoá',s:'5 phút',f:()=>stepBuild(0,{id:'y1'})},
+ {id:'y2',n:'2',e:'📝',t:'Viết đoạn văn tưởng tượng',s:'6 phút',f:()=>stepPara()},
+ {id:'y3',n:'3',e:'🔍',t:'Đọc soát & sửa lỗi',s:'4 phút',f:()=>stepProof()}
+];
+
+// ---------- Bài 20: trả bài, chỉnh sửa, phiếu đọc sách ----------
+const REV_Q=['Đoạn văn của em có đủ mở đầu, triển khai, kết thúc không?','Những điều em tưởng tượng có kết nối với câu chuyện không?','Đoạn văn có mắc lỗi dùng từ, đặt câu, chính tả không? (Chạm “Chưa” nếu em thấy còn lỗi)'];
+function stepReview(){
+  shell('2 · Trả bài: em tự nhận xét',1);const R=REV();
+  main(`<div class="card"><h2>🧐 Em đọc lại bài viết của mình</h2>
+    ${S.para.trim()?`<div class="q" style="background:#f6fbff;border-radius:18px;padding:12px 16px;white-space:pre-wrap">${esc(S.para)}</div><div class="row"><button class="btn blue" id="rd">🔊 Nghe lại</button></div>`:'<p class="legend">Em chưa viết đoạn văn ở bài 19. Em có thể quay lại Buổi 2 bài 19 để viết, hoặc vẫn tiếp tục luyện các bước sau nhé.</p>'}</div>
+    <div class="card"><h2>Em tự nhận xét</h2>${REV_Q.map((q,i)=>`<div class="field"><label>${i+1}. ${q}</label><div class="chips" data-q="${i}"><button class="chip ${R['abc'[i]]===1?'on':''}" data-v="1">${i===2?'Chưa có lỗi':'Có rồi'}</button><button class="chip ${R['abc'[i]]===0?'on':''}" data-v="0">${i===2?'Còn lỗi, cần sửa':'Chưa, cần sửa'}</button></div></div>`).join('')}
+    <div class="row"><button class="btn sun" id="nx" disabled>Sang viết lại câu ➡️</button></div></div>`);
+  say('Bạn đọc lại đoạn văn của mình như một người đọc nhé. Bạn thấy chỗ nào hay, chỗ nào cần sửa?');
+  if($('#rd'))$('#rd').onclick=()=>speakText(S.para);
+  const chk=()=>{$('#nx').disabled=!(R.a>=0&&R.b>=0&&R.c>=0);};
+  $$('[data-q]').forEach(g=>$$('.chip',g).forEach(c=>c.onclick=()=>{R['abc'[+g.dataset.q]]=+c.dataset.v;save();$$('.chip',g).forEach(x=>x.classList.toggle('on',x===c));chk();}));
+  chk();$('#nx').onclick=()=>{addStar(2,'tự nhận xét');stepDone('z2');stepRewrite();};
+}
+const LEARN=['Cách viết mở đầu có sức cuốn hút','Cách viết kết thúc gây bất ngờ hoặc có sức gợi mở','Những chi tiết tưởng tượng độc đáo, thú vị, nhiều sáng tạo'];
+function stepRewrite(){
+  shell('3 · Viết lại cho hay hơn',2);const R=REV();
+  const sents=(S.para||'').split(/(?<=[.!?…])\s+/).map(x=>x.trim()).filter(x=>nWords(x)>=3);
+  main(`<div class="card"><h2>✨ Chọn một câu em muốn viết lại cho hay hơn</h2>
+    ${sents.length?`<div class="chips" id="ss">${sents.map(x=>`<button class="chip">${esc(x)}</button>`).join('')}</div>`:''}
+    ${fld('Câu cũ','old','Chạm vào một câu ở trên, hoặc em gõ câu cũ vào đây',2)}
+    <p class="legend">Cách làm câu hay hơn: thêm từ gợi tả (lung linh, rực rỡ, bồng bềnh…); thêm hình ảnh so sánh (như…); hoặc dùng nhân hoá (gọi, tả như người).</p>
+    ${fld('Câu mới, hay hơn','nw','Viết lại câu ở đây',3)}${chipRow('lc',['lung linh','rực rỡ','như một','nhẹ nhàng'])}
+    <div class="row"><button class="btn blue" id="rd" disabled>🔊 Nghe câu mới</button></div></div>
+    <div class="card"><h2>👀 Học từ các bạn</h2><p class="sub">Em đọc bài của bạn hoặc bài được cô khen. Em muốn học điều gì? (chọn nhiều cũng được)</p>
+    ${LEARN.map((t,i)=>`<button class="chk tg ${R.learn.includes(i)?'ok':''}" data-i="${i}"><span>${R.learn.includes(i)?'✅':'⬜'}</span>${t}</button>`).join('')}
+    <div class="row"><button class="btn sun" id="nx" disabled>Sang phiếu đọc sách ➡️</button></div></div>`);
+  say('Bạn chọn một câu, rồi thử viết lại cho hay hơn bằng từ gợi tả, so sánh hoặc nhân hoá nhé!');
+  bindInputs($('.card'),chk,REV);chipFill('lc','nw',REV,chk);
+  $$('#ss .chip').forEach(c=>c.onclick=()=>{R.old=c.textContent;save();$('[data-k=old]').value=R.old;chk();});
+  function chk(){const ok=nWords(R.nw)>=4&&R.learn.length>0;$('#nx').disabled=!ok;$('#rd').disabled=nWords(R.nw)<4;}
+  $('#rd').onclick=()=>speakText(R.nw);
+  $$('.tg').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,k=R.learn.indexOf(i);if(k>=0)R.learn.splice(k,1);else{R.learn.push(i);ding();}save();b.classList.toggle('ok');$('span',b).textContent=b.classList.contains('ok')?'✅':'⬜';chk();});
+  chk();$('#nx').onclick=()=>{addStar(2,'viết lại câu hay hơn');stepDone('z3');stepBook();};
+}
+function stepBook(){
+  shell('4 · Phiếu đọc sách',3);const B=BOOK();if(!B.date)B.date=new Date().toLocaleDateString('vi-VN');
+  main(`<div class="card"><h2>📘 Phiếu đọc sách</h2><p class="sub">Em đọc sách báo về khoa học và công nghệ rồi ghi phiếu. Gợi ý: <i>Mười vạn câu hỏi vì sao</i>, <i>Tìm hiểu về các phát minh</i>, <i>Một trăm phát minh làm nên lịch sử</i>.</p>
+    ${fld('Tên sách báo','title','Ví dụ: Một trăm phát minh làm nên lịch sử')}${fld('Tác giả','author','Em có thể nhờ bố mẹ xem trên bìa sách')}${fld('Ngày đọc','date','')}
+    ${fld('Nội dung chính','main','Cuốn sách nói về điều gì?',2)}${fld('Kiến thức hoặc phát minh khoa học được nói tới','know','Ví dụ: bóng đèn điện',2)}${fld('Thông tin bổ ích đối với em','useful','Em học được điều gì?',2)}
+    <div class="field"><label>Mức độ yêu thích</label><div class="stars5" id="st5">${[1,2,3,4,5].map(i=>`<button class="starbtn ${B.stars>=i?'on':''}" data-v="${i}">⭐</button>`).join('')}</div></div>
+    <div class="row"><button class="btn sun" id="fin" disabled>🎉 Xong phiếu!</button></div></div>`);
+  say('Bạn ghi phiếu đọc sách nhé. Nếu chưa đọc sách nào, bạn nhờ bố mẹ tìm một cuốn nói về phát minh để đọc, rồi quay lại ghi.');
+  bindInputs($('.card'),chk,BOOK);
+  $$('#st5 .starbtn').forEach(b=>b.onclick=()=>{B.stars=+b.dataset.v;save();$$('#st5 .starbtn').forEach(x=>x.classList.toggle('on',+x.dataset.v<=B.stars));chk();});
+  function chk(){$('#fin').disabled=!(B.title.trim()&&nWords(B.main)>=3&&nWords(B.useful)>=3&&B.stars>0);}
+  chk();$('#fin').onclick=()=>{addStar(3,'xong phiếu đọc sách');stepDone('z4');rewardW('🍂','Nhà quan sát bầu trời','đã hoàn thành bài 20','Quà từ túi thần kỳ của Miu-Bot: 🔭 chiếc kính thiên văn nhỏ. Bạn đọc phiếu cho người thân nghe nhé!');};
+}
+const STEPS20W=[
+ {id:'z1',n:'1',e:'☁️',t:'Đặt câu tả bầu trời',s:'5 phút',f:()=>stepBuild(0,{id:'z1'})},
+ {id:'z2',n:'2',e:'🧐',t:'Trả bài: tự nhận xét',s:'4 phút',f:()=>stepReview()},
+ {id:'z3',n:'3',e:'✨',t:'Viết lại câu cho hay',s:'4 phút',f:()=>stepRewrite()},
+ {id:'z4',n:'4',e:'📘',t:'Phiếu đọc sách',s:'4 phút',f:()=>stepBook()}
+];
+
+// ---------- Trang bố mẹ: bài viết của con ----------
+function writingSummary(){
+  const out=[];const pre=t=>`<div style="white-space:pre-wrap;background:#f6fbff;border-radius:14px;padding:10px 14px;font-size:17px;margin:6px 0">${esc(t)}</div>`;
+  const fr=Object.entries(S.free||{}).filter(([k,v])=>String(v).trim()&&!/^b\d+_/.test(k));
+  if(fr.length)out.push(`<h4>Câu con đã viết</h4>${fr.map(([k,v])=>pre(v)).join('')}`);
+  if(S.w18&&(S.w18.idea||S.w18.twist))out.push(`<h4>Ý cho đoạn văn tưởng tượng (bài 18)</h4>${pre(ideaText())}`);
+  if(S.sp&&S.sp.name)out.push(`<h4>Bài nói giới thiệu sản phẩm (bài 18)</h4>${pre(speechText())}`);
+  if((S.para||'').trim())out.push(`<h4>Đoạn văn tưởng tượng (bài 19)</h4>${pre(S.para)}`);
+  if(S.rev&&S.rev.nw)out.push(`<h4>Câu viết lại (bài 20)</h4>${pre('Cũ: '+(S.rev.old||'')+'\nMới: '+S.rev.nw)}`);
+  if(S.book&&S.book.title)out.push(`<h4>Phiếu đọc sách (bài 20)</h4>${pre(`Sách: ${S.book.title}\nTác giả: ${S.book.author}\nNgày đọc: ${S.book.date}\nNội dung chính: ${S.book.main}\nKiến thức, phát minh: ${S.book.know}\nThông tin bổ ích: ${S.book.useful}\nYêu thích: ${S.book.stars}/5 sao`)}`);
+  lessonList().forEach(l=>allForms(l).forEach(F=>{if(F.sum===undefined)return;const any=F.fields.some(f=>fGet(l.id,F.id,f.k));if(any)out.push(`<h4>Bài ${l.num} · ${esc(F.sum)}</h4>${pre(formText(l,F))}`);}));
+  return out.length?`<h3>Bài viết của con</h3><p class="legend">Bố mẹ đọc cùng con, khen một điều con làm tốt trước khi góp ý. Nhớ chỉ sửa một hai lỗi mỗi lần.</p>${out.join('')}`:'';
+}
+
+// ===== BÀI 21 TRỞ ĐI: BUỔI LUYỆN TẬP KHAI BÁO BẰNG DỮ LIỆU + MỤC LỤC =====
+function mkLesson(o){
+  const sessions=[{name:'📖 Buổi 1 · Đọc hiểu',steps:()=>readSteps()}].concat(o.sessions.map(s=>({name:s.name,hello:s.hello,badge:s.badge,W:s.W,steps:()=>wSteps(s.W)})));
+  return Object.assign({id:o.id,num:o.num,short:o.short,title:o.title,parent:o.parent,sessions},o.data);
+}
+LESSON_DEFS.forEach(d=>{LESSONS[d.id]=mkLesson(d);});
+// sắp xếp lại theo số bài
+(function(){const e=Object.values(LESSONS).sort((a,b)=>a.num-b.num);for(const k of Object.keys(LESSONS))delete LESSONS[k];e.forEach(l=>{LESSONS[l.id]=l;});})();
+
+function wSteps(W){return W.map((d,i)=>({id:d.id,n:String(i+1),e:d.e,t:d.t,s:d.s||'4 phút',f:()=>runW(W,i)}));}
+function runW(W,i){
+  const d=W[i],title=`${i+1} · ${d.t}`;
+  const ss=curSess();
+  const after=()=>{if(i+1<W.length&&STEPS[i+1])STEPS[i+1].f();else{const b=ss.badge||{e:'🏅',name:'Chăm chỉ',text:'đã hoàn thành',gift:''};rewardW(b.e,b.name,b.text,b.gift);}};
+  if(d.type==='quiz')stepQuiz(0,{list:d.list,idx:i,title,id:d.id,mk:d.id+'.',after,intro:d.intro||'Bạn nghe câu hỏi rồi chọn đáp án nhé.'});
+  else if(d.type==='sort')stepSort(d.cfg,{idx:i,pre:(i+1)+' · ',id:d.id,next:after});
+  else if(d.type==='order')stepOrderGame({cards:d.cards,idx:i,title,h:d.h,sub:d.sub,say:d.say,win:d.win,id:d.id,after});
+  else if(d.type==='form')runForm(d,i,title,after);
+  else if(d.type==='check')runCheck(d,i,title,after);
+  else if(d.type==='tell')runTell(d,i,title,after);
+}
+// --- tìm biểu mẫu theo id (để lấy dữ liệu của bước trước)
+const fPre=(lid,fid)=>lid+'_'+fid+'_';
+const fGet=(lid,fid,k)=>{const v=S.free[fPre(lid,fid)+k];return (v==null?'':String(v)).trim();};
+function formText(l,F){const g=k=>fGet(l.id,F.id,k),x=(fid,k)=>fGet(l.id,fid,k);return F.build?F.build(g,x):F.fields.map(f=>f.l+': '+g(f.k)).join('\n');}
+function allForms(l){return l.sessions.flatMap(s=>(s.W||[]).filter(d=>d.type==='form'));}
+function findForm(l,id){return allForms(l).find(f=>f.id===id);}
+
+function runForm(F,i,title,after){
+  shell(title,i);
+  const P=fPre(L.id,F.id);const base=()=>S.free;
+  const g=k=>(S.free[P+k]||'').trim(),x=(fid,k)=>fGet(L.id,fid,k);
+  const preview=()=>F.build?F.build(g,x):'';
+  main(`<div class="card"><h2>${F.h}</h2><p class="sub">${esc(F.sub||'')}</p>${F.tip?`<p class="legend">${esc(F.tip)}</p>`:''}
+    ${F.fields.map(f=>fld(f.l,P+f.k,f.ph,f.rows||2)).join('')}
+    ${(F.chips||[]).map((c,j)=>`<div class="field"><label>${esc(c.label||'Gợi ý')}</label>${chipRow('fc'+j,c.list)}</div>`).join('')}
+    ${F.rate?`<div class="field"><label>Mức độ yêu thích</label><div class="stars5" id="st5">${[1,2,3,4,5].map(v=>`<button class="starbtn" data-v="${v}">⭐</button>`).join('')}</div></div>`:''}
+    ${F.build?`<div class="q" id="pv" style="white-space:pre-wrap;background:#f6fbff;border-radius:18px;padding:12px 16px;font-size:18px;min-height:50px"></div>`:''}
+    <div class="row"><button class="btn blue" id="rd2" disabled>🔊 Nghe lại</button><button class="btn sun" id="fin" disabled>Xong ✔</button></div></div>`);
+  say(F.say||'Bạn viết bằng lời của mình nhé!','happy');
+  const ok=()=>{
+    const reqs=F.fields.filter(f=>f.req||F.need);const sat=reqs.filter(f=>nWords(g(f.k))>=(f.min||F.minw||3)).length;
+    const need=F.need||reqs.length;const rated=!F.rate||+(S.free[P+'stars']||0)>0;
+    return sat>=need&&rated;};
+  const chk=()=>{const o=ok();$('#fin').disabled=!o;$('#rd2').disabled=!o;const pv=$('#pv');if(pv)pv.textContent=preview();};
+  bindInputs($('.card'),chk,base);
+  (F.chips||[]).forEach((c,j)=>chipFill('fc'+j,P+c.to,base,chk));
+  if(F.rate){const cur=+(S.free[P+'stars']||0);$$('#st5 .starbtn').forEach(b=>{b.classList.toggle('on',+b.dataset.v<=cur);b.onclick=()=>{S.free[P+'stars']=String(b.dataset.v);save();$$('#st5 .starbtn').forEach(y=>y.classList.toggle('on',+y.dataset.v<=+b.dataset.v));chk();};});}
+  chk();
+  $('#rd2').onclick=()=>speakText(F.build?preview():F.fields.map(f=>g(f.k)).join('. '));
+  $('#fin').onclick=()=>{addStar(F.star||2,F.why||'viết bài');stepDone(F.id);say(F.win||'Bạn viết hay lắm!','cheer');confetti();setTimeout(after,1500);};
+}
+
+function runCheck(d,i,title,after){
+  shell(title,i);
+  const F=d.show?findForm(L,d.show):null;const txt=F?formText(L,F):'';
+  main(`<div class="card"><h2>${d.h}</h2><p class="sub">${esc(d.sub||'')}</p>
+    ${txt?`<div class="q" style="white-space:pre-wrap;background:#f6fbff;border-radius:18px;padding:12px 16px;font-size:18px">${esc(txt)}</div><div class="row"><button class="btn blue" id="rd2">🔊 Nghe lại bài</button></div>`:'<p class="legend">Em chưa viết ở bước trước. Em vẫn có thể đọc các điều dưới đây rồi tự kiểm tra bài của mình nhé.</p>'}
+    <div class="opts" style="display:block">${d.items.map((t,j)=>`<button class="opt wide" data-j="${j}">☐ ${esc(t)}</button>`).join('')}</div>
+    <div class="row"><button class="btn sun" id="fin" disabled>Xong ✔</button></div></div>`);
+  say(d.say||'Bạn đọc lại bài và kiểm tra từng điều nhé.','happy');
+  if(txt)$('#rd2').onclick=()=>speakText(txt);
+  let n=0;$$('.opt').forEach(b=>b.onclick=()=>{b.classList.toggle('ok');const on=b.classList.contains('ok');b.firstChild.textContent=(on?'☑ ':'☐ ')+d.items[+b.dataset.j];n+=on?1:-1;$('#fin').disabled=n<d.items.length;if(on)ding();});
+  $('#fin').onclick=()=>{addStar(d.star||2,'tự kiểm tra bài');stepDone(d.id);say(d.win||'Giỏi lắm!','cheer');confetti();setTimeout(after,1500);};
+}
+
+function runTell(d,i,title,after){
+  shell(title,i);let p=0;
+  const show=()=>{const pg=d.pages[p];
+    main(`<div class="card"><h2>${esc(d.h)}</h2><p class="sub">${esc(d.sub||'')}</p>
+      <div class="big" style="font-size:64px;text-align:center">${pg.e}</div>
+      <div class="q" style="background:#fff7d6;border-radius:18px;padding:14px 18px;font-size:22px;line-height:1.6">${esc(pg.t)}</div>
+      <p class="legend">Tranh ${p+1} trên ${d.pages.length}</p>
+      <div class="row"><button class="btn blue" id="rd2">🔊 Nghe</button><button class="btn sun" id="nx">${p<d.pages.length-1?'Tranh tiếp theo ➡️':'Nghe xong rồi ✔'}</button></div></div>`);
+    $('#rd2').onclick=()=>speakText(pg.t);
+    $('#nx').onclick=()=>{stopSpeech();if(p<d.pages.length-1){p++;show();}else{addStar(1,'nghe truyện');stepDone(d.id);after();}};
+    say(pg.t,'happy');};
+  show();
+}
+
+// ===== Câu hỏi sai theo nhóm bước (cho trang bố mẹ) =====
+function quizMissLabel(rest){
+  if(/^\d+$/.test(rest))return QUIZ[+rest]?QUIZ[+rest].q:'';
+  const m=rest.match(/^(\w+)\.(\d+)$/);if(!m)return '';
+  for(const s of L.sessions)for(const d of (s.W||[]))if(d.id===m[1]&&d.list&&d.list[+m[2]])return d.list[+m[2]].q;
+  return '';
+}
+
+// ===== MỤC LỤC =====
+function lessonProg(l){const d=l.id==='b10'?S.done:(S.dl[l.id]||{});const st=l.sessions.flatMap(x=>x.steps());return {n:st.filter(s=>d[s.id]).length,t:st.length};}
+function lessonList(){return Object.values(LESSONS).sort((a,b)=>a.num-b.num);}
+function lessonBar(){
+  const ls=lessonList(),ix=ls.findIndex(l=>l.id===L.id),p=lessonProg(L);
+  return `<div class="lbar"><button class="hbtn2" id="lprev" ${ix<=0?'disabled':''} aria-label="Bài trước">◀</button>
+    <button class="tocbtn" id="toc"><span>📚 Mục lục</span><b>Bài ${L.num} · ${esc(L.title)}</b><small>${p.n}/${p.t} bước đã xong</small></button>
+    <button class="hbtn2" id="lnext" ${ix>=ls.length-1?'disabled':''} aria-label="Bài sau">▶</button></div>`;
+}
+function bindLessonBar(){
+  const ls=lessonList(),ix=ls.findIndex(l=>l.id===L.id);
+  const go=l=>{stopSpeech();setLesson(l.id);home();};
+  $('#toc').onclick=()=>tocScreen();
+  if(ix>0)$('#lprev').onclick=()=>go(ls[ix-1]);
+  if(ix<ls.length-1)$('#lnext').onclick=()=>go(ls[ix+1]);
+}
+function tocScreen(){
+  stopSpeech();
+  shell('Mục lục · Tiếng Việt 4',-1);
+  const have=lessonList().length;
+  const tile=(n,t)=>{const l=LESSONS['b'+n];
+    if(!l)return `<div class="lt off"><b>Bài ${n}</b><span>${esc(t)}</span><small>🔒 sắp có</small></div>`;
+    const p=lessonProg(l);const full=p.n>=p.t&&p.t>0;
+    return `<button class="lt ${l.id===L.id?'on':''} ${full?'full':''}" data-l="${l.id}"><b>Bài ${n} ${full?'✅':''}</b><span>${esc(t)}</span><small>${p.n}/${p.t} bước</small></button>`;};
+  main(`<p class="sub" style="text-align:center">Đã có <b>${have}</b> trong 32 bài của tập một. Chạm vào một bài để học.</p>
+    ${CATALOG.map(th=>`<div class="theme"><h3>${th.e} ${esc(th.name)}</h3>
+      ${th.weeks.map(w=>w.r?`<div class="wk"><span class="wn">Tuần ${w.w}</span><div class="rv">📝 ${esc(w.r)}</div></div>`:`<div class="wk"><span class="wn">Tuần ${w.w}</span><div class="lts">${w.l.map(([n,t])=>tile(n,t)).join('')}</div></div>`).join('')}</div>`).join('')}
+    <div class="row"><button class="btn" id="back">⬅ Quay lại</button></div>`);
+  $$('.lt[data-l]').forEach(b=>b.onclick=()=>{setLesson(b.dataset.l);home();});
+  $('#back').onclick=()=>home();
+  const cur=$('.lt.on');if(cur)setTimeout(()=>cur.scrollIntoView({block:'center'}),50);
+  say('Đây là mục lục sách. Bạn chạm vào bài muốn học nhé!','happy',{mute:true});
+}
+
+setLesson(S.lesson);
 home();
 
 </script></body></html>
