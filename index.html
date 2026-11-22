@@ -1386,16 +1386,25 @@ function miuSVG(mood){
 const AUDIO_HAVE={b21:1};
 let AUDIO={};const AUD={cur:null,bad:{}};
 function buildAudio(){AUDIO={};if(!L||!AUDIO_HAVE[L.id])return;for(const id of Object.keys(SENTS)){AUDIO[clean(SENTS[id].c.join(' '))]=`audio/${L.id}/${id}.mp3`;}}
-function stopAudio(){const a=AUD.cur;if(a){AUD.cur=null;try{a.onended=a.onerror=null;a.pause();}catch(e){}}}
+// iPad/iPhone chỉ cho phát tiếng khi phần tử audio đã được "mở khoá" bằng một lần chạm. Dùng MỘT phần tử audio cho mọi đoạn.
+const AEL=new Audio();AEL.preload='auto';
+const SILENT='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
+let aUnlocked=false;
+function unlockAudio(){if(aUnlocked)return;aUnlocked=true;try{AEL.src=SILENT;const p=AEL.play();if(p&&p.catch)p.catch(()=>{aUnlocked=false;});}catch(e){aUnlocked=false;}}
+['pointerdown','touchstart','touchend','click'].forEach(ev=>document.addEventListener(ev,unlockAudio,{passive:true,capture:true}));
+function stopAudio(){if(AUD.cur){AUD.cur=null;try{AEL.onended=AEL.onerror=AEL.onplaying=null;AEL.pause();}catch(e){}}}
 function playClip(url,rate){
   return new Promise(res=>{
-    let done=false,tm;const fin=ok=>{if(!done){done=true;clearTimeout(tm);if(AUD.cur===a)AUD.cur=null;res(ok);}};
-    const a=new Audio(url);AUD.cur=a;
-    try{a.preservesPitch=true;a.webkitPreservesPitch=true;a.playbackRate=Math.max(.75,Math.min(1.05,(rate||.95)/.95));}catch(e){}
-    a.onended=()=>fin(true);a.onerror=()=>{AUD.bad[url]=1;fin(false);};
-    tm=setTimeout(()=>{if(!a.duration||a.currentTime===0){AUD.bad[url]=1;try{a.pause();}catch(e){}fin(false);}},3500);
-    const p=a.play();if(p&&p.catch)p.catch(()=>{AUD.bad[url]=1;fin(false);});
-    a.onplaying=()=>{clearTimeout(tm);tm=setTimeout(()=>{try{a.pause();}catch(e){}fin(true);},((a.duration||30)/a.playbackRate+1.5)*1000);};
+    let done=false,tm;const tok={};
+    const fin=ok=>{if(!done){done=true;clearTimeout(tm);if(AUD.cur===tok)AUD.cur=null;AEL.onended=AEL.onerror=AEL.onplaying=null;res(ok);}};
+    AUD.cur=tok;
+    try{AEL.onended=AEL.onerror=AEL.onplaying=null;AEL.pause();AEL.src=url;AEL.preservesPitch=true;AEL.webkitPreservesPitch=true;AEL.playbackRate=Math.max(.75,Math.min(1.05,(rate||.95)/.95));}catch(e){}
+    AEL.onended=()=>fin(true);
+    AEL.onerror=()=>{AUD.bad[url]=1;fin(false);};
+    tm=setTimeout(()=>{try{AEL.pause();}catch(e){}fin(false);},4000);
+    AEL.onplaying=()=>{clearTimeout(tm);tm=setTimeout(()=>{try{AEL.pause();}catch(e){}fin(true);},((AEL.duration||30)/AEL.playbackRate+1.5)*1000);};
+    try{AEL.load();}catch(e){}
+    const p=AEL.play();if(p&&p.catch)p.catch(err=>{if(!err||err.name!=='NotAllowedError')AUD.bad[url]=1;fin(false);});
   });
 }
 
